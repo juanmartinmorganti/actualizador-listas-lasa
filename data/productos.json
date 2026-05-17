@@ -720,11 +720,371 @@
     "precioNuevo": 73790
   },
   {
-    "nombre": "Bandejas económicas N°0",
+    "nombre": "Bandejas rectangulares económicas N°0",
     "categoria": "Cartonería",
     "precioActual": 26387.71,
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 26387.71
+  },
+  {
+    "nombre": "Bandejas rectangulares económicas N°1",
+    "categoria": "Cartonería",
+    "precioActual": 29662.37,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 29662.37
+  },
+  {
+    "nombre": "Bandejas rectangulares económicas N°2",
+    "categoria": "Cartonería",
+    "precioActual": 33768.72,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 33768.72
+  },
+  {
+    "nombre": "Bandejas rectangulares económicas N°3",
+    "categoria": "Cartonería",
+    "precioActual": 39975.38,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 39975.38
+  },
+  {
+    "nombre": "Bandejas rectangulares económicas N°4",
+    "categoria": "Cartonería",
+    "precioActual": 51653.5,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 51653.5
+  },
+  {
+    "nombre": "Bandejas rectangulares económicas N°5",
+    "categoria": "Cartonería",
+    "precioActual": 64940.91,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 64940.91
+  },
+  {
+    "nombre": "Bandejas rectangulares económicas N°6",
+    "categoria": "Cartonería",
+    "precioActual": 79990.04,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 79990.04
+  },
+  {
+    "nombre": "Bandejas rectangulares económicas N°7",
+    "categoria": "Cartonería",
+    "precioActual": 89148.24,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 89148.24
+  },
+  {
+    "nombre": "Bandejas rectangulares económicas N°8",
+    "categoria": "Cartonería",
+    "precioActual": 118489.67,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 118489.67
+  },
+  {
+    "nombre": "Bandejas redondas economicas N°12",
+    "categoria": "Cartonería",
+    "precioActual": 47469.72,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 47469.72
+  },
+  {
+    "nombre": "Bandejas redondas economicas N°13½",
+    "categoria": "Cartonería",
+    "precioActual": 60936.46,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 60936.46
+  },
+  {
+    "nombre": "Bandejas redondas economicas N°14",
+    "categoria": "Cartonería",
+    "precioActual": 72327.51,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 72327.51
+  },
+  {
+    "nombre": "Bandejas redondas economicas N°15",
+    "categoria": "Cartonería",
+    "precioActual": 73787.6,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 73787.6
+  },
+  {
+    "nombre": "Bandejas redondas economicas N°16",
+    "categoria": "Cartonería",
+    "precioActual": 88712.65,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 88712.65
+  },
+  {
+    "nombre": "Reforzada rectangular N°1",
+    "categoria": "Cartonería",
+    "precioActual": 34304.57,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 34304.57
+  },
+  {
+    "nombre": "Reforzada rectangular N°2",
+    "categoria": "Cartonería",
+    "precioActual": 39150.24,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 39150.24
+  },
+  {
+    "nombre": "Reforzada rectangular N°3",
+    "categoria": "Cartonería",
+    "precioActual": 47157.18,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 47157.18
+  },
+  {
+    "nombre": "Reforzada rectangular N°4",
+    "categoria": "Cartonería",
+    "precioActual": 70278.69,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 70278.69
+  },
+  {
+    "nombre": "Reforzada rectangular N°5",
+    "categoria": "Cartonería",
+    "precioActual": 89216.41,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 89216.41
+  },
+  {
+    "nombre": "Reforzada rectangular N°6",
+    "categoria": "Cartonería",
+    "precioActual": 129698.71,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 129698.71
+  },
+  {
+    "nombre": "Reforzada rectangular N°7",
+    "categoria": "Cartonería",
+    "precioActual": 142481.91,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 142481.91
+  },
+  {
+    "nombre": "Reforzada rectangular N°8",
+    "categoria": "Cartonería",
+    "precioActual": 180947.47,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 180947.47
+  },
+  {
+    "nombre": "Reforzada redondas N°13½",
+    "categoria": "Cartonería",
+    "precioActual": 69239.08,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 69239.08
+  },
+  {
+    "nombre": "Reforzada redondas N°14",
+    "categoria": "Cartonería",
+    "precioActual": 84611.37,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 84611.37
+  },
+  {
+    "nombre": "Reforzada redondas N°15",
+    "categoria": "Cartonería",
+    "precioActual": 108347.84,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 108347.84
+  },
+  {
+    "nombre": "Reforzada redondas N°16",
+    "categoria": "Cartonería",
+    "precioActual": 128577.49,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 128577.49
+  },
+  {
+    "nombre": "Reforzada redondas N°18",
+    "categoria": "Cartonería",
+    "precioActual": 202423.94,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 202423.94
+  },
+  {
+    "nombre": "Pesada rectangular N°1",
+    "categoria": "Cartonería",
+    "precioActual": 44184.91,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 44184.91
+  },
+  {
+    "nombre": "Pesada rectangular N°2",
+    "categoria": "Cartonería",
+    "precioActual": 54974.23,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 54974.23
+  },
+  {
+    "nombre": "Pesada rectangular N°3",
+    "categoria": "Cartonería",
+    "precioActual": 73616.83,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 73616.83
+  },
+  {
+    "nombre": "Pesada rectangular N°4",
+    "categoria": "Cartonería",
+    "precioActual": 106009.65,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 106009.65
+  },
+  {
+    "nombre": "Pesada rectangular N°5",
+    "categoria": "Cartonería",
+    "precioActual": 135448.23,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 135448.23
+  },
+  {
+    "nombre": "Pesada rectangular N°6",
+    "categoria": "Cartonería",
+    "precioActual": 182571.09,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 182571.09
+  },
+  {
+    "nombre": "Pesada rectangular N°7",
+    "categoria": "Cartonería",
+    "precioActual": 190822.6,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 190822.6
+  },
+  {
+    "nombre": "Pesada rectangular N°8",
+    "categoria": "Cartonería",
+    "precioActual": 238018.51,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 238018.51
+  },
+  {
+    "nombre": "Pesada rectangular N°8½",
+    "categoria": "Cartonería",
+    "precioActual": 271384.17,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 271384.17
+  },
+  {
+    "nombre": "Pesada rectangular N°9",
+    "categoria": "Cartonería",
+    "precioActual": 372416.6,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 372416.6
+  },
+  {
+    "nombre": "Pesada redonda N°18",
+    "categoria": "Cartonería",
+    "precioActual": 253028.84,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 253028.84
+  },
+  {
+    "nombre": "Discos de carton comunes (12-16/36)",
+    "categoria": "Cartonería",
+    "precioActual": 3641.44,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 3641.44
+  },
+  {
+    "nombre": "Bases de cartón (medidas vs)",
+    "categoria": "Cartonería",
+    "precioActual": 2561.18,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2561.18
+  },
+  {
+    "nombre": "Fajas de cartón finas",
+    "categoria": "Cartonería",
+    "precioActual": 2283.25,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2283.25
+  },
+  {
+    "nombre": "Fajas de cartón gruesas",
+    "categoria": "Cartonería",
+    "precioActual": 2739.9,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2739.9
+  },
+  {
+    "nombre": "Fajas de cartulina",
+    "categoria": "Cartonería",
+    "precioActual": 3107.93,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 3107.93
+  },
+  {
+    "nombre": "Kg de cartón en hoja 70 x 100 N°50 al 25 fino",
+    "categoria": "Cartonería",
+    "precioActual": 2335.46,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2335.46
+  },
+  {
+    "nombre": "Kg de cartón en hoja 70 x 100 N°16 al 20 grueso",
+    "categoria": "Cartonería",
+    "precioActual": 2785.51,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2785.51
+  },
+  {
+    "nombre": "Kg  cartulina tricapa blanca",
+    "categoria": "Cartonería",
+    "precioActual": 2954.35,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2954.35
   }
 ]

@@ -1,0 +1,439 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #222;
+}
+
+header {
+  background: #1f2937;
+  color: white;
+  padding: 24px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+header p {
+  margin: 8px 0 0;
+  color: #d1d5db;
+}
+
+main {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+section {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 4px;
+}
+
+input,
+select {
+  min-width: 180px;
+}
+
+input:disabled {
+  background: #e5e7eb;
+  color: #374151;
+  font-weight: bold;
+}
+
+button {
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.formulario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.acciones {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.boton-secundario {
+  background: #6b7280;
+}
+
+.boton-secundario:hover {
+  background: #4b5563;
+}
+
+.boton-editar {
+  background: #059669;
+}
+
+.boton-editar:hover {
+  background: #047857;
+}
+
+.boton-eliminar {
+  background: #dc2626;
+}
+
+.boton-eliminar:hover {
+  background: #b91c1c;
+}
+
+#borrarTodo {
+  background: #dc2626;
+}
+
+#borrarTodo:hover {
+  background: #b91c1c;
+}
+
+#descargarPDF {
+  background: #7c3aed;
+}
+
+#descargarPDF:hover {
+  background: #6d28d9;
+}
+
+.campo-fecha {
+  margin-top: 16px;
+}
+
+.campo-fecha label {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+th,
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background: #e5e7eb;
+}
+
+tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* PORTADA */
+
+.grid-categorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.boton-categoria {
+  min-height: 90px;
+  font-size: 17px;
+  border-radius: 14px;
+  background: #2563eb;
+}
+
+.boton-categoria:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.boton-lista-final {
+  min-height: 90px;
+  font-size: 17px;
+  border-radius: 14px;
+  background: #059669;
+}
+
+.boton-lista-final:hover {
+  background: #047857;
+  transform: translateY(-2px);
+}
+
+.oculto {
+  display: none;
+}
+
+#volverPortada,
+#volverPortadaResultado {
+  background: #4b5563;
+  margin-bottom: 12px;
+}
+
+#volverPortada:hover,
+#volverPortadaResultado:hover {
+  background: #374151;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #d1d5db;
+  margin: 32px 0;
+}
+
+/* LISTAS FINALES */
+
+.bloque-categoria {
+  margin-bottom: 28px;
+}
+
+.bloque-categoria h3 {
+  background: #e5e7eb;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.precio-final {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.encabezado-pdf {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.encabezado-pdf h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.encabezado-pdf h2 {
+  margin: 8px 0 0;
+  font-size: 22px;
+}
+
+.encabezado-pdf p {
+  margin: 8px 0 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* MODO OSCURO */
+
+#modoOscuroBtn {
+  margin-top: 16px;
+  background: #4b5563;
+}
+
+#modoOscuroBtn:hover {
+  background: #374151;
+}
+
+body.modo-oscuro {
+  background: #111827;
+  color: #f9fafb;
+}
+
+body.modo-oscuro header {
+  background: #030712;
+}
+
+body.modo-oscuro section {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+body.modo-oscuro input,
+body.modo-oscuro select {
+  background: #111827;
+  color: #f9fafb;
+  border: 1px solid #4b5563;
+}
+
+body.modo-oscuro input:disabled {
+  background: #374151;
+  color: #f9fafb;
+}
+
+body.modo-oscuro table {
+  color: #f9fafb;
+}
+
+body.modo-oscuro th {
+  background: #374151;
+}
+
+body.modo-oscuro td {
+  border-bottom: 1px solid #4b5563;
+}
+
+body.modo-oscuro tbody tr:hover {
+  background: #374151;
+}
+
+body.modo-oscuro .bloque-categoria h3 {
+  background: #374151;
+  color: #f9fafb;
+}
+
+body.modo-oscuro hr {
+  border-top: 1px solid #4b5563;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+  input,
+  select,
+  button {
+    width: 100%;
+    margin: 6px 0;
+  }
+
+  .formulario {
+    display: block;
+  }
+
+  .acciones {
+    display: block;
+  }
+
+  table {
+    font-size: 13px;
+  }
+}
+
+/* IMPRESIÓN / PDF */
+
+@page {
+  size: A4 portrait;
+  margin: 15mm;
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  header,
+  #portada,
+  #moduloCategoria,
+  .no-imprimir,
+  button {
+    display: none !important;
+  }
+
+  main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #moduloResultadoFinal {
+    display: block !important;
+  }
+
+  #areaPDF {
+    display: block !important;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    background: white;
+    color: black;
+  }
+
+  section {
+    box-shadow: none;
+    border-radius: 0;
+    background: white;
+    color: black;
+  }
+
+  .encabezado-pdf {
+    display: block;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .encabezado-pdf h1 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .encabezado-pdf h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .encabezado-pdf p {
+    color: black;
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .bloque-categoria h3 {
+    background: white;
+    color: black;
+    border-bottom: 2px solid black;
+    border-radius: 0;
+    padding: 8px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    background: #eeeeee !important;
+    color: black;
+    border: 1px solid #999;
+  }
+
+  td {
+    color: black;
+    border: 1px solid #999;
+  }
+
+  .precio-final {
+    font-weight: bold;
+  }
+}

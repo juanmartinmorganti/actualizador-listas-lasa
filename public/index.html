@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Actualizador de Listas LASA</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Actualizador de Listas de Precios</h1>
+    <p>Lorenzo Annecchini S.A.</p>
+
+    <button id="modoOscuroBtn">Modo oscuro</button>
+  </header>
+
+  <main>
+
+    <!-- PORTADA -->
+    <section id="portada">
+      <h2>Actualizador de listas</h2>
+      <p>Seleccioná una categoría para cargar, editar o aplicar aumentos.</p>
+
+      <div class="grid-categorias">
+        <button class="boton-categoria" data-categoria="Bolsas Fast Food">Bolsas Fast Food</button>
+        <button class="boton-categoria" data-categoria="Bolsas Blanca Extra">Bolsas Blanca Extra</button>
+        <button class="boton-categoria" data-categoria="Bolsas Blanca II">Bolsas Blanca II</button>
+        <button class="boton-categoria" data-categoria="Bolsas Kraft">Bolsas Kraft</button>
+        <button class="boton-categoria" data-categoria="Cartonería">Cartonería</button>
+        <button class="boton-categoria" data-categoria="Moldes">Moldes</button>
+        <button class="boton-categoria" data-categoria="Papeles">Papeles</button>
+        <button class="boton-categoria" data-categoria="Platos Dorados">Platos Dorados</button>
+        <button class="boton-categoria" data-categoria="Servilletas">Servilletas</button>
+      </div>
+
+      <hr />
+
+      <h2>Resultado final - Listas de precios</h2>
+      <p>Seleccioná una categoría para ver solo la lista final con precios actualizados.</p>
+
+      <div class="grid-categorias">
+        <button class="boton-lista-final" data-categoria="Bolsas Fast Food">Bolsas Fast Food</button>
+        <button class="boton-lista-final" data-categoria="Bolsas Blanca Extra">Bolsas Blanca Extra</button>
+        <button class="boton-lista-final" data-categoria="Bolsas Blanca II">Bolsas Blanca II</button>
+        <button class="boton-lista-final" data-categoria="Bolsas Kraft">Bolsas Kraft</button>
+        <button class="boton-lista-final" data-categoria="Cartonería">Cartonería</button>
+        <button class="boton-lista-final" data-categoria="Moldes">Moldes</button>
+        <button class="boton-lista-final" data-categoria="Papeles">Papeles</button>
+        <button class="boton-lista-final" data-categoria="Platos Dorados">Platos Dorados</button>
+        <button class="boton-lista-final" data-categoria="Servilletas">Servilletas</button>
+      </div>
+    </section>
+
+    <!-- MÓDULO DE ACTUALIZACIÓN -->
+    <div id="moduloCategoria" class="oculto">
+
+      <section>
+        <button id="volverPortada">← Volver a categorías</button>
+        <h2 id="tituloCategoriaActiva">Categoría</h2>
+        <p>Trabajando sobre la categoría seleccionada.</p>
+      </section>
+
+      <section>
+        <h2>Cargar / editar producto</h2>
+
+        <div class="formulario">
+          <input type="text" id="producto" placeholder="Producto" />
+          <input type="text" id="categoria" disabled />
+          <input type="number" id="precioActual" placeholder="Precio actual" />
+
+          <select id="tipoAumento">
+            <option value="sin">Sin aumento</option>
+            <option value="porcentaje">Porcentaje</option>
+            <option value="importe">Importe fijo</option>
+          </select>
+
+          <input type="number" id="valorAumento" placeholder="Valor aumento" />
+
+          <button id="agregarProducto">Agregar producto</button>
+          <button id="cancelarEdicion" class="oculto boton-secundario">Cancelar edición</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Aumento masivo de la categoría</h2>
+
+        <div class="formulario">
+          <input type="text" id="categoriaMasiva" disabled />
+
+          <select id="tipoAumentoMasivo">
+            <option value="porcentaje">Porcentaje</option>
+            <option value="importe">Importe fijo</option>
+          </select>
+
+          <input type="number" id="valorAumentoMasivo" placeholder="Valor aumento" />
+
+          <button id="aplicarAumentoMasivo">Aplicar aumento</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Lista final de la categoría</h2>
+        <div id="listaPorCategoria"></div>
+      </section>
+
+      <section>
+        <h2>Detalle técnico de productos</h2>
+
+        <div class="acciones">
+          <button id="exportarCSV">Exportar CSV</button>
+          <button id="borrarTodo">Borrar todo</button>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Precio actual</th>
+              <th>Tipo aumento</th>
+              <th>Valor</th>
+              <th>Precio nuevo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody id="tablaProductos"></tbody>
+        </table>
+      </section>
+
+    </div>
+
+    <!-- MÓDULO RESULTADO FINAL -->
+    <div id="moduloResultadoFinal" class="oculto">
+
+      <section class="no-imprimir">
+        <button id="volverPortadaResultado">← Volver a categorías</button>
+        <button id="descargarPDF">Descargar PDF</button>
+
+        <h2 id="tituloResultadoFinal">Resultado final</h2>
+        <p>Lista final de precios de la categoría seleccionada.</p>
+
+        <div class="campo-fecha">
+          <label for="fechaActualizacion">Fecha de actualización:</label>
+          <input type="date" id="fechaActualizacion" />
+        </div>
+      </section>
+
+      <section id="areaPDF">
+        <div class="encabezado-pdf">
+          <h1>Lorenzo Annecchini S.A.</h1>
+          <h2 id="tituloPDF">Lista de precios</h2>
+          <p id="fechaActualizacionPDF">Fecha de actualización: -</p>
+        </div>
+
+        <div id="resultadoFinalCategoria"></div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

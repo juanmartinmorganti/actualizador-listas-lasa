@@ -1,0 +1,10 @@
+[
+  {
+    "nombre": "Bolsa prueba",
+    "categoria": "Bolsas Fast Food",
+    "precioActual": 1000,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 1000
+  }
+]

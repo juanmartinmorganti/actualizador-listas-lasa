@@ -1,10 +1,50 @@
 [
   {
-    "nombre": "Bolsa prueba",
+    "nombre": "FM3",
     "categoria": "Bolsas Fast Food",
-    "precioActual": 1000,
+    "precioActual": 85.6,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1000
+    "precioNuevo": 85.6
+  },
+  {
+    "nombre": "FM4",
+    "categoria": "Bolsas Fast Food",
+    "precioActual": 107.42,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 107.42
+  },
+  {
+    "nombre": "FM5",
+    "categoria": "Bolsas Fast Food",
+    "precioActual": 137.53,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 137.53
+  },
+  {
+    "nombre": "FM7",
+    "categoria": "Bolsas Fast Food",
+    "precioActual": 161.81,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 161.81
+  },
+  {
+    "nombre": "FM8",
+    "categoria": "Bolsas Fast Food",
+    "precioActual": 196.22,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 196.22
+  },
+  {
+    "nombre": "FM9",
+    "categoria": "Bolsas Fast Food",
+    "precioActual": 262.32,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 262.32
   }
 ]

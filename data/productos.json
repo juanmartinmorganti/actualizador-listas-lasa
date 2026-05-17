@@ -46,5 +46,685 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 262.32
+  },
+  {
+    "nombre": "Moldes para pan dulce de 100 gr fantasía",
+    "categoria": "Moldes",
+    "precioActual": 67299.17,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 67299.17
+  },
+  {
+    "nombre": "Moldes para pan dulce de ¼ kg fantasía",
+    "categoria": "Moldes",
+    "precioActual": 74696.03,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 74696.03
+  },
+  {
+    "nombre": "Moldes para pan dulce de ½ kg fantasía",
+    "categoria": "Moldes",
+    "precioActual": 90100.81,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 90100.81
+  },
+  {
+    "nombre": "Moldes para pan dulce de ¾ kg fantasía",
+    "categoria": "Moldes",
+    "precioActual": 100783.71,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 100783.71
+  },
+  {
+    "nombre": "Moldes para pan dulce de 1 kg fantasía",
+    "categoria": "Moldes",
+    "precioActual": 105197.22,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 105197.22
+  },
+  {
+    "nombre": "Moldes savarín N°18",
+    "categoria": "Moldes",
+    "precioActual": 215692.37,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 215692.37
+  },
+  {
+    "nombre": "Moldes savarín N°20",
+    "categoria": "Moldes",
+    "precioActual": 226013.11,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 226013.11
+  },
+  {
+    "nombre": "Moldes savarín N°22",
+    "categoria": "Moldes",
+    "precioActual": 237824.45,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 237824.45
+  },
+  {
+    "nombre": "Moldes savarín N°24",
+    "categoria": "Moldes",
+    "precioActual": 279659.09,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 279659.09
+  },
+  {
+    "nombre": "Moldes savarín N°26",
+    "categoria": "Moldes",
+    "precioActual": 312560.16,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 312560.16
+  },
+  {
+    "nombre": "Moldes para bizcochuelo N°18 fantasía",
+    "categoria": "Moldes",
+    "precioActual": 188700.46,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 188700.46
+  },
+  {
+    "nombre": "Moldes para bizcochuelo N°20 fantasía",
+    "categoria": "Moldes",
+    "precioActual": 199020.92,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 199020.92
+  },
+  {
+    "nombre": "Moldes para bizcochuelo N°22 fantasía",
+    "categoria": "Moldes",
+    "precioActual": 210832.43,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 210832.43
+  },
+  {
+    "nombre": "Moldes para bizcochuelo N°24 fantasía",
+    "categoria": "Moldes",
+    "precioActual": 230307.49,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 230307.49
+  },
+  {
+    "nombre": "Moldes para bizcochuelo N°26 fantasía",
+    "categoria": "Moldes",
+    "precioActual": 263208.55,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 263208.55
+  },
+  {
+    "nombre": "Budinera con fleje de cartón p/300 gr",
+    "categoria": "Moldes",
+    "precioActual": 125015.23,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 125015.23
+  },
+  {
+    "nombre": "Budinera con fleje de cartón p/500 gr",
+    "categoria": "Moldes",
+    "precioActual": 162233.53,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 162233.53
+  },
+  {
+    "nombre": "1",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 18897.46,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 18897.46
+  },
+  {
+    "nombre": "1L",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 20535.37,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 20535.37
+  },
+  {
+    "nombre": "2",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 22760.4,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 22760.4
+  },
+  {
+    "nombre": "2L",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 25678.42,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 25678.42
+  },
+  {
+    "nombre": "2L pororó",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 33793.13,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 33793.13
+  },
+  {
+    "nombre": "2 x 10L",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 57665.1,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 57665.1
+  },
+  {
+    "nombre": "3",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 26789.99,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 26789.99
+  },
+  {
+    "nombre": "3L",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 32153.63,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 32153.63
+  },
+  {
+    "nombre": "4",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 36711.15,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 36711.15
+  },
+  {
+    "nombre": "4A",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 35932.99,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 35932.99
+  },
+  {
+    "nombre": "5",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 42074.64,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 42074.64
+  },
+  {
+    "nombre": "5 x 10L",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 76849.73,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 76849.73
+  },
+  {
+    "nombre": "6",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 46771.33,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 46771.33
+  },
+  {
+    "nombre": "6L",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 52746.18,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 52746.18
+  },
+  {
+    "nombre": "7",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 68313.35,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 68313.35
+  },
+  {
+    "nombre": "7L",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 71115.65,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 71115.65
+  },
+  {
+    "nombre": "8",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 76784.95,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 76784.95
+  },
+  {
+    "nombre": "9",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 86845.12,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 86845.12
+  },
+  {
+    "nombre": "10",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 114163.05,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 114163.05
+  },
+  {
+    "nombre": "10L",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 125640.55,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 125640.55
+  },
+  {
+    "nombre": "1 color - 1 cara",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 9500,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 9500
+  },
+  {
+    "nombre": "1 color - 2 caras",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 14500,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 14500
+  },
+  {
+    "nombre": "2 colores - 1 cara",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 12500,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 12500
+  },
+  {
+    "nombre": "2 colores - 2 caras",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 18500,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 18500
+  },
+  {
+    "nombre": "3 colores - 1 cara",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 17000,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 17000
+  },
+  {
+    "nombre": "3 colores - 2 caras",
+    "categoria": "Bolsas Blanca Extra",
+    "precioActual": 25000,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 25000
+  },
+  {
+    "nombre": "1",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 14240,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 14240
+  },
+  {
+    "nombre": "1L",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 15440,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 15440
+  },
+  {
+    "nombre": "2",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 16540,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 16540
+  },
+  {
+    "nombre": "2L",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 17350,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 17350
+  },
+  {
+    "nombre": "3",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 17980,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 17980
+  },
+  {
+    "nombre": "3L",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 18580,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 18580
+  },
+  {
+    "nombre": "4",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 20680,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 20680
+  },
+  {
+    "nombre": "4A",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 21210,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 21210
+  },
+  {
+    "nombre": "5",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 24040,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 24040
+  },
+  {
+    "nombre": "6",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 26650,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 26650
+  },
+  {
+    "nombre": "6L",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 30120,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 30120
+  },
+  {
+    "nombre": "7",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 36520,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 36520
+  },
+  {
+    "nombre": "7L",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 41010,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 41010
+  },
+  {
+    "nombre": "8",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 44850,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 44850
+  },
+  {
+    "nombre": "9",
+    "categoria": "Bolsas Blanca II",
+    "precioActual": 50620,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 50620
+  },
+  {
+    "nombre": "0",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 11120,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 11120
+  },
+  {
+    "nombre": "1",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 11640,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 11640
+  },
+  {
+    "nombre": "1L",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 12610,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 12610
+  },
+  {
+    "nombre": "2",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 13820,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 13820
+  },
+  {
+    "nombre": "2L",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 14170,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 14170
+  },
+  {
+    "nombre": "2L farmacia",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 20320,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 20320
+  },
+  {
+    "nombre": "2 x 10L",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 26690,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 26690
+  },
+  {
+    "nombre": "3",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 14360,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 14360
+  },
+  {
+    "nombre": "3L",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 15640,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 15640
+  },
+  {
+    "nombre": "3A",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 13760,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 13760
+  },
+  {
+    "nombre": "3L farmacia",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 19050,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 19050
+  },
+  {
+    "nombre": "4",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 17800,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 17800
+  },
+  {
+    "nombre": "4A",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 17260,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 17260
+  },
+  {
+    "nombre": "4A farmacia",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 20510,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 20510
+  },
+  {
+    "nombre": "5",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 20220,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 20220
+  },
+  {
+    "nombre": "5 x 10L",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 37200,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 37200
+  },
+  {
+    "nombre": "6",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 22480,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 22480
+  },
+  {
+    "nombre": "6L",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 25100,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 25100
+  },
+  {
+    "nombre": "6 farmacia",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 25740,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 25740
+  },
+  {
+    "nombre": "7",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 29950,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 29950
+  },
+  {
+    "nombre": "7L",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 34300,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 34300
+  },
+  {
+    "nombre": "7 farmacia",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 33450,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 33450
+  },
+  {
+    "nombre": "8",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 37420,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 37420
+  },
+  {
+    "nombre": "9",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 41690,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 41690
+  },
+  {
+    "nombre": "10",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 61900,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 61900
+  },
+  {
+    "nombre": "10L",
+    "categoria": "Bolsas Kraft",
+    "precioActual": 73790,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 73790
+  },
+  {
+    "nombre": "Bandejas económicas N°0",
+    "categoria": "Cartonería",
+    "precioActual": 26387.71,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 26387.71
   }
 ]

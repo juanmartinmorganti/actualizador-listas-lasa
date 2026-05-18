@@ -1214,5 +1214,21 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 6813.88
+  },
+  {
+    "nombre": "Impresión 1 color",
+    "categoria": "Papeles",
+    "precioActual": 400,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 400
+  },
+  {
+    "nombre": "Impresión 2 colores",
+    "categoria": "Papeles",
+    "precioActual": 600,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 600
   }
 ]

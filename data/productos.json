@@ -1230,5 +1230,109 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 600
+  },
+  {
+    "nombre": "Impresió 3 colores",
+    "categoria": "Papeles",
+    "precioActual": 900,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 900
+  },
+  {
+    "nombre": "Impresión pleno suave",
+    "categoria": "Papeles",
+    "precioActual": 1000,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 1000
+  },
+  {
+    "nombre": "Impresión pleno intenso",
+    "categoria": "Papeles",
+    "precioActual": 1300,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 1300
+  },
+  {
+    "nombre": "RESMAS DE MANTECA BLANQUEADO IMPORTADO",
+    "categoria": "Papeles",
+    "precioActual": 147692.18,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 147692.18
+  },
+  {
+    "nombre": "RESMAS DE MOLDE  100x150 cm  (360 hojas) 11Kg.",
+    "categoria": "Papeles",
+    "precioActual": 144221.41,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 144221.41
+  },
+  {
+    "nombre": "RESMAS DE PAPELE ANTIGRASA 75x100 cm  (500 hojas) 14 Kg.",
+    "categoria": "Papeles",
+    "precioActual": 153599.86,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 153599.86
+  },
+  {
+    "nombre": "RESMAS DE SEDA BLANCO 75x100 (400 hojas) 6,5 Kg.",
+    "categoria": "Papeles",
+    "precioActual": 33338.75,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 33338.75
+  },
+  {
+    "nombre": "KG PAPEL ANTIGRASA (25x37 - 18x25)",
+    "categoria": "Papeles",
+    "precioActual": 10751.99,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 10751.99
+  },
+  {
+    "nombre": "RESMAS DE CELOFAN TRANSPARENTE 65x90 cm (400 hojas)",
+    "categoria": "Papeles",
+    "precioActual": 75570,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 75570
+  },
+  {
+    "nombre": "RESMAS DE CELOFAN COLOR 55x90 cm (100 hojas)",
+    "categoria": "Papeles",
+    "precioActual": 26020,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 26020
+  },
+  {
+    "nombre": "RESMAS CELOFAN DESAYUNO 100x120 (100 hojas)",
+    "categoria": "Papeles",
+    "precioActual": 63710,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 63710
+  },
+  {
+    "nombre": "ROLLOS DE CELOFAN TRANSPARENTE 55x90 (10 hojas)",
+    "categoria": "Papeles",
+    "precioActual": 2050,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2050
+  },
+  {
+    "nombre": "ROLLOS DE CELOFAN COLOR 55x90 (10 hojas)",
+    "categoria": "Papeles",
+    "precioActual": 2760,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2760
   }
 ]

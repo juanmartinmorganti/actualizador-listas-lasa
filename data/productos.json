@@ -1086,5 +1086,133 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 2954.35
+  },
+  {
+    "nombre": "Sulfito Sein rollos",
+    "categoria": "Papeles",
+    "precioActual": 2215.48,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2215.48
+  },
+  {
+    "nombre": "Sulfito Sein cortado",
+    "categoria": "Papeles",
+    "precioActual": 2272.4,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2272.4
+  },
+  {
+    "nombre": "Sulfito Sein corte al ½ resmas",
+    "categoria": "Papeles",
+    "precioActual": 2342.85,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2342.85
+  },
+  {
+    "nombre": "Sulfito Sein cortes especiales",
+    "categoria": "Papeles",
+    "precioActual": 2448.55,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2448.55
+  },
+  {
+    "nombre": "Sulfito extra rollos",
+    "categoria": "Papeles",
+    "precioActual": 3921.95,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 3921.95
+  },
+  {
+    "nombre": "Fantasía varios s/sto Sein",
+    "categoria": "Papeles",
+    "precioActual": 2668.91,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2668.91
+  },
+  {
+    "nombre": "Sulfito mantel s/sto Sein",
+    "categoria": "Papeles",
+    "precioActual": 2327.57,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2327.57
+  },
+  {
+    "nombre": "Fantasía mantel s/sto Sein",
+    "categoria": "Papeles",
+    "precioActual": 2929.83,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2929.83
+  },
+  {
+    "nombre": "Kraft hojas 50/80 gr",
+    "categoria": "Papeles",
+    "precioActual": 2012.22,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2012.22
+  },
+  {
+    "nombre": "Kraft rollos 50 gr",
+    "categoria": "Papeles",
+    "precioActual": 1916.4,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 1916.4
+  },
+  {
+    "nombre": "Kraft rollos 80 gr",
+    "categoria": "Papeles",
+    "precioActual": 2113.86,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2113.86
+  },
+  {
+    "nombre": "Fantasía panadería extra",
+    "categoria": "Papeles",
+    "precioActual": 4326,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 4326
+  },
+  {
+    "nombre": "Pleno extra colores vs rollos",
+    "categoria": "Papeles",
+    "precioActual": 4813.3,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 4813.3
+  },
+  {
+    "nombre": "Pleno extra rojo rollos",
+    "categoria": "Papeles",
+    "precioActual": 5025.48,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 5025.48
+  },
+  {
+    "nombre": "Fantasía panadería kraft",
+    "categoria": "Papeles",
+    "precioActual": 2269.68,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 2269.68
+  },
+  {
+    "nombre": "Paquetes manteles individuales",
+    "categoria": "Papeles",
+    "precioActual": 6813.88,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 6813.88
   }
 ]

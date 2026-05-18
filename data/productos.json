@@ -1470,5 +1470,173 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 654.9
+  },
+  {
+    "nombre": "Buffet 18 x 17",
+    "categoria": "Servilletas",
+    "precioActual": 8171.82,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 8171.82
+  },
+  {
+    "nombre": "Buffet con fajas",
+    "categoria": "Servilletas",
+    "precioActual": 8835.77,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 8835.77
+  },
+  {
+    "nombre": "Aquarella 18 x 18",
+    "categoria": "Servilletas",
+    "precioActual": 5943.94,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 5943.94
+  },
+  {
+    "nombre": "Crystal 18 x 18",
+    "categoria": "Servilletas",
+    "precioActual": 3784.23,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 3784.23
+  },
+  {
+    "nombre": "Buffet 14 x 13,5",
+    "categoria": "Servilletas",
+    "precioActual": 21127.57,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 21127.57
+  },
+  {
+    "nombre": "Aquarella 14 x 14",
+    "categoria": "Servilletas",
+    "precioActual": 14957.69,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 14957.69
+  },
+  {
+    "nombre": "Crystal 14 x 14",
+    "categoria": "Servilletas",
+    "precioActual": 12077.23,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 12077.23
+  },
+  {
+    "nombre": "Buffet 24 x 24",
+    "categoria": "Servilletas",
+    "precioActual": 15393.16,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 15393.16
+  },
+  {
+    "nombre": "Crystal 24 x 24",
+    "categoria": "Servilletas",
+    "precioActual": 9983.15,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 9983.15
+  },
+  {
+    "nombre": "Buffet ensobradas 24 x 24",
+    "categoria": "Servilletas",
+    "precioActual": 17419.08,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 17419.08
+  },
+  {
+    "nombre": "Buffet 33 x 32",
+    "categoria": "Servilletas",
+    "precioActual": 14841.56,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 14841.56
+  },
+  {
+    "nombre": "Aquarella 33 x 33",
+    "categoria": "Servilletas",
+    "precioActual": 9911.2,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 9911.2
+  },
+  {
+    "nombre": "Crystal 33 x 33",
+    "categoria": "Servilletas",
+    "precioActual": 7284.46,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 7284.46
+  },
+  {
+    "nombre": "Buffet ensobradas 33 x 33 -  24 paquetes",
+    "categoria": "Servilletas",
+    "precioActual": 18428.88,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 18428.88
+  },
+  {
+    "nombre": "Buffet ensobradas 33 x 33 - 12 paq 6 paq",
+    "categoria": "Servilletas",
+    "precioActual": 18428.88,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 18428.88
+  },
+  {
+    "nombre": "Buffet ensobradas color 33 x 33",
+    "categoria": "Servilletas",
+    "precioActual": 25983.47,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 25983.47
+  },
+  {
+    "nombre": "Buffet ensobradas lunares / cuadrille 33 x 33",
+    "categoria": "Servilletas",
+    "precioActual": 22085.63,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 22085.63
+  },
+  {
+    "nombre": "Impresión 1 color",
+    "categoria": "Servilletas",
+    "precioActual": 1200,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 1200
+  },
+  {
+    "nombre": "Impresión 2 colores",
+    "categoria": "Servilletas",
+    "precioActual": 1400,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 1400
+  },
+  {
+    "nombre": "Rollos secamano Tissue doble hoja grande 25cm",
+    "categoria": "Servilletas",
+    "precioActual": 15592.5,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 15592.5
+  },
+  {
+    "nombre": "Rollos secamano Tissue doble hoja chico 25cm",
+    "categoria": "Servilletas",
+    "precioActual": 8799,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 8799
   }
 ]

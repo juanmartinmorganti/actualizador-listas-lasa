@@ -1334,5 +1334,141 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 2760
+  },
+  {
+    "nombre": "Platos dorados ¼ kg",
+    "categoria": "Platos Dorados",
+    "precioActual": 148.13,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 148.13
+  },
+  {
+    "nombre": "Platos dorados ½ kg",
+    "categoria": "Platos Dorados",
+    "precioActual": 235,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 235
+  },
+  {
+    "nombre": "Platos dorados ¾ kg",
+    "categoria": "Platos Dorados",
+    "precioActual": 307.5,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 307.5
+  },
+  {
+    "nombre": "Platos dorados 1 kg",
+    "categoria": "Platos Dorados",
+    "precioActual": 344.69,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 344.69
+  },
+  {
+    "nombre": "Platos dorados 1½ kg",
+    "categoria": "Platos Dorados",
+    "precioActual": 435.3,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 435.3
+  },
+  {
+    "nombre": "Platos dorados 2 kg",
+    "categoria": "Platos Dorados",
+    "precioActual": 526.9,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 526.9
+  },
+  {
+    "nombre": "Platos dorados 3 kg",
+    "categoria": "Platos Dorados",
+    "precioActual": 660.4,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 660.4
+  },
+  {
+    "nombre": "Platos dorados 16 cm",
+    "categoria": "Platos Dorados",
+    "precioActual": 184.6,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 184.6
+  },
+  {
+    "nombre": "Platos dorados 18 cm",
+    "categoria": "Platos Dorados",
+    "precioActual": 226.2,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 226.2
+  },
+  {
+    "nombre": "Platos dorados 20 cm",
+    "categoria": "Platos Dorados",
+    "precioActual": 237.3,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 237.3
+  },
+  {
+    "nombre": "Platos dorados 22 cm",
+    "categoria": "Platos Dorados",
+    "precioActual": 248.5,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 248.5
+  },
+  {
+    "nombre": "Platos dorados 24 cm",
+    "categoria": "Platos Dorados",
+    "precioActual": 282.8,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 282.8
+  },
+  {
+    "nombre": "Platos dorados 26 cm",
+    "categoria": "Platos Dorados",
+    "precioActual": 336.4,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 336.4
+  },
+  {
+    "nombre": "Platos dorados 28 cm",
+    "categoria": "Platos Dorados",
+    "precioActual": 382.3,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 382.3
+  },
+  {
+    "nombre": "Platos dorados 31 cm",
+    "categoria": "Platos Dorados",
+    "precioActual": 398.8,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 398.8
+  },
+  {
+    "nombre": "Platos dorados 34 cm",
+    "categoria": "Platos Dorados",
+    "precioActual": 519.9,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 519.9
+  },
+  {
+    "nombre": "Platos dorados 36 cm",
+    "categoria": "Platos Dorados",
+    "precioActual": 654.9,
+    "tipoAumento": "sin",
+    "valorAumento": 0,
+    "precioNuevo": 654.9
   }
 ]

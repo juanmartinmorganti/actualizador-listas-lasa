@@ -4,66 +4,73 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Actualizador de Listas LASA</title>
+  <title>Listas de Precios | Lorenzo Annecchini S.A.</title>
 
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
-    <h1>Actualizador de Listas de Precios</h1>
-    <p>Lorenzo Annecchini S.A.</p>
-
-    <button id="modoOscuroBtn">Modo oscuro</button>
+  <header class="encabezado-principal">
+    <div class="encabezado-contenido">
+      <div>
+        <p class="empresa">Lorenzo Annecchini S.A.</p>
+        <h1>Listas de Precios</h1>
+      </div>
+      <div class="acciones-encabezado">
+        <a id="accesoAdmin" class="acceso-admin" href="/?admin">Administrar listas</a>
+        <button id="modoOscuroBtn" class="boton-modo" type="button" aria-label="Cambiar tema de color">
+          <span aria-hidden="true">◐</span>
+          <span id="textoModo">Modo oscuro</span>
+        </button>
+      </div>
+    </div>
   </header>
 
   <main>
 
     <!-- PORTADA -->
-    <section id="portada">
-      <h2>Actualizador de listas</h2>
-      <p>Seleccioná una categoría para cargar, editar o aplicar aumentos.</p>
-
-      <div class="grid-categorias">
-        <button class="boton-categoria" data-categoria="Bolsas Fast Food">Bolsas Fast Food</button>
-        <button class="boton-categoria" data-categoria="Bolsas Blanca Extra">Bolsas Blanca Extra</button>
-        <button class="boton-categoria" data-categoria="Bolsas Blanca II">Bolsas Blanca II</button>
-        <button class="boton-categoria" data-categoria="Bolsas Kraft">Bolsas Kraft</button>
-        <button class="boton-categoria" data-categoria="Cartonería">Cartonería</button>
-        <button class="boton-categoria" data-categoria="Moldes">Moldes</button>
-        <button class="boton-categoria" data-categoria="Papeles">Papeles</button>
-        <button class="boton-categoria" data-categoria="Platos Dorados">Platos Dorados</button>
-        <button class="boton-categoria" data-categoria="Servilletas">Servilletas</button>
+    <section id="portada" class="portada">
+      <div class="introduccion">
+        <p class="etiqueta">Consulta de precios vigentes</p>
+        <h2>Seleccioná una categoría</h2>
+        <p>Seleccioná una categoría para consultar la última lista de precios actualizada.</p>
       </div>
-
-      <hr />
-
-      <h2>Resultado final - Listas de precios</h2>
-      <p>Seleccioná una categoría para ver solo la lista final con precios actualizados.</p>
-
       <div class="grid-categorias">
-        <button class="boton-lista-final" data-categoria="Bolsas Fast Food">Bolsas Fast Food</button>
-        <button class="boton-lista-final" data-categoria="Bolsas Blanca Extra">Bolsas Blanca Extra</button>
-        <button class="boton-lista-final" data-categoria="Bolsas Blanca II">Bolsas Blanca II</button>
-        <button class="boton-lista-final" data-categoria="Bolsas Kraft">Bolsas Kraft</button>
-        <button class="boton-lista-final" data-categoria="Cartonería">Cartonería</button>
-        <button class="boton-lista-final" data-categoria="Moldes">Moldes</button>
-        <button class="boton-lista-final" data-categoria="Papeles">Papeles</button>
-        <button class="boton-lista-final" data-categoria="Platos Dorados">Platos Dorados</button>
-        <button class="boton-lista-final" data-categoria="Servilletas">Servilletas</button>
+        <button class="tarjeta-categoria boton-lista-final" data-categoria="Bolsas Fast Food"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Bolsas Fast Food</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
+        <button class="tarjeta-categoria boton-lista-final" data-categoria="Bolsas Blanca Extra"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Bolsas Blanca Extra</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
+        <button class="tarjeta-categoria boton-lista-final" data-categoria="Bolsas Blanca II"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Bolsas Blanca II</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
+        <button class="tarjeta-categoria boton-lista-final" data-categoria="Bolsas Kraft"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Bolsas Kraft</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
+        <button class="tarjeta-categoria boton-lista-final" data-categoria="Cartonería"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Cartonería</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
+        <button class="tarjeta-categoria boton-lista-final" data-categoria="Moldes"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Moldes</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
+        <button class="tarjeta-categoria boton-lista-final" data-categoria="Papeles"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Papeles</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
+        <button class="tarjeta-categoria boton-lista-final" data-categoria="Platos Dorados"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Platos Dorados</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
+        <button class="tarjeta-categoria boton-lista-final" data-categoria="Servilletas"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Servilletas</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
       </div>
+    </section>
+
+    <section id="portadaAdmin" class="portada oculto">
+      <div class="introduccion">
+        <p class="etiqueta">Administración</p>
+        <h2>Administración de listas</h2>
+        <p>Seleccioná una categoría y la tarea que querés realizar.</p>
+      </div>
+      <div id="gridAdmin" class="grid-admin"></div>
     </section>
 
     <!-- MÓDULO DE ACTUALIZACIÓN -->
     <div id="moduloCategoria" class="oculto">
 
       <section>
-        <button id="volverPortada">← Volver a categorías</button>
+        <button id="volverPortada">← Volver a administración</button>
         <h2 id="tituloCategoriaActiva">Categoría</h2>
         <p>Trabajando sobre la categoría seleccionada.</p>
+        <div class="campo-fecha-admin">
+          <label for="fechaActualizacionAdmin">Fecha de actualización</label>
+          <input type="date" id="fechaActualizacionAdmin" />
+        </div>
       </section>
 
-      <section>
+      <section id="ajustesCategoria">
         <h2>Cargar / editar producto</h2>
 
         <div class="formulario">
@@ -136,27 +143,37 @@
     <!-- MÓDULO RESULTADO FINAL -->
     <div id="moduloResultadoFinal" class="oculto">
 
-      <section class="no-imprimir">
-        <button id="volverPortadaResultado">← Volver a categorías</button>
-        <button id="descargarPDF">Descargar PDF</button>
-
-        <h2 id="tituloResultadoFinal">Resultado final</h2>
-        <p>Lista final de precios de la categoría seleccionada.</p>
-
-        <div class="campo-fecha">
-          <label for="fechaActualizacion">Fecha de actualización:</label>
-          <input type="date" id="fechaActualizacion" />
+      <section id="areaPDF" class="lista-consulta">
+        <div class="barra-lista no-imprimir">
+          <button id="volverPortadaResultado">← Volver a Listas de Precios</button>
+          <div class="controles-lista">
+            <button id="modoOscuroListaBtn" class="boton-secundario" type="button">
+              <span aria-hidden="true">◐</span>
+              <span id="textoModoLista">Modo oscuro</span>
+            </button>
+            <button id="descargarPDF">Imprimir / descargar PDF</button>
+          </div>
         </div>
-      </section>
 
-      <section id="areaPDF">
-        <div class="encabezado-pdf">
-          <h1>Lorenzo Annecchini S.A.</h1>
-          <h2 id="tituloPDF">Lista de precios</h2>
-          <p id="fechaActualizacionPDF">Fecha de actualización: -</p>
+        <div class="encabezado-documento">
+          <div class="marca-lasa" aria-label="LASA">LASA</div>
+          <div class="identidad-documento">
+            <p>Lorenzo Annecchini S.A.</p>
+            <h1>Lista de Precios</h1>
+          </div>
+          <div class="datos-documento">
+            <h2 id="tituloResultadoFinal">Categoría</h2>
+            <p id="fechaActualizacionTexto">Sin fecha publicada</p>
+          </div>
         </div>
+        <div class="franja-institucional" aria-hidden="true"></div>
 
         <div id="resultadoFinalCategoria"></div>
+
+        <footer class="pie-documento">
+          <span>Lorenzo Annecchini S.A.</span>
+          <span class="numero-pagina">Lista de precios vigente</span>
+        </footer>
       </section>
 
     </div>

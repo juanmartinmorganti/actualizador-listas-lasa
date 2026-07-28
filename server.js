@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-const PORT = 3000;
+const PORT = 4000;
 
 const dataPath = path.join(__dirname, "data", "productos.json");
 
@@ -53,6 +53,10 @@ app.post("/api/productos", (req, res) => {
     mensaje: "Productos guardados correctamente.",
     total: productos.length,
   });
+});
+
+app.get("/admin", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.listen(PORT, () => {

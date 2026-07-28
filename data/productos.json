@@ -2,50 +2,50 @@
   {
     "nombre": "FM3",
     "categoria": "Bolsas Fast Food",
-    "precioActual": 85.6,
+    "precioActual": 93.8,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 85.6
+    "precioNuevo": 93.8
   },
   {
     "nombre": "FM4",
     "categoria": "Bolsas Fast Food",
-    "precioActual": 107.42,
+    "precioActual": 106,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 107.42
+    "precioNuevo": 106
   },
   {
     "nombre": "FM5",
     "categoria": "Bolsas Fast Food",
-    "precioActual": 137.53,
+    "precioActual": 132.9,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 137.53
+    "precioNuevo": 132.9
   },
   {
     "nombre": "FM7",
     "categoria": "Bolsas Fast Food",
-    "precioActual": 161.81,
+    "precioActual": 163.8,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 161.81
+    "precioNuevo": 163.8
   },
   {
     "nombre": "FM8",
     "categoria": "Bolsas Fast Food",
-    "precioActual": 196.22,
+    "precioActual": 193.1,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 196.22
+    "precioNuevo": 193.1
   },
   {
     "nombre": "FM9",
     "categoria": "Bolsas Fast Food",
-    "precioActual": 262.32,
+    "precioActual": 261.9,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 262.32
+    "precioNuevo": 261.9
   },
   {
     "nombre": "Moldes para pan dulce de 100 gr fantasía",
@@ -187,913 +187,913 @@
     "nombre": "1",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 18897.46,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 18897.46
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 20031.3076
   },
   {
     "nombre": "1L",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 20535.37,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 20535.37
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 21767.4922
   },
   {
     "nombre": "2",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 22760.4,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 22760.4
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 24126.024
   },
   {
     "nombre": "2L",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 25678.42,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 25678.42
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 27219.1252
   },
   {
     "nombre": "2L pororó",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 33793.13,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 33793.13
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 35820.7178
   },
   {
     "nombre": "2 x 10L",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 57665.1,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 57665.1
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 61125.006
   },
   {
     "nombre": "3",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 26789.99,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 26789.99
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 28397.389400000004
   },
   {
     "nombre": "3L",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 32153.63,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 32153.63
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 34082.8478
   },
   {
     "nombre": "4",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 36711.15,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 36711.15
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 38913.819
   },
   {
     "nombre": "4A",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 35932.99,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 35932.99
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 38088.9694
   },
   {
     "nombre": "5",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 42074.64,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 42074.64
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 44599.1184
   },
   {
     "nombre": "5 x 10L",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 76849.73,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 76849.73
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 81460.7138
   },
   {
     "nombre": "6",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 46771.33,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 46771.33
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 49577.609800000006
   },
   {
     "nombre": "6L",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 52746.18,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 52746.18
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 55910.950800000006
   },
   {
     "nombre": "7",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 68313.35,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 68313.35
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 72412.15100000001
   },
   {
     "nombre": "7L",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 71115.65,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 71115.65
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 75382.58899999999
   },
   {
     "nombre": "8",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 76784.95,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 76784.95
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 81392.047
   },
   {
     "nombre": "9",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 86845.12,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 86845.12
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 92055.8272
   },
   {
     "nombre": "10",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 114163.05,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 114163.05
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 121012.83300000001
   },
   {
     "nombre": "10L",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 125640.55,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 125640.55
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 133178.983
   },
   {
     "nombre": "1 color - 1 cara",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 9500,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 9500
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 10070
   },
   {
     "nombre": "1 color - 2 caras",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 14500,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 14500
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 15370
   },
   {
     "nombre": "2 colores - 1 cara",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 12500,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 12500
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 13250
   },
   {
     "nombre": "2 colores - 2 caras",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 18500,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 18500
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 19610
   },
   {
     "nombre": "3 colores - 1 cara",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 17000,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 17000
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 18020
   },
   {
     "nombre": "3 colores - 2 caras",
     "categoria": "Bolsas Blanca Extra",
     "precioActual": 25000,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 25000
+    "tipoAumento": "porcentaje",
+    "valorAumento": 6,
+    "precioNuevo": 26500
   },
   {
     "nombre": "1",
     "categoria": "Bolsas Blanca II",
     "precioActual": 14240,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 14240
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 15521.6
   },
   {
     "nombre": "1L",
     "categoria": "Bolsas Blanca II",
     "precioActual": 15440,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 15440
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 16829.600000000002
   },
   {
     "nombre": "2",
     "categoria": "Bolsas Blanca II",
     "precioActual": 16540,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 16540
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 18028.600000000002
   },
   {
     "nombre": "2L",
     "categoria": "Bolsas Blanca II",
     "precioActual": 17350,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 17350
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 18911.5
   },
   {
     "nombre": "3",
     "categoria": "Bolsas Blanca II",
     "precioActual": 17980,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 17980
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 19598.2
   },
   {
     "nombre": "3L",
     "categoria": "Bolsas Blanca II",
     "precioActual": 18580,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 18580
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 20252.2
   },
   {
     "nombre": "4",
     "categoria": "Bolsas Blanca II",
     "precioActual": 20680,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 20680
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 22541.2
   },
   {
     "nombre": "4A",
     "categoria": "Bolsas Blanca II",
     "precioActual": 21210,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 21210
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 23118.9
   },
   {
     "nombre": "5",
     "categoria": "Bolsas Blanca II",
     "precioActual": 24040,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 24040
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 26203.600000000002
   },
   {
     "nombre": "6",
     "categoria": "Bolsas Blanca II",
     "precioActual": 26650,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 26650
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 29048.500000000004
   },
   {
     "nombre": "6L",
     "categoria": "Bolsas Blanca II",
     "precioActual": 30120,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 30120
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 32830.8
   },
   {
     "nombre": "7",
     "categoria": "Bolsas Blanca II",
     "precioActual": 36520,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 36520
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 39806.8
   },
   {
     "nombre": "7L",
     "categoria": "Bolsas Blanca II",
     "precioActual": 41010,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 41010
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 44700.9
   },
   {
     "nombre": "8",
     "categoria": "Bolsas Blanca II",
     "precioActual": 44850,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 44850
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 48886.5
   },
   {
     "nombre": "9",
     "categoria": "Bolsas Blanca II",
     "precioActual": 50620,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 50620
+    "tipoAumento": "porcentaje",
+    "valorAumento": 9,
+    "precioNuevo": 55175.8
   },
   {
     "nombre": "0",
     "categoria": "Bolsas Kraft",
     "precioActual": 11120,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 11120
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 11676
   },
   {
     "nombre": "1",
     "categoria": "Bolsas Kraft",
     "precioActual": 11640,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 11640
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 12222
   },
   {
     "nombre": "1L",
     "categoria": "Bolsas Kraft",
     "precioActual": 12610,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 12610
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 13240.5
   },
   {
     "nombre": "2",
     "categoria": "Bolsas Kraft",
     "precioActual": 13820,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 13820
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 14511
   },
   {
     "nombre": "2L",
     "categoria": "Bolsas Kraft",
     "precioActual": 14170,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 14170
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 14878.5
   },
   {
     "nombre": "2L farmacia",
     "categoria": "Bolsas Kraft",
     "precioActual": 20320,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 20320
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 21336
   },
   {
     "nombre": "2 x 10L",
     "categoria": "Bolsas Kraft",
     "precioActual": 26690,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 26690
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 28024.5
   },
   {
     "nombre": "3",
     "categoria": "Bolsas Kraft",
     "precioActual": 14360,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 14360
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 15078
   },
   {
     "nombre": "3L",
     "categoria": "Bolsas Kraft",
     "precioActual": 15640,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 15640
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 16422
   },
   {
     "nombre": "3A",
     "categoria": "Bolsas Kraft",
     "precioActual": 13760,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 13760
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 14448
   },
   {
     "nombre": "3L farmacia",
     "categoria": "Bolsas Kraft",
     "precioActual": 19050,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 19050
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 20002.5
   },
   {
     "nombre": "4",
     "categoria": "Bolsas Kraft",
     "precioActual": 17800,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 17800
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 18690
   },
   {
     "nombre": "4A",
     "categoria": "Bolsas Kraft",
     "precioActual": 17260,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 17260
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 18123
   },
   {
     "nombre": "4A farmacia",
     "categoria": "Bolsas Kraft",
     "precioActual": 20510,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 20510
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 21535.5
   },
   {
     "nombre": "5",
     "categoria": "Bolsas Kraft",
     "precioActual": 20220,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 20220
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 21231
   },
   {
     "nombre": "5 x 10L",
     "categoria": "Bolsas Kraft",
     "precioActual": 37200,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 37200
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 39060
   },
   {
     "nombre": "6",
     "categoria": "Bolsas Kraft",
     "precioActual": 22480,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 22480
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 23604
   },
   {
     "nombre": "6L",
     "categoria": "Bolsas Kraft",
     "precioActual": 25100,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 25100
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 26355
   },
   {
     "nombre": "6 farmacia",
     "categoria": "Bolsas Kraft",
     "precioActual": 25740,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 25740
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 27027
   },
   {
     "nombre": "7",
     "categoria": "Bolsas Kraft",
     "precioActual": 29950,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 29950
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 31447.5
   },
   {
     "nombre": "7L",
     "categoria": "Bolsas Kraft",
     "precioActual": 34300,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 34300
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 36015
   },
   {
     "nombre": "7 farmacia",
     "categoria": "Bolsas Kraft",
     "precioActual": 33450,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 33450
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 35122.5
   },
   {
     "nombre": "8",
     "categoria": "Bolsas Kraft",
     "precioActual": 37420,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 37420
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 39291
   },
   {
     "nombre": "9",
     "categoria": "Bolsas Kraft",
     "precioActual": 41690,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 41690
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 43774.5
   },
   {
     "nombre": "10",
     "categoria": "Bolsas Kraft",
     "precioActual": 61900,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 61900
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 64995
   },
   {
     "nombre": "10L",
     "categoria": "Bolsas Kraft",
     "precioActual": 73790,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 73790
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 77479.5
   },
   {
     "nombre": "Bandejas rectangulares económicas N°0",
     "categoria": "Cartonería",
     "precioActual": 26387.71,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 26387.71
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 29026.481
   },
   {
     "nombre": "Bandejas rectangulares económicas N°1",
     "categoria": "Cartonería",
     "precioActual": 29662.37,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 29662.37
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 32628.607
   },
   {
     "nombre": "Bandejas rectangulares económicas N°2",
     "categoria": "Cartonería",
     "precioActual": 33768.72,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 33768.72
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 37145.592000000004
   },
   {
     "nombre": "Bandejas rectangulares económicas N°3",
     "categoria": "Cartonería",
     "precioActual": 39975.38,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 39975.38
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 43972.918
   },
   {
     "nombre": "Bandejas rectangulares económicas N°4",
     "categoria": "Cartonería",
     "precioActual": 51653.5,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 51653.5
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 56818.850000000006
   },
   {
     "nombre": "Bandejas rectangulares económicas N°5",
     "categoria": "Cartonería",
     "precioActual": 64940.91,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 64940.91
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 71435.001
   },
   {
     "nombre": "Bandejas rectangulares económicas N°6",
     "categoria": "Cartonería",
     "precioActual": 79990.04,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 79990.04
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 87989.044
   },
   {
     "nombre": "Bandejas rectangulares económicas N°7",
     "categoria": "Cartonería",
     "precioActual": 89148.24,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 89148.24
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 98063.06400000001
   },
   {
     "nombre": "Bandejas rectangulares económicas N°8",
     "categoria": "Cartonería",
     "precioActual": 118489.67,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 118489.67
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 130338.637
   },
   {
     "nombre": "Bandejas redondas economicas N°12",
     "categoria": "Cartonería",
     "precioActual": 47469.72,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 47469.72
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 52216.692
   },
   {
     "nombre": "Bandejas redondas economicas N°13½",
     "categoria": "Cartonería",
     "precioActual": 60936.46,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 60936.46
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 67030.106
   },
   {
     "nombre": "Bandejas redondas economicas N°14",
     "categoria": "Cartonería",
     "precioActual": 72327.51,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 72327.51
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 79560.261
   },
   {
     "nombre": "Bandejas redondas economicas N°15",
     "categoria": "Cartonería",
     "precioActual": 73787.6,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 73787.6
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 81166.36000000002
   },
   {
     "nombre": "Bandejas redondas economicas N°16",
     "categoria": "Cartonería",
     "precioActual": 88712.65,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 88712.65
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 97583.91500000001
   },
   {
     "nombre": "Reforzada rectangular N°1",
     "categoria": "Cartonería",
     "precioActual": 34304.57,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 34304.57
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 37735.027
   },
   {
     "nombre": "Reforzada rectangular N°2",
     "categoria": "Cartonería",
     "precioActual": 39150.24,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 39150.24
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 43065.264
   },
   {
     "nombre": "Reforzada rectangular N°3",
     "categoria": "Cartonería",
     "precioActual": 47157.18,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 47157.18
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 51872.898
   },
   {
     "nombre": "Reforzada rectangular N°4",
     "categoria": "Cartonería",
     "precioActual": 70278.69,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 70278.69
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 77306.55900000001
   },
   {
     "nombre": "Reforzada rectangular N°5",
     "categoria": "Cartonería",
     "precioActual": 89216.41,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 89216.41
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 98138.051
   },
   {
     "nombre": "Reforzada rectangular N°6",
     "categoria": "Cartonería",
     "precioActual": 129698.71,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 129698.71
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 142668.581
   },
   {
     "nombre": "Reforzada rectangular N°7",
     "categoria": "Cartonería",
     "precioActual": 142481.91,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 142481.91
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 156730.10100000002
   },
   {
     "nombre": "Reforzada rectangular N°8",
     "categoria": "Cartonería",
     "precioActual": 180947.47,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 180947.47
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 199042.217
   },
   {
     "nombre": "Reforzada redondas N°13½",
     "categoria": "Cartonería",
     "precioActual": 69239.08,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 69239.08
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 76162.98800000001
   },
   {
     "nombre": "Reforzada redondas N°14",
     "categoria": "Cartonería",
     "precioActual": 84611.37,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 84611.37
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 93072.507
   },
   {
     "nombre": "Reforzada redondas N°15",
     "categoria": "Cartonería",
     "precioActual": 108347.84,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 108347.84
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 119182.62400000001
   },
   {
     "nombre": "Reforzada redondas N°16",
     "categoria": "Cartonería",
     "precioActual": 128577.49,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 128577.49
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 141435.23900000003
   },
   {
     "nombre": "Reforzada redondas N°18",
     "categoria": "Cartonería",
     "precioActual": 202423.94,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 202423.94
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 222666.33400000003
   },
   {
     "nombre": "Pesada rectangular N°1",
     "categoria": "Cartonería",
     "precioActual": 44184.91,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 44184.91
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 48603.401000000005
   },
   {
     "nombre": "Pesada rectangular N°2",
     "categoria": "Cartonería",
     "precioActual": 54974.23,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 54974.23
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 60471.653000000006
   },
   {
     "nombre": "Pesada rectangular N°3",
     "categoria": "Cartonería",
     "precioActual": 73616.83,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 73616.83
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 80978.513
   },
   {
     "nombre": "Pesada rectangular N°4",
     "categoria": "Cartonería",
     "precioActual": 106009.65,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 106009.65
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 116610.615
   },
   {
     "nombre": "Pesada rectangular N°5",
     "categoria": "Cartonería",
     "precioActual": 135448.23,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 135448.23
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 148993.053
   },
   {
     "nombre": "Pesada rectangular N°6",
     "categoria": "Cartonería",
     "precioActual": 182571.09,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 182571.09
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 200828.19900000002
   },
   {
     "nombre": "Pesada rectangular N°7",
     "categoria": "Cartonería",
     "precioActual": 190822.6,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 190822.6
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 209904.86000000002
   },
   {
     "nombre": "Pesada rectangular N°8",
     "categoria": "Cartonería",
     "precioActual": 238018.51,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 238018.51
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 261820.36100000003
   },
   {
     "nombre": "Pesada rectangular N°8½",
     "categoria": "Cartonería",
     "precioActual": 271384.17,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 271384.17
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 298522.587
   },
   {
     "nombre": "Pesada rectangular N°9",
     "categoria": "Cartonería",
     "precioActual": 372416.6,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 372416.6
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 409658.26
   },
   {
     "nombre": "Pesada redonda N°18",
     "categoria": "Cartonería",
     "precioActual": 253028.84,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 253028.84
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 278331.72400000005
   },
   {
     "nombre": "Discos de carton comunes (12-16/36)",
     "categoria": "Cartonería",
     "precioActual": 3641.44,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 3641.44
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 4005.5840000000003
   },
   {
     "nombre": "Bases de cartón (medidas vs)",
     "categoria": "Cartonería",
     "precioActual": 2561.18,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 2561.18
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 2817.2980000000002
   },
   {
     "nombre": "Fajas de cartón finas",
     "categoria": "Cartonería",
     "precioActual": 2283.25,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 2283.25
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 2511.5750000000003
   },
   {
     "nombre": "Fajas de cartón gruesas",
     "categoria": "Cartonería",
     "precioActual": 2739.9,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 2739.9
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 3013.8900000000003
   },
   {
     "nombre": "Fajas de cartulina",
     "categoria": "Cartonería",
     "precioActual": 3107.93,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 3107.93
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 3418.723
   },
   {
     "nombre": "Kg de cartón en hoja 70 x 100 N°50 al 25 fino",
     "categoria": "Cartonería",
     "precioActual": 2335.46,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 2335.46
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 2569.0060000000003
   },
   {
     "nombre": "Kg de cartón en hoja 70 x 100 N°16 al 20 grueso",
     "categoria": "Cartonería",
     "precioActual": 2785.51,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 2785.51
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 3064.0610000000006
   },
   {
     "nombre": "Kg  cartulina tricapa blanca",
     "categoria": "Cartonería",
     "precioActual": 2954.35,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 2954.35
+    "tipoAumento": "porcentaje",
+    "valorAumento": 10,
+    "precioNuevo": 3249.7850000000003
   },
   {
     "nombre": "Sulfito Sein rollos",
     "categoria": "Papeles",
     "precioActual": 2215.48,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 2215.48
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 2326.254
   },
   {
     "nombre": "Sulfito Sein cortado",

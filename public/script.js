@@ -5,6 +5,10 @@ const tipoAumentoInput = document.getElementById("tipoAumento");
 const valorAumentoInput = document.getElementById("valorAumento");
 
 const modoOscuroBtn = document.getElementById("modoOscuroBtn");
+const textoModo = document.getElementById("textoModo");
+const modoOscuroListaBtn = document.getElementById("modoOscuroListaBtn");
+const textoModoLista = document.getElementById("textoModoLista");
+const accesoAdmin = document.getElementById("accesoAdmin");
 
 const agregarProductoBtn = document.getElementById("agregarProducto");
 const cancelarEdicionBtn = document.getElementById("cancelarEdicion");
@@ -21,26 +25,30 @@ const tablaProductos = document.getElementById("tablaProductos");
 const listaPorCategoria = document.getElementById("listaPorCategoria");
 
 const portada = document.getElementById("portada");
+const portadaAdmin = document.getElementById("portadaAdmin");
+const gridAdmin = document.getElementById("gridAdmin");
 const moduloCategoria = document.getElementById("moduloCategoria");
 const moduloResultadoFinal = document.getElementById("moduloResultadoFinal");
 
 const tituloCategoriaActiva = document.getElementById("tituloCategoriaActiva");
 const tituloResultadoFinal = document.getElementById("tituloResultadoFinal");
-const tituloPDF = document.getElementById("tituloPDF");
-const fechaActualizacionInput = document.getElementById("fechaActualizacion");
-const fechaActualizacionPDF = document.getElementById("fechaActualizacionPDF");
+const fechaActualizacionTexto = document.getElementById("fechaActualizacionTexto");
+const fechaActualizacionAdmin = document.getElementById("fechaActualizacionAdmin");
 const resultadoFinalCategoria = document.getElementById("resultadoFinalCategoria");
 
 const volverPortadaBtn = document.getElementById("volverPortada");
 const volverPortadaResultadoBtn = document.getElementById("volverPortadaResultado");
 
-const botonesCategoria = document.querySelectorAll(".boton-categoria");
 const botonesListaFinal = document.querySelectorAll(".boton-lista-final");
+const categorias = [...botonesListaFinal].map((boton) => boton.dataset.categoria);
 
 let productos = [];
 let categoriaActiva = "";
 let productoEditandoIndex = null;
 let categoriaResultadoFinal = "";
+const esModoAdmin =
+  window.location.pathname === "/admin" ||
+  new URLSearchParams(window.location.search).has("admin");
 
 async function cargarProductosDesdeJSON() {
   try {
@@ -80,10 +88,16 @@ function calcularPrecioNuevo(precioActual, tipoAumento, valorAumento) {
 }
 
 function formatearMoneda(valor) {
-  return valor.toLocaleString("es-AR", {
-    style: "currency",
-    currency: "ARS",
-  });
+  const numero = Number(valor);
+
+  if (!Number.isFinite(numero)) {
+    return "—";
+  }
+
+  return `$ ${numero.toLocaleString("es-AR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
 }
 
 function obtenerFechaHoyISO() {
@@ -109,18 +123,41 @@ function obtenerClaveFechaCategoria(categoria) {
 }
 
 function cargarFechaActualizacion(categoria) {
-  const clave = obtenerClaveFechaCategoria(categoria);
-  const fechaGuardada = localStorage.getItem(clave) || obtenerFechaHoyISO();
+  const fechaGuardada = obtenerFechaActualizacion(categoria);
 
-  fechaActualizacionInput.value = fechaGuardada;
-  fechaActualizacionPDF.textContent = `Fecha de actualización: ${formatearFechaArgentina(fechaGuardada)}`;
+  fechaActualizacionTexto.textContent = fechaGuardada
+    ? `Última actualización: ${formatearFechaArgentina(fechaGuardada)}`
+    : "Sin fecha publicada";
 }
 
-function guardarFechaActualizacion(categoria, fecha) {
-  const clave = obtenerClaveFechaCategoria(categoria);
-  localStorage.setItem(clave, fecha);
+function obtenerFechaActualizacion(categoria) {
+  return localStorage.getItem(obtenerClaveFechaCategoria(categoria)) || "";
+}
 
-  fechaActualizacionPDF.textContent = `Fecha de actualización: ${formatearFechaArgentina(fecha)}`;
+function renderizarPanelAdmin() {
+  gridAdmin.innerHTML = categorias
+    .map((categoria) => {
+      const fechaGuardada = obtenerFechaActualizacion(categoria);
+      const fecha = fechaGuardada
+        ? formatearFechaArgentina(fechaGuardada)
+        : "Sin fecha registrada";
+
+      return `
+        <article class="tarjeta-admin" data-categoria="${categoria}">
+          <div class="tarjeta-admin-encabezado">
+            <h3>${categoria}</h3>
+            <p>Última actualización: ${fecha}</p>
+          </div>
+          <div class="acciones-admin">
+            <button type="button" data-accion="editar">Editar lista</button>
+            <button type="button" data-accion="ajustar">Aplicar ajuste</button>
+            <button type="button" data-accion="vista-previa" class="boton-secundario">Vista previa</button>
+            <button type="button" class="boton-publicar" disabled title="Se habilitará al implementar borradores y publicación">Publicar lista</button>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
 }
 
 function obtenerProductosDeCategoria(categoria) {
@@ -194,10 +231,10 @@ function renderizarTabla() {
   });
 }
 
-function crearTablaFinalCategoria(categoria, productosCategoria) {
+function crearTablaFinalCategoria(categoria, productosCategoria, mostrarCategoria = true) {
   let contenido = `
     <div class="bloque-categoria">
-      <h3>${categoria}</h3>
+      ${mostrarCategoria ? `<h3>${categoria}</h3>` : ""}
       <table>
         <thead>
           <tr>
@@ -226,6 +263,191 @@ function crearTablaFinalCategoria(categoria, productosCategoria) {
   return contenido;
 }
 
+const configuracionListas = {
+  "Bolsas Fast Food": {
+    columns: [
+      {
+        label: "Artículo",
+        value: (producto) => producto.nombre,
+        align: "left",
+        width: "65%",
+      },
+      {
+        label: "Precio unitario",
+        value: (producto) => formatearMoneda(producto.precioNuevo),
+        align: "right",
+        width: "35%",
+        className: "precio-final",
+      },
+    ],
+  },
+  Moldes: {
+    columns: [
+      {
+        label: "Descripción",
+        value: (producto) => producto.nombre,
+        align: "left",
+        width: "58%",
+      },
+      {
+        label: "Precio por millar",
+        value: (producto) => formatearMoneda(producto.precioNuevo),
+        align: "right",
+        width: "27%",
+        className: "precio-final",
+      },
+      {
+        label: "Porcentaje",
+        value: formatearPorcentaje,
+        align: "center",
+        width: "15%",
+      },
+    ],
+    percentageNote: true,
+  },
+  Servilletas: {
+    columns: [
+      {
+        label: "Detalle",
+        value: (producto) => producto.nombre,
+        align: "left",
+        width: "58%",
+      },
+      {
+        label: "Precio",
+        value: (producto) => formatearMoneda(producto.precioNuevo),
+        align: "right",
+        width: "27%",
+        className: "precio-final",
+      },
+      {
+        label: "Porcentaje",
+        value: formatearPorcentaje,
+        align: "center",
+        width: "15%",
+      },
+    ],
+    sections: [
+      {
+        title: "Servilletas",
+        matches: (producto) =>
+          !producto.nombre.toLocaleLowerCase("es").startsWith("impresión") &&
+          !producto.nombre.toLocaleLowerCase("es").includes("secamano"),
+      },
+      {
+        title: "Recargos de impresión",
+        matches: (producto) =>
+          producto.nombre.toLocaleLowerCase("es").startsWith("impresión"),
+      },
+      {
+        title: "Secamanos",
+        matches: (producto) =>
+          producto.nombre.toLocaleLowerCase("es").includes("secamano"),
+      },
+    ],
+    percentageNote: true,
+  },
+};
+
+function formatearPorcentaje(producto) {
+  if (producto.tipoAumento !== "porcentaje") {
+    return "—";
+  }
+
+  return `${Number(producto.valorAumento).toLocaleString("es-AR", {
+    maximumFractionDigits: 2,
+  })} %`;
+}
+
+function escaparHTML(valor) {
+  return String(valor)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function crearTablaConfigurada(columnas, productosSeccion) {
+  const encabezados = columnas
+    .map(
+      (columna) => `
+        <th class="alinear-${columna.align}" style="width: ${columna.width}">
+          ${escaparHTML(columna.label)}
+        </th>
+      `
+    )
+    .join("");
+
+  const filas = productosSeccion
+    .map(
+      (producto) => `
+        <tr>
+          ${columnas
+            .map((columna) => {
+              const clase = columna.className ? ` ${columna.className}` : "";
+              return `
+                <td class="alinear-${columna.align}${clase}">
+                  ${escaparHTML(columna.value(producto))}
+                </td>
+              `;
+            })
+            .join("")}
+        </tr>
+      `
+    )
+    .join("");
+
+  return `
+    <div class="tabla-lista-contenedor">
+      <table class="tabla-lista-unificada">
+        <thead><tr>${encabezados}</tr></thead>
+        <tbody>${filas}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+function crearListaConfigurada(categoria, productosCategoria) {
+  const configuracion = configuracionListas[categoria];
+
+  if (!configuracion) {
+    return crearTablaFinalCategoria(categoria, productosCategoria, false);
+  }
+
+  const secciones = configuracion.sections || [
+    { title: "", matches: () => true },
+  ];
+
+  const contenido = secciones
+    .map((seccion) => {
+      const productosSeccion = productosCategoria.filter(seccion.matches);
+
+      if (productosSeccion.length === 0) {
+        return "";
+      }
+
+      return `
+        <section class="seccion-lista">
+          ${seccion.title ? `<h3>${escaparHTML(seccion.title)}</h3>` : ""}
+          ${crearTablaConfigurada(configuracion.columns, productosSeccion)}
+        </section>
+      `;
+    })
+    .join("");
+
+  const nota = configuracion.percentageNote
+    ? `
+      <p class="nota-lista">
+        Este porcentaje indica cuánto ha aumentado el precio respecto de la
+        versión anterior de esta lista.
+      </p>
+    `
+    : "";
+
+  return `${contenido}${nota}`;
+}
+
 function renderizarListaPorCategoria() {
   listaPorCategoria.innerHTML = "";
 
@@ -244,8 +466,7 @@ function renderizarResultadoFinalCategoria(categoria) {
 
   categoriaResultadoFinal = categoria;
 
-  tituloResultadoFinal.textContent = `Resultado final - ${categoria}`;
-  tituloPDF.textContent = `Lista de precios - ${categoria}`;
+  tituloResultadoFinal.textContent = categoria;
   resultadoFinalCategoria.innerHTML = "";
 
   cargarFechaActualizacion(categoria);
@@ -255,7 +476,10 @@ function renderizarResultadoFinalCategoria(categoria) {
     return;
   }
 
-  resultadoFinalCategoria.innerHTML = crearTablaFinalCategoria(categoria, productosCategoria);
+  resultadoFinalCategoria.innerHTML = crearListaConfigurada(
+    categoria,
+    productosCategoria
+  );
 }
 
 function editarProducto(index) {
@@ -292,6 +516,7 @@ function abrirModuloCategoria(categoria) {
   categoriaActiva = categoria;
 
   portada.classList.add("oculto");
+  portadaAdmin.classList.add("oculto");
   moduloResultadoFinal.classList.add("oculto");
   moduloCategoria.classList.remove("oculto");
 
@@ -299,6 +524,7 @@ function abrirModuloCategoria(categoria) {
 
   categoriaInput.value = categoria;
   categoriaMasivaInput.value = categoria;
+  fechaActualizacionAdmin.value = obtenerFechaActualizacion(categoria);
 
   limpiarFormulario();
   limpiarFormularioMasivo();
@@ -311,8 +537,10 @@ function abrirResultadoFinal(categoria) {
   categoriaActiva = "";
 
   portada.classList.add("oculto");
+  portadaAdmin.classList.add("oculto");
   moduloCategoria.classList.add("oculto");
   moduloResultadoFinal.classList.remove("oculto");
+  document.body.classList.add("vista-lista");
 
   renderizarResultadoFinalCategoria(categoria);
 }
@@ -323,17 +551,44 @@ function volverALaPortada() {
 
   moduloCategoria.classList.add("oculto");
   moduloResultadoFinal.classList.add("oculto");
-  portada.classList.remove("oculto");
+  document.body.classList.remove("vista-lista");
+
+  if (esModoAdmin) {
+    portada.classList.add("oculto");
+    portadaAdmin.classList.remove("oculto");
+  } else {
+    portadaAdmin.classList.add("oculto");
+    portada.classList.remove("oculto");
+  }
 
   limpiarFormulario();
   limpiarFormularioMasivo();
 }
 
-botonesCategoria.forEach((boton) => {
-  boton.addEventListener("click", () => {
-    const categoria = boton.dataset.categoria;
-    abrirModuloCategoria(categoria);
-  });
+gridAdmin.addEventListener("click", (evento) => {
+  const boton = evento.target.closest("button[data-accion]");
+
+  if (!boton) {
+    return;
+  }
+
+  const tarjeta = boton.closest(".tarjeta-admin");
+  const categoria = tarjeta.dataset.categoria;
+  const accion = boton.dataset.accion;
+
+  if (accion === "vista-previa") {
+    abrirResultadoFinal(categoria);
+    return;
+  }
+
+  abrirModuloCategoria(categoria);
+
+  if (accion === "ajustar") {
+    document.getElementById("ajustesCategoria").scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
 });
 
 botonesListaFinal.forEach((boton) => {
@@ -351,12 +606,16 @@ volverPortadaResultadoBtn.addEventListener("click", () => {
   volverALaPortada();
 });
 
-fechaActualizacionInput.addEventListener("change", () => {
-  if (!categoriaResultadoFinal) {
+fechaActualizacionAdmin.addEventListener("change", () => {
+  if (!categoriaActiva || !fechaActualizacionAdmin.value) {
     return;
   }
 
-  guardarFechaActualizacion(categoriaResultadoFinal, fechaActualizacionInput.value);
+  localStorage.setItem(
+    obtenerClaveFechaCategoria(categoriaActiva),
+    fechaActualizacionAdmin.value
+  );
+  renderizarPanelAdmin();
 });
 
 agregarProductoBtn.addEventListener("click", async () => {
@@ -522,27 +781,38 @@ descargarPDFBtn.addEventListener("click", () => {
 
 const modoGuardado = localStorage.getItem("modoOscuroLASA");
 
-if (modoGuardado === "activo") {
-  document.body.classList.add("modo-oscuro");
-  modoOscuroBtn.textContent = "Modo claro";
+function actualizarTextosModo() {
+  const estaOscuro = document.body.classList.contains("modo-oscuro");
+  const texto = estaOscuro ? "Modo claro" : "Modo oscuro";
+  textoModo.textContent = texto;
+  textoModoLista.textContent = texto;
 }
 
-modoOscuroBtn.addEventListener("click", () => {
+function alternarModoOscuro() {
   document.body.classList.toggle("modo-oscuro");
-
   const estaOscuro = document.body.classList.contains("modo-oscuro");
+  localStorage.setItem("modoOscuroLASA", estaOscuro ? "activo" : "inactivo");
+  actualizarTextosModo();
+}
 
-  if (estaOscuro) {
-    modoOscuroBtn.textContent = "Modo claro";
-    localStorage.setItem("modoOscuroLASA", "activo");
-  } else {
-    modoOscuroBtn.textContent = "Modo oscuro";
-    localStorage.setItem("modoOscuroLASA", "inactivo");
-  }
-});
+if (modoGuardado === "activo") {
+  document.body.classList.add("modo-oscuro");
+}
+
+actualizarTextosModo();
+modoOscuroBtn.addEventListener("click", alternarModoOscuro);
+modoOscuroListaBtn.addEventListener("click", alternarModoOscuro);
 
 async function iniciarApp() {
   await cargarProductosDesdeJSON();
+  renderizarPanelAdmin();
+
+  if (esModoAdmin) {
+    portada.classList.add("oculto");
+    portadaAdmin.classList.remove("oculto");
+    accesoAdmin.textContent = "Volver a Listas de Precios";
+    accesoAdmin.href = "/";
+  }
 }
 
 iniciarApp();

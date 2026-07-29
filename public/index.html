@@ -12,10 +12,7 @@
 
   <header class="encabezado-principal">
     <div class="encabezado-contenido">
-      <div>
-        <p class="empresa">Lorenzo Annecchini S.A.</p>
-        <h1>Listas de Precios</h1>
-      </div>
+      <div class="marca-institucional" data-titulo="Listas de Precios"></div>
       <div class="acciones-encabezado">
         <a id="accesoAdmin" class="acceso-admin" href="/?admin">Administrar listas</a>
         <button id="modoOscuroBtn" class="boton-modo" type="button" aria-label="Cambiar tema de color">
@@ -65,7 +62,7 @@
         <h2 id="tituloCategoriaActiva">Categoría</h2>
         <p>Trabajando sobre la categoría seleccionada.</p>
         <div class="campo-fecha-admin">
-          <label for="fechaActualizacionAdmin">Fecha de actualización</label>
+          <label id="fechaActualizacionLabel" for="fechaActualizacionAdmin">Fecha de actualización</label>
           <input type="date" id="fechaActualizacionAdmin" />
         </div>
       </section>
@@ -76,6 +73,8 @@
         <div class="formulario">
           <input type="text" id="producto" placeholder="Producto" />
           <input type="text" id="categoria" disabled />
+          <input type="text" id="medida" class="campo-fast-food oculto" placeholder="Medida" />
+          <input type="number" id="unidadesPorCaja" class="campo-fast-food oculto" placeholder="Unidades por caja" min="1" step="1" />
           <input type="number" id="precioActual" placeholder="Precio actual" />
 
           <select id="tipoAumento">
@@ -125,6 +124,8 @@
           <thead>
             <tr>
               <th>Producto</th>
+              <th class="columna-fast-food oculto">Medida</th>
+              <th class="columna-fast-food oculto">Unidades por caja</th>
               <th>Categoría</th>
               <th>Precio actual</th>
               <th>Tipo aumento</th>
@@ -156,11 +157,7 @@
         </div>
 
         <div class="encabezado-documento">
-          <div class="marca-lasa" aria-label="LASA">LASA</div>
-          <div class="identidad-documento">
-            <p>Lorenzo Annecchini S.A.</p>
-            <h1>Lista de Precios</h1>
-          </div>
+          <div class="marca-institucional marca-institucional--documento" data-titulo="Lista de Precios"></div>
           <div class="datos-documento">
             <h2 id="tituloResultadoFinal">Categoría</h2>
             <p id="fechaActualizacionTexto">Sin fecha publicada</p>

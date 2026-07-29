@@ -1,5 +1,7 @@
 const productoInput = document.getElementById("producto");
 const categoriaInput = document.getElementById("categoria");
+const medidaInput = document.getElementById("medida");
+const unidadesPorCajaInput = document.getElementById("unidadesPorCaja");
 const precioActualInput = document.getElementById("precioActual");
 const tipoAumentoInput = document.getElementById("tipoAumento");
 const valorAumentoInput = document.getElementById("valorAumento");
@@ -34,10 +36,12 @@ const tituloCategoriaActiva = document.getElementById("tituloCategoriaActiva");
 const tituloResultadoFinal = document.getElementById("tituloResultadoFinal");
 const fechaActualizacionTexto = document.getElementById("fechaActualizacionTexto");
 const fechaActualizacionAdmin = document.getElementById("fechaActualizacionAdmin");
+const fechaActualizacionLabel = document.getElementById("fechaActualizacionLabel");
 const resultadoFinalCategoria = document.getElementById("resultadoFinalCategoria");
 
 const volverPortadaBtn = document.getElementById("volverPortada");
 const volverPortadaResultadoBtn = document.getElementById("volverPortadaResultado");
+const areaPDF = document.getElementById("areaPDF");
 
 const botonesListaFinal = document.querySelectorAll(".boton-lista-final");
 const categorias = [...botonesListaFinal].map((boton) => boton.dataset.categoria);
@@ -49,6 +53,36 @@ let categoriaResultadoFinal = "";
 const esModoAdmin =
   window.location.pathname === "/admin" ||
   new URLSearchParams(window.location.search).has("admin");
+
+function crearMarcaInstitucional(titulo, variante = "") {
+  const claseLogo = variante
+    ? `logo-lasa logo-lasa--${variante}`
+    : "logo-lasa";
+
+  return `
+    <img
+      class="${claseLogo}"
+      src="/assets/logo-lasa.png"
+      alt="Logo de Lorenzo Annecchini S.A."
+      width="64"
+      height="64"
+    />
+    <div class="marca-institucional__texto">
+      <p class="empresa">Lorenzo Annecchini S.A.</p>
+      <h1>${escaparHTML(titulo)}</h1>
+    </div>
+  `;
+}
+
+function renderizarMarcasInstitucionales() {
+  document.querySelectorAll(".marca-institucional[data-titulo]").forEach((marca) => {
+    const esDocumento = marca.classList.contains("marca-institucional--documento");
+    marca.innerHTML = crearMarcaInstitucional(
+      marca.dataset.titulo,
+      esDocumento ? "documento" : ""
+    );
+  });
+}
 
 async function cargarProductosDesdeJSON() {
   try {
@@ -100,6 +134,28 @@ function formatearMoneda(valor) {
   })}`;
 }
 
+function formatearEntero(valor) {
+  const numero = Number(valor);
+
+  if (!Number.isFinite(numero)) {
+    return "—";
+  }
+
+  return numero.toLocaleString("es-AR", { maximumFractionDigits: 0 });
+}
+
+function esCategoriaFastFood(categoria) {
+  return categoria === "Bolsas Fast Food";
+}
+
+function actualizarCamposFastFood(categoria) {
+  const mostrar = esCategoriaFastFood(categoria);
+
+  document.querySelectorAll(".campo-fast-food, .columna-fast-food").forEach((elemento) => {
+    elemento.classList.toggle("oculto", !mostrar);
+  });
+}
+
 function obtenerFechaHoyISO() {
   const hoy = new Date();
   const anio = hoy.getFullYear();
@@ -126,7 +182,7 @@ function cargarFechaActualizacion(categoria) {
   const fechaGuardada = obtenerFechaActualizacion(categoria);
 
   fechaActualizacionTexto.textContent = fechaGuardada
-    ? `Última actualización: ${formatearFechaArgentina(fechaGuardada)}`
+    ? `${esCategoriaFastFood(categoria) ? "Fecha de publicación" : "Última actualización"}: ${formatearFechaArgentina(fechaGuardada)}`
     : "Sin fecha publicada";
 }
 
@@ -174,6 +230,8 @@ function obtenerProductosDeCategoriaActiva() {
 
 function limpiarFormulario() {
   productoInput.value = "";
+  medidaInput.value = "";
+  unidadesPorCajaInput.value = "";
   precioActualInput.value = "";
   tipoAumentoInput.value = "sin";
   valorAumentoInput.value = "";
@@ -204,7 +262,9 @@ function renderizarTabla() {
   if (productosFiltrados.length === 0) {
     tablaProductos.innerHTML = `
       <tr>
-        <td colspan="7">No hay productos cargados en esta categoría.</td>
+        <td colspan="${esCategoriaFastFood(categoriaActiva) ? 9 : 7}">
+          No hay productos cargados en esta categoría.
+        </td>
       </tr>
     `;
     return;
@@ -216,6 +276,8 @@ function renderizarTabla() {
 
     fila.innerHTML = `
       <td>${producto.nombre}</td>
+      <td class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">${escaparHTML(producto.medida || "—")}</td>
+      <td class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">${formatearEntero(producto.unidadesPorCaja)}</td>
       <td>${producto.categoria}</td>
       <td>${formatearMoneda(producto.precioActual)}</td>
       <td>${producto.tipoAumento}</td>
@@ -265,18 +327,33 @@ function crearTablaFinalCategoria(categoria, productosCategoria, mostrarCategori
 
 const configuracionListas = {
   "Bolsas Fast Food": {
+    className: "lista-comercial--fast-food",
+    introText: "PRECIOS EXPRESADOS POR UNIDAD",
+    commercialNote: "COMPRA DE 5000 UNIDADES: 7% DE DESCUENTO",
     columns: [
       {
         label: "Artículo",
         value: (producto) => producto.nombre,
         align: "left",
-        width: "65%",
+        width: "18%",
+      },
+      {
+        label: "Medida",
+        value: (producto) => producto.medida,
+        align: "center",
+        width: "32%",
+      },
+      {
+        label: "Unidades por caja",
+        value: (producto) => formatearEntero(producto.unidadesPorCaja),
+        align: "center",
+        width: "25%",
       },
       {
         label: "Precio unitario",
         value: (producto) => formatearMoneda(producto.precioNuevo),
         align: "right",
-        width: "35%",
+        width: "25%",
         className: "precio-final",
       },
     ],
@@ -436,16 +513,27 @@ function crearListaConfigurada(categoria, productosCategoria) {
     })
     .join("");
 
-  const nota = configuracion.percentageNote
-    ? `
+  let nota = "";
+
+  if (configuracion.commercialNote) {
+    nota = `<p class="nota-lista nota-comercial">${escaparHTML(configuracion.commercialNote)}</p>`;
+  } else if (configuracion.percentageNote) {
+    nota = `
       <p class="nota-lista">
         Este porcentaje indica cuánto ha aumentado el precio respecto de la
         versión anterior de esta lista.
       </p>
-    `
-    : "";
+    `;
+  }
 
-  return `${contenido}${nota}`;
+  const introduccion = configuracion.introText
+    ? `<p class="leyenda-lista">${escaparHTML(configuracion.introText)}</p>`
+    : "";
+  const clase = configuracion.className
+    ? `lista-comercial ${configuracion.className}`
+    : "lista-comercial";
+
+  return `<div class="${clase}">${introduccion}${contenido}${nota}</div>`;
 }
 
 function renderizarListaPorCategoria() {
@@ -458,7 +546,9 @@ function renderizarListaPorCategoria() {
     return;
   }
 
-  listaPorCategoria.innerHTML = crearTablaFinalCategoria(categoriaActiva, productosFiltrados);
+  listaPorCategoria.innerHTML = esCategoriaFastFood(categoriaActiva)
+    ? crearListaConfigurada(categoriaActiva, productosFiltrados)
+    : crearTablaFinalCategoria(categoriaActiva, productosFiltrados);
 }
 
 function renderizarResultadoFinalCategoria(categoria) {
@@ -468,6 +558,7 @@ function renderizarResultadoFinalCategoria(categoria) {
 
   tituloResultadoFinal.textContent = categoria;
   resultadoFinalCategoria.innerHTML = "";
+  areaPDF.classList.toggle("lista-fast-food-activa", esCategoriaFastFood(categoria));
 
   cargarFechaActualizacion(categoria);
 
@@ -489,6 +580,8 @@ function editarProducto(index) {
 
   productoInput.value = producto.nombre;
   categoriaInput.value = producto.categoria;
+  medidaInput.value = producto.medida || "";
+  unidadesPorCajaInput.value = producto.unidadesPorCaja || "";
   precioActualInput.value = producto.precioActual;
   tipoAumentoInput.value = producto.tipoAumento;
   valorAumentoInput.value = producto.valorAumento;
@@ -525,6 +618,10 @@ function abrirModuloCategoria(categoria) {
   categoriaInput.value = categoria;
   categoriaMasivaInput.value = categoria;
   fechaActualizacionAdmin.value = obtenerFechaActualizacion(categoria);
+  fechaActualizacionLabel.textContent = esCategoriaFastFood(categoria)
+    ? "Fecha de publicación"
+    : "Fecha de actualización";
+  actualizarCamposFastFood(categoria);
 
   limpiarFormulario();
   limpiarFormularioMasivo();
@@ -552,6 +649,8 @@ function volverALaPortada() {
   moduloCategoria.classList.add("oculto");
   moduloResultadoFinal.classList.add("oculto");
   document.body.classList.remove("vista-lista");
+  areaPDF.classList.remove("lista-fast-food-activa");
+  actualizarCamposFastFood("");
 
   if (esModoAdmin) {
     portada.classList.add("oculto");
@@ -621,6 +720,8 @@ fechaActualizacionAdmin.addEventListener("change", () => {
 agregarProductoBtn.addEventListener("click", async () => {
   const nombre = productoInput.value.trim();
   const categoria = categoriaActiva;
+  const medida = medidaInput.value.trim();
+  const unidadesPorCaja = Number(unidadesPorCajaInput.value);
   const precioActual = Number(precioActualInput.value);
   const tipoAumento = tipoAumentoInput.value;
   const valorAumento = Number(valorAumentoInput.value) || 0;
@@ -635,6 +736,11 @@ agregarProductoBtn.addEventListener("click", async () => {
     return;
   }
 
+  if (esCategoriaFastFood(categoria) && (!medida || !Number.isInteger(unidadesPorCaja) || unidadesPorCaja <= 0)) {
+    alert("Completá medida y unidades por caja con valores válidos.");
+    return;
+  }
+
   const precioNuevo = calcularPrecioNuevo(
     precioActual,
     tipoAumento,
@@ -644,6 +750,7 @@ agregarProductoBtn.addEventListener("click", async () => {
   const producto = {
     nombre,
     categoria,
+    ...(esCategoriaFastFood(categoria) ? { medida, unidadesPorCaja } : {}),
     precioActual,
     tipoAumento,
     valorAumento,
@@ -804,6 +911,7 @@ modoOscuroBtn.addEventListener("click", alternarModoOscuro);
 modoOscuroListaBtn.addEventListener("click", alternarModoOscuro);
 
 async function iniciarApp() {
+  renderizarMarcasInstitucionales();
   await cargarProductosDesdeJSON();
   renderizarPanelAdmin();
 

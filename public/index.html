@@ -31,6 +31,9 @@
         <p class="etiqueta">Consulta de precios vigentes</p>
         <h2>Seleccioná una categoría</h2>
         <p>Seleccioná una categoría para consultar la última lista de precios actualizada.</p>
+        <button id="descargarCatalogoPortada" class="boton-secundario boton-catalogo" type="button">
+          Descargar todas las listas
+        </button>
       </div>
       <div class="grid-categorias">
         <button class="tarjeta-categoria boton-lista-final" data-categoria="Bolsas Fast Food"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Bolsas Fast Food</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
@@ -50,6 +53,9 @@
         <p class="etiqueta">Administración</p>
         <h2>Administración de listas</h2>
         <p>Seleccioná una categoría y la tarea que querés realizar.</p>
+        <button id="vistaPreviaCatalogoAdmin" class="boton-secundario boton-catalogo" type="button">
+          Vista previa del catálogo completo
+        </button>
       </div>
       <div id="gridAdmin" class="grid-admin"></div>
     </section>
@@ -65,6 +71,13 @@
           <label id="fechaActualizacionLabel" for="fechaActualizacionAdmin">Fecha de actualización</label>
           <input type="date" id="fechaActualizacionAdmin" />
         </div>
+        <div id="fechasSeccionesPapeles" class="fechas-secciones oculto">
+          <label>Fecha de recargos <input type="date" id="fechaRecargosPapeles" /></label>
+          <label>Fecha de importados <input type="date" id="fechaImportadosPapeles" /></label>
+        </div>
+        <div id="fechaSeccionServilletas" class="fechas-secciones oculto">
+          <label>Fecha de impresión <input type="date" id="fechaImpresionServilletas" /></label>
+        </div>
       </section>
 
       <section id="ajustesCategoria">
@@ -75,12 +88,49 @@
           <input type="text" id="categoria" disabled />
           <input type="text" id="medida" class="campo-fast-food oculto" placeholder="Medida" />
           <input type="number" id="unidadesPorCaja" class="campo-fast-food oculto" placeholder="Unidades por caja" min="1" step="1" />
+          <input type="text" id="ancho" class="campo-blanca-extra oculto" placeholder="Ancho (cm)" />
+          <input type="text" id="largo" class="campo-blanca-extra oculto" placeholder="Largo (cm)" />
+          <input type="text" id="fuelle" class="campo-blanca-extra oculto" placeholder="Fuelle (cm)" />
+          <input type="number" id="unidadesPorBulto" class="campo-blanca-extra oculto" placeholder="Unidades por bulto" min="1" step="1" />
+          <select id="seccionCartoneria" class="campo-cartoneria oculto">
+            <option value="economicas-rectangulares">Económicas · Rectangulares</option>
+            <option value="economicas-redondas">Económicas · Redondas</option>
+            <option value="reforzadas-rectangulares">Reforzadas · Rectangulares</option>
+            <option value="reforzadas-redondas">Reforzadas · Redondas</option>
+            <option value="pesadas-rectangulares">Pesadas · Rectangulares</option>
+            <option value="pesadas-redondas">Pesadas · Redondas</option>
+            <option value="otros-carton">Otros artículos de cartón</option>
+          </select>
+          <input type="text" id="anchoCartoneria" class="campo-cartoneria campo-cartoneria-rectangular oculto" placeholder="Ancho (cm)" />
+          <input type="text" id="largoCartoneria" class="campo-cartoneria campo-cartoneria-rectangular oculto" placeholder="Largo (cm)" />
+          <input type="text" id="diametroCartoneria" class="campo-cartoneria campo-cartoneria-redonda oculto" placeholder="Diámetro (cm)" />
+          <input type="number" id="unidadesCartoneria" class="campo-cartoneria campo-cartoneria-bandeja oculto" placeholder="Unidades por bulto" min="1" step="1" />
+          <label class="campo-cartoneria campo-cartoneria-otros control-checkbox oculto">
+            <input type="checkbox" id="aCotizarCartoneria" />
+            A cotizar
+          </label>
+          <input type="number" id="porcentajeMolde" class="campo-porcentaje-comercial oculto" placeholder="Porcentaje comercial" min="0" step="0.01" />
+          <select id="seccionPapeles" class="campo-papeles oculto">
+            <option value="papeles-principales">Papeles principales</option>
+            <option value="recargos-impresion">Recargos por impresión</option>
+            <option value="productos-importados">Productos importados</option>
+          </select>
+          <input type="text" id="formatoPapeles" class="campo-papeles oculto" placeholder="Formato / detalle" />
+          <select id="seccionServilletas" class="campo-servilletas oculto">
+            <option value="productos">Servilletas</option>
+            <option value="impresion">Impresión</option>
+            <option value="secamanos">Secamanos</option>
+          </select>
+          <input type="text" id="formatoServilletas" class="campo-servilletas campo-servilletas-producto oculto" placeholder="Formato" />
+          <input type="text" id="unidadServilletas" class="campo-servilletas campo-servilletas-producto oculto" placeholder="Unidad" />
           <input type="number" id="precioActual" placeholder="Precio actual" />
 
           <select id="tipoAumento">
             <option value="sin">Sin aumento</option>
             <option value="porcentaje">Porcentaje</option>
             <option value="importe">Importe fijo</option>
+            <option value="descuento-porcentaje">Descuento porcentual</option>
+            <option value="descuento-importe">Descuento fijo</option>
           </select>
 
           <input type="number" id="valorAumento" placeholder="Valor aumento" />
@@ -90,15 +140,44 @@
         </div>
       </section>
 
+      <section id="notaPlatosAdmin" class="oculto">
+        <h2>Nota comercial</h2>
+        <div class="formulario">
+          <input type="text" id="textoNotaPlatos" aria-label="Texto de la nota comercial" />
+          <button id="guardarNotaPlatos" type="button">Guardar nota</button>
+        </div>
+      </section>
+
+      <section id="recargosImpresionAdmin" class="oculto">
+        <h2>Recargo por impresión</h2>
+        <p>Editá la descripción y los importes comerciales por millar.</p>
+        <div class="tabla-admin-contenedor">
+          <table class="tabla-recargos-admin">
+            <thead>
+              <tr>
+                <th>Tipo de impresión</th>
+                <th>1 cara</th>
+                <th>2 caras</th>
+              </tr>
+            </thead>
+            <tbody id="tablaRecargosAdmin"></tbody>
+          </table>
+        </div>
+        <button id="guardarRecargos" type="button">Guardar recargos</button>
+      </section>
+
       <section>
         <h2>Aumento masivo de la categoría</h2>
 
         <div class="formulario">
           <input type="text" id="categoriaMasiva" disabled />
+          <select id="seccionAjuste" class="campo-ajuste-seccion oculto"></select>
 
           <select id="tipoAumentoMasivo">
             <option value="porcentaje">Porcentaje</option>
             <option value="importe">Importe fijo</option>
+            <option value="descuento-porcentaje">Descuento porcentual</option>
+            <option value="descuento-importe">Descuento fijo</option>
           </select>
 
           <input type="number" id="valorAumentoMasivo" placeholder="Valor aumento" />
@@ -120,23 +199,15 @@
           <button id="borrarTodo">Borrar todo</button>
         </div>
 
+        <div class="tabla-admin-contenedor">
         <table>
           <thead>
-            <tr>
-              <th>Producto</th>
-              <th class="columna-fast-food oculto">Medida</th>
-              <th class="columna-fast-food oculto">Unidades por caja</th>
-              <th>Categoría</th>
-              <th>Precio actual</th>
-              <th>Tipo aumento</th>
-              <th>Valor</th>
-              <th>Precio nuevo</th>
-              <th>Acciones</th>
-            </tr>
+            <tr id="encabezadoTablaProductos"></tr>
           </thead>
 
           <tbody id="tablaProductos"></tbody>
         </table>
+        </div>
       </section>
 
     </div>
@@ -173,6 +244,15 @@
         </footer>
       </section>
 
+    </div>
+
+    <div id="moduloCatalogo" class="oculto">
+      <div class="barra-lista no-imprimir">
+        <button id="volverCatalogo">← Volver</button>
+        <button id="descargarCatalogo" type="button">Descargar catálogo completo</button>
+      </div>
+      <div id="avisoCatalogo" class="aviso-catalogo no-imprimir oculto"></div>
+      <div id="catalogoContenido"></div>
     </div>
 
   </main>

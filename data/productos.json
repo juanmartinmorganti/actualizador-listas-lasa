@@ -62,9 +62,70 @@
   {
     "categoria": "Bolsas Fast Food",
     "tipoRegistro": "configuracion",
-    "fechaPublicacion": "",
-    "publishedAt": "",
-    "productosPublicados": []
+    "fechaPublicacion": "2026-07-29",
+    "publishedAt": "2026-07-29T19:39:34-03:00",
+    "productosPublicados": [
+      {
+        "nombre": "FM3",
+        "categoria": "Bolsas Fast Food",
+        "medida": "8 x 24 x 12",
+        "unidadesPorCaja": 1000,
+        "precioActual": 93.8,
+        "tipoAumento": "sin",
+        "valorAumento": 0,
+        "precioNuevo": 93.8
+      },
+      {
+        "nombre": "FM4",
+        "categoria": "Bolsas Fast Food",
+        "medida": "30 x 16 x 10",
+        "unidadesPorCaja": 500,
+        "precioActual": 106,
+        "tipoAumento": "sin",
+        "valorAumento": 0,
+        "precioNuevo": 106
+      },
+      {
+        "nombre": "FM5",
+        "categoria": "Bolsas Fast Food",
+        "medida": "20 x 30 x 11",
+        "unidadesPorCaja": 500,
+        "precioActual": 132.9,
+        "tipoAumento": "sin",
+        "valorAumento": 0,
+        "precioNuevo": 132.9
+      },
+      {
+        "nombre": "FM7",
+        "categoria": "Bolsas Fast Food",
+        "medida": "26 x 37,5 x 12,5",
+        "unidadesPorCaja": 250,
+        "precioActual": 163.8,
+        "tipoAumento": "sin",
+        "valorAumento": 0,
+        "precioNuevo": 163.8
+      },
+      {
+        "nombre": "FM8",
+        "categoria": "Bolsas Fast Food",
+        "medida": "26 x 38 x 17",
+        "unidadesPorCaja": 250,
+        "precioActual": 193.1,
+        "tipoAumento": "sin",
+        "valorAumento": 0,
+        "precioNuevo": 193.1
+      },
+      {
+        "nombre": "FM9",
+        "categoria": "Bolsas Fast Food",
+        "medida": "28 x 47 x 18",
+        "unidadesPorCaja": 250,
+        "precioActual": 261.9,
+        "tipoAumento": "sin",
+        "valorAumento": 0,
+        "precioNuevo": 261.9
+      }
+    ]
   },
   {
     "nombre": "Moldes para pan dulce de 100 gr fantasía",

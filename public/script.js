@@ -1573,7 +1573,7 @@ fechaActualizacionAdmin.addEventListener("change", async () => {
     return;
   }
 
-  if (esCategoriaBolsaAmericana(categoriaActiva)) {
+  if (usaConfiguracionCategoria(categoriaActiva)) {
     const configuracion = obtenerConfiguracionCategoria(categoriaActiva);
     if (configuracion) {
       configuracion.fechaPublicacion = fechaActualizacionAdmin.value;

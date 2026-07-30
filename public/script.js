@@ -160,24 +160,44 @@ async function guardarProductos() {
   }
 }
 
-function calcularPrecioNuevo(precioActual, tipoAumento, valorAumento) {
-  if (tipoAumento === "porcentaje") {
-    return precioActual * (1 + valorAumento / 100);
-  }
+function calcularPrecioNuevo(precioActual, tipoAumento, valorAumento, categoria) {
+  return PricingLASA.calcularPrecio(
+    precioActual,
+    tipoAumento,
+    valorAumento,
+    categoria
+  ).precioFinal;
+}
 
-  if (tipoAumento === "importe") {
-    return precioActual + valorAumento;
-  }
+function crearDetalleVistaPrevia(producto, tipoAumento, valorAumento, categoria) {
+  const { precioCalculado, precioFinal } = PricingLASA.calcularPrecio(
+    producto.precioActual,
+    tipoAumento,
+    valorAumento,
+    categoria
+  );
+  const esOperacionPorcentual =
+    tipoAumento === "porcentaje" ||
+    tipoAumento === "descuento-porcentaje";
+  const etiquetaOperacion = tipoAumento.startsWith("descuento")
+    ? "Descuento"
+    : "Aumento";
+  const valorOperacion = esOperacionPorcentual
+    ? `${valorAumento.toLocaleString("es-AR", { maximumFractionDigits: 2 })}%`
+    : formatearMoneda(valorAumento);
 
-  if (tipoAumento === "descuento-porcentaje") {
-    return precioActual * (1 - valorAumento / 100);
-  }
-
-  if (tipoAumento === "descuento-importe") {
-    return Math.max(0, precioActual - valorAumento);
-  }
-
-  return precioActual;
+  return {
+    precioFinal,
+    texto: [
+      producto.nombre,
+      `Precio anterior: ${formatearMoneda(producto.precioActual)}`,
+      `${etiquetaOperacion}: ${valorOperacion}`,
+      ...(precioCalculado !== precioFinal
+        ? [`Resultado sin redondear: ${formatearMoneda(precioCalculado)}`]
+        : []),
+      `Precio final: ${formatearMoneda(precioFinal)}`,
+    ].join("\n"),
+  };
 }
 
 function formatearMoneda(valor) {
@@ -1691,8 +1711,25 @@ agregarProductoBtn.addEventListener("click", async () => {
   const precioNuevo = calcularPrecioNuevo(
     precioActual,
     tipoAumento,
-    valorAumento
+    valorAumento,
+    categoria
   );
+
+  if (
+    PricingLASA.configuracionPreciosPorCategoria[
+      categoria
+    ]?.rounding.operations.includes(tipoAumento) &&
+    !confirm(
+      `Vista previa del aumento\n\n${crearDetalleVistaPrevia(
+        { nombre, precioActual },
+        tipoAumento,
+        valorAumento,
+        categoria
+      ).texto}\n\n¿Confirmás guardar este precio?`
+    )
+  ) {
+    return;
+  }
 
   const producto = {
     nombre,
@@ -1883,6 +1920,35 @@ aplicarAumentoMasivoBtn.addEventListener("click", async () => {
     return;
   }
 
+  const productosAActualizar = productos.filter(
+    (producto) =>
+      producto.categoria === categoria &&
+      !esRegistroConfiguracion(producto) &&
+      !producto.aCotizar &&
+      (!seccionAjuste || producto.seccion === seccionAjuste)
+  );
+  const vistasPrevias = productosAActualizar.map((producto) =>
+    crearDetalleVistaPrevia(producto, tipoAumento, valorAumento, categoria)
+  );
+  const detalleCompleto = vistasPrevias.map(({ texto }) => texto).join("\n\n");
+
+  if (
+    !confirm(
+      `Vista previa del aumento (${productosAActualizar.length} producto${
+        productosAActualizar.length === 1 ? "" : "s"
+      })\n\n${detalleCompleto}\n\n¿Confirmás aplicar y guardar estos precios?`
+    )
+  ) {
+    return;
+  }
+
+  const preciosFinales = new Map(
+    productosAActualizar.map((producto, index) => [
+      producto,
+      vistasPrevias[index].precioFinal,
+    ])
+  );
+
   productos = productos.map((producto) => {
     if (
       producto.categoria === categoria &&
@@ -1890,17 +1956,11 @@ aplicarAumentoMasivoBtn.addEventListener("click", async () => {
       !producto.aCotizar &&
       (!seccionAjuste || producto.seccion === seccionAjuste)
     ) {
-      const precioNuevo = calcularPrecioNuevo(
-        producto.precioActual,
-        tipoAumento,
-        valorAumento
-      );
-
       return {
         ...producto,
         tipoAumento,
         valorAumento,
-        precioNuevo,
+        precioNuevo: preciosFinales.get(producto),
       };
     }
 

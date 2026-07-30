@@ -62,7 +62,7 @@
   {
     "categoria": "Bolsas Fast Food",
     "tipoRegistro": "configuracion",
-    "fechaPublicacion": "2026-07-29",
+    "fechaPublicacion": "2026-05-27",
     "publishedAt": "2026-07-29T19:39:34-03:00",
     "productosPublicados": [
       {
@@ -310,10 +310,10 @@
     "largo": "14",
     "fuelle": "4",
     "unidadesPorBulto": 2000,
-    "precioActual": 18897.46,
+    "precioActual": 19850,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 20031.3076
+    "precioNuevo": 21050
   },
   {
     "nombre": "1L",
@@ -323,10 +323,10 @@
     "largo": "16",
     "fuelle": "4",
     "unidadesPorBulto": 2000,
-    "precioActual": 20535.37,
+    "precioActual": 21570,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 21767.4922
+    "precioNuevo": 22870
   },
   {
     "nombre": "2",
@@ -336,10 +336,10 @@
     "largo": "16,5",
     "fuelle": "4,5",
     "unidadesPorBulto": 2000,
-    "precioActual": 22760.4,
+    "precioActual": 23900,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 24126.024
+    "precioNuevo": 25340
   },
   {
     "nombre": "2L",
@@ -349,23 +349,23 @@
     "largo": "21",
     "fuelle": "4,5",
     "unidadesPorBulto": 2000,
-    "precioActual": 25678.42,
+    "precioActual": 26970,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 27219.1252
+    "precioNuevo": 28590
   },
   {
     "nombre": "2L pororó",
     "categoria": "Bolsas Blanca Extra",
-    "codigo": "2L PORORO",
+    "codigo": "2L pororó",
     "ancho": "9",
     "largo": "21",
     "fuelle": "4,5",
     "unidadesPorBulto": 2000,
-    "precioActual": 33793.13,
+    "precioActual": 35490,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 35820.7178
+    "precioNuevo": 37620
   },
   {
     "nombre": "2 x 10L",
@@ -375,10 +375,10 @@
     "largo": "56",
     "fuelle": "4,5",
     "unidadesPorBulto": 1000,
-    "precioActual": 57665.1,
+    "precioActual": 60550,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 61125.006
+    "precioNuevo": 64190
   },
   {
     "nombre": "3",
@@ -388,10 +388,10 @@
     "largo": "23",
     "fuelle": "5",
     "unidadesPorBulto": 2000,
-    "precioActual": 26789.99,
+    "precioActual": 28130,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 28397.389400000004
+    "precioNuevo": 29820
   },
   {
     "nombre": "3L",
@@ -401,10 +401,10 @@
     "largo": "27",
     "fuelle": "5",
     "unidadesPorBulto": 2000,
-    "precioActual": 32153.63,
+    "precioActual": 33770,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 34082.8478
+    "precioNuevo": 35800
   },
   {
     "nombre": "4",
@@ -414,10 +414,10 @@
     "largo": "27",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 36711.15,
+    "precioActual": 38550,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 38913.819
+    "precioNuevo": 40870
   },
   {
     "nombre": "4A",
@@ -427,10 +427,10 @@
     "largo": "22,5",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 35932.99,
+    "precioActual": 37730,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 38088.9694
+    "precioNuevo": 40000
   },
   {
     "nombre": "5",
@@ -440,10 +440,10 @@
     "largo": "30,5",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 42074.64,
+    "precioActual": 44180,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 44599.1184
+    "precioNuevo": 46840
   },
   {
     "nombre": "5 x 10L",
@@ -453,10 +453,10 @@
     "largo": "56",
     "fuelle": "6",
     "unidadesPorBulto": 1000,
-    "precioActual": 76849.73,
+    "precioActual": 80700,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 81460.7138
+    "precioNuevo": 85550
   },
   {
     "nombre": "6",
@@ -466,10 +466,10 @@
     "largo": "29,5",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 46771.33,
+    "precioActual": 49110,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 49577.609800000006
+    "precioNuevo": 52060
   },
   {
     "nombre": "6L",
@@ -479,10 +479,10 @@
     "largo": "34",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 52746.18,
+    "precioActual": 55390,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 55910.950800000006
+    "precioNuevo": 58720
   },
   {
     "nombre": "7",
@@ -492,10 +492,10 @@
     "largo": "34",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 68313.35,
+    "precioActual": 71730,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 72412.15100000001
+    "precioNuevo": 76040
   },
   {
     "nombre": "7L",
@@ -505,10 +505,10 @@
     "largo": "38",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 71115.65,
+    "precioActual": 74680,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 75382.58899999999
+    "precioNuevo": 79170
   },
   {
     "nombre": "8",
@@ -518,10 +518,10 @@
     "largo": "42",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 76784.95,
+    "precioActual": 80630,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 81392.047
+    "precioNuevo": 85470
   },
   {
     "nombre": "9",
@@ -531,10 +531,10 @@
     "largo": "48",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 86845.12,
+    "precioActual": 91190,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 92055.8272
+    "precioNuevo": 96670
   },
   {
     "nombre": "10",
@@ -544,10 +544,10 @@
     "largo": "48",
     "fuelle": "8",
     "unidadesPorBulto": 500,
-    "precioActual": 114163.05,
+    "precioActual": 119880,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 121012.83300000001
+    "precioNuevo": 127080
   },
   {
     "nombre": "10L",
@@ -557,15 +557,15 @@
     "largo": "56",
     "fuelle": "8",
     "unidadesPorBulto": 500,
-    "precioActual": 125640.55,
+    "precioActual": 131930,
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
-    "precioNuevo": 133178.983
+    "precioNuevo": 139850
   },
   {
     "categoria": "Bolsas Blanca Extra",
     "tipoRegistro": "configuracion",
-    "fechaPublicacion": "2026-07-29",
+    "fechaPublicacion": "2026-07-28",
     "recargosImpresion": [
       {
         "descripcion": "1 COLOR",
@@ -592,10 +592,10 @@
     "largo": "14",
     "fuelle": "4",
     "unidadesPorBulto": 2000,
-    "precioActual": 14240,
+    "precioActual": 16310,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 15521.6
+    "valorAumento": 6,
+    "precioNuevo": 17290
   },
   {
     "nombre": "1L",
@@ -605,10 +605,10 @@
     "largo": "16",
     "fuelle": "4",
     "unidadesPorBulto": 2000,
-    "precioActual": 15440,
+    "precioActual": 17680,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 16829.600000000002
+    "valorAumento": 6,
+    "precioNuevo": 18750
   },
   {
     "nombre": "2",
@@ -618,10 +618,10 @@
     "largo": "16,5",
     "fuelle": "4,5",
     "unidadesPorBulto": 2000,
-    "precioActual": 16540,
+    "precioActual": 18940,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 18028.600000000002
+    "valorAumento": 6,
+    "precioNuevo": 20080
   },
   {
     "nombre": "2L",
@@ -631,10 +631,10 @@
     "largo": "21",
     "fuelle": "4,5",
     "unidadesPorBulto": 2000,
-    "precioActual": 17350,
+    "precioActual": 19870,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 18911.5
+    "valorAumento": 6,
+    "precioNuevo": 21070
   },
   {
     "nombre": "3",
@@ -644,10 +644,10 @@
     "largo": "23",
     "fuelle": "5",
     "unidadesPorBulto": 2000,
-    "precioActual": 17980,
+    "precioActual": 20580,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 19598.2
+    "valorAumento": 6,
+    "precioNuevo": 21820
   },
   {
     "nombre": "3L",
@@ -657,10 +657,10 @@
     "largo": "27",
     "fuelle": "5",
     "unidadesPorBulto": 2000,
-    "precioActual": 18580,
+    "precioActual": 21280,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 20252.2
+    "valorAumento": 6,
+    "precioNuevo": 22560
   },
   {
     "nombre": "4",
@@ -670,10 +670,10 @@
     "largo": "27",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 20680,
+    "precioActual": 23680,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 22541.2
+    "valorAumento": 6,
+    "precioNuevo": 25110
   },
   {
     "nombre": "4A",
@@ -683,10 +683,10 @@
     "largo": "22,5",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 21210,
+    "precioActual": 23140,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 23118.9
+    "valorAumento": 6,
+    "precioNuevo": 24530
   },
   {
     "nombre": "5",
@@ -696,10 +696,10 @@
     "largo": "30,5",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 24040,
+    "precioActual": 27530,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 26203.600000000002
+    "valorAumento": 6,
+    "precioNuevo": 29190
   },
   {
     "nombre": "6",
@@ -709,10 +709,10 @@
     "largo": "29,5",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 26650,
+    "precioActual": 30510,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 29048.500000000004
+    "valorAumento": 6,
+    "precioNuevo": 32350
   },
   {
     "nombre": "6L",
@@ -722,10 +722,10 @@
     "largo": "34",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 30120,
+    "precioActual": 34490,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 32830.8
+    "valorAumento": 6,
+    "precioNuevo": 36560
   },
   {
     "nombre": "7",
@@ -735,10 +735,10 @@
     "largo": "34",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 36520,
+    "precioActual": 41810,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 39806.8
+    "valorAumento": 6,
+    "precioNuevo": 44320
   },
   {
     "nombre": "7L",
@@ -748,10 +748,10 @@
     "largo": "38",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 41010,
+    "precioActual": 41810,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 44700.9
+    "valorAumento": 6,
+    "precioNuevo": 44320
   },
   {
     "nombre": "8",
@@ -761,10 +761,10 @@
     "largo": "42",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 44850,
+    "precioActual": 51340,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 48886.5
+    "valorAumento": 6,
+    "precioNuevo": 54430
   },
   {
     "nombre": "9",
@@ -774,15 +774,15 @@
     "largo": "48",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 50620,
+    "precioActual": 57940,
     "tipoAumento": "porcentaje",
-    "valorAumento": 9,
-    "precioNuevo": 55175.8
+    "valorAumento": 6,
+    "precioNuevo": 61420
   },
   {
     "categoria": "Bolsas Blanca II",
     "tipoRegistro": "configuracion",
-    "fechaPublicacion": "2026-07-29",
+    "fechaPublicacion": "2026-07-28",
     "recargosImpresion": [
       {
         "descripcion": "1 COLOR",

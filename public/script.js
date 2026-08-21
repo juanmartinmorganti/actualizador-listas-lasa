@@ -52,6 +52,7 @@ const aplicarAumentoMasivoBtn = document.getElementById("aplicarAumentoMasivo");
 
 const tablaProductos = document.getElementById("tablaProductos");
 const encabezadoTablaProductos = document.getElementById("encabezadoTablaProductos");
+const buscarProductosInput = document.getElementById("buscarProductos");
 const listaPorCategoria = document.getElementById("listaPorCategoria");
 const recargosImpresionAdmin = document.getElementById("recargosImpresionAdmin");
 const tablaRecargosAdmin = document.getElementById("tablaRecargosAdmin");
@@ -100,6 +101,7 @@ const configuracionCatalogo = {
 let productos = [];
 let categoriaActiva = "";
 let productoEditandoIndex = null;
+let terminoBusquedaProductos = "";
 let categoriaResultadoFinal = "";
 const esModoAdmin =
   window.location.pathname === "/admin" ||
@@ -138,7 +140,10 @@ function renderizarMarcasInstitucionales() {
 async function cargarProductosDesdeJSON() {
   try {
     const respuesta = await fetch("/api/productos");
-    productos = await respuesta.json();
+    if (!respuesta.ok) throw new Error(`Error HTTP ${respuesta.status}`);
+    const datos = await respuesta.json();
+    if (!Array.isArray(datos)) throw new Error("La API no devolvió una lista");
+    productos = datos;
   } catch (error) {
     console.error("Error al cargar productos:", error);
     productos = [];
@@ -147,16 +152,19 @@ async function cargarProductosDesdeJSON() {
 
 async function guardarProductos() {
   try {
-    await fetch("/api/productos", {
+    const respuesta = await fetch("/api/productos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(productos),
     });
+    if (!respuesta.ok) throw new Error(`Error HTTP ${respuesta.status}`);
+    return true;
   } catch (error) {
     console.error("Error al guardar productos:", error);
     alert("No se pudieron guardar los productos en el JSON.");
+    return false;
   }
 }
 
@@ -170,8 +178,9 @@ function calcularPrecioNuevo(precioActual, tipoAumento, valorAumento, categoria)
 }
 
 function crearDetalleVistaPrevia(producto, tipoAumento, valorAumento, categoria) {
+  const precioVigente = PricingLASA.obtenerPrecioVigente(producto);
   const { precioCalculado, precioFinal } = PricingLASA.calcularPrecio(
-    producto.precioActual,
+    precioVigente,
     tipoAumento,
     valorAumento,
     categoria
@@ -190,7 +199,7 @@ function crearDetalleVistaPrevia(producto, tipoAumento, valorAumento, categoria)
     precioFinal,
     texto: [
       producto.nombre,
-      `Precio anterior: ${formatearMoneda(producto.precioActual)}`,
+      `Precio anterior: ${formatearMoneda(precioVigente)}`,
       `${etiquetaOperacion}: ${valorOperacion}`,
       ...(precioCalculado !== precioFinal
         ? [`Resultado sin redondear: ${formatearMoneda(precioCalculado)}`]
@@ -214,6 +223,9 @@ function formatearMoneda(valor) {
 }
 
 function formatearEntero(valor) {
+  if (valor === null || valor === undefined || valor === "") {
+    return "—";
+  }
   const numero = Number(valor);
 
   if (!Number.isFinite(numero)) {
@@ -376,6 +388,16 @@ function actualizarCamposSeccionCartoneria() {
   document.querySelectorAll(".campo-cartoneria-otros").forEach((elemento) => {
     elemento.classList.toggle("oculto", !esOtros || !esCategoriaCartoneria(categoriaActiva));
   });
+  porcentajeMoldeInput.classList.toggle(
+    "oculto",
+    !esOtros &&
+      !esCategoriaMoldes(categoriaActiva) &&
+      !esCategoriaPlatosDorados(categoriaActiva) &&
+      !(
+        esCategoriaServilletas(categoriaActiva) &&
+        seccionServilletasInput.value === "productos"
+      )
+  );
 }
 
 function obtenerFechaHoyISO() {
@@ -468,7 +490,7 @@ function validarCategoriaParaPublicar(categoria) {
     if (!Number.isInteger(producto.unidadesPorCaja) || producto.unidadesPorCaja <= 0) {
       return [`No se puede publicar: falta completar Unidades por caja en ${producto.nombre}.`];
     }
-    if (!Number.isFinite(Number(producto.precioNuevo)) || Number(producto.precioNuevo) <= 0) {
+    if (!ValidacionProductosLASA.esNumeroNoNegativo(producto.precioNuevo)) {
       return [`No se puede publicar: el precio de ${producto.nombre} no es válido.`];
     }
   }
@@ -526,17 +548,11 @@ function limpiarFormulario() {
   seccionServilletasInput.value = "productos";
   formatoServilletasInput.value = "";
   unidadServilletasInput.value = "";
-  seccionServilletasInput.value = "productos";
-  formatoServilletasInput.value = "";
-  unidadServilletasInput.value = "";
   precioActualInput.value = "";
   tipoAumentoInput.value = "sin";
   valorAumentoInput.value = "";
 
   productoEditandoIndex = null;
-  agregarProductoBtn.textContent = "Agregar producto";
-  cancelarEdicionBtn.classList.add("oculto");
-
   if (categoriaActiva) {
     categoriaInput.value = categoriaActiva;
   }
@@ -553,6 +569,67 @@ function limpiarFormularioMasivo() {
   }
 }
 
+function crearAccionesProducto(index) {
+  return `<div class="acciones-producto-inline">
+    <button class="boton-editar" type="button" onclick="editarProducto(${index})">Editar</button>
+    <button class="boton-eliminar" type="button" onclick="eliminarProducto(${index})">Eliminar</button>
+  </div>`;
+}
+
+function crearCeldasVisualizacionProducto(producto, index) {
+  if (esCategoriaServilletas(categoriaActiva)) return `
+    <td>${escaparHTML(producto.detalle || producto.descripcion || producto.nombre)}</td>
+    <td>${escaparHTML(producto.seccion || "—")}</td>
+    <td class="alinear-center">${escaparHTML(producto.formato || "—")}</td>
+    <td class="alinear-center">${escaparHTML(producto.unidad || "—")}</td>
+    <td class="alinear-right celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
+    <td>${crearAccionesProducto(index)}</td>`;
+  if (esCategoriaPlatosDorados(categoriaActiva)) return `
+    <td class="alinear-center">${escaparHTML(producto.medida || producto.nombre)}</td>
+    <td class="alinear-right celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
+    <td>${crearAccionesProducto(index)}</td>`;
+  if (esCategoriaPapeles(categoriaActiva)) return `
+    <td>${escaparHTML(producto.descripcion || producto.nombre)}</td>
+    <td>${escaparHTML(producto.seccion || "—")}</td>
+    <td>${escaparHTML(producto.formato || "—")}</td>
+    <td class="alinear-right celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
+    <td>${crearAccionesProducto(index)}</td>`;
+  if (esCategoriaMoldes(categoriaActiva)) return `
+    <td>${escaparHTML(producto.descripcion || producto.nombre)}</td>
+    <td class="alinear-right celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
+    <td>${crearAccionesProducto(index)}</td>`;
+  if (esCategoriaCartoneria(categoriaActiva)) return `
+    <td>${escaparHTML(producto.numero || producto.descripcion || producto.nombre)}</td>
+    <td>${escaparHTML(producto.seccion || "—")}</td>
+    <td class="alinear-center">${escaparHTML(producto.ancho || "—")}</td>
+    <td class="alinear-center">${escaparHTML(producto.largo || producto.diametro || "—")}</td>
+    <td class="alinear-center">${formatearEntero(producto.unidadesPorBulto)}</td>
+    <td class="alinear-right celda-precio"><strong>${producto.aCotizar ? "A cotizar" : formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
+    <td>${crearAccionesProducto(index)}</td>`;
+  if (esCategoriaBolsaAmericana(categoriaActiva)) return `
+    <td class="alinear-center">${escaparHTML(producto.codigo || producto.nombre)}</td>
+    <td class="alinear-center">${escaparHTML(producto.ancho || "—")}</td>
+    <td class="alinear-center">${escaparHTML(producto.largo || "—")}</td>
+    <td class="alinear-center">${escaparHTML(producto.fuelle || "—")}</td>
+    <td class="alinear-center">${formatearEntero(producto.unidadesPorBulto)}</td>
+    <td class="alinear-right celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
+    <td>${crearAccionesProducto(index)}</td>`;
+  return `
+    <td>${escaparHTML(producto.nombre)}</td>
+    <td class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">${escaparHTML(producto.medida || "—")}</td>
+    <td class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">${formatearEntero(producto.unidadesPorCaja)}</td>
+    <td>${escaparHTML(producto.categoria)}</td>
+    <td class="celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
+    <td>${crearAccionesProducto(index)}</td>`;
+}
+
 function renderizarTabla() {
   tablaProductos.innerHTML = "";
   const esBolsaAmericana = esCategoriaBolsaAmericana(categoriaActiva);
@@ -567,7 +644,7 @@ function renderizarTabla() {
     : esPlatosDorados
     ? `<th>Medida</th><th>Precio por unidad</th><th>Porcentaje</th><th>Acciones</th>`
     : esPapeles
-    ? `<th>Descripción / tipo</th><th>Sección</th><th>Formato / detalle</th><th>Precio</th><th>Acciones</th>`
+    ? `<th>Descripción / tipo</th><th>Sección</th><th>Formato / detalle</th><th>Precio</th><th>Porcentaje</th><th>Acciones</th>`
     : esMoldes
     ? `<th>Descripción</th><th>Precio por millar</th><th>Porcentaje</th><th>Acciones</th>`
     : esCartoneria
@@ -586,17 +663,30 @@ function renderizarTabla() {
       <th>Producto</th>
       <th class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">Medida</th>
       <th class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">Unidades por caja</th>
-      <th>Categoría</th><th>Precio actual</th><th>Tipo aumento</th>
-      <th>Valor</th><th>Precio nuevo</th><th>Acciones</th>
+      <th>Categoría</th><th>Precio</th><th>Porcentaje</th><th>Acciones</th>
     `;
 
-  const productosFiltrados = obtenerProductosDeCategoriaActiva();
+  const productosFiltrados = obtenerProductosDeCategoriaActiva().filter((producto) => {
+    if (!terminoBusquedaProductos) return true;
+    const textoBuscable = [
+      producto.codigo,
+      producto.numero,
+      producto.nombre,
+      producto.descripcion,
+      producto.detalle,
+      producto.medida,
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLocaleLowerCase("es");
+    return textoBuscable.includes(terminoBusquedaProductos);
+  });
 
   if (productosFiltrados.length === 0) {
     tablaProductos.innerHTML = `
       <tr>
-        <td colspan="${esServilletas ? 7 : esPlatosDorados ? 4 : esPapeles ? 5 : esMoldes ? 4 : esBolsaAmericana || esCartoneria ? 8 : esCategoriaFastFood(categoriaActiva) ? 9 : 7}">
-          No hay productos cargados en esta categoría.
+        <td colspan="${esServilletas ? 7 : esPlatosDorados ? 4 : esPapeles ? 6 : esMoldes ? 4 : esBolsaAmericana || esCartoneria ? 8 : esCategoriaFastFood(categoriaActiva) ? 7 : 5}">
+          ${terminoBusquedaProductos ? "No hay productos que coincidan con la búsqueda." : "No hay productos cargados en esta categoría."}
         </td>
       </tr>
     `;
@@ -607,89 +697,69 @@ function renderizarTabla() {
     const indexReal = productos.indexOf(producto);
     const fila = document.createElement("tr");
 
-    fila.innerHTML = esServilletas ? `
-      <td>${escaparHTML(producto.detalle || producto.descripcion || producto.nombre)}</td>
-      <td>${escaparHTML(producto.seccion || "—")}</td>
-      <td class="alinear-center">${escaparHTML(producto.formato || "—")}</td>
-      <td class="alinear-center">${escaparHTML(producto.unidad || "—")}</td>
-      <td class="alinear-right"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
-      <td class="alinear-center">${producto.seccion === "productos" ? formatearPorcentajeComercial(producto) : "—"}</td>
-      <td>
-        <button class="boton-secundario" onclick="moverProductoEnSeccion(${indexReal}, -1)">↑</button>
-        <button class="boton-secundario" onclick="moverProductoEnSeccion(${indexReal}, 1)">↓</button>
-        <button class="boton-editar" onclick="editarProducto(${indexReal})">Editar</button>
-        <button class="boton-eliminar" onclick="eliminarProducto(${indexReal})">Eliminar</button>
-      </td>
-    ` : esPlatosDorados ? `
-      <td class="alinear-center">${escaparHTML(producto.medida || producto.nombre)}</td>
-      <td class="alinear-right"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
-      <td class="alinear-center">${formatearPorcentajeComercial(producto)}</td>
-      <td>
-        <button class="boton-editar" onclick="editarProducto(${indexReal})">Editar</button>
-        <button class="boton-eliminar" onclick="eliminarProducto(${indexReal})">Eliminar</button>
-      </td>
-    ` : esPapeles ? `
-      <td>${escaparHTML(producto.descripcion || producto.nombre)}</td>
-      <td>${escaparHTML(producto.seccion || "—")}</td>
-      <td>${escaparHTML(producto.formato || "—")}</td>
-      <td class="alinear-right"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
-      <td>
-        <button class="boton-secundario" onclick="moverProductoEnSeccion(${indexReal}, -1)">↑</button>
-        <button class="boton-secundario" onclick="moverProductoEnSeccion(${indexReal}, 1)">↓</button>
-        <button class="boton-editar" onclick="editarProducto(${indexReal})">Editar</button>
-        <button class="boton-eliminar" onclick="eliminarProducto(${indexReal})">Eliminar</button>
-      </td>
-    ` : esMoldes ? `
-      <td>${escaparHTML(producto.descripcion || producto.nombre)}</td>
-      <td class="alinear-right"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
-      <td class="alinear-center">${formatearPorcentajeComercial(producto)}</td>
-      <td>
-        <button class="boton-editar" onclick="editarProducto(${indexReal})">Editar</button>
-        <button class="boton-eliminar" onclick="eliminarProducto(${indexReal})">Eliminar</button>
-      </td>
-    ` : esCartoneria ? `
-      <td>${escaparHTML(producto.numero || producto.descripcion || producto.nombre)}</td>
-      <td>${escaparHTML(producto.seccion || "—")}</td>
-      <td class="alinear-center">${escaparHTML(producto.ancho || "—")}</td>
-      <td class="alinear-center">${escaparHTML(producto.largo || producto.diametro || "—")}</td>
-      <td class="alinear-center">${formatearEntero(producto.unidadesPorBulto)}</td>
-      <td class="alinear-right"><strong>${producto.aCotizar ? "A cotizar" : formatearMoneda(producto.precioNuevo)}</strong></td>
-      <td class="alinear-center">${formatearPorcentaje(producto)}</td>
-      <td>
-        <button class="boton-secundario" onclick="moverProductoEnSeccion(${indexReal}, -1)" title="Mover hacia arriba">↑</button>
-        <button class="boton-secundario" onclick="moverProductoEnSeccion(${indexReal}, 1)" title="Mover hacia abajo">↓</button>
-        <button class="boton-editar" onclick="editarProducto(${indexReal})">Editar</button>
-        <button class="boton-eliminar" onclick="eliminarProducto(${indexReal})">Eliminar</button>
-      </td>
-    ` : esBolsaAmericana ? `
-      <td class="alinear-center">${escaparHTML(producto.codigo || producto.nombre)}</td>
-      <td class="alinear-center">${escaparHTML(producto.ancho || "—")}</td>
-      <td class="alinear-center">${escaparHTML(producto.largo || "—")}</td>
-      <td class="alinear-center">${escaparHTML(producto.fuelle || "—")}</td>
-      <td class="alinear-center">${formatearEntero(producto.unidadesPorBulto)}</td>
-      <td class="alinear-right"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
-      <td class="alinear-center">${formatearPorcentaje(producto)}</td>
-      <td>
-        <button class="boton-editar" onclick="editarProducto(${indexReal})">Editar</button>
-        <button class="boton-eliminar" onclick="eliminarProducto(${indexReal})">Eliminar</button>
-      </td>
-    ` : `
-      <td>${producto.nombre}</td>
-      <td class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">${escaparHTML(producto.medida || "—")}</td>
-      <td class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">${formatearEntero(producto.unidadesPorCaja)}</td>
-      <td>${producto.categoria}</td>
-      <td>${formatearMoneda(producto.precioActual)}</td>
-      <td>${producto.tipoAumento}</td>
-      <td>${producto.valorAumento}</td>
-      <td><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
-      <td>
-        <button class="boton-editar" onclick="editarProducto(${indexReal})">Editar</button>
-        <button class="boton-eliminar" onclick="eliminarProducto(${indexReal})">Eliminar</button>
-      </td>
-    `;
+    fila.innerHTML = crearCeldasVisualizacionProducto(producto, indexReal);
 
+    fila.dataset.productoIndex = indexReal;
+    if (productoEditandoIndex === indexReal) {
+      fila.innerHTML = crearCeldasEdicionProducto(producto, indexReal);
+      fila.classList.add("fila-en-edicion");
+    }
     tablaProductos.appendChild(fila);
   });
+}
+
+function crearInputEdicion(campo, valor, tipo = "text", atributos = "") {
+  return `<input class="input-edicion-inline" data-campo="${campo}" type="${tipo}" value="${escaparHTML(valor ?? "")}" ${atributos}>`;
+}
+
+function crearAccionesEdicion(index) {
+  return `<div class="acciones-producto-inline">
+    <button class="boton-editar boton-guardar-edicion" type="button" onclick="guardarEdicionInline(${index})">Guardar</button>
+    <button class="boton-secundario" type="button" onclick="cancelarEdicionInline(${index})">Cancelar</button>
+  </div>`;
+}
+
+function crearCeldasEdicionProducto(producto, index) {
+  const acciones = `<td>${crearAccionesEdicion(index)}</td>`;
+  const precio = crearInputEdicion("precioActual", producto.precioNuevo, "number", 'min="0" step="any"');
+  const porcentaje = crearInputEdicion(
+    "porcentaje",
+    PricingLASA.obtenerPorcentajeManual(producto) ?? "",
+    "number",
+    'min="0" step="any"'
+  );
+
+  if (esCategoriaServilletas(categoriaActiva)) return `
+    <td>${crearInputEdicion("nombre", producto.detalle || producto.descripcion || producto.nombre)}</td>
+    <td>${escaparHTML(producto.seccion || "—")}</td>
+    <td>${crearInputEdicion("formato", producto.formato || "")}</td>
+    <td>${crearInputEdicion("unidad", producto.unidad || "")}</td>
+    <td class="celda-precio">${precio}</td><td>${porcentaje}</td>${acciones}`;
+  if (esCategoriaPlatosDorados(categoriaActiva)) return `
+    <td>${crearInputEdicion("nombre", producto.medida || producto.nombre)}</td><td class="celda-precio">${precio}</td><td>${porcentaje}</td>${acciones}`;
+  if (esCategoriaPapeles(categoriaActiva)) return `
+    <td>${crearInputEdicion("nombre", producto.descripcion || producto.nombre)}</td>
+    <td>${escaparHTML(producto.seccion || "—")}</td><td>${crearInputEdicion("formato", producto.formato || "")}</td><td class="celda-precio">${precio}</td><td>${porcentaje}</td>${acciones}`;
+  if (esCategoriaMoldes(categoriaActiva)) return `
+    <td>${crearInputEdicion("nombre", producto.descripcion || producto.nombre)}</td><td class="celda-precio">${precio}</td><td>${porcentaje}</td>${acciones}`;
+  if (esCategoriaCartoneria(categoriaActiva)) return `
+    <td>${crearInputEdicion("nombre", producto.numero || producto.descripcion || producto.nombre)}</td>
+    <td>${escaparHTML(producto.seccion || "—")}</td>
+    <td>${crearInputEdicion("ancho", producto.ancho || "")}</td>
+    <td>${crearInputEdicion(producto.diametro ? "diametro" : "largo", producto.largo || producto.diametro || "")}</td>
+    <td>${crearInputEdicion("unidadesPorBulto", producto.unidadesPorBulto || "", "number", 'min="1" step="1"')}</td>
+    <td class="celda-precio">${producto.aCotizar ? "A cotizar" : precio}</td><td>${porcentaje}</td>${acciones}`;
+  if (esCategoriaBolsaAmericana(categoriaActiva)) return `
+    <td>${crearInputEdicion("nombre", producto.codigo || producto.nombre)}</td>
+    <td>${crearInputEdicion("ancho", producto.ancho || "")}</td><td>${crearInputEdicion("largo", producto.largo || "")}</td>
+    <td>${crearInputEdicion("fuelle", producto.fuelle || "")}</td>
+    <td>${crearInputEdicion("unidadesPorBulto", producto.unidadesPorBulto || "", "number", 'min="1" step="1"')}</td>
+    <td class="celda-precio">${precio}</td><td>${porcentaje}</td>${acciones}`;
+  return `
+    <td>${crearInputEdicion("nombre", producto.nombre)}</td>
+    <td class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">${crearInputEdicion("medida", producto.medida || "")}</td>
+    <td class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">${crearInputEdicion("unidadesPorCaja", producto.unidadesPorCaja || "", "number", 'min="1" step="1"')}</td>
+    <td>${escaparHTML(producto.categoria)}</td><td class="celda-precio">${precio}</td><td>${porcentaje}</td>${acciones}`;
 }
 
 function crearTablaFinalCategoria(categoria, productosCategoria, mostrarCategoria = true) {
@@ -766,7 +836,7 @@ const configuracionListas = {
       { label: "FUELLE\ncm", value: (p) => p.fuelle, align: "center", width: "11%" },
       { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "20%" },
       { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "22%", className: "precio-final" },
-      { label: "% (*)", value: formatearPorcentaje, align: "center", width: "11%" },
+      { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "11%" },
     ],
     percentageNote: true,
   },
@@ -788,7 +858,7 @@ const configuracionListas = {
       },
       {
         label: "% (*)",
-        value: formatearPorcentajeComercial,
+        value: formatearPorcentajeManual,
         align: "center",
         width: "15%",
       },
@@ -812,7 +882,7 @@ const configuracionListas = {
       },
       {
         label: "Porcentaje",
-        value: formatearPorcentaje,
+        value: formatearPorcentajeManual,
         align: "center",
         width: "15%",
       },
@@ -851,14 +921,14 @@ const columnasCartoneriaRectangular = [
   { label: "LARGO\ncm", value: (p) => p.largo, align: "center", width: "14%" },
   { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "25%", className: "precio-final" },
   { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "22%" },
-  { label: "% (*)", value: formatearPorcentaje, align: "center", width: "13%" },
+  { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "13%" },
 ];
 const columnasCartoneriaRedonda = [
   { label: "NÚMERO", value: (p) => p.numero, align: "center", width: "15%" },
   { label: "DIÁMETRO\ncm", value: (p) => p.diametro, align: "center", width: "20%" },
   { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "25%", className: "precio-final" },
   { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "25%" },
-  { label: "% (*)", value: formatearPorcentaje, align: "center", width: "15%" },
+  { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "15%" },
 ];
 configuracionListas.Cartonería = {
   className: "lista-comercial--cartoneria",
@@ -877,7 +947,7 @@ configuracionListas.Cartonería = {
       columns: [
         { label: "DESCRIPCIÓN", value: (p) => p.descripcion, align: "left", width: "60%" },
         { label: "PRECIO", value: (p) => p.aCotizar ? "A cotizar" : formatearMoneda(p.precioNuevo), align: "right", width: "25%", className: "precio-final" },
-        { label: "% (*)", value: formatearPorcentaje, align: "center", width: "15%" },
+        { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "15%" },
       ],
     },
   ].map((seccion) => ({
@@ -929,7 +999,7 @@ configuracionListas["Platos Dorados"] = {
   columns: [
     { label: "MEDIDA", value: (p) => p.medida, align: "center", width: "40%" },
     { label: "PRECIO POR UNIDAD", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "40%", className: "precio-final" },
-    { label: "% (*)", value: formatearPorcentajeComercial, align: "center", width: "20%" },
+    { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "20%" },
   ],
 };
 configuracionListas.Servilletas = {
@@ -944,7 +1014,7 @@ configuracionListas.Servilletas = {
         { label: "FORMATO", value: (p) => p.formato, align: "center", width: "15%" },
         { label: "UNIDAD", value: (p) => p.unidad, align: "center", width: "27%" },
         { label: "PRECIO POR UNIDAD", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "20%", className: "precio-final" },
-        { label: "% (*)", value: formatearPorcentajeComercial, align: "center", width: "11%" },
+        { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "11%" },
       ],
     },
     {
@@ -970,22 +1040,9 @@ configuracionListas.Servilletas = {
   })),
 };
 
-function formatearPorcentaje(producto) {
-  if (producto.tipoAumento !== "porcentaje") {
-    return "—";
-  }
-
-  return `${Number(producto.valorAumento).toLocaleString("es-AR", {
-    maximumFractionDigits: 2,
-  })} %`;
-}
-
-function formatearPorcentajeComercial(producto) {
-  const porcentaje = Number(producto.porcentaje);
-
-  if (!Number.isFinite(porcentaje)) {
-    return formatearPorcentaje(producto);
-  }
+function formatearPorcentajeManual(producto) {
+  const porcentaje = PricingLASA.obtenerPorcentajeManual(producto);
+  if (porcentaje === null) return "—";
 
   return `${porcentaje.toLocaleString("es-AR", {
     maximumFractionDigits: 2,
@@ -999,6 +1056,12 @@ function escaparHTML(valor) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function escaparCampoCSV(valor) {
+  let texto = String(valor ?? "");
+  if (/^[=+\-@]/.test(texto)) texto = `'${texto}`;
+  return `"${texto.replaceAll('"', '""')}"`;
 }
 
 function crearTablaConfigurada(columnas, productosSeccion) {
@@ -1335,41 +1398,93 @@ function renderizarResultadoFinalCategoria(categoria) {
 }
 
 function editarProducto(index) {
-  const producto = productos[index];
-
+  if (productoEditandoIndex === index) return;
+  const indexAnterior = productoEditandoIndex;
   productoEditandoIndex = index;
+  if (indexAnterior !== null) actualizarFilaProducto(indexAnterior, false);
+  actualizarFilaProducto(index, true);
+  tablaProductos
+    .querySelector(`[data-producto-index="${index}"] input`)
+    ?.focus({ preventScroll: true });
+}
 
-  productoInput.value =
-    producto.medida || producto.detalle || producto.descripcion || producto.nombre;
-  categoriaInput.value = producto.categoria;
-  medidaInput.value = producto.medida || "";
-  unidadesPorCajaInput.value = producto.unidadesPorCaja || "";
-  anchoInput.value = producto.ancho || "";
-  largoInput.value = producto.largo || "";
-  fuelleInput.value = producto.fuelle || "";
-  unidadesPorBultoInput.value = producto.unidadesPorBulto || "";
-  seccionCartoneriaInput.value = producto.seccion || "economicas-rectangulares";
-  anchoCartoneriaInput.value = producto.ancho || "";
-  largoCartoneriaInput.value = producto.largo || "";
-  diametroCartoneriaInput.value = producto.diametro || "";
-  unidadesCartoneriaInput.value = producto.unidadesPorBulto || "";
-  aCotizarCartoneriaInput.checked = Boolean(producto.aCotizar);
-  porcentajeMoldeInput.value = producto.porcentaje ?? "";
-  seccionPapelesInput.value = producto.seccion || "papeles-principales";
-  formatoPapelesInput.value = producto.formato || "";
-  seccionServilletasInput.value = producto.seccion || "productos";
-  formatoServilletasInput.value = producto.formato || "";
-  unidadServilletasInput.value = producto.unidad || "";
-  precioActualInput.value = producto.precioActual;
-  tipoAumentoInput.value = producto.tipoAumento;
-  valorAumentoInput.value = producto.valorAumento;
+function cancelarEdicionInline(index) {
+  if (productoEditandoIndex !== index) return;
+  productoEditandoIndex = null;
+  actualizarFilaProducto(index, false);
+}
 
-  agregarProductoBtn.textContent = "Guardar cambios";
-  cancelarEdicionBtn.classList.remove("oculto");
-  actualizarCamposSeccionCartoneria();
-  actualizarCamposSeccionServilletas();
+function actualizarFilaProducto(index, enEdicion) {
+  const fila = tablaProductos.querySelector(`[data-producto-index="${index}"]`);
+  const producto = productos[index];
+  if (!fila || !producto) return false;
 
-  productoInput.focus();
+  fila.innerHTML = enEdicion
+    ? crearCeldasEdicionProducto(producto, index)
+    : crearCeldasVisualizacionProducto(producto, index);
+  fila.classList.toggle("fila-en-edicion", enEdicion);
+  return true;
+}
+
+async function guardarEdicionInline(index) {
+  const fila = tablaProductos.querySelector(`[data-producto-index="${index}"]`);
+  if (!fila || productoEditandoIndex !== index) return;
+
+  const original = productos[index];
+  const scrollElement = document.scrollingElement || document.documentElement;
+  const scrollAnterior = {
+    top: scrollElement.scrollTop,
+    left: scrollElement.scrollLeft,
+  };
+  const cambios = {};
+  fila.querySelectorAll("[data-campo]").forEach((input) => {
+    const campo = input.dataset.campo;
+    cambios[campo] = input.type === "number"
+      ? ValidacionProductosLASA.leerNumeroOpcional(input.value)
+      : input.value.trim();
+  });
+  const actualizado = PricingLASA.aplicarEdicionIndividual(original, cambios);
+
+  const errorValidacion = ValidacionProductosLASA.validarProducto(actualizado);
+  if (errorValidacion) {
+    alert(errorValidacion);
+    return;
+  }
+
+  const nombre = actualizado.nombre;
+
+  if (esCategoriaBolsaAmericana(actualizado.categoria)) actualizado.codigo = nombre;
+  if (esCategoriaCartoneria(actualizado.categoria)) {
+    if (actualizado.seccion === "otros-carton") actualizado.descripcion = nombre;
+    else actualizado.numero = nombre;
+  }
+  if (esCategoriaMoldes(actualizado.categoria) || esCategoriaPapeles(actualizado.categoria)) actualizado.descripcion = nombre;
+  if (esCategoriaPlatosDorados(actualizado.categoria)) actualizado.medida = nombre;
+  if (esCategoriaServilletas(actualizado.categoria)) {
+    if (actualizado.seccion === "productos") actualizado.detalle = nombre;
+    else actualizado.descripcion = nombre;
+  }
+  productos[index] = actualizado;
+  const botonGuardar = fila.querySelector(".boton-guardar-edicion");
+  if (botonGuardar) {
+    botonGuardar.disabled = true;
+    botonGuardar.textContent = "Guardando...";
+  }
+  if (!(await guardarProductos())) {
+    productos[index] = original;
+    if (botonGuardar) {
+      botonGuardar.disabled = false;
+      botonGuardar.textContent = "Guardar";
+    }
+    scrollElement.scrollTop = scrollAnterior.top;
+    scrollElement.scrollLeft = scrollAnterior.left;
+    return;
+  }
+
+  productoEditandoIndex = null;
+  actualizarFilaProducto(index, false);
+  scrollElement.scrollTop = scrollAnterior.top;
+  scrollElement.scrollLeft = scrollAnterior.left;
 }
 
 async function eliminarProducto(index) {
@@ -1385,36 +1500,11 @@ async function eliminarProducto(index) {
   }
 }
 
-async function moverProductoEnSeccion(index, direccion) {
-  const producto = productos[index];
-  const indicesSeccion = productos
-    .map((registro, posicion) => ({ registro, posicion }))
-    .filter(
-      ({ registro }) =>
-        registro.categoria === producto.categoria &&
-        registro.seccion === producto.seccion &&
-        !esRegistroConfiguracion(registro)
-    )
-    .map(({ posicion }) => posicion);
-  const posicionActual = indicesSeccion.indexOf(index);
-  const posicionDestino = posicionActual + direccion;
-
-  if (posicionDestino < 0 || posicionDestino >= indicesSeccion.length) {
-    return;
-  }
-
-  const indexDestino = indicesSeccion[posicionDestino];
-  [productos[index], productos[indexDestino]] = [
-    productos[indexDestino],
-    productos[index],
-  ];
-  await guardarProductos();
-  renderizarTabla();
-  renderizarListaPorCategoria();
-}
-
 function abrirModuloCategoria(categoria) {
   categoriaActiva = categoria;
+  productoEditandoIndex = null;
+  terminoBusquedaProductos = "";
+  buscarProductosInput.value = "";
 
   portada.classList.add("oculto");
   portadaAdmin.classList.add("oculto");
@@ -1639,24 +1729,24 @@ agregarProductoBtn.addEventListener("click", async () => {
   const nombre = productoInput.value.trim();
   const categoria = categoriaActiva;
   const medida = medidaInput.value.trim();
-  const unidadesPorCaja = Number(unidadesPorCajaInput.value);
+  const unidadesPorCaja = ValidacionProductosLASA.leerNumeroOpcional(unidadesPorCajaInput.value);
   const ancho = anchoInput.value.trim();
   const largo = largoInput.value.trim();
   const fuelle = fuelleInput.value.trim();
-  const unidadesPorBulto = Number(unidadesPorBultoInput.value);
+  const unidadesPorBulto = ValidacionProductosLASA.leerNumeroOpcional(unidadesPorBultoInput.value);
   const seccionCartoneria = seccionCartoneriaInput.value;
   const anchoCartoneria = anchoCartoneriaInput.value.trim();
   const largoCartoneria = largoCartoneriaInput.value.trim();
   const diametroCartoneria = diametroCartoneriaInput.value.trim();
-  const unidadesCartoneria = Number(unidadesCartoneriaInput.value);
+  const unidadesCartoneria = ValidacionProductosLASA.leerNumeroOpcional(unidadesCartoneriaInput.value);
   const aCotizarCartoneria = aCotizarCartoneriaInput.checked;
-  const porcentajeMolde = Number(porcentajeMoldeInput.value);
+  const porcentajeMolde = ValidacionProductosLASA.leerNumeroOpcional(porcentajeMoldeInput.value);
   const seccionPapeles = seccionPapelesInput.value;
   const formatoPapeles = formatoPapelesInput.value.trim();
   const seccionServilletas = seccionServilletasInput.value;
   const formatoServilletas = formatoServilletasInput.value.trim();
   const unidadServilletas = unidadServilletasInput.value.trim();
-  const precioActual = Number(precioActualInput.value);
+  const precioActual = ValidacionProductosLASA.leerNumeroOpcional(precioActualInput.value);
   const tipoAumento = tipoAumentoInput.value;
   const valorAumento = Number(valorAumentoInput.value) || 0;
 
@@ -1665,46 +1755,28 @@ agregarProductoBtn.addEventListener("click", async () => {
     return;
   }
 
-  if (!nombre || (precioActual <= 0 && !(esCategoriaCartoneria(categoria) && aCotizarCartoneria))) {
-    alert("Completá producto y precio actual.");
-    return;
-  }
-
-  if (esCategoriaFastFood(categoria) && (!medida || !Number.isInteger(unidadesPorCaja) || unidadesPorCaja <= 0)) {
-    alert("Completá medida y unidades por caja con valores válidos.");
-    return;
-  }
-
-  if (
-    esCategoriaBolsaAmericana(categoria) &&
-    (!ancho || !largo || !fuelle || !Number.isInteger(unidadesPorBulto) || unidadesPorBulto <= 0)
-  ) {
-    alert("Completá ancho, largo, fuelle y unidades por bulto con valores válidos.");
-    return;
-  }
-
-  if (esCategoriaCartoneria(categoria) && seccionCartoneria !== "otros-carton") {
-    const esRedonda = seccionCartoneria.endsWith("-redondas");
-    if (
-      (esRedonda && !diametroCartoneria) ||
-      (!esRedonda && (!anchoCartoneria || !largoCartoneria)) ||
-      !Number.isInteger(unidadesCartoneria) ||
-      unidadesCartoneria <= 0
-    ) {
-      alert("Completá las medidas y unidades correspondientes a la sección.");
-      return;
-    }
-  }
-
-  if (
-    (
-      esCategoriaMoldes(categoria) ||
-      esCategoriaPlatosDorados(categoria) ||
-      (esCategoriaServilletas(categoria) && seccionServilletas === "productos")
-    ) &&
-    (!Number.isFinite(porcentajeMolde) || porcentajeMolde < 0)
-  ) {
-    alert("Ingresá un porcentaje comercial válido.");
+  const productoParaValidar = {
+    nombre,
+    categoria,
+    precioActual,
+    porcentaje: porcentajeMolde,
+    ...(esCategoriaFastFood(categoria) ? { medida, unidadesPorCaja } : {}),
+    ...(esCategoriaBolsaAmericana(categoria)
+      ? { ancho, largo, fuelle, unidadesPorBulto }
+      : {}),
+    ...(esCategoriaCartoneria(categoria)
+      ? {
+          seccion: seccionCartoneria,
+          ancho: anchoCartoneria,
+          largo: largoCartoneria,
+          diametro: diametroCartoneria,
+          unidadesPorBulto: unidadesCartoneria,
+        }
+      : {}),
+  };
+  const errorValidacion = ValidacionProductosLASA.validarProducto(productoParaValidar);
+  if (errorValidacion) {
+    alert(errorValidacion);
     return;
   }
 
@@ -1742,7 +1814,7 @@ agregarProductoBtn.addEventListener("click", async () => {
       ? {
           seccion: seccionCartoneria,
           ...(seccionCartoneria === "otros-carton"
-            ? { descripcion: nombre, aCotizar: aCotizarCartoneria }
+            ? { descripcion: nombre, aCotizar: aCotizarCartoneria, porcentaje: porcentajeMolde }
             : seccionCartoneria.endsWith("-redondas")
               ? { numero: nombre, diametro: diametroCartoneria, unidadesPorBulto: unidadesCartoneria }
               : { numero: nombre, ancho: anchoCartoneria, largo: largoCartoneria, unidadesPorBulto: unidadesCartoneria }),
@@ -1774,11 +1846,8 @@ agregarProductoBtn.addEventListener("click", async () => {
     precioNuevo,
   };
 
-  if (productoEditandoIndex !== null) {
-    productos[productoEditandoIndex] = producto;
-  } else {
-    productos.push(producto);
-  }
+  productos.push(producto);
+  productoEditandoIndex = null;
 
   await guardarProductos();
   renderizarTabla();
@@ -1840,6 +1909,14 @@ cancelarEdicionBtn.addEventListener("click", () => {
   limpiarFormulario();
 });
 
+buscarProductosInput.addEventListener("input", () => {
+  terminoBusquedaProductos = buscarProductosInput.value
+    .trim()
+    .toLocaleLowerCase("es");
+  if (productoEditandoIndex !== null) productoEditandoIndex = null;
+  renderizarTabla();
+});
+
 borrarTodoBtn.addEventListener("click", async () => {
   if (!categoriaActiva) {
     alert("Primero seleccioná una categoría.");
@@ -1852,7 +1929,8 @@ borrarTodoBtn.addEventListener("click", async () => {
 
   if (confirmar) {
     productos = productos.filter(
-      (producto) => producto.categoria !== categoriaActiva
+      (producto) =>
+        producto.categoria !== categoriaActiva || esRegistroConfiguracion(producto)
     );
 
     await guardarProductos();
@@ -1870,12 +1948,24 @@ exportarCSVBtn.addEventListener("click", () => {
     return;
   }
 
-  let csv =
-    "Producto;Categoría;Precio actual;Tipo aumento;Valor aumento;Precio nuevo\n";
+  const filasCSV = [
+    ["Producto", "Categoría", "Precio actual", "Tipo aumento", "Valor aumento", "Precio nuevo"],
+  ];
 
   productosFiltrados.forEach((producto) => {
-    csv += `${producto.nombre};${producto.categoria};${producto.precioActual};${producto.tipoAumento};${producto.valorAumento};${producto.precioNuevo}\n`;
+    filasCSV.push([
+      producto.nombre,
+      producto.categoria,
+      producto.precioActual,
+      producto.tipoAumento,
+      producto.valorAumento,
+      producto.precioNuevo,
+    ]);
   });
+
+  const csv = `${filasCSV
+    .map((fila) => fila.map(escaparCampoCSV).join(";"))
+    .join("\n")}\n`;
 
   const blob = new Blob([csv], {
     type: "text/csv;charset=utf-8;",
@@ -1956,12 +2046,12 @@ aplicarAumentoMasivoBtn.addEventListener("click", async () => {
       !producto.aCotizar &&
       (!seccionAjuste || producto.seccion === seccionAjuste)
     ) {
-      return {
-        ...producto,
+      return PricingLASA.aplicarAumentoMasivo(
+        producto,
         tipoAumento,
         valorAumento,
-        precioNuevo: preciosFinales.get(producto),
-      };
+        preciosFinales.get(producto)
+      );
     }
 
     return producto;

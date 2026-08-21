@@ -81,7 +81,7 @@
       </section>
 
       <section id="ajustesCategoria">
-        <h2>Cargar / editar producto</h2>
+        <h2>Cargar nuevo producto</h2>
 
         <div class="formulario">
           <input type="text" id="producto" placeholder="Producto" />
@@ -194,13 +194,18 @@
       <section>
         <h2>Detalle técnico de productos</h2>
 
+        <div class="buscador-productos">
+          <label for="buscarProductos">Buscar producto</label>
+          <input id="buscarProductos" type="search" placeholder="Buscar por número o nombre" autocomplete="off" />
+        </div>
+
         <div class="acciones">
           <button id="exportarCSV">Exportar CSV</button>
           <button id="borrarTodo">Borrar todo</button>
         </div>
 
         <div class="tabla-admin-contenedor">
-        <table>
+        <table class="tabla-productos-admin">
           <thead>
             <tr id="encabezadoTablaProductos"></tr>
           </thead>
@@ -258,6 +263,7 @@
   </main>
 
   <script src="pricing.js"></script>
+  <script src="validation.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

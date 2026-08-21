@@ -809,10 +809,11 @@
     "largo": "12",
     "fuelle": "4",
     "unidadesPorBulto": 3000,
-    "precioActual": 11120,
-    "tipoAumento": "porcentaje",
+    "precioActual": 13280,
+    "tipoAumento": "sin",
     "valorAumento": 5,
-    "precioNuevo": 11676
+    "precioNuevo": 13280,
+    "porcentaje": 5
   },
   {
     "nombre": "1",
@@ -822,10 +823,11 @@
     "largo": "14",
     "fuelle": "4",
     "unidadesPorBulto": 2000,
-    "precioActual": 11640,
-    "tipoAumento": "porcentaje",
+    "precioActual": 13900,
+    "tipoAumento": "importe",
     "valorAumento": 5,
-    "precioNuevo": 12222
+    "precioNuevo": 13900,
+    "porcentaje": 5
   },
   {
     "nombre": "1L",
@@ -835,10 +837,11 @@
     "largo": "16",
     "fuelle": "4",
     "unidadesPorBulto": 2000,
-    "precioActual": 12610,
-    "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 13240.5
+    "precioActual": 15050,
+    "tipoAumento": "importe",
+    "valorAumento": 0,
+    "precioNuevo": 15050,
+    "porcentaje": 5
   },
   {
     "nombre": "2",
@@ -848,10 +851,11 @@
     "largo": "16,5",
     "fuelle": "4,5",
     "unidadesPorBulto": 2000,
-    "precioActual": 13820,
-    "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 14511
+    "precioActual": 16490,
+    "tipoAumento": "importe",
+    "valorAumento": 0,
+    "precioNuevo": 16490,
+    "porcentaje": 5
   },
   {
     "nombre": "2L",
@@ -861,23 +865,25 @@
     "largo": "21",
     "fuelle": "4,5",
     "unidadesPorBulto": 2000,
-    "precioActual": 14170,
-    "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 14878.5
+    "precioActual": 16900,
+    "tipoAumento": "importe",
+    "valorAumento": 0,
+    "precioNuevo": 16900,
+    "porcentaje": 5
   },
   {
     "nombre": "2L farmacia",
     "categoria": "Bolsas Kraft",
-    "codigo": "2L FARMACIA",
+    "codigo": "2L farmacia",
     "ancho": "9",
     "largo": "21",
     "fuelle": "4,5",
     "unidadesPorBulto": 2000,
-    "precioActual": 20320,
-    "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 21336
+    "precioActual": 16900,
+    "tipoAumento": "importe",
+    "valorAumento": 0,
+    "precioNuevo": 16900,
+    "porcentaje": 5
   },
   {
     "nombre": "2 x 10L",
@@ -887,10 +893,11 @@
     "largo": "56",
     "fuelle": "4,5",
     "unidadesPorBulto": 500,
-    "precioActual": 26690,
+    "precioActual": 31840,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 28024.5
+    "valorAumento": 0,
+    "precioNuevo": 31840,
+    "porcentaje": 5
   },
   {
     "nombre": "3",
@@ -900,10 +907,11 @@
     "largo": "23",
     "fuelle": "5",
     "unidadesPorBulto": 2000,
-    "precioActual": 14360,
+    "precioActual": 17130,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 15078
+    "valorAumento": 0,
+    "precioNuevo": 17130,
+    "porcentaje": 5
   },
   {
     "nombre": "3L",
@@ -913,10 +921,11 @@
     "largo": "27",
     "fuelle": "5",
     "unidadesPorBulto": 2000,
-    "precioActual": 15640,
+    "precioActual": 18660,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 16422
+    "valorAumento": 0,
+    "precioNuevo": 18660,
+    "porcentaje": 5
   },
   {
     "nombre": "3A",
@@ -926,23 +935,25 @@
     "largo": "23",
     "fuelle": "5",
     "unidadesPorBulto": 2000,
-    "precioActual": 13760,
+    "precioActual": 20070,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 14448
+    "valorAumento": 0,
+    "precioNuevo": 20070,
+    "porcentaje": 5
   },
   {
-    "nombre": "3L farmacia",
+    "nombre": "3L FARMACIA",
     "categoria": "Bolsas Kraft",
     "codigo": "3L FARMACIA",
     "ancho": "11",
     "largo": "27",
     "fuelle": "5",
     "unidadesPorBulto": 2000,
-    "precioActual": 19050,
+    "precioActual": 18660,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 20002.5
+    "valorAumento": 0,
+    "precioNuevo": 18660,
+    "porcentaje": 5
   },
   {
     "nombre": "4",
@@ -952,10 +963,11 @@
     "largo": "27",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 17800,
+    "precioActual": 21240,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 18690
+    "valorAumento": 0,
+    "precioNuevo": 21240,
+    "porcentaje": 5
   },
   {
     "nombre": "4A",
@@ -965,23 +977,25 @@
     "largo": "22,5",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 17260,
+    "precioActual": 20580,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 18123
+    "valorAumento": 0,
+    "precioNuevo": 20580,
+    "porcentaje": 5
   },
   {
-    "nombre": "4A farmacia",
+    "nombre": "4A FARMACIA",
     "categoria": "Bolsas Kraft",
     "codigo": "4A FARMACIA",
     "ancho": "15",
     "largo": "22,5",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 20510,
+    "precioActual": 20580,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 21535.5
+    "valorAumento": 0,
+    "precioNuevo": 20580,
+    "porcentaje": 5
   },
   {
     "nombre": "5",
@@ -991,10 +1005,11 @@
     "largo": "30,5",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 20220,
+    "precioActual": 24130,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 21231
+    "valorAumento": 0,
+    "precioNuevo": 24130,
+    "porcentaje": 5
   },
   {
     "nombre": "5 x 10L",
@@ -1004,10 +1019,11 @@
     "largo": "56",
     "fuelle": "6",
     "unidadesPorBulto": 500,
-    "precioActual": 37200,
+    "precioActual": 44380,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 39060
+    "valorAumento": 0,
+    "precioNuevo": 44380,
+    "porcentaje": 5
   },
   {
     "nombre": "6",
@@ -1017,10 +1033,11 @@
     "largo": "29,5",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 22480,
+    "precioActual": 26820,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 23604
+    "valorAumento": 0,
+    "precioNuevo": 26820,
+    "porcentaje": 5
   },
   {
     "nombre": "6L",
@@ -1030,23 +1047,25 @@
     "largo": "34",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 25100,
+    "precioActual": 29940,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 26355
+    "valorAumento": 0,
+    "precioNuevo": 29940,
+    "porcentaje": 5
   },
   {
-    "nombre": "6 farmacia",
+    "nombre": "6 FARMACIA",
     "categoria": "Bolsas Kraft",
     "codigo": "6 FARMACIA",
     "ancho": "15",
     "largo": "29,5",
     "fuelle": "6",
     "unidadesPorBulto": 2000,
-    "precioActual": 25740,
+    "precioActual": 29940,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 27027
+    "valorAumento": 0,
+    "precioNuevo": 29940,
+    "porcentaje": 5
   },
   {
     "nombre": "7",
@@ -1056,10 +1075,11 @@
     "largo": "34",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 29950,
+    "precioActual": 35730,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 31447.5
+    "valorAumento": 0,
+    "precioNuevo": 35730,
+    "porcentaje": 5
   },
   {
     "nombre": "7L",
@@ -1069,23 +1089,25 @@
     "largo": "38",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 34300,
+    "precioActual": 40900,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 36015
+    "valorAumento": 0,
+    "precioNuevo": 40900,
+    "porcentaje": 5
   },
   {
-    "nombre": "7 farmacia",
+    "nombre": "7 FARMACIA",
     "categoria": "Bolsas Kraft",
     "codigo": "7 FARMACIA",
     "ancho": "18",
     "largo": "34",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 33450,
+    "precioActual": 35730,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 35122.5
+    "valorAumento": 0,
+    "precioNuevo": 35730,
+    "porcentaje": 5
   },
   {
     "nombre": "8",
@@ -1095,10 +1117,11 @@
     "largo": "42",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 37420,
+    "precioActual": 44630,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 39291
+    "valorAumento": 0,
+    "precioNuevo": 44630,
+    "porcentaje": 5
   },
   {
     "nombre": "9",
@@ -1108,10 +1131,11 @@
     "largo": "48",
     "fuelle": "7",
     "unidadesPorBulto": 1000,
-    "precioActual": 41690,
+    "precioActual": 49730,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 43774.5
+    "valorAumento": 0,
+    "precioNuevo": 49730,
+    "porcentaje": 5
   },
   {
     "nombre": "10",
@@ -1121,10 +1145,11 @@
     "largo": "48",
     "fuelle": "8",
     "unidadesPorBulto": 500,
-    "precioActual": 61900,
+    "precioActual": 73820,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 64995
+    "valorAumento": 0,
+    "precioNuevo": 73820,
+    "porcentaje": 5
   },
   {
     "nombre": "10L",
@@ -1134,10 +1159,11 @@
     "largo": "56",
     "fuelle": "8",
     "unidadesPorBulto": 500,
-    "precioActual": 73790,
+    "precioActual": 87980,
     "tipoAumento": "porcentaje",
-    "valorAumento": 5,
-    "precioNuevo": 77479.5
+    "valorAumento": 0,
+    "precioNuevo": 87980,
+    "porcentaje": 5
   },
   {
     "categoria": "Bolsas Kraft",
@@ -1162,487 +1188,536 @@
     ]
   },
   {
-    "nombre": "Bandejas rectangulares económicas N°0",
+    "nombre": "0",
     "categoria": "Cartonería",
     "seccion": "economicas-rectangulares",
     "numero": "0",
     "ancho": "16",
     "largo": "11",
     "unidadesPorBulto": 100,
-    "precioActual": 26387.71,
+    "precioActual": 31933,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 29026.481
+    "precioNuevo": 31933,
+    "porcentaje": 10
   },
   {
-    "nombre": "Bandejas rectangulares económicas N°1",
+    "nombre": "1",
     "categoria": "Cartonería",
     "seccion": "economicas-rectangulares",
     "numero": "1",
     "ancho": "18",
     "largo": "13",
     "unidadesPorBulto": 100,
-    "precioActual": 29662.37,
+    "precioActual": 35893,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 32628.607
+    "precioNuevo": 35893,
+    "porcentaje": 10
   },
   {
-    "nombre": "Bandejas rectangulares económicas N°2",
+    "nombre": "2",
     "categoria": "Cartonería",
     "seccion": "economicas-rectangulares",
     "numero": "2",
     "ancho": "22",
     "largo": "15",
     "unidadesPorBulto": 100,
-    "precioActual": 33768.72,
+    "precioActual": 40865,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 37145.592000000004
+    "precioNuevo": 40865,
+    "porcentaje": 10
   },
   {
-    "nombre": "Bandejas rectangulares económicas N°3",
+    "nombre": "3",
     "categoria": "Cartonería",
     "seccion": "economicas-rectangulares",
     "numero": "3",
     "ancho": "23",
     "largo": "16",
     "unidadesPorBulto": 100,
-    "precioActual": 39975.38,
+    "precioActual": 48378,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 43972.918
+    "precioNuevo": 48378,
+    "porcentaje": 10
   },
   {
-    "nombre": "Bandejas rectangulares económicas N°4",
+    "nombre": "4",
     "categoria": "Cartonería",
     "seccion": "economicas-rectangulares",
     "numero": "4",
     "ancho": "26",
     "largo": "18",
     "unidadesPorBulto": 100,
-    "precioActual": 51653.5,
+    "precioActual": 62502,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 56818.850000000006
+    "precioNuevo": 62502,
+    "porcentaje": 10
   },
   {
-    "nombre": "Bandejas rectangulares económicas N°5",
+    "nombre": "5",
     "categoria": "Cartonería",
     "seccion": "economicas-rectangulares",
     "numero": "5",
     "ancho": "29",
     "largo": "21",
     "unidadesPorBulto": 100,
-    "precioActual": 64940.91,
+    "precioActual": 78584,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 71435.001
+    "precioNuevo": 78584,
+    "porcentaje": 10
   },
   {
-    "nombre": "Bandejas rectangulares económicas N°6",
+    "nombre": "6",
     "categoria": "Cartonería",
     "seccion": "economicas-rectangulares",
     "numero": "6",
     "ancho": "31",
     "largo": "23",
     "unidadesPorBulto": 100,
-    "precioActual": 79990.04,
+    "precioActual": 96789,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 87989.044
+    "precioNuevo": 96789,
+    "porcentaje": 10
   },
   {
-    "nombre": "Bandejas rectangulares económicas N°7",
+    "nombre": "7",
     "categoria": "Cartonería",
     "seccion": "economicas-rectangulares",
     "numero": "7",
     "ancho": "34",
     "largo": "24",
     "unidadesPorBulto": 100,
-    "precioActual": 89148.24,
+    "precioActual": 107877,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 98063.06400000001
+    "precioNuevo": 107877,
+    "porcentaje": 10
   },
   {
-    "nombre": "Bandejas rectangulares económicas N°8",
+    "nombre": "8",
     "categoria": "Cartonería",
     "seccion": "economicas-rectangulares",
     "numero": "8",
     "ancho": "37",
     "largo": "25",
     "unidadesPorBulto": 100,
-    "precioActual": 118489.67,
+    "precioActual": 143374,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 130338.637
+    "precioNuevo": 143374,
+    "porcentaje": 10
   },
   {
-    "nombre": "Bandejas redondas economicas N°12",
+    "nombre": "12",
     "categoria": "Cartonería",
     "seccion": "economicas-redondas",
     "numero": "12",
     "diametro": "20",
     "unidadesPorBulto": 100,
-    "precioActual": 47469.72,
+    "precioActual": 57442,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 52216.692
+    "precioNuevo": 57442,
+    "porcentaje": 10,
+    "ancho": ""
   },
   {
-    "nombre": "Bandejas redondas economicas N°13½",
+    "nombre": "13½",
     "categoria": "Cartonería",
     "seccion": "economicas-redondas",
     "numero": "13½",
     "diametro": "24",
     "unidadesPorBulto": 100,
-    "precioActual": 60936.46,
+    "precioActual": 73744,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 67030.106
+    "precioNuevo": 73744,
+    "porcentaje": 10,
+    "ancho": ""
   },
   {
-    "nombre": "Bandejas redondas economicas N°14",
+    "nombre": "14",
     "categoria": "Cartonería",
     "seccion": "economicas-redondas",
     "numero": "14",
     "diametro": "27",
     "unidadesPorBulto": 100,
-    "precioActual": 72327.51,
+    "precioActual": 87527,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 79560.261
+    "precioNuevo": 87527,
+    "porcentaje": 10,
+    "ancho": ""
   },
   {
-    "nombre": "Bandejas redondas economicas N°15",
+    "nombre": "15",
     "categoria": "Cartonería",
     "seccion": "economicas-redondas",
     "numero": "15",
     "diametro": "29",
     "unidadesPorBulto": 100,
-    "precioActual": 73787.6,
+    "precioActual": 89287,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 81166.36000000002
+    "precioNuevo": 89287,
+    "porcentaje": 10,
+    "ancho": ""
   },
   {
-    "nombre": "Bandejas redondas economicas N°16",
+    "nombre": "16",
     "categoria": "Cartonería",
     "seccion": "economicas-redondas",
     "numero": "16",
     "diametro": "33",
     "unidadesPorBulto": 100,
-    "precioActual": 88712.65,
+    "precioActual": 107349,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 97583.91500000001
+    "precioNuevo": 107349,
+    "porcentaje": 10,
+    "ancho": ""
   },
   {
-    "nombre": "Reforzada rectangular N°1",
+    "nombre": "1",
     "categoria": "Cartonería",
     "seccion": "reforzadas-rectangulares",
     "numero": "1",
     "ancho": "18",
     "largo": "13",
     "unidadesPorBulto": 100,
-    "precioActual": 34304.57,
+    "precioActual": 41514,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 37735.027
+    "precioNuevo": 41514,
+    "porcentaje": 10
   },
   {
-    "nombre": "Reforzada rectangular N°2",
+    "nombre": "2",
     "categoria": "Cartonería",
     "seccion": "reforzadas-rectangulares",
     "numero": "2",
     "ancho": "22",
     "largo": "15",
     "unidadesPorBulto": 100,
-    "precioActual": 39150.24,
+    "precioActual": 47377,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 43065.264
+    "precioNuevo": 47377,
+    "porcentaje": 10
   },
   {
-    "nombre": "Reforzada rectangular N°3",
+    "nombre": "3",
     "categoria": "Cartonería",
     "seccion": "reforzadas-rectangulares",
     "numero": "3",
     "ancho": "23",
     "largo": "16",
     "unidadesPorBulto": 100,
-    "precioActual": 47157.18,
+    "precioActual": 57068,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 51872.898
+    "precioNuevo": 57068,
+    "porcentaje": 10
   },
   {
-    "nombre": "Reforzada rectangular N°4",
+    "nombre": "4",
     "categoria": "Cartonería",
     "seccion": "reforzadas-rectangulares",
     "numero": "4",
     "ancho": "26",
     "largo": "18",
     "unidadesPorBulto": 100,
-    "precioActual": 70278.69,
+    "precioActual": 85041,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 77306.55900000001
+    "precioNuevo": 85041,
+    "porcentaje": 10
   },
   {
-    "nombre": "Reforzada rectangular N°5",
+    "nombre": "5",
     "categoria": "Cartonería",
     "seccion": "reforzadas-rectangulares",
     "numero": "5",
     "ancho": "29",
     "largo": "21",
     "unidadesPorBulto": 100,
-    "precioActual": 89216.41,
+    "precioActual": 107954,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 98138.051
+    "precioNuevo": 107954,
+    "porcentaje": 10
   },
   {
-    "nombre": "Reforzada rectangular N°6",
+    "nombre": "6",
     "categoria": "Cartonería",
     "seccion": "reforzadas-rectangulares",
     "numero": "6",
     "ancho": "31",
     "largo": "23",
     "unidadesPorBulto": 100,
-    "precioActual": 129698.71,
+    "precioActual": 156937,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 142668.581
+    "precioNuevo": 156937,
+    "porcentaje": 10
   },
   {
-    "nombre": "Reforzada rectangular N°7",
+    "nombre": "7",
     "categoria": "Cartonería",
     "seccion": "reforzadas-rectangulares",
     "numero": "7",
     "ancho": "34",
     "largo": "24",
     "unidadesPorBulto": 100,
-    "precioActual": 142481.91,
+    "precioActual": 172414,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 156730.10100000002
+    "precioNuevo": 172414,
+    "porcentaje": 10
   },
   {
-    "nombre": "Reforzada rectangular N°8",
+    "nombre": "8",
     "categoria": "Cartonería",
     "seccion": "reforzadas-rectangulares",
     "numero": "8",
     "ancho": "37",
     "largo": "25",
     "unidadesPorBulto": 100,
-    "precioActual": 180947.47,
+    "precioActual": 218955,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 199042.217
+    "precioNuevo": 218955,
+    "porcentaje": 10
   },
   {
-    "nombre": "Reforzada redondas N°13½",
+    "nombre": "13½",
     "categoria": "Cartonería",
     "seccion": "reforzadas-redondas",
     "numero": "13½",
     "diametro": "24",
     "unidadesPorBulto": 100,
-    "precioActual": 69239.08,
+    "precioActual": 83787,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 76162.98800000001
+    "precioNuevo": 83787,
+    "porcentaje": 10,
+    "ancho": ""
   },
   {
-    "nombre": "Reforzada redondas N°14",
+    "nombre": "14",
     "categoria": "Cartonería",
     "seccion": "reforzadas-redondas",
     "numero": "14",
     "diametro": "27",
     "unidadesPorBulto": 100,
-    "precioActual": 84611.37,
+    "precioActual": 102388,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 93072.507
+    "precioNuevo": 102388,
+    "porcentaje": 10,
+    "ancho": ""
   },
   {
-    "nombre": "Reforzada redondas N°15",
+    "nombre": "15",
     "categoria": "Cartonería",
     "seccion": "reforzadas-redondas",
     "numero": "15",
     "diametro": "29",
     "unidadesPorBulto": 100,
-    "precioActual": 108347.84,
+    "precioActual": 131109,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 119182.62400000001
+    "precioNuevo": 131109,
+    "porcentaje": 10,
+    "ancho": ""
   },
   {
-    "nombre": "Reforzada redondas N°16",
+    "nombre": "16",
     "categoria": "Cartonería",
     "seccion": "reforzadas-redondas",
     "numero": "16",
     "diametro": "33",
     "unidadesPorBulto": 100,
-    "precioActual": 128577.49,
+    "precioActual": 155584,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 141435.23900000003
+    "precioNuevo": 155584,
+    "porcentaje": 10,
+    "ancho": ""
   },
   {
-    "nombre": "Reforzada redondas N°18",
+    "nombre": "18",
     "categoria": "Cartonería",
     "seccion": "reforzadas-redondas",
     "numero": "18",
     "diametro": "35",
     "unidadesPorBulto": 100,
-    "precioActual": 202423.94,
+    "precioActual": 244937,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 222666.33400000003
+    "precioNuevo": 244937,
+    "porcentaje": 10,
+    "ancho": ""
   },
   {
-    "nombre": "Pesada rectangular N°1",
+    "nombre": "1",
     "categoria": "Cartonería",
     "seccion": "pesadas-rectangulares",
     "numero": "1",
     "ancho": "18",
     "largo": "13",
     "unidadesPorBulto": 100,
-    "precioActual": 44184.91,
+    "precioActual": 53471,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 48603.401000000005
+    "precioNuevo": 53471,
+    "porcentaje": 10
   },
   {
-    "nombre": "Pesada rectangular N°2",
+    "nombre": "2",
     "categoria": "Cartonería",
     "seccion": "pesadas-rectangulares",
     "numero": "2",
     "ancho": "22",
     "largo": "15",
     "unidadesPorBulto": 100,
-    "precioActual": 54974.23,
+    "precioActual": 66528,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 60471.653000000006
+    "precioNuevo": 66528,
+    "porcentaje": 10
   },
   {
-    "nombre": "Pesada rectangular N°3",
+    "nombre": "3",
     "categoria": "Cartonería",
     "seccion": "pesadas-rectangulares",
     "numero": "3",
     "ancho": "23",
     "largo": "16",
     "unidadesPorBulto": 100,
-    "precioActual": 73616.83,
+    "precioActual": 89078,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 80978.513
+    "precioNuevo": 89078,
+    "porcentaje": 10
   },
   {
-    "nombre": "Pesada rectangular N°4",
+    "nombre": "4",
     "categoria": "Cartonería",
     "seccion": "pesadas-rectangulares",
     "numero": "4",
     "ancho": "26",
     "largo": "18",
     "unidadesPorBulto": 100,
-    "precioActual": 106009.65,
+    "precioActual": 128282,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 116610.615
+    "precioNuevo": 128282,
+    "porcentaje": 10
   },
   {
-    "nombre": "Pesada rectangular N°5",
+    "nombre": "5",
     "categoria": "Cartonería",
     "seccion": "pesadas-rectangulares",
     "numero": "5",
     "ancho": "29",
     "largo": "21",
     "unidadesPorBulto": 100,
-    "precioActual": 135448.23,
+    "precioActual": 163900,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 148993.053
+    "precioNuevo": 163900,
+    "porcentaje": 10
   },
   {
-    "nombre": "Pesada rectangular N°6",
+    "nombre": "6",
     "categoria": "Cartonería",
     "seccion": "pesadas-rectangulares",
     "numero": "6",
     "ancho": "31",
     "largo": "23",
     "unidadesPorBulto": 100,
-    "precioActual": 182571.09,
+    "precioActual": 220913,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 200828.19900000002
+    "precioNuevo": 220913,
+    "porcentaje": 10
   },
   {
-    "nombre": "Pesada rectangular N°7",
+    "nombre": "7",
     "categoria": "Cartonería",
     "seccion": "pesadas-rectangulares",
     "numero": "7",
     "ancho": "34",
     "largo": "24",
     "unidadesPorBulto": 100,
-    "precioActual": 190822.6,
+    "precioActual": 230901,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 209904.86000000002
+    "precioNuevo": 230901,
+    "porcentaje": 10
   },
   {
-    "nombre": "Pesada rectangular N°8",
+    "nombre": "8",
     "categoria": "Cartonería",
     "seccion": "pesadas-rectangulares",
     "numero": "8",
     "ancho": "37",
     "largo": "25",
     "unidadesPorBulto": 100,
-    "precioActual": 238018.51,
+    "precioActual": 288013,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 261820.36100000003
+    "precioNuevo": 288013,
+    "porcentaje": 10
   },
   {
-    "nombre": "Pesada rectangular N°8½",
+    "nombre": "8½",
     "categoria": "Cartonería",
     "seccion": "pesadas-rectangulares",
     "numero": "8½",
     "ancho": "29",
     "largo": "39",
     "unidadesPorBulto": 100,
-    "precioActual": 271384.17,
+    "precioActual": 328383,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 298522.587
+    "precioNuevo": 328383,
+    "porcentaje": 10
   },
   {
-    "nombre": "Pesada rectangular N°9",
+    "nombre": "9",
     "categoria": "Cartonería",
     "seccion": "pesadas-rectangulares",
     "numero": "9",
     "ancho": "44",
     "largo": "30",
     "unidadesPorBulto": 50,
-    "precioActual": 372416.6,
+    "precioActual": 450626,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 409658.26
+    "precioNuevo": 450626,
+    "porcentaje": 10
   },
   {
-    "nombre": "Pesada redonda N°18",
+    "nombre": "18",
     "categoria": "Cartonería",
     "seccion": "pesadas-redondas",
     "numero": "18",
     "diametro": "35",
     "unidadesPorBulto": 100,
-    "precioActual": 253028.84,
+    "precioActual": 0,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 278331.72400000005
+    "precioNuevo": 0,
+    "porcentaje": 0,
+    "ancho": ""
   },
   {
     "nombre": "Discos de carton comunes (12-16/36)",
@@ -1650,10 +1725,14 @@
     "seccion": "otros-carton",
     "descripcion": "Discos de carton comunes (12-16/36)",
     "aCotizar": false,
-    "precioActual": 3641.44,
+    "precioActual": 4411,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 4005.5840000000003
+    "precioNuevo": 4411,
+    "porcentaje": 10,
+    "ancho": "",
+    "largo": "",
+    "unidadesPorBulto": null
   },
   {
     "nombre": "Bases de cartón (medidas vs)",
@@ -1661,10 +1740,14 @@
     "seccion": "otros-carton",
     "descripcion": "Bases de cartón (medidas vs)",
     "aCotizar": false,
-    "precioActual": 2561.18,
+    "precioActual": 3102,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 2817.2980000000002
+    "precioNuevo": 3102,
+    "porcentaje": 10,
+    "ancho": "",
+    "largo": "",
+    "unidadesPorBulto": null
   },
   {
     "nombre": "Fajas de cartón finas",
@@ -1672,10 +1755,14 @@
     "seccion": "otros-carton",
     "descripcion": "Fajas de cartón finas",
     "aCotizar": false,
-    "precioActual": 2283.25,
+    "precioActual": 2772,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 2511.5750000000003
+    "precioNuevo": 2772,
+    "porcentaje": 10,
+    "ancho": "",
+    "largo": "",
+    "unidadesPorBulto": null
   },
   {
     "nombre": "Fajas de cartón gruesas",
@@ -1683,10 +1770,14 @@
     "seccion": "otros-carton",
     "descripcion": "Fajas de cartón gruesas",
     "aCotizar": false,
-    "precioActual": 2739.9,
+    "precioActual": 3322,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 3013.8900000000003
+    "precioNuevo": 3322,
+    "porcentaje": 10,
+    "ancho": "",
+    "largo": "",
+    "unidadesPorBulto": null
   },
   {
     "nombre": "Fajas de cartulina",
@@ -1694,10 +1785,14 @@
     "seccion": "otros-carton",
     "descripcion": "Fajas de cartulina",
     "aCotizar": false,
-    "precioActual": 3107.93,
+    "precioActual": 3762,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 3418.723
+    "precioNuevo": 3762,
+    "porcentaje": 10,
+    "ancho": "",
+    "largo": "",
+    "unidadesPorBulto": null
   },
   {
     "nombre": "Kg de cartón en hoja 70 x 100 N°50 al 25 fino",
@@ -1705,10 +1800,14 @@
     "seccion": "otros-carton",
     "descripcion": "Kg de cartón en hoja 70 x 100 N°50 al 25 fino",
     "aCotizar": false,
-    "precioActual": 2335.46,
+    "precioActual": 2827,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 2569.0060000000003
+    "precioNuevo": 2827,
+    "porcentaje": 10,
+    "ancho": "",
+    "largo": "",
+    "unidadesPorBulto": null
   },
   {
     "nombre": "Kg de cartón en hoja 70 x 100 N°16 al 20 grueso",
@@ -1716,10 +1815,14 @@
     "seccion": "otros-carton",
     "descripcion": "Kg de cartón en hoja 70 x 100 N°16 al 20 grueso",
     "aCotizar": false,
-    "precioActual": 2785.51,
+    "precioActual": 3377,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 3064.0610000000006
+    "precioNuevo": 3377,
+    "porcentaje": 10,
+    "ancho": "",
+    "largo": "",
+    "unidadesPorBulto": null
   },
   {
     "nombre": "Kg  cartulina tricapa blanca",
@@ -1727,10 +1830,14 @@
     "seccion": "otros-carton",
     "descripcion": "Kg  cartulina tricapa blanca",
     "aCotizar": false,
-    "precioActual": 2954.35,
+    "precioActual": 3575,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 3249.7850000000003
+    "precioNuevo": 3575,
+    "porcentaje": 10,
+    "ancho": "",
+    "largo": "",
+    "unidadesPorBulto": null
   },
   {
     "nombre": "Discos de cartón blancos puro",
@@ -1741,7 +1848,8 @@
     "precioActual": 0,
     "tipoAumento": "porcentaje",
     "valorAumento": 10,
-    "precioNuevo": 0
+    "precioNuevo": 0,
+    "porcentaje": 0
   },
   {
     "categoria": "Cartonería",
@@ -1749,235 +1857,256 @@
     "fechaPublicacion": "2026-07-29"
   },
   {
-    "nombre": "Sulfito Sein rollos",
+    "nombre": "SULFITO SEIN ROLLOS",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "SULFITO SEIN ROLLOS",
     "formato": "20-40-60-80-100 cm",
-    "precioActual": 2215.48,
+    "precioActual": 2450,
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
-    "precioNuevo": 2326.254
+    "precioNuevo": 2450,
+    "porcentaje": null
   },
   {
-    "nombre": "Sulfito Sein cortado",
+    "nombre": "SULFITO SEIN CORTADO",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "SULFITO SEIN CORTADO",
     "formato": "30x40 / 40x50 / 52x72 / 58x81 / 64x90",
-    "precioActual": 2272.4,
+    "precioActual": 2510,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2272.4
+    "precioNuevo": 2510,
+    "porcentaje": null
   },
   {
-    "nombre": "Sulfito Sein corte al ½ resmas",
+    "nombre": "SULFITO SEIN CORTE AL ½ RESMAS",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "SULFITO SEIN CORTE AL ½ RESMAS",
     "formato": "",
-    "precioActual": 2342.85,
+    "precioActual": 2590,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2342.85
+    "precioNuevo": 2590,
+    "porcentaje": null
   },
   {
-    "nombre": "Sulfito Sein cortes especiales",
+    "nombre": "SULFITO SEIN CORTES ESPECIALES",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "SULFITO SEIN CORTES ESPECIALES",
     "formato": "7x14 / 18x25 / 33x33",
-    "precioActual": 2448.55,
+    "precioActual": 2700,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2448.55
+    "precioNuevo": 2700,
+    "porcentaje": null
   },
   {
-    "nombre": "Sulfito extra rollos",
+    "nombre": "SULFITO EXTRA ROLLOS",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "SULFITO EXTRA ROLLOS",
     "formato": "20-40-60-80 cm · Valot / Tucumán",
-    "precioActual": 3921.95,
+    "precioActual": 4330,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 3921.95
+    "precioNuevo": 4330,
+    "porcentaje": null
   },
   {
-    "nombre": "Fantasía varios s/sto Sein",
+    "nombre": "FANTASÍA VARIOS S/sto. SEIN",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "FANTASÍA VARIOS S/sto. SEIN",
     "formato": "20-40-60-80-100 cm",
-    "precioActual": 2668.91,
+    "precioActual": 3100,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2668.91
+    "precioNuevo": 3100,
+    "porcentaje": null
   },
   {
-    "nombre": "Sulfito mantel s/sto Sein",
+    "nombre": "SULFITO MANTEL s/sto. SEIN",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "SULFITO MANTEL s/sto. SEIN",
     "formato": "x 80 cm SEIN",
-    "precioActual": 2327.57,
+    "precioActual": 2570,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2327.57
+    "precioNuevo": 2570,
+    "porcentaje": null
   },
   {
-    "nombre": "Fantasía mantel s/sto Sein",
+    "nombre": "FANTASÍA MANTEL s/sto. SEIN",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "FANTASÍA MANTEL s/sto. SEIN",
     "formato": "x 80 cm",
-    "precioActual": 2929.83,
+    "precioActual": 3400,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2929.83
+    "precioNuevo": 3400,
+    "porcentaje": null
   },
   {
-    "nombre": "Kraft hojas 50/80 gr",
+    "nombre": "KRAFT HOJAS 50/80 grs.",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "KRAFT HOJAS 50/80 grs.",
     "formato": "SEIN FORMATO 85x120 cm",
-    "precioActual": 2012.22,
+    "precioActual": 2140,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2012.22
+    "precioNuevo": 2140,
+    "porcentaje": null
   },
   {
-    "nombre": "Kraft rollos 50 gr",
+    "nombre": "KRAFT ROLLOS 50 GRS",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "KRAFT ROLLOS 50 GRS",
     "formato": "20-40-60-80-100 cm",
-    "precioActual": 1916.4,
+    "precioActual": 2260,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1916.4
+    "precioNuevo": 2260,
+    "porcentaje": null
   },
   {
-    "nombre": "Kraft rollos 80 gr",
+    "nombre": "KRAFT ROLLOS 80 GRS",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "KRAFT ROLLOS 80 GRS",
     "formato": "40-60-80-100-120 cm",
-    "precioActual": 2113.86,
+    "precioActual": 2360,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2113.86
+    "precioNuevo": 2360,
+    "porcentaje": null
   },
   {
-    "nombre": "Fantasía panadería extra",
+    "nombre": "FANTASÍA PANADERÍA EXTRA",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "FANTASÍA PANADERÍA EXTRA",
     "formato": "20-40-60 cm",
-    "precioActual": 4326,
+    "precioActual": 4820,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 4326
+    "precioNuevo": 4820,
+    "porcentaje": null
   },
   {
-    "nombre": "Pleno extra colores vs rollos",
+    "nombre": "PLENO EXTRA COLORES VS ROLLOS",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "PLENO EXTRA COLORES VS ROLLOS",
     "formato": "20-40-60-80 cm · EXTRA",
-    "precioActual": 4813.3,
+    "precioActual": 5360,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 4813.3
+    "precioNuevo": 5360,
+    "porcentaje": null
   },
   {
-    "nombre": "Pleno extra rojo rollos",
+    "nombre": "PLENO EXTRA ROJO ROLLOS",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "PLENO EXTRA ROJO ROLLOS",
     "formato": "20-40-60-80 cm · EXTRA",
-    "precioActual": 5025.48,
+    "precioActual": 5600,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 5025.48
+    "precioNuevo": 5600,
+    "porcentaje": null
   },
   {
-    "nombre": "Fantasía panadería kraft",
+    "nombre": "FANTASÍA PANADERÍA KRAFT",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "FANTASÍA PANADERÍA KRAFT",
     "formato": "20-40-60-80 cm",
-    "precioActual": 2269.68,
+    "precioActual": 2640,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2269.68
+    "precioNuevo": 2640,
+    "porcentaje": null
   },
   {
-    "nombre": "Paquetes manteles individuales",
+    "nombre": "PAQUETES MANTELES INDIVIDUALES",
     "categoria": "Papeles",
     "seccion": "papeles-principales",
     "descripcion": "PAQUETES MANTELES INDIVIDUALES",
     "formato": "500 unidades surtidas",
-    "precioActual": 6813.88,
+    "precioActual": 8200,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 6813.88
+    "precioNuevo": 8200,
+    "porcentaje": null
   },
   {
-    "nombre": "Impresión 1 color",
+    "nombre": "1 COLOR",
     "categoria": "Papeles",
     "seccion": "recargos-impresion",
     "descripcion": "1 COLOR",
     "formato": "",
-    "precioActual": 400,
+    "precioActual": 500,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 400
+    "precioNuevo": 500,
+    "porcentaje": null
   },
   {
-    "nombre": "Impresión 2 colores",
+    "nombre": "2 COLORES",
     "categoria": "Papeles",
     "seccion": "recargos-impresion",
     "descripcion": "2 COLORES",
     "formato": "",
-    "precioActual": 600,
+    "precioActual": 700,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 600
+    "precioNuevo": 700,
+    "porcentaje": null
   },
   {
-    "nombre": "Impresió 3 colores",
+    "nombre": "3 COLORES",
     "categoria": "Papeles",
     "seccion": "recargos-impresion",
     "descripcion": "3 COLORES",
     "formato": "",
-    "precioActual": 900,
+    "precioActual": 1000,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 900
+    "precioNuevo": 1000,
+    "porcentaje": null
   },
   {
-    "nombre": "Impresión pleno suave",
+    "nombre": "PLENO SUAVE",
     "categoria": "Papeles",
     "seccion": "recargos-impresion",
     "descripcion": "PLENO SUAVE",
     "formato": "",
-    "precioActual": 1000,
+    "precioActual": 1200,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1000
+    "precioNuevo": 1200,
+    "porcentaje": null
   },
   {
-    "nombre": "Impresión pleno intenso",
+    "nombre": "PLENO INTENSO",
     "categoria": "Papeles",
     "seccion": "recargos-impresion",
     "descripcion": "PLENO INTENSO",
     "formato": "",
-    "precioActual": 1300,
+    "precioActual": 1500,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1300
+    "precioNuevo": 1500,
+    "porcentaje": null
   },
   {
     "nombre": "RESMAS DE MANTECA BLANQUEADO IMPORTADO",
@@ -1985,109 +2114,119 @@
     "seccion": "productos-importados",
     "descripcion": "RESMAS DE MANTECA BLANQUEADO IMPORTADO",
     "formato": "75x100 cm · 500 hojas",
-    "precioActual": 147692.18,
+    "precioActual": 155080,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 147692.18
+    "precioNuevo": 155080,
+    "porcentaje": null
   },
   {
-    "nombre": "RESMAS DE MOLDE  100x150 cm  (360 hojas) 11Kg.",
+    "nombre": "RESMAS DE MOLDE",
     "categoria": "Papeles",
     "seccion": "productos-importados",
     "descripcion": "RESMAS DE MOLDE",
     "formato": "100x150 cm · 360 hojas / 11 kg",
-    "precioActual": 144221.41,
+    "precioActual": 151440,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 144221.41
+    "precioNuevo": 151440,
+    "porcentaje": null
   },
   {
-    "nombre": "RESMAS DE PAPELE ANTIGRASA 75x100 cm  (500 hojas) 14 Kg.",
+    "nombre": "RESMAS DE PAPEL ANTIGRASA",
     "categoria": "Papeles",
     "seccion": "productos-importados",
     "descripcion": "RESMAS DE PAPEL ANTIGRASA",
     "formato": "75x100 cm · 500 hojas / 14 kg",
-    "precioActual": 153599.86,
+    "precioActual": 161280,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 153599.86
+    "precioNuevo": 161280,
+    "porcentaje": null
   },
   {
-    "nombre": "RESMAS DE SEDA BLANCO 75x100 (400 hojas) 6,5 Kg.",
+    "nombre": "RESMAS DE SEDA BLANCO",
     "categoria": "Papeles",
     "seccion": "productos-importados",
     "descripcion": "RESMAS DE SEDA BLANCO",
     "formato": "75x100 cm · 400 hojas / 6,5 kg",
-    "precioActual": 33338.75,
+    "precioActual": 35010,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 33338.75
+    "precioNuevo": 35010,
+    "porcentaje": null
   },
   {
-    "nombre": "KG PAPEL ANTIGRASA (25x37 - 18x25)",
+    "nombre": "KG PAPEL ANTIGRASA",
     "categoria": "Papeles",
     "seccion": "productos-importados",
     "descripcion": "KG PAPEL ANTIGRASA",
     "formato": "25x37 / 18x25",
-    "precioActual": 10751.99,
+    "precioActual": 11290,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 10751.99
+    "precioNuevo": 11290,
+    "porcentaje": null
   },
   {
-    "nombre": "RESMAS DE CELOFAN TRANSPARENTE 65x90 cm (400 hojas)",
+    "nombre": "RESMAS DE CELOFÁN TRANSPARENTE",
     "categoria": "Papeles",
     "seccion": "productos-importados",
     "descripcion": "RESMAS DE CELOFÁN TRANSPARENTE",
     "formato": "65x90 cm · 400 hojas",
-    "precioActual": 75570,
+    "precioActual": 79350,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 75570
+    "precioNuevo": 79350,
+    "porcentaje": null
   },
   {
-    "nombre": "RESMAS DE CELOFAN COLOR 55x90 cm (100 hojas)",
+    "nombre": "RESMAS DE CELOFÁN COLOR",
     "categoria": "Papeles",
     "seccion": "productos-importados",
     "descripcion": "RESMAS DE CELOFÁN COLOR",
     "formato": "55x90 cm · 100 hojas",
-    "precioActual": 26020,
+    "precioActual": 27330,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 26020
+    "precioNuevo": 27330,
+    "porcentaje": null
   },
   {
-    "nombre": "RESMAS CELOFAN DESAYUNO 100x120 (100 hojas)",
+    "nombre": "RESMAS CELOFÁN DESAYUNO",
     "categoria": "Papeles",
     "seccion": "productos-importados",
     "descripcion": "RESMAS CELOFÁN DESAYUNO",
     "formato": "100x120 · 100 hojas",
-    "precioActual": 63710,
+    "precioActual": 66900,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 63710
+    "precioNuevo": 66900,
+    "porcentaje": null
   },
   {
-    "nombre": "ROLLOS DE CELOFAN TRANSPARENTE 55x90 (10 hojas)",
+    "nombre": "ROLLOS DE CELOFÁN TRANSPARENTE",
     "categoria": "Papeles",
     "seccion": "productos-importados",
     "descripcion": "ROLLOS DE CELOFÁN TRANSPARENTE",
     "formato": "55x90 · 10 hojas",
-    "precioActual": 2050,
+    "precioActual": 2160,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2050
+    "precioNuevo": 2160,
+    "porcentaje": null
   },
   {
-    "nombre": "ROLLOS DE CELOFAN COLOR 55x90 (10 hojas)",
+    "nombre": "ROLLOS DE CELOFÁN COLOR",
     "categoria": "Papeles",
     "seccion": "productos-importados",
     "descripcion": "ROLLOS DE CELOFÁN COLOR",
     "formato": "55x90 · 10 hojas",
-    "precioActual": 2760,
+    "precioActual": 2900,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2760
+    "precioNuevo": 2900,
+    "porcentaje": null
   },
   {
     "categoria": "Papeles",
@@ -2099,174 +2238,174 @@
     }
   },
   {
-    "nombre": "Platos dorados ¼ kg",
+    "nombre": "1/4 Kg",
     "categoria": "Platos Dorados",
     "medida": "1/4 Kg",
     "porcentaje": 3,
-    "precioActual": 148.13,
+    "precioActual": 153,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 148.13
+    "precioNuevo": 153
   },
   {
-    "nombre": "Platos dorados ½ kg",
+    "nombre": "1/2 Kg",
     "categoria": "Platos Dorados",
     "medida": "1/2 Kg",
     "porcentaje": 3,
-    "precioActual": 235,
+    "precioActual": 243,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 235
+    "precioNuevo": 243
   },
   {
-    "nombre": "Platos dorados ¾ kg",
+    "nombre": "3/4 Kg",
     "categoria": "Platos Dorados",
     "medida": "3/4 Kg",
     "porcentaje": 3,
-    "precioActual": 307.5,
+    "precioActual": 317,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 307.5
+    "precioNuevo": 317
   },
   {
-    "nombre": "Platos dorados 1 kg",
+    "nombre": "1 Kg",
     "categoria": "Platos Dorados",
     "medida": "1 Kg",
     "porcentaje": 3,
-    "precioActual": 344.69,
+    "precioActual": 356,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 344.69
+    "precioNuevo": 356
   },
   {
-    "nombre": "Platos dorados 1½ kg",
+    "nombre": "1½ Kg",
     "categoria": "Platos Dorados",
     "medida": "1½ Kg",
     "porcentaje": 3,
-    "precioActual": 435.3,
+    "precioActual": 449,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 435.3
+    "precioNuevo": 449
   },
   {
-    "nombre": "Platos dorados 2 kg",
+    "nombre": "2 Kg",
     "categoria": "Platos Dorados",
     "medida": "2 Kg",
     "porcentaje": 3,
-    "precioActual": 526.9,
+    "precioActual": 543,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 526.9
+    "precioNuevo": 543
   },
   {
-    "nombre": "Platos dorados 3 kg",
+    "nombre": "3 Kg",
     "categoria": "Platos Dorados",
     "medida": "3 Kg",
     "porcentaje": 3,
-    "precioActual": 660.4,
+    "precioActual": 681,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 660.4
+    "precioNuevo": 681
   },
   {
-    "nombre": "Platos dorados 16 cm",
+    "nombre": "16 cm",
     "categoria": "Platos Dorados",
     "medida": "16 cm",
     "porcentaje": 3,
-    "precioActual": 184.6,
+    "precioActual": 191,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 184.6
+    "precioNuevo": 191
   },
   {
-    "nombre": "Platos dorados 18 cm",
+    "nombre": "18 cm",
     "categoria": "Platos Dorados",
     "medida": "18 cm",
     "porcentaje": 3,
-    "precioActual": 226.2,
+    "precioActual": 233,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 226.2
+    "precioNuevo": 233
   },
   {
-    "nombre": "Platos dorados 20 cm",
+    "nombre": "20 cm",
     "categoria": "Platos Dorados",
     "medida": "20 cm",
     "porcentaje": 3,
-    "precioActual": 237.3,
+    "precioActual": 245,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 237.3
+    "precioNuevo": 245
   },
   {
-    "nombre": "Platos dorados 22 cm",
+    "nombre": "22 cm",
     "categoria": "Platos Dorados",
     "medida": "22 cm",
     "porcentaje": 3,
-    "precioActual": 248.5,
+    "precioActual": 256,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 248.5
+    "precioNuevo": 256
   },
   {
-    "nombre": "Platos dorados 24 cm",
+    "nombre": "24 cm",
     "categoria": "Platos Dorados",
     "medida": "24 cm",
     "porcentaje": 3,
-    "precioActual": 282.8,
+    "precioActual": 292,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 282.8
+    "precioNuevo": 292
   },
   {
-    "nombre": "Platos dorados 26 cm",
+    "nombre": "26 cm",
     "categoria": "Platos Dorados",
     "medida": "26 cm",
     "porcentaje": 3,
-    "precioActual": 336.4,
+    "precioActual": 374,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 336.4
+    "precioNuevo": 374
   },
   {
-    "nombre": "Platos dorados 28 cm",
+    "nombre": "28 cm",
     "categoria": "Platos Dorados",
     "medida": "28 cm",
     "porcentaje": 3,
-    "precioActual": 382.3,
+    "precioActual": 432,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 382.3
+    "precioNuevo": 432
   },
   {
-    "nombre": "Platos dorados 31 cm",
+    "nombre": "31 cm",
     "categoria": "Platos Dorados",
     "medida": "31 cm",
     "porcentaje": 3,
-    "precioActual": 398.8,
+    "precioActual": 411,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 398.8
+    "precioNuevo": 411
   },
   {
-    "nombre": "Platos dorados 34 cm",
+    "nombre": "34 cm",
     "categoria": "Platos Dorados",
     "medida": "34 cm",
     "porcentaje": 3,
-    "precioActual": 519.9,
+    "precioActual": 583,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 519.9
+    "precioNuevo": 583
   },
   {
-    "nombre": "Platos dorados 36 cm",
+    "nombre": "36 cm",
     "categoria": "Platos Dorados",
     "medida": "36 cm",
     "porcentaje": 3,
-    "precioActual": 654.9,
+    "precioActual": 734,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 654.9
+    "precioNuevo": 734
   },
   {
     "categoria": "Platos Dorados",
@@ -2275,7 +2414,7 @@
     "notaComercial": "POR COMPRA DE 1.000 UNIDADES: 5% DE DESCUENTO"
   },
   {
-    "nombre": "Buffet 18 x 17",
+    "nombre": "BUFFET",
     "categoria": "Servilletas",
     "seccion": "productos",
     "detalle": "BUFFET",
@@ -2288,7 +2427,7 @@
     "precioNuevo": 8171.82
   },
   {
-    "nombre": "Buffet con fajas",
+    "nombre": "BUFFET CON FAJAS",
     "categoria": "Servilletas",
     "seccion": "productos",
     "detalle": "BUFFET CON FAJAS",

@@ -226,12 +226,16 @@ button:focus-visible { outline: 3px solid rgba(0, 0, 111, 0.28); outline-offset:
 
 .oculto { display: none !important; }
 
-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 16px; }
 th, td { padding: 11px 12px; border-bottom: 1px solid var(--borde); text-align: left; }
 th { background: var(--superficie-suave); color: var(--texto-suave); font-size: .78rem; letter-spacing: .025em; text-transform: uppercase; }
 tbody tr:hover { background: var(--superficie-suave); }
 .bloque-categoria { margin-bottom: 12px; }
 .bloque-categoria h3 { margin: 0 0 8px; padding-bottom: 12px; border-bottom: 1px solid var(--borde); font-size: 1.12rem; }
+.precio-final,
+.celda-precio {
+  white-space: nowrap;
+}
 .precio-final { font-size: 1rem; font-weight: 750; }
 .lista-consulta { padding: 20px 24px 18px; overflow: hidden; }
 .lista-consulta .barra-lista { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--borde); }
@@ -276,6 +280,49 @@ tbody tr:hover { background: var(--superficie-suave); }
 .tabla-lista-unificada td { padding: 8px 10px; }
 .tabla-lista-unificada tbody tr:nth-child(even) { background: var(--superficie-suave); }
 .tabla-admin-contenedor { width: 100%; overflow-x: auto; }
+.tabla-productos-admin {
+  min-width: 980px;
+  table-layout: fixed;
+}
+.tabla-productos-admin th,
+.tabla-productos-admin td {
+  height: 65px;
+  max-height: 65px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.tabla-productos-admin th:last-child,
+.tabla-productos-admin td:last-child {
+  width: 198px;
+  min-width: 198px;
+}
+.buscador-productos { display: flex; align-items: center; gap: 10px; margin: 14px 0 8px; }
+.buscador-productos label { font-size: .9rem; font-weight: 700; }
+.buscador-productos input { flex: 1; max-width: 420px; }
+.fila-en-edicion { background: var(--superficie-suave); }
+.input-edicion-inline {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+.acciones-producto-inline {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  width: 174px;
+  min-width: 174px;
+}
+.acciones-producto-inline button {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 10px 6px;
+  white-space: nowrap;
+}
 .tabla-recargos-admin input { width: calc(100% - 8px); min-width: 130px; margin: 4px; }
 .alinear-left { text-align: left; }
 .alinear-center { text-align: center; }
@@ -494,6 +541,8 @@ body.modo-oscuro .tarjeta-categoria:hover { border-color: var(--primario); }
   .pie-documento { margin-right: -16px; margin-bottom: -16px; margin-left: -16px; padding-right: 16px; padding-left: 16px; }
   .acciones-admin { grid-template-columns: 1fr; }
   .campo-fecha-admin { align-items: stretch; flex-direction: column; }
+  .buscador-productos { align-items: stretch; flex-direction: column; }
+  .buscador-productos input { width: 100%; max-width: none; margin: 0; }
   #moduloCategoria section:last-child { overflow-x: auto; }
 }
 

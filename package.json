@@ -1,9 +1,10 @@
 {
   "name": "actualizador-listas-lasa",
   "version": "1.0.0",
-  "description": "",
-  "main": "script.js",
+  "description": "Gestión y publicación de listas de precios de LASA",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "node --test"
   },
   "keywords": [],

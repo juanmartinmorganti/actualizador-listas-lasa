@@ -54,10 +54,48 @@
     };
   }
 
+  function aplicarEdicionIndividual(producto, cambios) {
+    const actualizado = { ...producto, ...cambios };
+
+    if (Object.prototype.hasOwnProperty.call(cambios, "precioActual")) {
+      actualizado.precioNuevo = cambios.precioActual;
+    }
+
+    return actualizado;
+  }
+
+  function obtenerPorcentajeManual(producto) {
+    if (producto.porcentaje === null || producto.porcentaje === "") return null;
+    const porcentaje = Number(producto.porcentaje);
+    return Number.isFinite(porcentaje) ? porcentaje : null;
+  }
+
+  function obtenerPrecioVigente(producto) {
+    const precioNuevo = Number(producto.precioNuevo);
+    if (Number.isFinite(precioNuevo)) return precioNuevo;
+
+    return Number(producto.precioActual);
+  }
+
+  function aplicarAumentoMasivo(producto, tipoAumento, valorAumento, precioNuevo) {
+    return {
+      ...producto,
+      tipoAumento,
+      valorAumento,
+      precioActual: precioNuevo,
+      precioNuevo,
+      ...(tipoAumento === "porcentaje" ? { porcentaje: valorAumento } : {}),
+    };
+  }
+
   const api = {
     configuracionPreciosPorCategoria,
     aplicarRedondeo,
+    aplicarEdicionIndividual,
+    aplicarAumentoMasivo,
     calcularPrecio,
+    obtenerPrecioVigente,
+    obtenerPorcentajeManual,
   };
 
   if (typeof module !== "undefined" && module.exports) {

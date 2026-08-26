@@ -1,32 +1,10 @@
 (function (global) {
-  const configuracionPreciosPorCategoria = Object.freeze({
-    "Bolsas Blanca Extra": Object.freeze({
-      rounding: Object.freeze({
-        mode: "ceil",
-        multiple: 10,
-        operations: Object.freeze(["porcentaje"]),
-      }),
-    }),
-    "Bolsas Blanca II": Object.freeze({
-      rounding: Object.freeze({
-        mode: "ceil",
-        multiple: 10,
-        operations: Object.freeze([
-          "porcentaje",
-          "descuento-porcentaje",
-        ]),
-      }),
-    }),
-  });
+  function aplicarRedondeoComercial(valor) {
+    const numero = Number(valor);
+    if (!Number.isFinite(numero)) return valor;
 
-  function aplicarRedondeo(valor, configuracion) {
-    if (!configuracion) return valor;
-
-    if (configuracion.mode === "ceil") {
-      return Math.ceil(valor / configuracion.multiple) * configuracion.multiple;
-    }
-
-    return valor;
+    // Equivale a REDONDEAR.MAS(valor; 0) para los precios no negativos.
+    return Math.ceil(numero);
   }
 
   function calcularPrecio(precioActual, tipoAumento, valorAumento, categoria) {
@@ -42,16 +20,49 @@
       precioCalculado = Math.max(0, precioActual - valorAumento);
     }
 
-    const configuracionRedondeo =
-      configuracionPreciosPorCategoria[categoria]?.rounding;
-    const rounding = configuracionRedondeo?.operations.includes(tipoAumento)
-      ? configuracionRedondeo
-      : undefined;
-
     return {
       precioCalculado,
-      precioFinal: aplicarRedondeo(precioCalculado, rounding),
+      // Se conserva por compatibilidad con los consumidores actuales. Ya no
+      // incluye ninguna transformación comercial.
+      precioFinal: precioCalculado,
     };
+  }
+
+  function obtenerPrecioCalculado(producto) {
+    if (producto.precioCalculado !== null && producto.precioCalculado !== "") {
+      const precioCalculado = Number(producto.precioCalculado);
+      if (Number.isFinite(precioCalculado)) return precioCalculado;
+    }
+
+    if (producto.precioNuevo !== null && producto.precioNuevo !== "") {
+      const precioNuevo = Number(producto.precioNuevo);
+      if (Number.isFinite(precioNuevo)) return precioNuevo;
+    }
+
+    return Number(producto.precioActual);
+  }
+
+  function obtenerPrecioPublicado(producto) {
+    if (producto.precioPublicado !== null && producto.precioPublicado !== "") {
+      const precioPublicado = Number(producto.precioPublicado);
+      if (Number.isFinite(precioPublicado)) return precioPublicado;
+    }
+    return obtenerPrecioCalculado(producto);
+  }
+
+  function aplicarRedondeoAProducto(producto) {
+    const precioCalculado = obtenerPrecioCalculado(producto);
+    return {
+      ...producto,
+      precioCalculado,
+      precioPublicado: aplicarRedondeoComercial(precioCalculado),
+    };
+  }
+
+  function quitarRedondeoAProducto(producto) {
+    const actualizado = { ...producto };
+    delete actualizado.precioPublicado;
+    return actualizado;
   }
 
   function aplicarEdicionIndividual(producto, cambios) {
@@ -59,6 +70,8 @@
 
     if (Object.prototype.hasOwnProperty.call(cambios, "precioActual")) {
       actualizado.precioNuevo = cambios.precioActual;
+      actualizado.precioCalculado = cambios.precioActual;
+      delete actualizado.precioPublicado;
     }
 
     return actualizado;
@@ -71,30 +84,33 @@
   }
 
   function obtenerPrecioVigente(producto) {
-    const precioNuevo = Number(producto.precioNuevo);
-    if (Number.isFinite(precioNuevo)) return precioNuevo;
-
-    return Number(producto.precioActual);
+    return obtenerPrecioCalculado(producto);
   }
 
   function aplicarAumentoMasivo(producto, tipoAumento, valorAumento, precioNuevo) {
-    return {
+    const actualizado = {
       ...producto,
       tipoAumento,
       valorAumento,
       precioActual: precioNuevo,
       precioNuevo,
+      precioCalculado: precioNuevo,
       ...(tipoAumento === "porcentaje" ? { porcentaje: valorAumento } : {}),
     };
+    delete actualizado.precioPublicado;
+    return actualizado;
   }
 
   const api = {
-    configuracionPreciosPorCategoria,
-    aplicarRedondeo,
+    aplicarRedondeoComercial,
+    aplicarRedondeoAProducto,
+    quitarRedondeoAProducto,
     aplicarEdicionIndividual,
     aplicarAumentoMasivo,
     calcularPrecio,
     obtenerPrecioVigente,
+    obtenerPrecioCalculado,
+    obtenerPrecioPublicado,
     obtenerPorcentajeManual,
   };
 

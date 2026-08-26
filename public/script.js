@@ -49,6 +49,9 @@ const tipoAumentoMasivoInput = document.getElementById("tipoAumentoMasivo");
 const seccionAjusteInput = document.getElementById("seccionAjuste");
 const valorAumentoMasivoInput = document.getElementById("valorAumentoMasivo");
 const aplicarAumentoMasivoBtn = document.getElementById("aplicarAumentoMasivo");
+const alcanceRedondeoInput = document.getElementById("alcanceRedondeo");
+const aplicarRedondeoComercialBtn = document.getElementById("aplicarRedondeoComercial");
+const quitarRedondeoComercialBtn = document.getElementById("quitarRedondeoComercial");
 
 const tablaProductos = document.getElementById("tablaProductos");
 const encabezadoTablaProductos = document.getElementById("encabezadoTablaProductos");
@@ -69,11 +72,10 @@ const tituloResultadoFinal = document.getElementById("tituloResultadoFinal");
 const fechaActualizacionTexto = document.getElementById("fechaActualizacionTexto");
 const fechaActualizacionAdmin = document.getElementById("fechaActualizacionAdmin");
 const fechaActualizacionLabel = document.getElementById("fechaActualizacionLabel");
-const fechasSeccionesPapeles = document.getElementById("fechasSeccionesPapeles");
-const fechaRecargosPapeles = document.getElementById("fechaRecargosPapeles");
+const fechaPublicacionImpresionAdmin = document.getElementById("fechaPublicacionImpresionAdmin");
+const fechaImpresionAdmin = document.getElementById("fechaImpresionAdmin");
+const fechaImportadosPapelesAdmin = document.getElementById("fechaImportadosPapelesAdmin");
 const fechaImportadosPapeles = document.getElementById("fechaImportadosPapeles");
-const fechaSeccionServilletas = document.getElementById("fechaSeccionServilletas");
-const fechaImpresionServilletas = document.getElementById("fechaImpresionServilletas");
 const resultadoFinalCategoria = document.getElementById("resultadoFinalCategoria");
 
 const volverPortadaBtn = document.getElementById("volverPortada");
@@ -179,7 +181,7 @@ function calcularPrecioNuevo(precioActual, tipoAumento, valorAumento, categoria)
 
 function crearDetalleVistaPrevia(producto, tipoAumento, valorAumento, categoria) {
   const precioVigente = PricingLASA.obtenerPrecioVigente(producto);
-  const { precioCalculado, precioFinal } = PricingLASA.calcularPrecio(
+  const { precioCalculado } = PricingLASA.calcularPrecio(
     precioVigente,
     tipoAumento,
     valorAumento,
@@ -196,17 +198,18 @@ function crearDetalleVistaPrevia(producto, tipoAumento, valorAumento, categoria)
     : formatearMoneda(valorAumento);
 
   return {
-    precioFinal,
+    precioFinal: precioCalculado,
     texto: [
       producto.nombre,
       `Precio anterior: ${formatearMoneda(precioVigente)}`,
       `${etiquetaOperacion}: ${valorOperacion}`,
-      ...(precioCalculado !== precioFinal
-        ? [`Resultado sin redondear: ${formatearMoneda(precioCalculado)}`]
-        : []),
-      `Precio final: ${formatearMoneda(precioFinal)}`,
+      `Precio calculado: ${formatearMoneda(precioCalculado)}`,
     ].join("\n"),
   };
+}
+
+function obtenerPrecioPublicado(producto) {
+  return PricingLASA.obtenerPrecioPublicado(producto);
 }
 
 function formatearMoneda(valor) {
@@ -267,6 +270,15 @@ function esCategoriaServilletas(categoria) {
   return categoria === "Servilletas";
 }
 
+function tieneBloqueImpresion(categoria) {
+  return (
+    esCategoriaServilletas(categoria) ||
+    esCategoriaPapeles(categoria) ||
+    categoria === "Papel" ||
+    esCategoriaBolsaAmericana(categoria)
+  );
+}
+
 function usaConfiguracionCategoria(categoria) {
   return (
     esCategoriaFastFood(categoria) ||
@@ -315,12 +327,12 @@ function actualizarCamposEspeciales(categoria) {
   document.querySelectorAll(".campo-papeles").forEach((elemento) => {
     elemento.classList.toggle("oculto", !esCategoriaPapeles(categoria));
   });
-  fechasSeccionesPapeles.classList.toggle("oculto", !esCategoriaPapeles(categoria));
+  fechaPublicacionImpresionAdmin.classList.toggle("oculto", !tieneBloqueImpresion(categoria));
+  fechaImportadosPapelesAdmin.classList.toggle("oculto", !esCategoriaPapeles(categoria));
   notaPlatosAdmin.classList.toggle("oculto", !esCategoriaPlatosDorados(categoria));
   document.querySelectorAll(".campo-servilletas").forEach((elemento) => {
     elemento.classList.toggle("oculto", !esCategoriaServilletas(categoria));
   });
-  fechaSeccionServilletas.classList.toggle("oculto", !esCategoriaServilletas(categoria));
   actualizarCamposSeccionServilletas();
   const usaSecciones =
     esCategoriaCartoneria(categoria) ||
@@ -426,7 +438,13 @@ function cargarFechaActualizacion(categoria) {
   const fechaGuardada = obtenerFechaActualizacion(categoria);
 
   fechaActualizacionTexto.textContent = fechaGuardada
-    ? `${esCategoriaFastFood(categoria) || esCategoriaBolsaAmericana(categoria) ? "Fecha de publicación" : "Última actualización"}: ${formatearFechaArgentina(fechaGuardada)}`
+    ? `${
+        tieneBloqueImpresion(categoria)
+          ? "Última actualización productos"
+          : esCategoriaFastFood(categoria) || esCategoriaBolsaAmericana(categoria)
+            ? "Fecha de publicación"
+            : "Última actualización"
+      }: ${formatearFechaArgentina(fechaGuardada)}`
     : "Sin fecha publicada";
 }
 
@@ -435,6 +453,18 @@ function obtenerFechaActualizacion(categoria) {
     return obtenerConfiguracionCategoria(categoria)?.fechaPublicacion || "";
   }
   return localStorage.getItem(obtenerClaveFechaCategoria(categoria)) || "";
+}
+
+function obtenerFechaImpresion(categoria) {
+  if (!tieneBloqueImpresion(categoria)) return "";
+
+  const configuracion = obtenerConfiguracionCategoria(categoria);
+  return (
+    configuracion?.fechaPublicacionImpresion ||
+    configuracion?.fechasSecciones?.impresion ||
+    configuracion?.fechasSecciones?.["recargos-impresion"] ||
+    obtenerFechaActualizacion(categoria)
+  );
 }
 
 function renderizarPanelAdmin() {
@@ -582,24 +612,24 @@ function crearCeldasVisualizacionProducto(producto, index) {
     <td>${escaparHTML(producto.seccion || "—")}</td>
     <td class="alinear-center">${escaparHTML(producto.formato || "—")}</td>
     <td class="alinear-center">${escaparHTML(producto.unidad || "—")}</td>
-    <td class="alinear-right celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-right celda-precio"><strong>${formatearMoneda(obtenerPrecioPublicado(producto))}</strong></td>
     <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
     <td>${crearAccionesProducto(index)}</td>`;
   if (esCategoriaPlatosDorados(categoriaActiva)) return `
     <td class="alinear-center">${escaparHTML(producto.medida || producto.nombre)}</td>
-    <td class="alinear-right celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-right celda-precio"><strong>${formatearMoneda(obtenerPrecioPublicado(producto))}</strong></td>
     <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
     <td>${crearAccionesProducto(index)}</td>`;
   if (esCategoriaPapeles(categoriaActiva)) return `
     <td>${escaparHTML(producto.descripcion || producto.nombre)}</td>
     <td>${escaparHTML(producto.seccion || "—")}</td>
     <td>${escaparHTML(producto.formato || "—")}</td>
-    <td class="alinear-right celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-right celda-precio"><strong>${formatearMoneda(obtenerPrecioPublicado(producto))}</strong></td>
     <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
     <td>${crearAccionesProducto(index)}</td>`;
   if (esCategoriaMoldes(categoriaActiva)) return `
     <td>${escaparHTML(producto.descripcion || producto.nombre)}</td>
-    <td class="alinear-right celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-right celda-precio"><strong>${formatearMoneda(obtenerPrecioPublicado(producto))}</strong></td>
     <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
     <td>${crearAccionesProducto(index)}</td>`;
   if (esCategoriaCartoneria(categoriaActiva)) return `
@@ -608,7 +638,7 @@ function crearCeldasVisualizacionProducto(producto, index) {
     <td class="alinear-center">${escaparHTML(producto.ancho || "—")}</td>
     <td class="alinear-center">${escaparHTML(producto.largo || producto.diametro || "—")}</td>
     <td class="alinear-center">${formatearEntero(producto.unidadesPorBulto)}</td>
-    <td class="alinear-right celda-precio"><strong>${producto.aCotizar ? "A cotizar" : formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-right celda-precio"><strong>${producto.aCotizar ? "A cotizar" : formatearMoneda(obtenerPrecioPublicado(producto))}</strong></td>
     <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
     <td>${crearAccionesProducto(index)}</td>`;
   if (esCategoriaBolsaAmericana(categoriaActiva)) return `
@@ -617,7 +647,7 @@ function crearCeldasVisualizacionProducto(producto, index) {
     <td class="alinear-center">${escaparHTML(producto.largo || "—")}</td>
     <td class="alinear-center">${escaparHTML(producto.fuelle || "—")}</td>
     <td class="alinear-center">${formatearEntero(producto.unidadesPorBulto)}</td>
-    <td class="alinear-right celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="alinear-right celda-precio"><strong>${formatearMoneda(obtenerPrecioPublicado(producto))}</strong></td>
     <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
     <td>${crearAccionesProducto(index)}</td>`;
   return `
@@ -625,7 +655,7 @@ function crearCeldasVisualizacionProducto(producto, index) {
     <td class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">${escaparHTML(producto.medida || "—")}</td>
     <td class="columna-fast-food ${esCategoriaFastFood(categoriaActiva) ? "" : "oculto"}">${formatearEntero(producto.unidadesPorCaja)}</td>
     <td>${escaparHTML(producto.categoria)}</td>
-    <td class="celda-precio"><strong>${formatearMoneda(producto.precioNuevo)}</strong></td>
+    <td class="celda-precio"><strong>${formatearMoneda(obtenerPrecioPublicado(producto))}</strong></td>
     <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
     <td>${crearAccionesProducto(index)}</td>`;
 }
@@ -721,7 +751,7 @@ function crearAccionesEdicion(index) {
 
 function crearCeldasEdicionProducto(producto, index) {
   const acciones = `<td>${crearAccionesEdicion(index)}</td>`;
-  const precio = crearInputEdicion("precioActual", producto.precioNuevo, "number", 'min="0" step="any"');
+  const precio = crearInputEdicion("precioActual", PricingLASA.obtenerPrecioCalculado(producto), "number", 'min="0" step="any"');
   const porcentaje = crearInputEdicion(
     "porcentaje",
     PricingLASA.obtenerPorcentajeManual(producto) ?? "",
@@ -780,7 +810,7 @@ function crearTablaFinalCategoria(categoria, productosCategoria, mostrarCategori
     contenido += `
       <tr>
         <td>${producto.nombre}</td>
-        <td class="precio-final">${formatearMoneda(producto.precioNuevo)}</td>
+        <td class="precio-final">${formatearMoneda(obtenerPrecioPublicado(producto))}</td>
       </tr>
     `;
   });
@@ -820,7 +850,7 @@ const configuracionListas = {
       },
       {
         label: "Precio unitario",
-        value: (producto) => formatearMoneda(producto.precioNuevo),
+        value: (producto) => formatearMoneda(obtenerPrecioPublicado(producto)),
         align: "right",
         width: "25%",
         className: "precio-final",
@@ -835,7 +865,7 @@ const configuracionListas = {
       { label: "LARGO\ncm", value: (p) => p.largo, align: "center", width: "11%" },
       { label: "FUELLE\ncm", value: (p) => p.fuelle, align: "center", width: "11%" },
       { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "20%" },
-      { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "22%", className: "precio-final" },
+      { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "22%", className: "precio-final" },
       { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "11%" },
     ],
     percentageNote: true,
@@ -851,7 +881,7 @@ const configuracionListas = {
       },
       {
         label: "Precio por millar",
-        value: (producto) => formatearMoneda(producto.precioNuevo),
+        value: (producto) => formatearMoneda(obtenerPrecioPublicado(producto)),
         align: "right",
         width: "27%",
         className: "precio-final",
@@ -875,7 +905,7 @@ const configuracionListas = {
       },
       {
         label: "Precio",
-        value: (producto) => formatearMoneda(producto.precioNuevo),
+        value: (producto) => formatearMoneda(obtenerPrecioPublicado(producto)),
         align: "right",
         width: "27%",
         className: "precio-final",
@@ -919,14 +949,14 @@ const columnasCartoneriaRectangular = [
   { label: "NÚMERO", value: (p) => p.numero, align: "center", width: "12%" },
   { label: "ANCHO\ncm", value: (p) => p.ancho, align: "center", width: "14%" },
   { label: "LARGO\ncm", value: (p) => p.largo, align: "center", width: "14%" },
-  { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "25%", className: "precio-final" },
+  { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "25%", className: "precio-final" },
   { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "22%" },
   { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "13%" },
 ];
 const columnasCartoneriaRedonda = [
   { label: "NÚMERO", value: (p) => p.numero, align: "center", width: "15%" },
   { label: "DIÁMETRO\ncm", value: (p) => p.diametro, align: "center", width: "20%" },
-  { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "25%", className: "precio-final" },
+  { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "25%", className: "precio-final" },
   { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "25%" },
   { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "15%" },
 ];
@@ -946,7 +976,7 @@ configuracionListas.Cartonería = {
       id: "otros-carton",
       columns: [
         { label: "DESCRIPCIÓN", value: (p) => p.descripcion, align: "left", width: "60%" },
-        { label: "PRECIO", value: (p) => p.aCotizar ? "A cotizar" : formatearMoneda(p.precioNuevo), align: "right", width: "25%", className: "precio-final" },
+        { label: "PRECIO", value: (p) => p.aCotizar ? "A cotizar" : formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "25%", className: "precio-final" },
         { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "15%" },
       ],
     },
@@ -964,16 +994,16 @@ configuracionListas.Papeles = {
       columns: [
         { label: "DESCRIPCIÓN", value: (p) => p.descripcion, align: "left", width: "42%" },
         { label: "FORMATOS / MEDIDAS", value: (p) => p.formato || "—", align: "center", width: "36%" },
-        { label: "PRECIO", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "22%", className: "precio-final" },
+        { label: "PRECIO", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "22%", className: "precio-final" },
       ],
     },
     {
       id: "recargos-impresion",
       title: "RECARGOS POR IMPRESIÓN",
-      showDate: true,
+      showImpressionDate: true,
       columns: [
         { label: "TIPO DE IMPRESIÓN", value: (p) => p.descripcion, align: "left", width: "65%" },
-        { label: "PRECIO", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "35%", className: "precio-final" },
+        { label: "PRECIO", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "35%", className: "precio-final" },
       ],
     },
     {
@@ -983,7 +1013,7 @@ configuracionListas.Papeles = {
       columns: [
         { label: "DESCRIPCIÓN", value: (p) => p.descripcion, align: "left", width: "42%" },
         { label: "FORMATO / DETALLE", value: (p) => p.formato || "—", align: "center", width: "36%" },
-        { label: "PRECIO", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "22%", className: "precio-final" },
+        { label: "PRECIO", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "22%", className: "precio-final" },
       ],
     },
   ].map((seccion) => ({
@@ -998,7 +1028,7 @@ configuracionListas["Platos Dorados"] = {
   percentageNote: true,
   columns: [
     { label: "MEDIDA", value: (p) => p.medida, align: "center", width: "40%" },
-    { label: "PRECIO POR UNIDAD", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "40%", className: "precio-final" },
+    { label: "PRECIO POR UNIDAD", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "40%", className: "precio-final" },
     { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "20%" },
   ],
 };
@@ -1013,17 +1043,17 @@ configuracionListas.Servilletas = {
         { label: "DETALLE", value: (p) => p.detalle, align: "left", width: "27%" },
         { label: "FORMATO", value: (p) => p.formato, align: "center", width: "15%" },
         { label: "UNIDAD", value: (p) => p.unidad, align: "center", width: "27%" },
-        { label: "PRECIO POR UNIDAD", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "20%", className: "precio-final" },
+        { label: "PRECIO POR UNIDAD", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "20%", className: "precio-final" },
         { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "11%" },
       ],
     },
     {
       id: "impresion",
       title: "IMPRESIÓN",
-      showDate: true,
+      showImpressionDate: true,
       columns: [
         { label: "DESCRIPCIÓN", value: (p) => p.descripcion, align: "left", width: "65%" },
-        { label: "PRECIO", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "35%", className: "precio-final" },
+        { label: "PRECIO", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "35%", className: "precio-final" },
       ],
     },
     {
@@ -1031,7 +1061,7 @@ configuracionListas.Servilletas = {
       title: "SECAMANOS",
       columns: [
         { label: "DESCRIPCIÓN", value: (p) => p.descripcion, align: "left", width: "65%" },
-        { label: "PRECIO", value: (p) => formatearMoneda(p.precioNuevo), align: "right", width: "35%", className: "precio-final" },
+        { label: "PRECIO", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "35%", className: "precio-final" },
       ],
     },
   ].map((seccion) => ({
@@ -1104,10 +1134,12 @@ function crearTablaConfigurada(columnas, productosSeccion) {
   `;
 }
 
-function crearSeccionRecargos(recargos) {
+function crearSeccionRecargos(categoria, recargos) {
   if (recargos.length === 0) {
     return "";
   }
+
+  const fechaImpresion = obtenerFechaImpresion(categoria);
 
   const filas = recargos
     .map(
@@ -1123,6 +1155,7 @@ function crearSeccionRecargos(recargos) {
 
   return `
     <section class="seccion-lista seccion-recargos">
+      ${fechaImpresion ? `<p class="fecha-seccion fecha-seccion--impresion">Última actualización impresión: ${formatearFechaArgentina(fechaImpresion)}</p>` : ""}
       <h3>RECARGO POR IMPRESIÓN</h3>
       <div class="tabla-lista-contenedor">
         <table class="tabla-lista-unificada tabla-recargos">
@@ -1175,7 +1208,11 @@ function crearListaConfigurada(categoria, productosCategoria, seccionesColapsabl
         return "";
       }
 
+      const fechaImpresion = seccion.showImpressionDate
+        ? obtenerFechaImpresion(categoria)
+        : "";
       const encabezadoSeccion = `
+        ${fechaImpresion ? `<p class="fecha-seccion fecha-seccion--impresion">Última actualización impresión: ${formatearFechaArgentina(fechaImpresion)}</p>` : ""}
         ${seccion.title ? `<h3>${escaparHTML(seccion.title)}</h3>` : ""}
         ${seccion.subtitle ? `<p class="subtitulo-seccion">${escaparHTML(seccion.subtitle)}</p>` : ""}
         ${
@@ -1216,7 +1253,7 @@ function crearListaConfigurada(categoria, productosCategoria, seccionesColapsabl
 
   if (esCategoriaBolsaAmericana(categoria)) {
     const recargos = obtenerConfiguracionCategoria(categoria)?.recargosImpresion || [];
-    contenido += crearSeccionRecargos(recargos);
+    contenido += crearSeccionRecargos(categoria, recargos);
   }
 
   let nota = "";
@@ -1517,13 +1554,10 @@ function abrirModuloCategoria(categoria) {
   categoriaMasivaInput.value = categoria;
   fechaActualizacionAdmin.value = obtenerFechaActualizacion(categoria);
   const configuracionCategoria = obtenerConfiguracionCategoria(categoria);
-  fechaRecargosPapeles.value =
-    configuracionCategoria?.fechasSecciones?.["recargos-impresion"] || "";
   fechaImportadosPapeles.value =
     configuracionCategoria?.fechasSecciones?.["productos-importados"] || "";
   textoNotaPlatosInput.value = configuracionCategoria?.notaComercial || "";
-  fechaImpresionServilletas.value =
-    configuracionCategoria?.fechasSecciones?.impresion || "";
+  fechaImpresionAdmin.value = obtenerFechaImpresion(categoria);
   fechaActualizacionLabel.textContent = esCategoriaFastFood(categoria) || usaConfiguracionCategoria(categoria)
     ? "Fecha de publicación"
     : "Fecha de actualización";
@@ -1701,26 +1735,20 @@ fechaActualizacionAdmin.addEventListener("change", async () => {
 seccionCartoneriaInput.addEventListener("change", actualizarCamposSeccionCartoneria);
 seccionServilletasInput.addEventListener("change", actualizarCamposSeccionServilletas);
 
-async function guardarFechaSeccionPapeles(seccion, fecha) {
-  const configuracion = obtenerConfiguracionCategoria("Papeles");
-  if (!configuracion || !fecha) return;
-  configuracion.fechasSecciones ||= {};
-  configuracion.fechasSecciones[seccion] = fecha;
+fechaImpresionAdmin.addEventListener("change", async () => {
+  if (!categoriaActiva || !tieneBloqueImpresion(categoriaActiva) || !fechaImpresionAdmin.value) return;
+  const configuracion = obtenerConfiguracionCategoria(categoriaActiva);
+  if (!configuracion) return;
+  configuracion.fechaPublicacionImpresion = fechaImpresionAdmin.value;
   await guardarProductos();
   renderizarListaPorCategoria();
-}
+});
 
-fechaRecargosPapeles.addEventListener("change", () =>
-  guardarFechaSeccionPapeles("recargos-impresion", fechaRecargosPapeles.value)
-);
-fechaImportadosPapeles.addEventListener("change", () =>
-  guardarFechaSeccionPapeles("productos-importados", fechaImportadosPapeles.value)
-);
-fechaImpresionServilletas.addEventListener("change", async () => {
-  const configuracion = obtenerConfiguracionCategoria("Servilletas");
-  if (!configuracion || !fechaImpresionServilletas.value) return;
+fechaImportadosPapeles.addEventListener("change", async () => {
+  const configuracion = obtenerConfiguracionCategoria("Papeles");
+  if (!configuracion || !fechaImportadosPapeles.value) return;
   configuracion.fechasSecciones ||= {};
-  configuracion.fechasSecciones.impresion = fechaImpresionServilletas.value;
+  configuracion.fechasSecciones["productos-importados"] = fechaImportadosPapeles.value;
   await guardarProductos();
   renderizarListaPorCategoria();
 });
@@ -1787,22 +1815,6 @@ agregarProductoBtn.addEventListener("click", async () => {
     categoria
   );
 
-  if (
-    PricingLASA.configuracionPreciosPorCategoria[
-      categoria
-    ]?.rounding.operations.includes(tipoAumento) &&
-    !confirm(
-      `Vista previa del aumento\n\n${crearDetalleVistaPrevia(
-        { nombre, precioActual },
-        tipoAumento,
-        valorAumento,
-        categoria
-      ).texto}\n\n¿Confirmás guardar este precio?`
-    )
-  ) {
-    return;
-  }
-
   const producto = {
     nombre,
     categoria,
@@ -1844,6 +1856,7 @@ agregarProductoBtn.addEventListener("click", async () => {
     tipoAumento,
     valorAumento,
     precioNuevo,
+    precioCalculado: precioNuevo,
   };
 
   productos.push(producto);
@@ -1949,7 +1962,7 @@ exportarCSVBtn.addEventListener("click", () => {
   }
 
   const filasCSV = [
-    ["Producto", "Categoría", "Precio actual", "Tipo aumento", "Valor aumento", "Precio nuevo"],
+    ["Producto", "Categoría", "Precio actual", "Tipo aumento", "Valor aumento", "Precio calculado", "Precio publicado"],
   ];
 
   productosFiltrados.forEach((producto) => {
@@ -1959,7 +1972,8 @@ exportarCSVBtn.addEventListener("click", () => {
       producto.precioActual,
       producto.tipoAumento,
       producto.valorAumento,
-      producto.precioNuevo,
+      PricingLASA.obtenerPrecioCalculado(producto),
+      PricingLASA.obtenerPrecioPublicado(producto),
     ]);
   });
 
@@ -2064,6 +2078,71 @@ aplicarAumentoMasivoBtn.addEventListener("click", async () => {
 
   alert("Aumento aplicado correctamente.");
 });
+
+function productoIncluidoEnRedondeo(producto, alcance) {
+  return (
+    !esRegistroConfiguracion(producto) &&
+    !producto.aCotizar &&
+    (alcance === "lista" || producto.categoria === categoriaActiva)
+  );
+}
+
+async function cambiarRedondeoComercial(aplicar) {
+  if (!categoriaActiva) {
+    alert("Primero seleccioná una categoría.");
+    return;
+  }
+
+  const alcance = alcanceRedondeoInput.value;
+  const afectados = productos.filter((producto) =>
+    productoIncluidoEnRedondeo(producto, alcance)
+  );
+  if (afectados.length === 0) {
+    alert("No hay productos para actualizar.");
+    return;
+  }
+
+  const muestra = afectados
+    .slice(0, 8)
+    .map((producto) => {
+      const exacto = PricingLASA.obtenerPrecioCalculado(producto);
+      const publicado = aplicar
+        ? PricingLASA.aplicarRedondeoComercial(exacto)
+        : exacto;
+      return `${producto.nombre}: ${formatearMoneda(exacto)} → ${formatearMoneda(publicado)}`;
+    })
+    .join("\n");
+  const restantes = afectados.length > 8 ? `\n…y ${afectados.length - 8} más.` : "";
+  const accion = aplicar ? "aplicar" : "quitar";
+
+  if (!confirm(
+    `Vista previa: ${accion} redondeo comercial (${afectados.length} producto${afectados.length === 1 ? "" : "s"})\n\n${muestra}${restantes}\n\n¿Confirmás el cambio?`
+  )) return;
+
+  const originales = productos;
+  productos = productos.map((producto) => {
+    if (!productoIncluidoEnRedondeo(producto, alcance)) return producto;
+    return aplicar
+      ? PricingLASA.aplicarRedondeoAProducto(producto)
+      : PricingLASA.quitarRedondeoAProducto(producto);
+  });
+
+  if (!(await guardarProductos())) {
+    productos = originales;
+    return;
+  }
+
+  renderizarTabla();
+  renderizarListaPorCategoria();
+  alert(aplicar ? "Redondeo comercial aplicado." : "Se restauraron los precios exactos.");
+}
+
+aplicarRedondeoComercialBtn.addEventListener("click", () =>
+  cambiarRedondeoComercial(true)
+);
+quitarRedondeoComercialBtn.addEventListener("click", () =>
+  cambiarRedondeoComercial(false)
+);
 
 descargarPDFBtn.addEventListener("click", () => {
   if (!categoriaResultadoFinal) {

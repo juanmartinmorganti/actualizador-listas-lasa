@@ -3,73 +3,43 @@ const assert = require("node:assert/strict");
 const {
   aplicarEdicionIndividual,
   aplicarAumentoMasivo,
-  aplicarRedondeo,
+  aplicarRedondeoComercial,
+  aplicarRedondeoAProducto,
+  quitarRedondeoAProducto,
   calcularPrecio,
+  obtenerPrecioCalculado,
+  obtenerPrecioPublicado,
   obtenerPrecioVigente,
   obtenerPorcentajeManual,
 } = require("../public/pricing.js");
 
-const casosBlancaExtra = [
-  [19850, 6, 21050],
-  [21570, 6, 22870],
-  [23900, 6, 25340],
-  [26970, 6, 28590],
-  [33770, 6, 35800],
-  [38550, 6, 40870],
-];
-
-test("Blanca Extra aplica porcentaje y redondea siempre hacia arriba a 10", () => {
-  for (const [precio, porcentaje, esperado] of casosBlancaExtra) {
-    assert.equal(
-      calcularPrecio(
-        precio,
-        "porcentaje",
-        porcentaje,
-        "Bolsas Blanca Extra"
-      ).precioFinal,
-      esperado
-    );
-  }
+test("el aumento porcentual conserva exactamente el resultado sin redondear", () => {
+  const resultado = calcularPrecio(31933, "porcentaje", 10, "Bolsas Blanca Extra");
+  assert.ok(Math.abs(resultado.precioCalculado - 35126.3) < 1e-9);
+  assert.equal(resultado.precioFinal, resultado.precioCalculado);
 });
 
-test("Blanca II aplica porcentaje y redondea siempre hacia arriba a 10", () => {
-  const casos = [
-    [17290, 18330],
-    [18750, 19880],
-    [20080, 21290],
-    [21070, 22340],
-    [36560, 38760],
-    [61420, 65110],
-  ];
-
-  for (const [precio, esperado] of casos) {
-    assert.equal(
-      calcularPrecio(
-        precio,
-        "porcentaje",
-        6,
-        "Bolsas Blanca II"
-      ).precioFinal,
-      esperado
-    );
-  }
+test("el redondeo comercial replica REDONDEAR.MAS a cero decimales", () => {
+  assert.equal(aplicarRedondeoComercial(35126.3), 35127);
+  assert.equal(aplicarRedondeoComercial(35127), 35127);
 });
 
-test("Blanca II también redondea descuentos porcentuales después del cálculo", () => {
-  const resultado = calcularPrecio(
-    18750,
-    "descuento-porcentaje",
-    6,
-    "Bolsas Blanca II"
-  );
+test("aplicar y quitar redondeo conserva siempre el precio calculado", () => {
+  const exacto = { precioNuevo: 35126.3, precioCalculado: 35126.3 };
+  const redondeado = aplicarRedondeoAProducto(exacto);
+  assert.equal(redondeado.precioCalculado, 35126.3);
+  assert.equal(redondeado.precioPublicado, 35127);
+  assert.equal(obtenerPrecioPublicado(redondeado), 35127);
 
-  assert.equal(resultado.precioCalculado, 17625);
-  assert.equal(resultado.precioFinal, 17630);
+  const restaurado = quitarRedondeoAProducto(redondeado);
+  assert.equal(restaurado.precioCalculado, 35126.3);
+  assert.equal(obtenerPrecioPublicado(restaurado), 35126.3);
 });
 
-test("mantiene resultados que ya son múltiplos de 10", () => {
-  assert.equal(aplicarRedondeo(21050, { mode: "ceil", multiple: 10 }), 21050);
-  assert.equal(aplicarRedondeo(40000, { mode: "ceil", multiple: 10 }), 40000);
+test("las listas anteriores sin campos nuevos mantienen compatibilidad", () => {
+  const legado = { precioActual: 100, precioNuevo: 121 };
+  assert.equal(obtenerPrecioCalculado(legado), 121);
+  assert.equal(obtenerPrecioPublicado(legado), 121);
 });
 
 test("la misma función cubre cálculo individual y masivo", () => {
@@ -90,8 +60,8 @@ test("la misma función cubre cálculo individual y masivo", () => {
   );
 
   assert.equal(individual.precioCalculado, 21041);
-  assert.equal(individual.precioFinal, 21050);
-  assert.deepEqual(masivo, [21050, 22870]);
+  assert.equal(individual.precioFinal, 21041);
+  assert.deepEqual(masivo, [21041, 22864.2]);
 });
 
 test("las categorías sin configuración conservan el resultado matemático exacto", () => {
@@ -111,14 +81,14 @@ test("las categorías sin configuración conservan el resultado matemático exac
   }
 });
 
-test("el redondeo no se aplica a importes fijos", () => {
+test("el cálculo de importes fijos sigue sin redondeo", () => {
   assert.equal(
     calcularPrecio(19850, "importe", 1, "Bolsas Blanca Extra").precioFinal,
     19851
   );
 });
 
-test("Blanca Extra conserva su comportamiento para descuentos porcentuales", () => {
+test("los descuentos porcentuales conservan el resultado exacto", () => {
   assert.equal(
     calcularPrecio(
       18750,
@@ -191,13 +161,15 @@ test("el porcentaje manual no usa el aumento calculado como fallback", () => {
 });
 
 test("el aumento masivo porcentual mantiene su comportamiento y sincroniza la fuente común", () => {
-  const original = { precioActual: 100, precioNuevo: 100, porcentaje: 2 };
+  const original = { precioActual: 100, precioNuevo: 100, porcentaje: 2, precioPublicado: 100 };
   const actualizado = aplicarAumentoMasivo(original, "porcentaje", 5, 105);
 
   assert.equal(actualizado.precioNuevo, 105);
   assert.equal(actualizado.tipoAumento, "porcentaje");
   assert.equal(actualizado.valorAumento, 5);
   assert.equal(actualizado.porcentaje, 5);
+  assert.equal(actualizado.precioCalculado, 105);
+  assert.equal(Object.hasOwn(actualizado, "precioPublicado"), false);
   assert.equal(obtenerPorcentajeManual(actualizado), 5);
 });
 

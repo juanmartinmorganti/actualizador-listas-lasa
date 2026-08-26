@@ -52,6 +52,18 @@
     ) {
       return "Completá producto y precio con valores válidos.";
     }
+    if (
+      Object.prototype.hasOwnProperty.call(producto, "precioCalculado") &&
+      !esNumeroNoNegativo(producto.precioCalculado)
+    ) {
+      return "El precio calculado no es válido.";
+    }
+    if (
+      Object.prototype.hasOwnProperty.call(producto, "precioPublicado") &&
+      !esNumeroNoNegativo(producto.precioPublicado)
+    ) {
+      return "El precio publicado no es válido.";
+    }
 
     if (esProductoSinMedidas(producto)) {
       if (!esNumeroNoNegativo(producto.porcentaje)) {

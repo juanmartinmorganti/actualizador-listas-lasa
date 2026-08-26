@@ -205,6 +205,7 @@ button:focus-visible { outline: 3px solid rgba(0, 0, 111, 0.28); outline-offset:
 .fechas-secciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
 .fechas-secciones label { font-size: .85rem; font-weight: 700; }
 .fecha-seccion { margin: 0 0 7px; color: var(--texto-suave); font-size: .75rem; }
+.fecha-seccion--impresion { font-weight: 700; }
 .formulario { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .acciones, .barra-lista { display: flex; gap: 12px; margin-bottom: 16px; }
 .barra-lista { justify-content: space-between; align-items: center; }

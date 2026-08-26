@@ -71,12 +71,13 @@
           <label id="fechaActualizacionLabel" for="fechaActualizacionAdmin">Fecha de actualización</label>
           <input type="date" id="fechaActualizacionAdmin" />
         </div>
-        <div id="fechasSeccionesPapeles" class="fechas-secciones oculto">
-          <label>Fecha de recargos <input type="date" id="fechaRecargosPapeles" /></label>
-          <label>Fecha de importados <input type="date" id="fechaImportadosPapeles" /></label>
+        <div id="fechaPublicacionImpresionAdmin" class="fechas-secciones oculto">
+          <label for="fechaImpresionAdmin">Fecha de publicación de impresión</label>
+          <input type="date" id="fechaImpresionAdmin" />
         </div>
-        <div id="fechaSeccionServilletas" class="fechas-secciones oculto">
-          <label>Fecha de impresión <input type="date" id="fechaImpresionServilletas" /></label>
+        <div id="fechaImportadosPapelesAdmin" class="fechas-secciones oculto">
+          <label for="fechaImportadosPapeles">Fecha de importados</label>
+          <input type="date" id="fechaImportadosPapeles" />
         </div>
       </section>
 
@@ -183,6 +184,19 @@
           <input type="number" id="valorAumentoMasivo" placeholder="Valor aumento" />
 
           <button id="aplicarAumentoMasivo">Aplicar aumento</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Redondeo comercial</h2>
+        <p class="ayuda-redondeo">Operación opcional: redondea hacia arriba a la unidad y conserva el precio exacto calculado.</p>
+        <div class="formulario">
+          <select id="alcanceRedondeo">
+            <option value="categoria">Categoría actual</option>
+            <option value="lista">Lista completa</option>
+          </select>
+          <button id="aplicarRedondeoComercial" type="button">Aplicar redondeo comercial</button>
+          <button id="quitarRedondeoComercial" class="boton-secundario" type="button">Quitar redondeo</button>
         </div>
       </section>
 

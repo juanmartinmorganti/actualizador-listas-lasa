@@ -1,8 +1,10 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
+const productos = require("../data/productos.json");
 const {
   aplicarEdicionIndividual,
   aplicarAumentoMasivo,
+  aplicarRedondeo,
   aplicarRedondeoComercial,
   aplicarRedondeoAProducto,
   quitarRedondeoAProducto,
@@ -11,6 +13,8 @@ const {
   obtenerPrecioPublicado,
   obtenerPrecioVigente,
   obtenerPorcentajeManual,
+  obtenerTipoRedondeo,
+  TIPOS_REDONDEO,
 } = require("../public/pricing.js");
 
 test("el aumento porcentual conserva exactamente el resultado sin redondear", () => {
@@ -22,6 +26,47 @@ test("el aumento porcentual conserva exactamente el resultado sin redondear", ()
 test("el redondeo comercial replica REDONDEAR.MAS a cero decimales", () => {
   assert.equal(aplicarRedondeoComercial(35126.3), 35127);
   assert.equal(aplicarRedondeoComercial(35127), 35127);
+});
+
+test("los tipos de redondeo permiten múltiplos configurables hacia arriba", () => {
+  assert.equal(aplicarRedondeo(70664.13, TIPOS_REDONDEO.ENTERO_SUPERIOR), 70665);
+  assert.equal(aplicarRedondeo(70664.13, TIPOS_REDONDEO.MULTIPLO_10), 70670);
+  assert.equal(aplicarRedondeo(70664.13, TIPOS_REDONDEO.MULTIPLO_100), 70700);
+  assert.equal(aplicarRedondeo(70664.13, TIPOS_REDONDEO.MULTIPLO_1000), 71000);
+  assert.equal(aplicarRedondeo(70664.13, TIPOS_REDONDEO.SIN_REDONDEO), 70664.13);
+});
+
+test("Moldes redondea hacia arriba a entero después del aumento", () => {
+  const casos = [
+    [67299.17, 70665],
+    [74696.03, 78431],
+    [90100.81, 94606],
+    [100783.71, 105823],
+    [105197.22, 110458],
+  ];
+
+  assert.equal(obtenerTipoRedondeo("Moldes"), TIPOS_REDONDEO.ENTERO_SUPERIOR);
+  for (const [precioBase, precioFinal] of casos) {
+    const resultado = calcularPrecio(precioBase, "porcentaje", 5, "Moldes");
+    assert.equal(resultado.precioFinal, precioFinal);
+    assert.equal(
+      obtenerPrecioPublicado({ categoria: "Moldes", precioCalculado: resultado.precioCalculado }),
+      precioFinal
+    );
+  }
+});
+
+test("los primeros productos reales de Moldes coinciden con el Excel histórico", () => {
+  const esperados = [70665, 78431, 94606, 105823, 110458];
+  const primerosMoldes = productos
+    .filter((producto) => producto.categoria === "Moldes" && producto.nombre)
+    .slice(0, esperados.length);
+
+  assert.deepEqual(primerosMoldes.map(obtenerPrecioPublicado), esperados);
+  assert.deepEqual(
+    primerosMoldes.map(obtenerPrecioCalculado),
+    [70664.1285, 78430.8315, 94605.8505, 105822.89550000001, 110457.081]
+  );
 });
 
 test("aplicar y quitar redondeo conserva siempre el precio calculado", () => {
@@ -69,7 +114,6 @@ test("las categorías sin configuración conservan el resultado matemático exac
     "Bolsas Fast Food",
     "Bolsas Kraft",
     "Cartonería",
-    "Moldes",
     "Papeles",
     "Platos Dorados",
     "Servilletas",

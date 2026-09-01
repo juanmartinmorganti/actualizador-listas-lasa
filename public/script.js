@@ -176,12 +176,12 @@ function calcularPrecioNuevo(precioActual, tipoAumento, valorAumento, categoria)
     tipoAumento,
     valorAumento,
     categoria
-  ).precioFinal;
+  ).precioCalculado;
 }
 
 function crearDetalleVistaPrevia(producto, tipoAumento, valorAumento, categoria) {
   const precioVigente = PricingLASA.obtenerPrecioVigente(producto);
-  const { precioCalculado } = PricingLASA.calcularPrecio(
+  const { precioCalculado, precioFinal } = PricingLASA.calcularPrecio(
     precioVigente,
     tipoAumento,
     valorAumento,
@@ -198,12 +198,16 @@ function crearDetalleVistaPrevia(producto, tipoAumento, valorAumento, categoria)
     : formatearMoneda(valorAumento);
 
   return {
-    precioFinal: precioCalculado,
+    precioCalculado,
+    precioFinal,
     texto: [
       producto.nombre,
       `Precio anterior: ${formatearMoneda(precioVigente)}`,
       `${etiquetaOperacion}: ${valorOperacion}`,
       `Precio calculado: ${formatearMoneda(precioCalculado)}`,
+      ...(precioFinal !== precioCalculado
+        ? [`Precio final redondeado: ${formatearPrecioFinal(precioFinal, categoria)}`]
+        : []),
     ].join("\n"),
   };
 }
@@ -223,6 +227,20 @@ function formatearMoneda(valor) {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })}`;
+}
+
+function formatearPrecioFinal(valor, categoria) {
+  if (PricingLASA.obtenerTipoRedondeo(categoria) === PricingLASA.TIPOS_REDONDEO.SIN_REDONDEO) {
+    return formatearMoneda(valor);
+  }
+
+  const numero = Number(valor);
+  if (!Number.isFinite(numero)) return "—";
+  return `$ ${numero.toLocaleString("es-AR", { maximumFractionDigits: 0 })}`;
+}
+
+function formatearPrecioPublicado(producto) {
+  return formatearPrecioFinal(obtenerPrecioPublicado(producto), producto.categoria);
 }
 
 function formatearEntero(valor) {
@@ -629,7 +647,7 @@ function crearCeldasVisualizacionProducto(producto, index) {
     <td>${crearAccionesProducto(index)}</td>`;
   if (esCategoriaMoldes(categoriaActiva)) return `
     <td>${escaparHTML(producto.descripcion || producto.nombre)}</td>
-    <td class="alinear-right celda-precio"><strong>${formatearMoneda(obtenerPrecioPublicado(producto))}</strong></td>
+    <td class="alinear-right celda-precio"><strong>${formatearPrecioPublicado(producto)}</strong></td>
     <td class="alinear-center">${formatearPorcentajeManual(producto)}</td>
     <td>${crearAccionesProducto(index)}</td>`;
   if (esCategoriaCartoneria(categoriaActiva)) return `
@@ -860,12 +878,12 @@ const configuracionListas = {
   "Bolsas Blanca Extra": {
     className: "lista-comercial--blanca-extra",
     columns: [
-      { label: "NÚMERO", value: (p) => p.codigo || p.nombre, align: "center", width: "14%" },
-      { label: "ANCHO\ncm", value: (p) => p.ancho, align: "center", width: "11%" },
-      { label: "LARGO\ncm", value: (p) => p.largo, align: "center", width: "11%" },
-      { label: "FUELLE\ncm", value: (p) => p.fuelle, align: "center", width: "11%" },
+      { label: "NÚMERO", value: (p) => p.codigo || p.nombre, align: "center", width: "13%" },
+      { label: "ANCHO\ncm", value: (p) => p.ancho, align: "center", width: "10%" },
+      { label: "LARGO\ncm", value: (p) => p.largo, align: "center", width: "10%" },
+      { label: "FUELLE\ncm", value: (p) => p.fuelle, align: "center", width: "10%" },
       { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "20%" },
-      { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "22%", className: "precio-final" },
+      { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "26%", className: "precio-final" },
       { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "11%" },
     ],
     percentageNote: true,
@@ -881,7 +899,7 @@ const configuracionListas = {
       },
       {
         label: "Precio por millar",
-        value: (producto) => formatearMoneda(obtenerPrecioPublicado(producto)),
+        value: formatearPrecioPublicado,
         align: "right",
         width: "27%",
         className: "precio-final",
@@ -946,17 +964,17 @@ configuracionListas["Bolsas Kraft"] = {
   ...configuracionListas["Bolsas Blanca Extra"],
 };
 const columnasCartoneriaRectangular = [
-  { label: "NÚMERO", value: (p) => p.numero, align: "center", width: "12%" },
-  { label: "ANCHO\ncm", value: (p) => p.ancho, align: "center", width: "14%" },
-  { label: "LARGO\ncm", value: (p) => p.largo, align: "center", width: "14%" },
-  { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "25%", className: "precio-final" },
+  { label: "NÚMERO", value: (p) => p.numero, align: "center", width: "11%" },
+  { label: "ANCHO\ncm", value: (p) => p.ancho, align: "center", width: "13%" },
+  { label: "LARGO\ncm", value: (p) => p.largo, align: "center", width: "13%" },
+  { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "28%", className: "precio-final" },
   { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "22%" },
   { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "13%" },
 ];
 const columnasCartoneriaRedonda = [
-  { label: "NÚMERO", value: (p) => p.numero, align: "center", width: "15%" },
-  { label: "DIÁMETRO\ncm", value: (p) => p.diametro, align: "center", width: "20%" },
-  { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "25%", className: "precio-final" },
+  { label: "NÚMERO", value: (p) => p.numero, align: "center", width: "14%" },
+  { label: "DIÁMETRO\ncm", value: (p) => p.diametro, align: "center", width: "18%" },
+  { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "28%", className: "precio-final" },
   { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "25%" },
   { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "15%" },
 ];
@@ -1094,7 +1112,7 @@ function escaparCampoCSV(valor) {
   return `"${texto.replaceAll('"', '""')}"`;
 }
 
-function crearTablaConfigurada(columnas, productosSeccion) {
+function crearTablaConfigurada(columnas, productosSeccion, categoria = "") {
   const encabezados = columnas
     .map(
       (columna) => `
@@ -1127,7 +1145,10 @@ function crearTablaConfigurada(columnas, productosSeccion) {
   return `
     <div class="tabla-lista-contenedor">
       <table class="tabla-lista-unificada">
-        <thead><tr>${encabezados}</tr></thead>
+      <thead>
+        ${categoria ? `<tr class="encabezado-continuacion"><th colspan="${columnas.length}">${escaparHTML(obtenerTituloComercialCategoria(categoria))} · Lista de precios</th></tr>` : ""}
+        <tr>${encabezados}</tr>
+      </thead>
         <tbody>${filas}</tbody>
       </table>
     </div>
@@ -1223,7 +1244,8 @@ function crearListaConfigurada(categoria, productosCategoria, seccionesColapsabl
       `;
       const tablaSeccion = crearTablaConfigurada(
         seccion.columns || configuracion.columns,
-        productosSeccion
+        productosSeccion,
+        categoria
       );
 
       if (
@@ -1333,7 +1355,7 @@ function crearCategoriaCatalogo(categoria) {
     : obtenerProductosDeCategoria(categoria);
 
   return `
-    <article class="catalogo-categoria">
+    <article class="catalogo-categoria" data-categoria="${escaparHTML(categoria)}">
       <div class="encabezado-documento">
         <div class="marca-institucional marca-institucional--documento">
           ${crearMarcaInstitucional("Lista de Precios", "documento")}
@@ -1693,23 +1715,45 @@ volverCatalogoBtn.addEventListener("click", () => {
   volverALaPortada();
 });
 
-descargarCatalogoBtn.addEventListener("click", () => {
+async function descargarPdfGenerado(html, tipo, boton) {
+  const textoAnterior = boton.textContent;
+  boton.disabled = true;
+  boton.textContent = "Generando PDF...";
+
+  try {
+    const respuesta = await fetch("/api/pdf", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ html, tipo, fecha: obtenerFechaHoyISO() }),
+    });
+    if (!respuesta.ok) throw new Error(`Error HTTP ${respuesta.status}`);
+
+    const blob = await respuesta.blob();
+    const disposicion = respuesta.headers.get("Content-Disposition") || "";
+    const nombre = disposicion.match(/filename="([^"]+)"/)?.[1] || "Listas-de-Precios-LASA.pdf";
+    const url = URL.createObjectURL(blob);
+    const enlace = document.createElement("a");
+    enlace.href = url;
+    enlace.download = nombre;
+    enlace.click();
+    URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error("Error al descargar PDF:", error);
+    alert("No se pudo generar el PDF.");
+  } finally {
+    boton.disabled = false;
+    boton.textContent = textoAnterior;
+  }
+}
+
+descargarCatalogoBtn.addEventListener("click", async () => {
   const faltantes = obtenerCategoriasSinPublicar();
   if (faltantes.length > 0) {
     alert(`No se puede descargar: faltan publicar ${faltantes.join(", ")}.`);
     return;
   }
 
-  const tituloAnterior = document.title;
-  document.title = `Listas-de-Precios-LASA-${obtenerFechaHoyISO()}`;
-  window.addEventListener(
-    "afterprint",
-    () => {
-      document.title = tituloAnterior;
-    },
-    { once: true }
-  );
-  window.print();
+  await descargarPdfGenerado(catalogoContenido.innerHTML, "catalogo", descargarCatalogoBtn);
 });
 
 fechaActualizacionAdmin.addEventListener("change", async () => {
@@ -2049,7 +2093,7 @@ aplicarAumentoMasivoBtn.addEventListener("click", async () => {
   const preciosFinales = new Map(
     productosAActualizar.map((producto, index) => [
       producto,
-      vistasPrevias[index].precioFinal,
+      vistasPrevias[index].precioCalculado,
     ])
   );
 
@@ -2144,13 +2188,13 @@ quitarRedondeoComercialBtn.addEventListener("click", () =>
   cambiarRedondeoComercial(false)
 );
 
-descargarPDFBtn.addEventListener("click", () => {
+descargarPDFBtn.addEventListener("click", async () => {
   if (!categoriaResultadoFinal) {
     alert("Primero seleccioná una lista final.");
     return;
   }
 
-  window.print();
+  await descargarPdfGenerado(areaPDF.outerHTML, "lista", descargarPDFBtn);
 });
 
 const modoGuardado = localStorage.getItem("modoOscuroLASA");

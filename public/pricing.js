@@ -1,10 +1,40 @@
 (function (global) {
-  function aplicarRedondeoComercial(valor) {
+  const TIPOS_REDONDEO = Object.freeze({
+    SIN_REDONDEO: "sin-redondeo",
+    ENTERO_SUPERIOR: "entero-superior",
+    MULTIPLO_10: "multiplo-10",
+    MULTIPLO_100: "multiplo-100",
+    MULTIPLO_1000: "multiplo-1000",
+  });
+
+  const MULTIPLOS_POR_TIPO = Object.freeze({
+    [TIPOS_REDONDEO.ENTERO_SUPERIOR]: 1,
+    [TIPOS_REDONDEO.MULTIPLO_10]: 10,
+    [TIPOS_REDONDEO.MULTIPLO_100]: 100,
+    [TIPOS_REDONDEO.MULTIPLO_1000]: 1000,
+  });
+
+  const REDONDEO_POR_CATEGORIA = Object.freeze({
+    Moldes: TIPOS_REDONDEO.ENTERO_SUPERIOR,
+  });
+
+  function obtenerTipoRedondeo(categoria) {
+    return REDONDEO_POR_CATEGORIA[categoria] || TIPOS_REDONDEO.SIN_REDONDEO;
+  }
+
+  function aplicarRedondeo(valor, tipoRedondeo = TIPOS_REDONDEO.SIN_REDONDEO) {
     const numero = Number(valor);
     if (!Number.isFinite(numero)) return valor;
 
-    // Equivale a REDONDEAR.MAS(valor; 0) para los precios no negativos.
-    return Math.ceil(numero);
+    const multiplo = MULTIPLOS_POR_TIPO[tipoRedondeo];
+    if (!multiplo) return numero;
+
+    // Equivale a REDONDEAR.MAS(valor; 0 o -n) para precios no negativos.
+    return Math.ceil(numero / multiplo) * multiplo;
+  }
+
+  function aplicarRedondeoComercial(valor) {
+    return aplicarRedondeo(valor, TIPOS_REDONDEO.ENTERO_SUPERIOR);
   }
 
   function calcularPrecio(precioActual, tipoAumento, valorAumento, categoria) {
@@ -22,9 +52,10 @@
 
     return {
       precioCalculado,
-      // Se conserva por compatibilidad con los consumidores actuales. Ya no
-      // incluye ninguna transformación comercial.
-      precioFinal: precioCalculado,
+      precioFinal: aplicarRedondeo(
+        precioCalculado,
+        obtenerTipoRedondeo(categoria)
+      ),
     };
   }
 
@@ -43,6 +74,14 @@
   }
 
   function obtenerPrecioPublicado(producto) {
+    const tipoRedondeoAutomatico = obtenerTipoRedondeo(producto.categoria);
+    if (tipoRedondeoAutomatico !== TIPOS_REDONDEO.SIN_REDONDEO) {
+      return aplicarRedondeo(
+        obtenerPrecioCalculado(producto),
+        tipoRedondeoAutomatico
+      );
+    }
+
     if (producto.precioPublicado !== null && producto.precioPublicado !== "") {
       const precioPublicado = Number(producto.precioPublicado);
       if (Number.isFinite(precioPublicado)) return precioPublicado;
@@ -102,6 +141,8 @@
   }
 
   const api = {
+    TIPOS_REDONDEO,
+    aplicarRedondeo,
     aplicarRedondeoComercial,
     aplicarRedondeoAProducto,
     quitarRedondeoAProducto,
@@ -111,6 +152,7 @@
     obtenerPrecioVigente,
     obtenerPrecioCalculado,
     obtenerPrecioPublicado,
+    obtenerTipoRedondeo,
     obtenerPorcentajeManual,
   };
 

@@ -66,3 +66,12 @@ test("tablas, precios y filas editables tienen dimensiones estables", () => {
   assert.match(estilos, /\.tabla-productos-admin th:last-child,[\s\S]*?width:\s*198px/);
   assert.match(estilos, /\.input-edicion-inline\s*\{[^}]*min-width:\s*0/);
 });
+
+test("publicar exige una fecha ingresada por el administrador", () => {
+  const panel = cuerpoFuncion("renderizarPanelAdmin", "validarCategoriaParaPublicar");
+  assert.match(panel, /data-fecha-publicacion/);
+  const publicar = script.slice(script.indexOf('if (accion === "publicar")'), script.indexOf('if (accion === "vista-previa")'));
+  assert.match(publicar, /fechaInput\?\.value/);
+  assert.match(publicar, /!fechaPublicacion/);
+  assert.doesNotMatch(publicar, /obtenerFechaHoyISO\(\)/);
+});

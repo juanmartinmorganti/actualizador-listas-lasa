@@ -30,6 +30,10 @@ const textoModo = document.getElementById("textoModo");
 const modoOscuroListaBtn = document.getElementById("modoOscuroListaBtn");
 const textoModoLista = document.getElementById("textoModoLista");
 const accesoAdmin = document.getElementById("accesoAdmin");
+const cerrarSesionBtn = document.getElementById("cerrarSesion");
+const accesoAdminForm = document.getElementById("accesoAdminForm");
+const formLogin = document.getElementById("formLogin");
+const errorLogin = document.getElementById("errorLogin");
 
 const agregarProductoBtn = document.getElementById("agregarProducto");
 const cancelarEdicionBtn = document.getElementById("cancelarEdicion");
@@ -101,6 +105,7 @@ const configuracionCatalogo = {
 };
 
 let productos = [];
+let fechasPublicadas = {};
 let categoriaActiva = "";
 let productoEditandoIndex = null;
 let terminoBusquedaProductos = "";
@@ -141,14 +146,15 @@ function renderizarMarcasInstitucionales() {
 
 async function cargarProductosDesdeJSON() {
   try {
-    const respuesta = await fetch("/api/productos");
+    const respuesta = await fetch(esModoAdmin ? "/api/borrador" : "/api/productos");
     if (!respuesta.ok) throw new Error(`Error HTTP ${respuesta.status}`);
     const datos = await respuesta.json();
     if (!Array.isArray(datos)) throw new Error("La API no devolvió una lista");
     productos = datos;
+    return true;
   } catch (error) {
     console.error("Error al cargar productos:", error);
-    productos = [];
+    return false;
   }
 }
 
@@ -161,6 +167,10 @@ async function guardarProductos() {
       },
       body: JSON.stringify(productos),
     });
+    if (respuesta.status === 401) {
+      mostrarLogin("Tu sesión venció. Volvé a ingresar antes de guardar.");
+      return false;
+    }
     if (!respuesta.ok) throw new Error(`Error HTTP ${respuesta.status}`);
     return true;
   } catch (error) {
@@ -467,6 +477,7 @@ function cargarFechaActualizacion(categoria) {
 }
 
 function obtenerFechaActualizacion(categoria) {
+  if (esModoAdmin && fechasPublicadas[categoria]) return fechasPublicadas[categoria];
   if (usaConfiguracionCategoria(categoria)) {
     return obtenerConfiguracionCategoria(categoria)?.fechaPublicacion || "";
   }
@@ -508,7 +519,7 @@ function renderizarPanelAdmin() {
                 ? (() => {
                     const errores = validarCategoriaParaPublicar(categoria);
                     return errores.length === 0
-                      ? '<button type="button" data-accion="publicar" class="boton-publicar">Publicar lista</button>'
+                      ? '<label class="fecha-para-publicar">Fecha para esta publicación<input type="date" data-fecha-publicacion required /></label><button type="button" data-accion="publicar" class="boton-publicar">Publicar lista</button>'
                       : `<button type="button" class="boton-publicar" disabled title="${escaparHTML(errores[0])}">Publicar lista</button><p class="error-publicacion">${escaparHTML(errores[0])}</p>`;
                   })()
                 : '<button type="button" class="boton-publicar" disabled title="Publicación no configurada para esta categoría">Publicar lista</button>'
@@ -1648,10 +1659,26 @@ gridAdmin.addEventListener("click", (evento) => {
       return;
     }
 
-    const fechaPublicacion =
-      obtenerFechaActualizacion(categoria) || obtenerFechaHoyISO();
+    const fechaInput = tarjeta.querySelector("[data-fecha-publicacion]");
+    const fechaPublicacion = fechaInput?.value;
+    if (!fechaPublicacion || !fechaInput.validity.valid) {
+      alert("Elegí la fecha de esta publicación antes de publicar la lista.");
+      fechaInput?.focus();
+      return;
+    }
 
-    if (usaConfiguracionCategoria(categoria)) {
+    boton.disabled = true;
+    (async () => {
+      if (!(await guardarProductos())) return;
+      const respuesta = await fetch("/api/publicaciones", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ categoria, fecha: fechaPublicacion }),
+      });
+      const resultado = await respuesta.json();
+      if (!respuesta.ok) throw new Error(resultado.error || "No se pudo publicar la lista.");
+      fechasPublicadas[categoria] = fechaPublicacion;
+
       const configuracion = obtenerConfiguracionCategoria(categoria);
       if (configuracion) {
         configuracion.fechaPublicacion = fechaPublicacion;
@@ -1660,16 +1687,15 @@ gridAdmin.addEventListener("click", (evento) => {
           configuracion.productosPublicados = obtenerProductosDeCategoria(categoria)
             .map((producto) => ({ ...producto }));
         }
-        guardarProductos().then(() => {
-          renderizarPanelAdmin();
-          alert(`Lista publicada con fecha ${formatearFechaArgentina(fechaPublicacion)}.`);
-        });
       }
-    } else {
-      localStorage.setItem(obtenerClaveFechaCategoria(categoria), fechaPublicacion);
+      const fechaGuardadaEnBorrador = await guardarProductos();
       renderizarPanelAdmin();
-      alert(`Lista publicada con fecha ${formatearFechaArgentina(fechaPublicacion)}.`);
-    }
+      alert(fechaGuardadaEnBorrador
+        ? `Lista publicada con fecha ${formatearFechaArgentina(fechaPublicacion)}.`
+        : "La lista quedó publicada, pero no se pudo actualizar la fecha en administración. Revisá el estado antes de volver a editar.");
+    })().catch((error) => {
+      alert(error.message);
+    }).finally(() => { boton.disabled = false; });
     return;
   }
 
@@ -1760,20 +1786,29 @@ fechaActualizacionAdmin.addEventListener("change", async () => {
   if (!categoriaActiva || !fechaActualizacionAdmin.value) {
     return;
   }
+  const categoria = categoriaActiva;
+  const fechaAnterior = fechasPublicadas[categoria] || "";
+  const fechaNueva = fechaActualizacionAdmin.value;
+  if (fechaAnterior === fechaNueva) return;
 
-  if (usaConfiguracionCategoria(categoriaActiva)) {
-    const configuracion = obtenerConfiguracionCategoria(categoriaActiva);
-    if (configuracion) {
-      configuracion.fechaPublicacion = fechaActualizacionAdmin.value;
-      await guardarProductos();
-    }
-  } else {
-    localStorage.setItem(
-      obtenerClaveFechaCategoria(categoriaActiva),
-      fechaActualizacionAdmin.value
-    );
+  fechaActualizacionAdmin.disabled = true;
+  try {
+    const respuesta = await fetch("/api/publicaciones/fecha", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ categoria, fecha: fechaNueva }),
+    });
+    const resultado = await respuesta.json();
+    if (!respuesta.ok) throw new Error(resultado.error || "No se pudo cambiar la fecha.");
+    fechasPublicadas[categoria] = fechaNueva;
+    renderizarPanelAdmin();
+    cargarFechaActualizacion(categoria);
+  } catch (error) {
+    fechaActualizacionAdmin.value = fechaAnterior;
+    alert(error.message);
+  } finally {
+    fechaActualizacionAdmin.disabled = false;
   }
-  renderizarPanelAdmin();
 });
 
 seccionCartoneriaInput.addEventListener("change", actualizarCamposSeccionCartoneria);
@@ -2221,16 +2256,90 @@ actualizarTextosModo();
 modoOscuroBtn.addEventListener("click", alternarModoOscuro);
 modoOscuroListaBtn.addEventListener("click", alternarModoOscuro);
 
+function mostrarLogin(mensaje = "") {
+  portadaAdmin.classList.add("oculto");
+  moduloCategoria.classList.add("oculto");
+  moduloResultadoFinal.classList.add("oculto");
+  moduloCatalogo.classList.add("oculto");
+  accesoAdminForm.classList.remove("oculto");
+  cerrarSesionBtn.classList.add("oculto");
+  errorLogin.textContent = mensaje;
+}
+
+async function mostrarAdministracion() {
+  accesoAdminForm.classList.add("oculto");
+  cerrarSesionBtn.classList.remove("oculto");
+  if (!(await cargarProductosDesdeJSON())) {
+    mostrarLogin("No se pudo cargar el catálogo. No se permite editar hasta recuperarlo.");
+    return;
+  }
+  try {
+    const respuesta = await fetch("/api/productos");
+    if (!respuesta.ok) throw new Error("No se pudo verificar qué listas están publicadas.");
+    const publicadas = await respuesta.json();
+    fechasPublicadas = Object.fromEntries(publicadas
+      .filter((registro) => registro.tipoRegistro === "configuracion" && registro.fechaPublicacion)
+      .map((registro) => [registro.categoria, registro.fechaPublicacion]));
+  } catch (error) {
+    mostrarLogin(error.message);
+    return;
+  }
+  renderizarPanelAdmin();
+  portadaAdmin.classList.remove("oculto");
+}
+
+formLogin.addEventListener("submit", async (evento) => {
+  evento.preventDefault();
+  errorLogin.textContent = "";
+  try {
+    const respuesta = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        usuario: formLogin.elements.namedItem("usuario").value,
+        contrasena: formLogin.elements.namedItem("contrasena").value,
+      }),
+    });
+    const resultado = await respuesta.json();
+    formLogin.elements.namedItem("contrasena").value = "";
+    if (!respuesta.ok) throw new Error(resultado.error || "No se pudo iniciar sesión.");
+    await mostrarAdministracion();
+  } catch (error) {
+    errorLogin.textContent = error.message;
+  }
+});
+
+cerrarSesionBtn.addEventListener("click", async () => {
+  try {
+    const respuesta = await fetch("/api/auth/logout", { method: "POST" });
+    if (!respuesta.ok && respuesta.status !== 401) throw new Error("No se pudo cerrar sesión.");
+    productos = [];
+    window.location.href = "/";
+  } catch (error) {
+    alert(error.message);
+  }
+});
+
 async function iniciarApp() {
   renderizarMarcasInstitucionales();
-  await cargarProductosDesdeJSON();
-  renderizarPanelAdmin();
+  if (!esModoAdmin && !(await cargarProductosDesdeJSON())) {
+    portada.querySelector(".introduccion").insertAdjacentHTML("beforeend", "<p role='alert'>No se pudo cargar el catálogo. Volvé a intentar más tarde.</p>");
+    portada.querySelectorAll(".boton-lista-final, #descargarCatalogoPortada").forEach((boton) => { boton.disabled = true; });
+  }
 
   if (esModoAdmin) {
     portada.classList.add("oculto");
-    portadaAdmin.classList.remove("oculto");
     accesoAdmin.textContent = "Volver a Listas de Precios";
     accesoAdmin.href = "/";
+    try {
+      const respuesta = await fetch("/api/auth/me");
+      if (!respuesta.ok) throw new Error("No se pudo verificar el acceso.");
+      const estado = await respuesta.json();
+      if (estado.authenticated) await mostrarAdministracion();
+      else mostrarLogin(estado.enabled ? "" : "Administración aún no configurada en el servidor.");
+    } catch (error) {
+      mostrarLogin(error.message);
+    }
   }
 }
 

@@ -3,15 +3,20 @@ const fs = require("fs");
 const path = require("path");
 const puppeteer = require("puppeteer");
 const { validarProducto } = require("./public/validation.js");
+const { createAuth } = require("./auth.js");
+const { loadAuthConfig } = require("./auth-config.js");
+const { leerPublicadas, escribirPublicadas, publicarCategoria, actualizarFechaPublicada } = require("./publicaciones.js");
 
 const app = express();
 const PORT = Number(process.env.PORT) || 4000;
 
-const dataPath = path.join(__dirname, "data", "productos.json");
+const dataPath = path.join(process.env.LASA_DATA_DIR || path.join(__dirname, "data"), "productos.json");
+const auth = createAuth(loadAuthConfig());
 
 app.disable("x-powered-by");
 app.use(express.json({ limit: "10mb" }));
 app.use(express.static(path.join(__dirname, "public")));
+auth.register(app);
 
 function leerProductos() {
   const data = fs.readFileSync(dataPath, "utf8");
@@ -60,14 +65,23 @@ function validarProductos(productos) {
 
 app.get("/api/productos", (req, res) => {
   try {
-    res.json(leerProductos());
+    res.json(leerPublicadas());
   } catch (error) {
-    console.error("Error al leer productos.json:", error);
-    res.status(500).json({ error: "No se pudieron cargar los productos." });
+    console.error("Error al leer el catálogo publicado:", error);
+    res.status(503).json({ error: "No se pudo cargar el catálogo publicado." });
   }
 });
 
-app.post("/api/productos", (req, res) => {
+app.get("/api/borrador", auth.requireAdminRead, (req, res) => {
+  try {
+    res.json(leerProductos());
+  } catch (error) {
+    console.error("Error al leer el borrador:", error);
+    res.status(500).json({ error: "No se pudo cargar el borrador." });
+  }
+});
+
+app.post("/api/productos", auth.requireAdmin, (req, res) => {
   const productos = req.body;
   const errorValidacion = validarProductos(productos);
 
@@ -86,6 +100,51 @@ app.post("/api/productos", (req, res) => {
     mensaje: "Productos guardados correctamente.",
     total: productos.length,
   });
+});
+
+function validarFechaPublicacion(categoria, fecha) {
+  return typeof categoria !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(fecha || "") ||
+    !Number.isFinite(Date.parse(`${fecha}T00:00:00Z`)) ||
+    new Date(`${fecha}T00:00:00Z`).toISOString().slice(0, 10) !== fecha;
+}
+
+app.post("/api/publicaciones", auth.requireAdmin, (req, res) => {
+  const { categoria, fecha } = req.body || {};
+  if (validarFechaPublicacion(categoria, fecha)) {
+    return res.status(400).json({ error: "Categoría o fecha de publicación inválida." });
+  }
+  try {
+    const borrador = leerProductos();
+    if (validarProductos(borrador)) return res.status(400).json({ error: "El borrador contiene productos inválidos." });
+    const publicadas = leerPublicadas();
+    const nuevoCatalogo = publicarCategoria(borrador, publicadas, categoria, fecha);
+    escribirPublicadas(nuevoCatalogo);
+    res.json({ mensaje: "Lista publicada correctamente.", categoria, fecha });
+  } catch (error) {
+    if (error.message === "La categoría no tiene productos." || error.message === "La categoría no tiene configuración de publicación.") {
+      return res.status(400).json({ error: error.message });
+    }
+    console.error("Error al publicar lista:", error);
+    res.status(500).json({ error: "No se pudo publicar la lista." });
+  }
+});
+
+app.post("/api/publicaciones/fecha", auth.requireAdmin, (req, res) => {
+  const { categoria, fecha } = req.body || {};
+  if (validarFechaPublicacion(categoria, fecha)) {
+    return res.status(400).json({ error: "Categoría o fecha de publicación inválida." });
+  }
+  try {
+    const actualizado = actualizarFechaPublicada(leerPublicadas(), categoria, fecha);
+    escribirPublicadas(actualizado);
+    res.json({ mensaje: "Fecha de publicación actualizada.", categoria, fecha });
+  } catch (error) {
+    if (error.message === "La categoría no tiene una lista publicada.") {
+      return res.status(404).json({ error: error.message });
+    }
+    console.error("Error al cambiar la fecha de publicación:", error);
+    res.status(500).json({ error: "No se pudo actualizar la fecha publicada." });
+  }
 });
 
 function validarSolicitudPdf(solicitud) {
@@ -165,8 +224,9 @@ app.get("/admin", (req, res) => {
 });
 
 if (require.main === module) {
-  app.listen(PORT, () => {
+  app.listen(PORT, process.env.LASA_HOST || "0.0.0.0", () => {
     console.log(`Servidor funcionando en http://localhost:${PORT}`);
+    if (!auth.enabled) console.warn("Administración deshabilitada: configurar LASA_ADMIN_USER, LASA_ADMIN_PASSWORD_HASH y LASA_SESSION_SECRET.");
   });
 }
 

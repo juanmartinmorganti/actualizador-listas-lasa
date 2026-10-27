@@ -93,6 +93,9 @@ section h2 { margin: 0; color: var(--primario); font-size: 1.55rem; letter-spaci
 .portada { padding: 30px; }
 .introduccion { max-width: 680px; margin-bottom: 26px; }
 .introduccion > p:last-child { color: var(--texto-suave); margin: 8px 0 0; }
+.formulario-login { display: grid; gap: 8px; max-width: 360px; }
+.formulario-login input, .formulario-login button { margin: 0; }
+#errorLogin { color: var(--lasa-danger); }
 .etiqueta { color: var(--primario); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; margin: 0 0 6px; }
 
 input, select, button {
@@ -193,6 +196,8 @@ button:focus-visible { outline: 3px solid rgba(0, 0, 111, 0.28); outline-offset:
 .tarjeta-admin p { margin: 4px 0 0; color: var(--texto-suave); font-size: .82rem; }
 .acciones-admin { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
 .acciones-admin button { min-width: 0; margin: 0; font-size: .82rem; }
+.fecha-para-publicar { grid-column: 1 / -1; display: grid; gap: 4px; font-size: .82rem; font-weight: 650; }
+.fecha-para-publicar input { width: 100%; margin: 0; }
 .boton-publicar:disabled { cursor: not-allowed; background: var(--texto-suave); opacity: .65; }
 .error-publicacion {
   grid-column: 1 / -1;

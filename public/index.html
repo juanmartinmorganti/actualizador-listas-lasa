@@ -15,6 +15,7 @@
       <div class="marca-institucional" data-titulo="Listas de Precios"></div>
       <div class="acciones-encabezado">
         <a id="accesoAdmin" class="acceso-admin" href="/?admin">Administrar listas</a>
+        <button id="cerrarSesion" class="boton-modo oculto" type="button">Cerrar sesión</button>
         <button id="modoOscuroBtn" class="boton-modo" type="button" aria-label="Cambiar tema de color">
           <span aria-hidden="true">◐</span>
           <span id="textoModo">Modo oscuro</span>
@@ -46,6 +47,19 @@
         <button class="tarjeta-categoria boton-lista-final" data-categoria="Platos Dorados"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Platos Dorados</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
         <button class="tarjeta-categoria boton-lista-final" data-categoria="Servilletas"><span class="icono-documento" aria-hidden="true">▤</span><span><strong>Servilletas</strong><small>Ver lista vigente <span aria-hidden="true">→</span></small></span></button>
       </div>
+    </section>
+
+    <section id="accesoAdminForm" class="portada oculto">
+      <h2>Ingresar a administración</h2>
+      <p>La consulta de listas no requiere iniciar sesión.</p>
+      <form id="formLogin" class="formulario-login">
+        <label for="usuarioAdmin">Usuario</label>
+        <input id="usuarioAdmin" name="usuario" autocomplete="username" required />
+        <label for="contrasenaAdmin">Contraseña</label>
+        <input id="contrasenaAdmin" name="contrasena" type="password" autocomplete="current-password" required />
+        <button type="submit">Ingresar</button>
+      </form>
+      <p id="errorLogin" role="alert"></p>
     </section>
 
     <section id="portadaAdmin" class="portada oculto">

@@ -630,20 +630,21 @@
     "recargosImpresion": [
       {
         "descripcion": "1 COLOR",
-        "precioUnaCara": 10000,
-        "precioDosCaras": 15000
+        "precioUnaCara": 12000,
+        "precioDosCaras": 18000
       },
       {
         "descripcion": "2 COLORES",
-        "precioUnaCara": 13000,
-        "precioDosCaras": 19000
+        "precioUnaCara": 15500,
+        "precioDosCaras": 22500
       },
       {
         "descripcion": "3 COLORES",
-        "precioUnaCara": 18000,
-        "precioDosCaras": 26000
+        "precioUnaCara": 21500,
+        "precioDosCaras": 30000
       }
-    ]
+    ],
+    "fechaPublicacionImpresion": "2026-09-21"
   },
   {
     "nombre": "1",
@@ -862,20 +863,21 @@
     "recargosImpresion": [
       {
         "descripcion": "1 COLOR",
-        "precioUnaCara": 10000,
-        "precioDosCaras": 15000
+        "precioUnaCara": 12000,
+        "precioDosCaras": 18000
       },
       {
         "descripcion": "2 COLORES",
-        "precioUnaCara": 13000,
-        "precioDosCaras": 19000
+        "precioUnaCara": 15500,
+        "precioDosCaras": 22500
       },
       {
         "descripcion": "3 COLORES",
-        "precioUnaCara": 18000,
-        "precioDosCaras": 26000
+        "precioUnaCara": 21500,
+        "precioDosCaras": 30000
       }
-    ]
+    ],
+    "fechaPublicacionImpresion": "2026-09-21"
   },
   {
     "nombre": "0",
@@ -1248,20 +1250,21 @@
     "recargosImpresion": [
       {
         "descripcion": "1 COLOR",
-        "precioUnaCara": 10000,
-        "precioDosCaras": 15000
+        "precioUnaCara": 12000,
+        "precioDosCaras": 18000
       },
       {
         "descripcion": "2 COLORES",
-        "precioUnaCara": 13000,
-        "precioDosCaras": 19000
+        "precioUnaCara": 15500,
+        "precioDosCaras": 22500
       },
       {
         "descripcion": "3 COLORES",
-        "precioUnaCara": 18000,
-        "precioDosCaras": 26000
+        "precioUnaCara": 21500,
+        "precioDosCaras": 30000
       }
-    ]
+    ],
+    "fechaPublicacionImpresion": "2026-09-21"
   },
   {
     "nombre": "0",
@@ -2028,11 +2031,12 @@
     "seccion": "papeles-principales",
     "descripcion": "SULFITO SEIN ROLLOS",
     "formato": "20-40-60-80-100 cm",
-    "precioActual": 2450,
+    "precioActual": 2985,
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
-    "precioNuevo": 2450,
-    "porcentaje": null
+    "precioNuevo": 2985,
+    "porcentaje": null,
+    "precioCalculado": 2985
   },
   {
     "nombre": "SULFITO SEIN CORTADO",
@@ -2040,11 +2044,12 @@
     "seccion": "papeles-principales",
     "descripcion": "SULFITO SEIN CORTADO",
     "formato": "30x40 / 40x50 / 52x72 / 58x81 / 64x90",
-    "precioActual": 2510,
+    "precioActual": 2985,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2510,
-    "porcentaje": null
+    "precioNuevo": 2985,
+    "porcentaje": null,
+    "precioCalculado": 2985
   },
   {
     "nombre": "SULFITO SEIN CORTE AL ½ RESMAS",
@@ -2052,11 +2057,12 @@
     "seccion": "papeles-principales",
     "descripcion": "SULFITO SEIN CORTE AL ½ RESMAS",
     "formato": "",
-    "precioActual": 2590,
+    "precioActual": 3134.25,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2590,
-    "porcentaje": null
+    "precioNuevo": 3134.25,
+    "porcentaje": null,
+    "precioCalculado": 3134.25
   },
   {
     "nombre": "SULFITO SEIN CORTES ESPECIALES",
@@ -2064,11 +2070,12 @@
     "seccion": "papeles-principales",
     "descripcion": "SULFITO SEIN CORTES ESPECIALES",
     "formato": "7x14 / 18x25 / 33x33",
-    "precioActual": 2700,
+    "precioActual": 3193.95,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2700,
-    "porcentaje": null
+    "precioNuevo": 3193.95,
+    "porcentaje": null,
+    "precioCalculado": 3193.95
   },
   {
     "nombre": "SULFITO EXTRA ROLLOS",
@@ -2088,11 +2095,12 @@
     "seccion": "papeles-principales",
     "descripcion": "FANTASÍA VARIOS S/sto. SEIN",
     "formato": "20-40-60-80-100 cm",
-    "precioActual": 3100,
+    "precioActual": 3782,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 3100,
-    "porcentaje": null
+    "precioNuevo": 3782,
+    "porcentaje": null,
+    "precioCalculado": 3782
   },
   {
     "nombre": "SULFITO MANTEL s/sto. SEIN",
@@ -2100,11 +2108,12 @@
     "seccion": "papeles-principales",
     "descripcion": "SULFITO MANTEL s/sto. SEIN",
     "formato": "x 80 cm SEIN",
-    "precioActual": 2570,
+    "precioActual": 3135.4,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2570,
-    "porcentaje": null
+    "precioNuevo": 3135.4,
+    "porcentaje": null,
+    "precioCalculado": 3135.4
   },
   {
     "nombre": "FANTASÍA MANTEL s/sto. SEIN",
@@ -2112,11 +2121,12 @@
     "seccion": "papeles-principales",
     "descripcion": "FANTASÍA MANTEL s/sto. SEIN",
     "formato": "x 80 cm",
-    "precioActual": 3400,
+    "precioActual": 4148,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 3400,
-    "porcentaje": null
+    "precioNuevo": 4148,
+    "porcentaje": null,
+    "precioCalculado": 4148
   },
   {
     "nombre": "KRAFT HOJAS 50/80 grs.",
@@ -2124,11 +2134,12 @@
     "seccion": "papeles-principales",
     "descripcion": "KRAFT HOJAS 50/80 grs.",
     "formato": "SEIN FORMATO 85x120 cm",
-    "precioActual": 2140,
+    "precioActual": 2240,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 2140,
-    "porcentaje": null
+    "precioNuevo": 2240,
+    "porcentaje": null,
+    "precioCalculado": 2240
   },
   {
     "nombre": "KRAFT ROLLOS 50 GRS",
@@ -2200,7 +2211,8 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 2640,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 2640
   },
   {
     "nombre": "PAQUETES MANTELES INDIVIDUALES",
@@ -2220,11 +2232,12 @@
     "seccion": "recargos-impresion",
     "descripcion": "1 COLOR",
     "formato": "",
-    "precioActual": 500,
+    "precioActual": 600,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 500,
-    "porcentaje": null
+    "precioNuevo": 600,
+    "porcentaje": null,
+    "precioCalculado": 600
   },
   {
     "nombre": "2 COLORES",
@@ -2232,11 +2245,12 @@
     "seccion": "recargos-impresion",
     "descripcion": "2 COLORES",
     "formato": "",
-    "precioActual": 700,
+    "precioActual": 840,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 700,
-    "porcentaje": null
+    "precioNuevo": 840,
+    "porcentaje": null,
+    "precioCalculado": 840
   },
   {
     "nombre": "3 COLORES",
@@ -2244,11 +2258,12 @@
     "seccion": "recargos-impresion",
     "descripcion": "3 COLORES",
     "formato": "",
-    "precioActual": 1000,
+    "precioActual": 1200,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1000,
-    "porcentaje": null
+    "precioNuevo": 1200,
+    "porcentaje": null,
+    "precioCalculado": 1200
   },
   {
     "nombre": "PLENO SUAVE",
@@ -2256,11 +2271,12 @@
     "seccion": "recargos-impresion",
     "descripcion": "PLENO SUAVE",
     "formato": "",
-    "precioActual": 1200,
+    "precioActual": 1500,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1200,
-    "porcentaje": null
+    "precioNuevo": 1500,
+    "porcentaje": null,
+    "precioCalculado": 1500
   },
   {
     "nombre": "PLENO INTENSO",
@@ -2268,11 +2284,12 @@
     "seccion": "recargos-impresion",
     "descripcion": "PLENO INTENSO",
     "formato": "",
-    "precioActual": 1500,
+    "precioActual": 1800,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1500,
-    "porcentaje": null
+    "precioNuevo": 1800,
+    "porcentaje": null,
+    "precioCalculado": 1800
   },
   {
     "nombre": "RESMAS DE MANTECA BLANQUEADO IMPORTADO",
@@ -2397,186 +2414,221 @@
   {
     "categoria": "Papeles",
     "tipoRegistro": "configuracion",
-    "fechaPublicacion": "2026-07-28",
+    "fechaPublicacion": "2026-09-18",
     "fechasSecciones": {
       "recargos-impresion": "",
       "productos-importados": ""
-    }
+    },
+    "fechaPublicacionImpresion": "2026-09-21"
   },
   {
     "nombre": "1/4 Kg",
     "categoria": "Platos Dorados",
     "medida": "1/4 Kg",
-    "porcentaje": 5,
-    "precioActual": 161,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 161
+    "porcentaje": 4,
+    "precioActual": 167.44,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 167.44,
+    "precioCalculado": 167.44,
+    "precioPublicado": 168
   },
   {
     "nombre": "1/2 Kg",
     "categoria": "Platos Dorados",
     "medida": "1/2 Kg",
-    "porcentaje": 5,
-    "precioActual": 256,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 256
+    "porcentaje": 4,
+    "precioActual": 266.24,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 266.24,
+    "precioCalculado": 266.24,
+    "precioPublicado": 267
   },
   {
     "nombre": "3/4 Kg",
     "categoria": "Platos Dorados",
     "medida": "3/4 Kg",
-    "porcentaje": 5,
-    "precioActual": 333,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 333
+    "porcentaje": 4,
+    "precioActual": 346.32,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 346.32,
+    "precioCalculado": 346.32,
+    "precioPublicado": 347
   },
   {
     "nombre": "1 Kg",
     "categoria": "Platos Dorados",
     "medida": "1 Kg",
-    "porcentaje": 5,
-    "precioActual": 374,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 374
+    "porcentaje": 4,
+    "precioActual": 388.96000000000004,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 388.96000000000004,
+    "precioCalculado": 388.96000000000004,
+    "precioPublicado": 389
   },
   {
     "nombre": "1½ Kg",
     "categoria": "Platos Dorados",
     "medida": "1½ Kg",
-    "porcentaje": 5,
-    "precioActual": 472,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 472
+    "porcentaje": 4,
+    "precioActual": 490.88,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 490.88,
+    "precioCalculado": 490.88,
+    "precioPublicado": 491
   },
   {
     "nombre": "2 Kg",
     "categoria": "Platos Dorados",
     "medida": "2 Kg",
-    "porcentaje": 5,
-    "precioActual": 571,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 571
+    "porcentaje": 4,
+    "precioActual": 593.84,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 593.84,
+    "precioCalculado": 593.84,
+    "precioPublicado": 594
   },
   {
     "nombre": "3 Kg",
     "categoria": "Platos Dorados",
     "medida": "3 Kg",
-    "porcentaje": 5,
-    "precioActual": 716,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 716
+    "porcentaje": 4,
+    "precioActual": 744.64,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 744.64,
+    "precioCalculado": 744.64,
+    "precioPublicado": 745
   },
   {
     "nombre": "16 cm",
     "categoria": "Platos Dorados",
     "medida": "16 cm",
-    "porcentaje": 5,
-    "precioActual": 201,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 201
+    "porcentaje": 4,
+    "precioActual": 209.04000000000002,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 209.04000000000002,
+    "precioCalculado": 209.04000000000002,
+    "precioPublicado": 210
   },
   {
     "nombre": "18 cm",
     "categoria": "Platos Dorados",
     "medida": "18 cm",
-    "porcentaje": 5,
-    "precioActual": 245,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 245
+    "porcentaje": 4,
+    "precioActual": 254.8,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 254.8,
+    "precioCalculado": 254.8,
+    "precioPublicado": 255
   },
   {
     "nombre": "20 cm",
     "categoria": "Platos Dorados",
     "medida": "20 cm",
-    "porcentaje": 5,
-    "precioActual": 258,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 258
+    "porcentaje": 4,
+    "precioActual": 268.32,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 268.32,
+    "precioCalculado": 268.32,
+    "precioPublicado": 269
   },
   {
     "nombre": "22 cm",
     "categoria": "Platos Dorados",
     "medida": "22 cm",
-    "porcentaje": 5,
-    "precioActual": 269,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 269
+    "porcentaje": 4,
+    "precioActual": 279.76,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 279.76,
+    "precioCalculado": 279.76,
+    "precioPublicado": 280
   },
   {
     "nombre": "24 cm",
     "categoria": "Platos Dorados",
     "medida": "24 cm",
-    "porcentaje": 5,
-    "precioActual": 307,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 307
+    "porcentaje": 4,
+    "precioActual": 319.28000000000003,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 319.28000000000003,
+    "precioCalculado": 319.28000000000003,
+    "precioPublicado": 320
   },
   {
     "nombre": "26 cm",
     "categoria": "Platos Dorados",
     "medida": "26 cm",
-    "porcentaje": 5,
-    "precioActual": 393,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 393
+    "porcentaje": 4,
+    "precioActual": 408.72,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 408.72,
+    "precioCalculado": 408.72,
+    "precioPublicado": 409
   },
   {
     "nombre": "28 cm",
     "categoria": "Platos Dorados",
     "medida": "28 cm",
-    "porcentaje": 5,
-    "precioActual": 454,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 454
+    "porcentaje": 4,
+    "precioActual": 472.16,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 472.16,
+    "precioCalculado": 472.16,
+    "precioPublicado": 473
   },
   {
     "nombre": "31 cm",
     "categoria": "Platos Dorados",
     "medida": "31 cm",
-    "porcentaje": 5,
-    "precioActual": 432,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 432
+    "porcentaje": 4,
+    "precioActual": 449.28000000000003,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 449.28000000000003,
+    "precioCalculado": 449.28000000000003,
+    "precioPublicado": 450
   },
   {
     "nombre": "34 cm",
     "categoria": "Platos Dorados",
     "medida": "34 cm",
-    "porcentaje": 5,
-    "precioActual": 613,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 613
+    "porcentaje": 4,
+    "precioActual": 637.52,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 637.52,
+    "precioCalculado": 637.52,
+    "precioPublicado": 638
   },
   {
     "nombre": "36 cm",
     "categoria": "Platos Dorados",
     "medida": "36 cm",
-    "porcentaje": 5,
-    "precioActual": 771,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 771
+    "porcentaje": 4,
+    "precioActual": 801.84,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 4,
+    "precioNuevo": 801.84,
+    "precioCalculado": 801.84,
+    "precioPublicado": 802
   },
   {
     "categoria": "Platos Dorados",
     "tipoRegistro": "configuracion",
-    "fechaPublicacion": "2026-08-12",
+    "fechaPublicacion": "2026-10-14",
     "notaComercial": "POR COMPRA DE 1.000 UNIDADES: 5% DE DESCUENTO"
   },
   {
@@ -2805,26 +2857,28 @@
     "categoria": "Servilletas",
     "seccion": "impresion",
     "descripcion": "RECARGO IMPRESIÓN A 1 COLOR",
-    "precioActual": 1300,
+    "precioActual": 1600,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1300,
+    "precioNuevo": 1600,
     "formato": "",
     "unidad": "",
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 1600
   },
   {
     "nombre": "RECARGO IMPRESIÓN A 2 COLORES",
     "categoria": "Servilletas",
     "seccion": "impresion",
     "descripcion": "RECARGO IMPRESIÓN A 2 COLORES",
-    "precioActual": 1500,
+    "precioActual": 1800,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1500,
+    "precioNuevo": 1800,
     "formato": "",
     "unidad": "",
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 1800
   },
   {
     "nombre": "ROLLOS SECAMANOS TISSUE DOBLE HOJA GRANDES 25 CM",
@@ -2859,6 +2913,6 @@
     "fechasSecciones": {
       "impresion": ""
     },
-    "fechaPublicacionImpresion": "2026-07-28"
+    "fechaPublicacionImpresion": "2026-09-21"
   }
 ]

@@ -9,7 +9,8 @@
     "valorAumento": 0,
     "precioNuevo": 100,
     "porcentaje": 5,
-    "precioCalculado": 100
+    "precioCalculado": 100,
+    "precioPublicado": 100
   },
   {
     "nombre": "FM4",
@@ -21,7 +22,8 @@
     "valorAumento": 0,
     "precioNuevo": 120,
     "porcentaje": 5,
-    "precioCalculado": 120
+    "precioCalculado": 120,
+    "precioPublicado": 120
   },
   {
     "nombre": "FM5",
@@ -33,7 +35,8 @@
     "valorAumento": 0,
     "precioNuevo": 140,
     "porcentaje": 5,
-    "precioCalculado": 140
+    "precioCalculado": 140,
+    "precioPublicado": 140
   },
   {
     "nombre": "FM7",
@@ -45,7 +48,8 @@
     "valorAumento": 0,
     "precioNuevo": 180,
     "porcentaje": 5,
-    "precioCalculado": 180
+    "precioCalculado": 180,
+    "precioPublicado": 180
   },
   {
     "nombre": "FM8",
@@ -57,7 +61,8 @@
     "valorAumento": 0,
     "precioNuevo": 210,
     "porcentaje": 5,
-    "precioCalculado": 210
+    "precioCalculado": 210,
+    "precioPublicado": 210
   },
   {
     "nombre": "FM9",
@@ -69,7 +74,8 @@
     "valorAumento": 0,
     "precioNuevo": 280,
     "porcentaje": 5,
-    "precioCalculado": 280
+    "precioCalculado": 280,
+    "precioPublicado": 280
   },
   {
     "categoria": "Bolsas Fast Food",
@@ -160,7 +166,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 70664.1285,
-    "precioCalculado": 70664.1285
+    "precioCalculado": 70664.1285,
+    "precioPublicado": 70665
   },
   {
     "nombre": "Moldes para pan dulce de ¼ kg fantasía",
@@ -171,7 +178,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 78430.8315,
-    "precioCalculado": 78430.8315
+    "precioCalculado": 78430.8315,
+    "precioPublicado": 78431
   },
   {
     "nombre": "Moldes para pan dulce de ½ kg fantasía",
@@ -182,7 +190,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 94605.8505,
-    "precioCalculado": 94605.8505
+    "precioCalculado": 94605.8505,
+    "precioPublicado": 94606
   },
   {
     "nombre": "Moldes para pan dulce de ¾ kg fantasía",
@@ -193,7 +202,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 105822.89550000001,
-    "precioCalculado": 105822.89550000001
+    "precioCalculado": 105822.89550000001,
+    "precioPublicado": 105823
   },
   {
     "nombre": "Moldes para pan dulce de 1 kg fantasía",
@@ -204,7 +214,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 110457.081,
-    "precioCalculado": 110457.081
+    "precioCalculado": 110457.081,
+    "precioPublicado": 110458
   },
   {
     "nombre": "Moldes savarín N°18",
@@ -215,7 +226,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 226476.9885,
-    "precioCalculado": 226476.9885
+    "precioCalculado": 226476.9885,
+    "precioPublicado": 226477
   },
   {
     "nombre": "Moldes savarín N°20",
@@ -226,7 +238,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 237313.7655,
-    "precioCalculado": 237313.7655
+    "precioCalculado": 237313.7655,
+    "precioPublicado": 237314
   },
   {
     "nombre": "Moldes savarín N°22",
@@ -237,7 +250,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 249715.67250000002,
-    "precioCalculado": 249715.67250000002
+    "precioCalculado": 249715.67250000002,
+    "precioPublicado": 249716
   },
   {
     "nombre": "Moldes savarín N°24",
@@ -248,7 +262,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 293642.0445,
-    "precioCalculado": 293642.0445
+    "precioCalculado": 293642.0445,
+    "precioPublicado": 293643
   },
   {
     "nombre": "Moldes savarín N°26",
@@ -259,7 +274,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 328188.168,
-    "precioCalculado": 328188.168
+    "precioCalculado": 328188.168,
+    "precioPublicado": 328189
   },
   {
     "nombre": "Moldes para bizcochuelo N°18 fantasía",
@@ -270,7 +286,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 198135.483,
-    "precioCalculado": 198135.483
+    "precioCalculado": 198135.483,
+    "precioPublicado": 198136
   },
   {
     "nombre": "Moldes para bizcochuelo N°20 fantasía",
@@ -281,7 +298,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 208971.96600000001,
-    "precioCalculado": 208971.96600000001
+    "precioCalculado": 208971.96600000001,
+    "precioPublicado": 208972
   },
   {
     "nombre": "Moldes para bizcochuelo N°22 fantasía",
@@ -292,7 +310,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 221374.0515,
-    "precioCalculado": 221374.0515
+    "precioCalculado": 221374.0515,
+    "precioPublicado": 221375
   },
   {
     "nombre": "Moldes para bizcochuelo N°24 fantasía",
@@ -303,7 +322,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 241822.8645,
-    "precioCalculado": 241822.8645
+    "precioCalculado": 241822.8645,
+    "precioPublicado": 241823
   },
   {
     "nombre": "Moldes para bizcochuelo N°26 fantasía",
@@ -314,7 +334,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 276368.9775,
-    "precioCalculado": 276368.9775
+    "precioCalculado": 276368.9775,
+    "precioPublicado": 276369
   },
   {
     "nombre": "Budinera con fleje de cartón p/300 gr",
@@ -325,7 +346,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 131265.9915,
-    "precioCalculado": 131265.9915
+    "precioCalculado": 131265.9915,
+    "precioPublicado": 131266
   },
   {
     "nombre": "Budinera con fleje de cartón p/500 gr",
@@ -336,7 +358,8 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 5,
     "precioNuevo": 170345.2065,
-    "precioCalculado": 170345.2065
+    "precioCalculado": 170345.2065,
+    "precioPublicado": 170346
   },
   {
     "categoria": "Moldes",
@@ -355,7 +378,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 21050,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 21050,
+    "precioPublicado": 21050
   },
   {
     "nombre": "1L",
@@ -369,7 +394,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 22870,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 22870,
+    "precioPublicado": 22870
   },
   {
     "nombre": "2",
@@ -383,7 +410,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 25340,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 25340,
+    "precioPublicado": 25340
   },
   {
     "nombre": "2L",
@@ -397,7 +426,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 28590,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 28590,
+    "precioPublicado": 28590
   },
   {
     "nombre": "2L pororó",
@@ -411,7 +442,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 37620,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 37620,
+    "precioPublicado": 37620
   },
   {
     "nombre": "2 x 10L",
@@ -425,7 +458,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 64190,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 64190,
+    "precioPublicado": 64190
   },
   {
     "nombre": "3",
@@ -439,7 +474,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 29820,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 29820,
+    "precioPublicado": 29820
   },
   {
     "nombre": "3L",
@@ -453,7 +490,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 35800,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 35800,
+    "precioPublicado": 35800
   },
   {
     "nombre": "4",
@@ -467,7 +506,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 40870,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 40870,
+    "precioPublicado": 40870
   },
   {
     "nombre": "4A",
@@ -481,7 +522,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 40000,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 40000,
+    "precioPublicado": 40000
   },
   {
     "nombre": "65",
@@ -495,7 +538,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 46840,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 46840,
+    "precioPublicado": 46840
   },
   {
     "nombre": "5 x 10L",
@@ -509,7 +554,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 85550,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 85550,
+    "precioPublicado": 85550
   },
   {
     "nombre": "6",
@@ -523,7 +570,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 52060,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 52060,
+    "precioPublicado": 52060
   },
   {
     "nombre": "6L",
@@ -537,7 +586,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 58720,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 58720,
+    "precioPublicado": 58720
   },
   {
     "nombre": "7",
@@ -551,7 +602,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 76040,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 76040,
+    "precioPublicado": 76040
   },
   {
     "nombre": "7L",
@@ -565,7 +618,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 79170,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 79170,
+    "precioPublicado": 79170
   },
   {
     "nombre": "8",
@@ -579,7 +634,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 85470,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 85470,
+    "precioPublicado": 85470
   },
   {
     "nombre": "9",
@@ -593,7 +650,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 96670,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 96670,
+    "precioPublicado": 96670
   },
   {
     "nombre": "10",
@@ -607,7 +666,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 127080,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 127080,
+    "precioPublicado": 127080
   },
   {
     "nombre": "10L",
@@ -621,7 +682,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 139850,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 139850,
+    "precioPublicado": 139850
   },
   {
     "categoria": "Bolsas Blanca Extra",
@@ -630,21 +693,21 @@
     "recargosImpresion": [
       {
         "descripcion": "1 COLOR",
-        "precioUnaCara": 12000,
-        "precioDosCaras": 18000
+        "precioUnaCara": 13000,
+        "precioDosCaras": 0
       },
       {
         "descripcion": "2 COLORES",
-        "precioUnaCara": 15500,
-        "precioDosCaras": 22500
+        "precioUnaCara": 17000,
+        "precioDosCaras": 0
       },
       {
         "descripcion": "3 COLORES",
-        "precioUnaCara": 21500,
-        "precioDosCaras": 30000
+        "precioUnaCara": 23000,
+        "precioDosCaras": 0
       }
     ],
-    "fechaPublicacionImpresion": "2026-09-21"
+    "fechaPublicacionImpresion": "2026-10-30"
   },
   {
     "nombre": "1",
@@ -658,7 +721,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 17290,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 17290,
+    "precioPublicado": 17290
   },
   {
     "nombre": "1L",
@@ -672,7 +737,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 18750,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 18750,
+    "precioPublicado": 18750
   },
   {
     "nombre": "2",
@@ -686,7 +753,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 20080,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 20080,
+    "precioPublicado": 20080
   },
   {
     "nombre": "2L",
@@ -700,7 +769,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 21070,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 21070,
+    "precioPublicado": 21070
   },
   {
     "nombre": "3",
@@ -714,7 +785,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 21820,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 21820,
+    "precioPublicado": 21820
   },
   {
     "nombre": "3L",
@@ -728,7 +801,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 22560,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 22560,
+    "precioPublicado": 22560
   },
   {
     "nombre": "4",
@@ -742,7 +817,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 25110,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 25110,
+    "precioPublicado": 25110
   },
   {
     "nombre": "4A",
@@ -756,7 +833,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 24530,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 24530,
+    "precioPublicado": 24530
   },
   {
     "nombre": "5",
@@ -770,7 +849,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 29190,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 29190,
+    "precioPublicado": 29190
   },
   {
     "nombre": "6",
@@ -784,7 +865,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 32350,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 32350,
+    "precioPublicado": 32350
   },
   {
     "nombre": "6L",
@@ -798,7 +881,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 36560,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 36560,
+    "precioPublicado": 36560
   },
   {
     "nombre": "7",
@@ -812,7 +897,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 44320,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 44320,
+    "precioPublicado": 44320
   },
   {
     "nombre": "7L",
@@ -826,7 +913,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 44320,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 44320,
+    "precioPublicado": 44320
   },
   {
     "nombre": "68",
@@ -840,7 +929,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 54430,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 54430,
+    "precioPublicado": 54430
   },
   {
     "nombre": "9",
@@ -854,7 +945,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 6,
     "precioNuevo": 61420,
-    "porcentaje": 6
+    "porcentaje": 6,
+    "precioCalculado": 61420,
+    "precioPublicado": 61420
   },
   {
     "categoria": "Bolsas Blanca II",
@@ -863,21 +956,21 @@
     "recargosImpresion": [
       {
         "descripcion": "1 COLOR",
-        "precioUnaCara": 12000,
-        "precioDosCaras": 18000
+        "precioUnaCara": 13000,
+        "precioDosCaras": 0
       },
       {
         "descripcion": "2 COLORES",
-        "precioUnaCara": 15500,
-        "precioDosCaras": 22500
+        "precioUnaCara": 17000,
+        "precioDosCaras": 0
       },
       {
         "descripcion": "3 COLORES",
-        "precioUnaCara": 21500,
-        "precioDosCaras": 30000
+        "precioUnaCara": 23000,
+        "precioDosCaras": 0
       }
     ],
-    "fechaPublicacionImpresion": "2026-09-21"
+    "fechaPublicacionImpresion": "2026-10-30"
   },
   {
     "nombre": "0",
@@ -891,7 +984,9 @@
     "tipoAumento": "sin",
     "valorAumento": 5,
     "precioNuevo": 13280,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 13280,
+    "precioPublicado": 13280
   },
   {
     "nombre": "1",
@@ -905,7 +1000,9 @@
     "tipoAumento": "importe",
     "valorAumento": 5,
     "precioNuevo": 13900,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 13900,
+    "precioPublicado": 13900
   },
   {
     "nombre": "1L",
@@ -919,7 +1016,9 @@
     "tipoAumento": "importe",
     "valorAumento": 0,
     "precioNuevo": 15050,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 15050,
+    "precioPublicado": 15050
   },
   {
     "nombre": "2",
@@ -933,7 +1032,9 @@
     "tipoAumento": "importe",
     "valorAumento": 0,
     "precioNuevo": 16490,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 16490,
+    "precioPublicado": 16490
   },
   {
     "nombre": "2L",
@@ -947,7 +1048,9 @@
     "tipoAumento": "importe",
     "valorAumento": 0,
     "precioNuevo": 16900,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 16900,
+    "precioPublicado": 16900
   },
   {
     "nombre": "2L farmacia",
@@ -961,7 +1064,9 @@
     "tipoAumento": "importe",
     "valorAumento": 0,
     "precioNuevo": 16900,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 16900,
+    "precioPublicado": 16900
   },
   {
     "nombre": "2 x 10L",
@@ -975,7 +1080,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 31840,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 31840,
+    "precioPublicado": 31840
   },
   {
     "nombre": "3",
@@ -989,7 +1096,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 17130,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 17130,
+    "precioPublicado": 17130
   },
   {
     "nombre": "3L",
@@ -1003,7 +1112,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 18660,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 18660,
+    "precioPublicado": 18660
   },
   {
     "nombre": "3A",
@@ -1017,7 +1128,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 20070,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 20070,
+    "precioPublicado": 20070
   },
   {
     "nombre": "3L FARMACIA",
@@ -1031,7 +1144,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 18660,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 18660,
+    "precioPublicado": 18660
   },
   {
     "nombre": "4",
@@ -1045,7 +1160,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 21240,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 21240,
+    "precioPublicado": 21240
   },
   {
     "nombre": "4A",
@@ -1059,7 +1176,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 20580,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 20580,
+    "precioPublicado": 20580
   },
   {
     "nombre": "4A FARMACIA",
@@ -1073,7 +1192,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 20580,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 20580,
+    "precioPublicado": 20580
   },
   {
     "nombre": "5",
@@ -1087,7 +1208,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 24130,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 24130,
+    "precioPublicado": 24130
   },
   {
     "nombre": "5 x 10L",
@@ -1101,7 +1224,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 44380,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 44380,
+    "precioPublicado": 44380
   },
   {
     "nombre": "6",
@@ -1115,7 +1240,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 26820,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 26820,
+    "precioPublicado": 26820
   },
   {
     "nombre": "6L",
@@ -1129,7 +1256,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 29940,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 29940,
+    "precioPublicado": 29940
   },
   {
     "nombre": "6 FARMACIA",
@@ -1143,7 +1272,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 29940,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 29940,
+    "precioPublicado": 29940
   },
   {
     "nombre": "7",
@@ -1157,7 +1288,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 35730,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 35730,
+    "precioPublicado": 35730
   },
   {
     "nombre": "7L",
@@ -1171,7 +1304,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 40900,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 40900,
+    "precioPublicado": 40900
   },
   {
     "nombre": "7 FARMACIA",
@@ -1185,7 +1320,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 35730,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 35730,
+    "precioPublicado": 35730
   },
   {
     "nombre": "8",
@@ -1199,7 +1336,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 44630,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 44630,
+    "precioPublicado": 44630
   },
   {
     "nombre": "9",
@@ -1213,7 +1352,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 49730,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 49730,
+    "precioPublicado": 49730
   },
   {
     "nombre": "10",
@@ -1227,7 +1368,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 73820,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 73820,
+    "precioPublicado": 73820
   },
   {
     "nombre": "10L",
@@ -1241,7 +1384,9 @@
     "tipoAumento": "porcentaje",
     "valorAumento": 0,
     "precioNuevo": 87980,
-    "porcentaje": 5
+    "porcentaje": 5,
+    "precioCalculado": 87980,
+    "precioPublicado": 87980
   },
   {
     "categoria": "Bolsas Kraft",
@@ -1250,21 +1395,21 @@
     "recargosImpresion": [
       {
         "descripcion": "1 COLOR",
-        "precioUnaCara": 12000,
-        "precioDosCaras": 18000
+        "precioUnaCara": 13000,
+        "precioDosCaras": 0
       },
       {
         "descripcion": "2 COLORES",
-        "precioUnaCara": 15500,
-        "precioDosCaras": 22500
+        "precioUnaCara": 17000,
+        "precioDosCaras": 0
       },
       {
         "descripcion": "3 COLORES",
-        "precioUnaCara": 21500,
-        "precioDosCaras": 30000
+        "precioUnaCara": 23000,
+        "precioDosCaras": 0
       }
     ],
-    "fechaPublicacionImpresion": "2026-09-21"
+    "fechaPublicacionImpresion": "2026-10-30"
   },
   {
     "nombre": "0",
@@ -1274,13 +1419,12 @@
     "ancho": "16",
     "largo": "11",
     "unidadesPorBulto": 100,
-    "precioActual": 35126.3,
+    "precioActual": 36884,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 35126.3,
-    "porcentaje": 10,
-    "precioCalculado": 35126.3,
-    "precioPublicado": 35127
+    "valorAumento": 5,
+    "precioNuevo": 36884,
+    "porcentaje": 5,
+    "precioCalculado": 36884
   },
   {
     "nombre": "1",
@@ -1290,13 +1434,12 @@
     "ancho": "18",
     "largo": "13",
     "unidadesPorBulto": 100,
-    "precioActual": 39482.3,
+    "precioActual": 41458,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 39482.3,
-    "porcentaje": 10,
-    "precioCalculado": 39482.3,
-    "precioPublicado": 39483
+    "valorAumento": 5,
+    "precioNuevo": 41458,
+    "porcentaje": 5,
+    "precioCalculado": 41458
   },
   {
     "nombre": "2",
@@ -1306,13 +1449,12 @@
     "ancho": "22",
     "largo": "15",
     "unidadesPorBulto": 100,
-    "precioActual": 44951.5,
+    "precioActual": 47200,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 44951.5,
-    "porcentaje": 10,
-    "precioCalculado": 44951.5,
-    "precioPublicado": 44952
+    "valorAumento": 5,
+    "precioNuevo": 47200,
+    "porcentaje": 5,
+    "precioCalculado": 47200
   },
   {
     "nombre": "3",
@@ -1322,13 +1464,12 @@
     "ancho": "23",
     "largo": "16",
     "unidadesPorBulto": 100,
-    "precioActual": 53215.8,
+    "precioActual": 55877,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 53215.8,
-    "porcentaje": 10,
-    "precioCalculado": 53215.8,
-    "precioPublicado": 53216
+    "valorAumento": 5,
+    "precioNuevo": 55877,
+    "porcentaje": 5,
+    "precioCalculado": 55877
   },
   {
     "nombre": "4",
@@ -1338,13 +1479,12 @@
     "ancho": "26",
     "largo": "18",
     "unidadesPorBulto": 100,
-    "precioActual": 68752.20000000001,
+    "precioActual": 72191,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 68752.20000000001,
-    "porcentaje": 10,
-    "precioCalculado": 68752.20000000001,
-    "precioPublicado": 68753
+    "valorAumento": 5,
+    "precioNuevo": 72191,
+    "porcentaje": 5,
+    "precioCalculado": 72191
   },
   {
     "nombre": "5",
@@ -1354,13 +1494,12 @@
     "ancho": "29",
     "largo": "21",
     "unidadesPorBulto": 100,
-    "precioActual": 86442.40000000001,
+    "precioActual": 90766,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 86442.40000000001,
-    "porcentaje": 10,
-    "precioCalculado": 86442.40000000001,
-    "precioPublicado": 86443
+    "valorAumento": 5,
+    "precioNuevo": 90766,
+    "porcentaje": 5,
+    "precioCalculado": 90766
   },
   {
     "nombre": "6",
@@ -1370,13 +1509,12 @@
     "ancho": "31",
     "largo": "23",
     "unidadesPorBulto": 100,
-    "precioActual": 106467.90000000001,
+    "precioActual": 111792,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 106467.90000000001,
-    "porcentaje": 10,
-    "precioCalculado": 106467.90000000001,
-    "precioPublicado": 106468
+    "valorAumento": 5,
+    "precioNuevo": 111792,
+    "porcentaje": 5,
+    "precioCalculado": 111792
   },
   {
     "nombre": "7",
@@ -1386,13 +1524,12 @@
     "ancho": "34",
     "largo": "24",
     "unidadesPorBulto": 100,
-    "precioActual": 118664.70000000001,
+    "precioActual": 124599,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 118664.70000000001,
-    "porcentaje": 10,
-    "precioCalculado": 118664.70000000001,
-    "precioPublicado": 118665
+    "valorAumento": 5,
+    "precioNuevo": 124599,
+    "porcentaje": 5,
+    "precioCalculado": 124599
   },
   {
     "nombre": "8",
@@ -1402,13 +1539,12 @@
     "ancho": "37",
     "largo": "25",
     "unidadesPorBulto": 100,
-    "precioActual": 157711.40000000002,
+    "precioActual": 165598,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 157711.40000000002,
-    "porcentaje": 10,
-    "precioCalculado": 157711.40000000002,
-    "precioPublicado": 157712
+    "valorAumento": 5,
+    "precioNuevo": 165598,
+    "porcentaje": 5,
+    "precioCalculado": 165598
   },
   {
     "nombre": "12",
@@ -1417,14 +1553,13 @@
     "numero": "12",
     "diametro": "20",
     "unidadesPorBulto": 100,
-    "precioActual": 63186.200000000004,
+    "precioActual": 66347,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 63186.200000000004,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 66347,
+    "porcentaje": 5,
     "ancho": "",
-    "precioCalculado": 63186.200000000004,
-    "precioPublicado": 63187
+    "precioCalculado": 66347
   },
   {
     "nombre": "13½",
@@ -1433,14 +1568,13 @@
     "numero": "13½",
     "diametro": "24",
     "unidadesPorBulto": 100,
-    "precioActual": 81118.40000000001,
+    "precioActual": 85175,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 81118.40000000001,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 85175,
+    "porcentaje": 5,
     "ancho": "",
-    "precioCalculado": 81118.40000000001,
-    "precioPublicado": 81119
+    "precioCalculado": 85175
   },
   {
     "nombre": "14",
@@ -1449,14 +1583,13 @@
     "numero": "14",
     "diametro": "27",
     "unidadesPorBulto": 100,
-    "precioActual": 96279.70000000001,
+    "precioActual": 101094,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 96279.70000000001,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 101094,
+    "porcentaje": 5,
     "ancho": "",
-    "precioCalculado": 96279.70000000001,
-    "precioPublicado": 96280
+    "precioCalculado": 101094
   },
   {
     "nombre": "15",
@@ -1465,14 +1598,13 @@
     "numero": "15",
     "diametro": "29",
     "unidadesPorBulto": 100,
-    "precioActual": 98215.70000000001,
+    "precioActual": 103127,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 98215.70000000001,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 103127,
+    "porcentaje": 5,
     "ancho": "",
-    "precioCalculado": 98215.70000000001,
-    "precioPublicado": 98216
+    "precioCalculado": 103127
   },
   {
     "nombre": "16",
@@ -1481,14 +1613,13 @@
     "numero": "16",
     "diametro": "33",
     "unidadesPorBulto": 100,
-    "precioActual": 118083.90000000001,
+    "precioActual": 123989,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 118083.90000000001,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 123989,
+    "porcentaje": 5,
     "ancho": "",
-    "precioCalculado": 118083.90000000001,
-    "precioPublicado": 118084
+    "precioCalculado": 123989
   },
   {
     "nombre": "1",
@@ -1498,13 +1629,12 @@
     "ancho": "18",
     "largo": "13",
     "unidadesPorBulto": 100,
-    "precioActual": 45665.4,
+    "precioActual": 47950,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 45665.4,
-    "porcentaje": 10,
-    "precioCalculado": 45665.4,
-    "precioPublicado": 45666
+    "valorAumento": 5,
+    "precioNuevo": 47950,
+    "porcentaje": 5,
+    "precioCalculado": 47950
   },
   {
     "nombre": "2",
@@ -1514,13 +1644,12 @@
     "ancho": "22",
     "largo": "15",
     "unidadesPorBulto": 100,
-    "precioActual": 52114.700000000004,
+    "precioActual": 54721,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 52114.700000000004,
-    "porcentaje": 10,
-    "precioCalculado": 52114.700000000004,
-    "precioPublicado": 52115
+    "valorAumento": 5,
+    "precioNuevo": 54721,
+    "porcentaje": 5,
+    "precioCalculado": 54721
   },
   {
     "nombre": "3",
@@ -1530,13 +1659,12 @@
     "ancho": "23",
     "largo": "16",
     "unidadesPorBulto": 100,
-    "precioActual": 62774.8,
+    "precioActual": 65914,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 62774.8,
-    "porcentaje": 10,
-    "precioCalculado": 62774.8,
-    "precioPublicado": 62775
+    "valorAumento": 5,
+    "precioNuevo": 65914,
+    "porcentaje": 5,
+    "precioCalculado": 65914
   },
   {
     "nombre": "4",
@@ -1546,13 +1674,12 @@
     "ancho": "26",
     "largo": "18",
     "unidadesPorBulto": 100,
-    "precioActual": 93545.1,
+    "precioActual": 98224,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 93545.1,
-    "porcentaje": 10,
-    "precioCalculado": 93545.1,
-    "precioPublicado": 93546
+    "valorAumento": 5,
+    "precioNuevo": 98224,
+    "porcentaje": 5,
+    "precioCalculado": 98224
   },
   {
     "nombre": "5",
@@ -1562,13 +1689,12 @@
     "ancho": "29",
     "largo": "21",
     "unidadesPorBulto": 100,
-    "precioActual": 118749.40000000001,
+    "precioActual": 124688,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 118749.40000000001,
-    "porcentaje": 10,
-    "precioCalculado": 118749.40000000001,
-    "precioPublicado": 118750
+    "valorAumento": 5,
+    "precioNuevo": 124688,
+    "porcentaje": 5,
+    "precioCalculado": 124688
   },
   {
     "nombre": "6",
@@ -1578,13 +1704,12 @@
     "ancho": "31",
     "largo": "23",
     "unidadesPorBulto": 100,
-    "precioActual": 172630.7,
+    "precioActual": 181263,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 172630.7,
-    "porcentaje": 10,
-    "precioCalculado": 172630.7,
-    "precioPublicado": 172631
+    "valorAumento": 5,
+    "precioNuevo": 181263,
+    "porcentaje": 5,
+    "precioCalculado": 181263
   },
   {
     "nombre": "7",
@@ -1594,13 +1719,12 @@
     "ancho": "34",
     "largo": "24",
     "unidadesPorBulto": 100,
-    "precioActual": 189655.40000000002,
+    "precioActual": 199139,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 189655.40000000002,
-    "porcentaje": 10,
-    "precioCalculado": 189655.40000000002,
-    "precioPublicado": 189656
+    "valorAumento": 5,
+    "precioNuevo": 199139,
+    "porcentaje": 5,
+    "precioCalculado": 199139
   },
   {
     "nombre": "8",
@@ -1610,13 +1734,12 @@
     "ancho": "37",
     "largo": "25",
     "unidadesPorBulto": 100,
-    "precioActual": 240850.50000000003,
+    "precioActual": 252894,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 240850.50000000003,
-    "porcentaje": 10,
-    "precioCalculado": 240850.50000000003,
-    "precioPublicado": 240851
+    "valorAumento": 5,
+    "precioNuevo": 252894,
+    "porcentaje": 5,
+    "precioCalculado": 252894
   },
   {
     "nombre": "13½",
@@ -1625,14 +1748,13 @@
     "numero": "13½",
     "diametro": "24",
     "unidadesPorBulto": 100,
-    "precioActual": 92165.70000000001,
+    "precioActual": 96775,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 92165.70000000001,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 96775,
+    "porcentaje": 5,
     "ancho": "",
-    "precioCalculado": 92165.70000000001,
-    "precioPublicado": 92166
+    "precioCalculado": 96775
   },
   {
     "nombre": "14",
@@ -1641,14 +1763,13 @@
     "numero": "14",
     "diametro": "27",
     "unidadesPorBulto": 100,
-    "precioActual": 112626.8,
+    "precioActual": 118259,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 112626.8,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 118259,
+    "porcentaje": 5,
     "ancho": "",
-    "precioCalculado": 112626.8,
-    "precioPublicado": 112627
+    "precioCalculado": 118259
   },
   {
     "nombre": "15",
@@ -1657,14 +1778,13 @@
     "numero": "15",
     "diametro": "29",
     "unidadesPorBulto": 100,
-    "precioActual": 144219.90000000002,
+    "precioActual": 151431,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 144219.90000000002,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 151431,
+    "porcentaje": 5,
     "ancho": "",
-    "precioCalculado": 144219.90000000002,
-    "precioPublicado": 144220
+    "precioCalculado": 151431
   },
   {
     "nombre": "16",
@@ -1673,14 +1793,13 @@
     "numero": "16",
     "diametro": "33",
     "unidadesPorBulto": 100,
-    "precioActual": 171142.40000000002,
+    "precioActual": 179701,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 171142.40000000002,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 179701,
+    "porcentaje": 5,
     "ancho": "",
-    "precioCalculado": 171142.40000000002,
-    "precioPublicado": 171143
+    "precioCalculado": 179701
   },
   {
     "nombre": "18",
@@ -1689,14 +1808,13 @@
     "numero": "18",
     "diametro": "35",
     "unidadesPorBulto": 100,
-    "precioActual": 269430.7,
+    "precioActual": 282903,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 269430.7,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 282903,
+    "porcentaje": 5,
     "ancho": "",
-    "precioCalculado": 269430.7,
-    "precioPublicado": 269431
+    "precioCalculado": 282903
   },
   {
     "nombre": "1",
@@ -1706,13 +1824,12 @@
     "ancho": "18",
     "largo": "13",
     "unidadesPorBulto": 100,
-    "precioActual": 58818.100000000006,
+    "precioActual": 61760,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 58818.100000000006,
-    "porcentaje": 10,
-    "precioCalculado": 58818.100000000006,
-    "precioPublicado": 58819
+    "valorAumento": 5,
+    "precioNuevo": 61760,
+    "porcentaje": 5,
+    "precioCalculado": 61760
   },
   {
     "nombre": "2",
@@ -1722,13 +1839,12 @@
     "ancho": "22",
     "largo": "15",
     "unidadesPorBulto": 100,
-    "precioActual": 73180.8,
+    "precioActual": 76841,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 73180.8,
-    "porcentaje": 10,
-    "precioCalculado": 73180.8,
-    "precioPublicado": 73181
+    "valorAumento": 5,
+    "precioNuevo": 76841,
+    "porcentaje": 5,
+    "precioCalculado": 76841
   },
   {
     "nombre": "3",
@@ -1738,13 +1854,12 @@
     "ancho": "23",
     "largo": "16",
     "unidadesPorBulto": 100,
-    "precioActual": 97985.8,
+    "precioActual": 102886,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 97985.8,
-    "porcentaje": 10,
-    "precioCalculado": 97985.8,
-    "precioPublicado": 97986
+    "valorAumento": 5,
+    "precioNuevo": 102886,
+    "porcentaje": 5,
+    "precioCalculado": 102886
   },
   {
     "nombre": "4",
@@ -1754,13 +1869,12 @@
     "ancho": "26",
     "largo": "18",
     "unidadesPorBulto": 100,
-    "precioActual": 141110.2,
+    "precioActual": 148167,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 141110.2,
-    "porcentaje": 10,
-    "precioCalculado": 141110.2,
-    "precioPublicado": 141111
+    "valorAumento": 5,
+    "precioNuevo": 148167,
+    "porcentaje": 5,
+    "precioCalculado": 148167
   },
   {
     "nombre": "5",
@@ -1770,13 +1884,12 @@
     "ancho": "29",
     "largo": "21",
     "unidadesPorBulto": 100,
-    "precioActual": 180290.00000000003,
+    "precioActual": 189306,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 180290.00000000003,
-    "porcentaje": 10,
-    "precioCalculado": 180290.00000000003,
-    "precioPublicado": 180291
+    "valorAumento": 5,
+    "precioNuevo": 189306,
+    "porcentaje": 5,
+    "precioCalculado": 189306
   },
   {
     "nombre": "6",
@@ -1786,13 +1899,12 @@
     "ancho": "31",
     "largo": "23",
     "unidadesPorBulto": 100,
-    "precioActual": 243004.30000000002,
+    "precioActual": 255156,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 243004.30000000002,
-    "porcentaje": 10,
-    "precioCalculado": 243004.30000000002,
-    "precioPublicado": 243005
+    "valorAumento": 5,
+    "precioNuevo": 255156,
+    "porcentaje": 5,
+    "precioCalculado": 255156
   },
   {
     "nombre": "7",
@@ -1802,13 +1914,12 @@
     "ancho": "34",
     "largo": "24",
     "unidadesPorBulto": 100,
-    "precioActual": 253991.10000000003,
+    "precioActual": 266692,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 253991.10000000003,
-    "porcentaje": 10,
-    "precioCalculado": 253991.10000000003,
-    "precioPublicado": 253992
+    "valorAumento": 5,
+    "precioNuevo": 266692,
+    "porcentaje": 5,
+    "precioCalculado": 266692
   },
   {
     "nombre": "8",
@@ -1818,13 +1929,12 @@
     "ancho": "37",
     "largo": "25",
     "unidadesPorBulto": 100,
-    "precioActual": 316814.30000000005,
+    "precioActual": 332656,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 316814.30000000005,
-    "porcentaje": 10,
-    "precioCalculado": 316814.30000000005,
-    "precioPublicado": 316815
+    "valorAumento": 5,
+    "precioNuevo": 332656,
+    "porcentaje": 5,
+    "precioCalculado": 332656
   },
   {
     "nombre": "8½",
@@ -1834,13 +1944,12 @@
     "ancho": "29",
     "largo": "39",
     "unidadesPorBulto": 100,
-    "precioActual": 361221.30000000005,
+    "precioActual": 379284,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 361221.30000000005,
-    "porcentaje": 10,
-    "precioCalculado": 361221.30000000005,
-    "precioPublicado": 361222
+    "valorAumento": 5,
+    "precioNuevo": 379284,
+    "porcentaje": 5,
+    "precioCalculado": 379284
   },
   {
     "nombre": "9",
@@ -1850,13 +1959,12 @@
     "ancho": "44",
     "largo": "30",
     "unidadesPorBulto": 50,
-    "precioActual": 495688.60000000003,
+    "precioActual": 520474,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 495688.60000000003,
-    "porcentaje": 10,
-    "precioCalculado": 495688.60000000003,
-    "precioPublicado": 495689
+    "valorAumento": 5,
+    "precioNuevo": 520474,
+    "porcentaje": 5,
+    "precioCalculado": 520474
   },
   {
     "nombre": "18",
@@ -1867,9 +1975,9 @@
     "unidadesPorBulto": 100,
     "precioActual": 0,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
+    "valorAumento": 5,
     "precioNuevo": 0,
-    "porcentaje": 10,
+    "porcentaje": 5,
     "ancho": "",
     "precioCalculado": 0,
     "precioPublicado": 0
@@ -1880,16 +1988,15 @@
     "seccion": "otros-carton",
     "descripcion": "Discos de carton comunes (12-16/36)",
     "aCotizar": false,
-    "precioActual": 4852.1,
+    "precioActual": 5096,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 4852.1,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 5096,
+    "porcentaje": 5,
     "ancho": "",
     "largo": "",
     "unidadesPorBulto": null,
-    "precioCalculado": 4852.1,
-    "precioPublicado": 4853
+    "precioCalculado": 5096
   },
   {
     "nombre": "Bases de cartón (medidas vs)",
@@ -1897,16 +2004,15 @@
     "seccion": "otros-carton",
     "descripcion": "Bases de cartón (medidas vs)",
     "aCotizar": false,
-    "precioActual": 3412.2000000000003,
+    "precioActual": 3584,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 3412.2000000000003,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 3584,
+    "porcentaje": 5,
     "ancho": "",
     "largo": "",
     "unidadesPorBulto": null,
-    "precioCalculado": 3412.2000000000003,
-    "precioPublicado": 3413
+    "precioCalculado": 3584
   },
   {
     "nombre": "Fajas de cartón finas",
@@ -1914,16 +2020,15 @@
     "seccion": "otros-carton",
     "descripcion": "Fajas de cartón finas",
     "aCotizar": false,
-    "precioActual": 3049.2000000000003,
+    "precioActual": 3203,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 3049.2000000000003,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 3203,
+    "porcentaje": 5,
     "ancho": "",
     "largo": "",
     "unidadesPorBulto": null,
-    "precioCalculado": 3049.2000000000003,
-    "precioPublicado": 3050
+    "precioCalculado": 3203
   },
   {
     "nombre": "Fajas de cartón gruesas",
@@ -1931,16 +2036,15 @@
     "seccion": "otros-carton",
     "descripcion": "Fajas de cartón gruesas",
     "aCotizar": false,
-    "precioActual": 3654.2000000000003,
+    "precioActual": 3838,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 3654.2000000000003,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 3838,
+    "porcentaje": 5,
     "ancho": "",
     "largo": "",
     "unidadesPorBulto": null,
-    "precioCalculado": 3654.2000000000003,
-    "precioPublicado": 3655
+    "precioCalculado": 3838
   },
   {
     "nombre": "Fajas de cartulina",
@@ -1948,15 +2052,15 @@
     "seccion": "otros-carton",
     "descripcion": "Fajas de cartulina",
     "aCotizar": false,
-    "precioActual": 3762,
+    "precioActual": 3951,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 3762,
-    "porcentaje": 0,
+    "valorAumento": 5,
+    "precioNuevo": 3951,
+    "porcentaje": 5,
     "ancho": "",
     "largo": "",
     "unidadesPorBulto": null,
-    "precioCalculado": 3762
+    "precioCalculado": 3951
   },
   {
     "nombre": "Kg de cartón en hoja 70 x 100 N°50 al 25 fino",
@@ -1964,16 +2068,15 @@
     "seccion": "otros-carton",
     "descripcion": "Kg de cartón en hoja 70 x 100 N°50 al 25 fino",
     "aCotizar": false,
-    "precioActual": 3109.7000000000003,
+    "precioActual": 3266,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 3109.7000000000003,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 3266,
+    "porcentaje": 5,
     "ancho": "",
     "largo": "",
     "unidadesPorBulto": null,
-    "precioCalculado": 3109.7000000000003,
-    "precioPublicado": 3110
+    "precioCalculado": 3266
   },
   {
     "nombre": "Kg de cartón en hoja 70 x 100 N°16 al 20 grueso",
@@ -1981,16 +2084,15 @@
     "seccion": "otros-carton",
     "descripcion": "Kg de cartón en hoja 70 x 100 N°16 al 20 grueso",
     "aCotizar": false,
-    "precioActual": 3714.7000000000003,
+    "precioActual": 3901,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 3714.7000000000003,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 3901,
+    "porcentaje": 5,
     "ancho": "",
     "largo": "",
     "unidadesPorBulto": null,
-    "precioCalculado": 3714.7000000000003,
-    "precioPublicado": 3715
+    "precioCalculado": 3901
   },
   {
     "nombre": "Kg  cartulina tricapa blanca",
@@ -1998,15 +2100,15 @@
     "seccion": "otros-carton",
     "descripcion": "Kg  cartulina tricapa blanca",
     "aCotizar": false,
-    "precioActual": 3575,
+    "precioActual": 3754,
     "tipoAumento": "porcentaje",
-    "valorAumento": 10,
-    "precioNuevo": 3575,
-    "porcentaje": 10,
+    "valorAumento": 5,
+    "precioNuevo": 3754,
+    "porcentaje": 5,
     "ancho": "",
     "largo": "",
     "unidadesPorBulto": null,
-    "precioCalculado": 3575
+    "precioCalculado": 3754
   },
   {
     "nombre": "Discos de cartón blancos puro",
@@ -2023,7 +2125,7 @@
   {
     "categoria": "Cartonería",
     "tipoRegistro": "configuracion",
-    "fechaPublicacion": "2026-09-01"
+    "fechaPublicacion": "2026-10-30"
   },
   {
     "nombre": "SULFITO SEIN ROLLOS",
@@ -2036,7 +2138,8 @@
     "valorAumento": 5,
     "precioNuevo": 2985,
     "porcentaje": null,
-    "precioCalculado": 2985
+    "precioCalculado": 2985,
+    "precioPublicado": 2985
   },
   {
     "nombre": "SULFITO SEIN CORTADO",
@@ -2049,7 +2152,8 @@
     "valorAumento": 0,
     "precioNuevo": 2985,
     "porcentaje": null,
-    "precioCalculado": 2985
+    "precioCalculado": 2985,
+    "precioPublicado": 2985
   },
   {
     "nombre": "SULFITO SEIN CORTE AL ½ RESMAS",
@@ -2062,7 +2166,8 @@
     "valorAumento": 0,
     "precioNuevo": 3134.25,
     "porcentaje": null,
-    "precioCalculado": 3134.25
+    "precioCalculado": 3134.25,
+    "precioPublicado": 3135
   },
   {
     "nombre": "SULFITO SEIN CORTES ESPECIALES",
@@ -2075,7 +2180,8 @@
     "valorAumento": 0,
     "precioNuevo": 3193.95,
     "porcentaje": null,
-    "precioCalculado": 3193.95
+    "precioCalculado": 3193.95,
+    "precioPublicado": 3194
   },
   {
     "nombre": "SULFITO EXTRA ROLLOS",
@@ -2087,7 +2193,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 4330,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 4330,
+    "precioPublicado": 4330
   },
   {
     "nombre": "FANTASÍA VARIOS S/sto. SEIN",
@@ -2100,7 +2208,8 @@
     "valorAumento": 0,
     "precioNuevo": 3782,
     "porcentaje": null,
-    "precioCalculado": 3782
+    "precioCalculado": 3782,
+    "precioPublicado": 3782
   },
   {
     "nombre": "SULFITO MANTEL s/sto. SEIN",
@@ -2113,7 +2222,8 @@
     "valorAumento": 0,
     "precioNuevo": 3135.4,
     "porcentaje": null,
-    "precioCalculado": 3135.4
+    "precioCalculado": 3135.4,
+    "precioPublicado": 3136
   },
   {
     "nombre": "FANTASÍA MANTEL s/sto. SEIN",
@@ -2126,7 +2236,8 @@
     "valorAumento": 0,
     "precioNuevo": 4148,
     "porcentaje": null,
-    "precioCalculado": 4148
+    "precioCalculado": 4148,
+    "precioPublicado": 4148
   },
   {
     "nombre": "KRAFT HOJAS 50/80 grs.",
@@ -2139,7 +2250,8 @@
     "valorAumento": 0,
     "precioNuevo": 2240,
     "porcentaje": null,
-    "precioCalculado": 2240
+    "precioCalculado": 2240,
+    "precioPublicado": 2240
   },
   {
     "nombre": "KRAFT ROLLOS 50 GRS",
@@ -2151,7 +2263,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 2260,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 2260,
+    "precioPublicado": 2260
   },
   {
     "nombre": "KRAFT ROLLOS 80 GRS",
@@ -2163,7 +2277,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 2360,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 2360,
+    "precioPublicado": 2360
   },
   {
     "nombre": "FANTASÍA PANADERÍA EXTRA",
@@ -2175,7 +2291,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 4820,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 4820,
+    "precioPublicado": 4820
   },
   {
     "nombre": "PLENO EXTRA COLORES VS ROLLOS",
@@ -2187,7 +2305,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 5360,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 5360,
+    "precioPublicado": 5360
   },
   {
     "nombre": "PLENO EXTRA ROJO ROLLOS",
@@ -2199,7 +2319,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 5600,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 5600,
+    "precioPublicado": 5600
   },
   {
     "nombre": "FANTASÍA PANADERÍA KRAFT",
@@ -2212,7 +2334,8 @@
     "valorAumento": 0,
     "precioNuevo": 2640,
     "porcentaje": null,
-    "precioCalculado": 2640
+    "precioCalculado": 2640,
+    "precioPublicado": 2640
   },
   {
     "nombre": "PAQUETES MANTELES INDIVIDUALES",
@@ -2224,7 +2347,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 8200,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 8200,
+    "precioPublicado": 8200
   },
   {
     "nombre": "1 COLOR",
@@ -2232,12 +2357,12 @@
     "seccion": "recargos-impresion",
     "descripcion": "1 COLOR",
     "formato": "",
-    "precioActual": 600,
+    "precioActual": 700,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 600,
+    "precioNuevo": 700,
     "porcentaje": null,
-    "precioCalculado": 600
+    "precioCalculado": 700
   },
   {
     "nombre": "2 COLORES",
@@ -2245,12 +2370,12 @@
     "seccion": "recargos-impresion",
     "descripcion": "2 COLORES",
     "formato": "",
-    "precioActual": 840,
+    "precioActual": 1000,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 840,
+    "precioNuevo": 1000,
     "porcentaje": null,
-    "precioCalculado": 840
+    "precioCalculado": 1000
   },
   {
     "nombre": "3 COLORES",
@@ -2258,12 +2383,12 @@
     "seccion": "recargos-impresion",
     "descripcion": "3 COLORES",
     "formato": "",
-    "precioActual": 1200,
+    "precioActual": 1400,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1200,
+    "precioNuevo": 1400,
     "porcentaje": null,
-    "precioCalculado": 1200
+    "precioCalculado": 1400
   },
   {
     "nombre": "PLENO SUAVE",
@@ -2271,12 +2396,12 @@
     "seccion": "recargos-impresion",
     "descripcion": "PLENO SUAVE",
     "formato": "",
-    "precioActual": 1500,
+    "precioActual": 1700,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1500,
+    "precioNuevo": 1700,
     "porcentaje": null,
-    "precioCalculado": 1500
+    "precioCalculado": 1700
   },
   {
     "nombre": "PLENO INTENSO",
@@ -2284,12 +2409,12 @@
     "seccion": "recargos-impresion",
     "descripcion": "PLENO INTENSO",
     "formato": "",
-    "precioActual": 1800,
+    "precioActual": 2000,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1800,
+    "precioNuevo": 2000,
     "porcentaje": null,
-    "precioCalculado": 1800
+    "precioCalculado": 2000
   },
   {
     "nombre": "RESMAS DE MANTECA BLANQUEADO IMPORTADO",
@@ -2301,7 +2426,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 155080,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 155080,
+    "precioPublicado": 155080
   },
   {
     "nombre": "RESMAS DE MOLDE",
@@ -2313,7 +2440,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 151440,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 151440,
+    "precioPublicado": 151440
   },
   {
     "nombre": "RESMAS DE PAPEL ANTIGRASA",
@@ -2325,7 +2454,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 161280,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 161280,
+    "precioPublicado": 161280
   },
   {
     "nombre": "RESMAS DE SEDA BLANCO",
@@ -2337,7 +2468,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 35010,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 35010,
+    "precioPublicado": 35010
   },
   {
     "nombre": "KG PAPEL ANTIGRASA",
@@ -2349,7 +2482,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 11290,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 11290,
+    "precioPublicado": 11290
   },
   {
     "nombre": "RESMAS DE CELOFÁN TRANSPARENTE",
@@ -2361,7 +2496,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 79350,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 79350,
+    "precioPublicado": 79350
   },
   {
     "nombre": "RESMAS DE CELOFÁN COLOR",
@@ -2373,7 +2510,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 27330,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 27330,
+    "precioPublicado": 27330
   },
   {
     "nombre": "RESMAS CELOFÁN DESAYUNO",
@@ -2385,7 +2524,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 66900,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 66900,
+    "precioPublicado": 66900
   },
   {
     "nombre": "ROLLOS DE CELOFÁN TRANSPARENTE",
@@ -2397,7 +2538,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 2160,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 2160,
+    "precioPublicado": 2160
   },
   {
     "nombre": "ROLLOS DE CELOFÁN COLOR",
@@ -2409,7 +2552,9 @@
     "tipoAumento": "sin",
     "valorAumento": 0,
     "precioNuevo": 2900,
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 2900,
+    "precioPublicado": 2900
   },
   {
     "categoria": "Papeles",
@@ -2419,7 +2564,7 @@
       "recargos-impresion": "",
       "productos-importados": ""
     },
-    "fechaPublicacionImpresion": "2026-09-21"
+    "fechaPublicacionImpresion": "2026-10-30"
   },
   {
     "nombre": "1/4 Kg",
@@ -2639,10 +2784,12 @@
     "formato": "18 x 17",
     "unidad": "x 2000",
     "porcentaje": 5,
-    "precioActual": 8580,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 8580
+    "precioActual": 9009,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 9009,
+    "precioCalculado": 9009,
+    "precioPublicado": 9009
   },
   {
     "nombre": "BUFFET CON FAJAS",
@@ -2652,10 +2799,12 @@
     "formato": "18 x 18",
     "unidad": "x 2000",
     "porcentaje": 5,
-    "precioActual": 9280,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 9280
+    "precioActual": 9744,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 9744,
+    "precioCalculado": 9744,
+    "precioPublicado": 9744
   },
   {
     "nombre": "AQUARELLA",
@@ -2664,11 +2813,13 @@
     "detalle": "AQUARELLA",
     "formato": "18 x 18",
     "unidad": "x 1600",
-    "porcentaje": 6,
-    "precioActual": 6300,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 6300
+    "porcentaje": 5,
+    "precioActual": 6615,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 6615,
+    "precioCalculado": 6615,
+    "precioPublicado": 6615
   },
   {
     "nombre": "CRYSTAL",
@@ -2677,11 +2828,13 @@
     "detalle": "CRYSTAL",
     "formato": "18 x 18",
     "unidad": "x 1000",
-    "porcentaje": 10,
-    "precioActual": 4900,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 4900
+    "porcentaje": 5,
+    "precioActual": 5145,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 5145,
+    "precioCalculado": 5145,
+    "precioPublicado": 5145
   },
   {
     "nombre": "BUFFET",
@@ -2691,10 +2844,12 @@
     "formato": "14 x 13,5",
     "unidad": "x 10000",
     "porcentaje": 5,
-    "precioActual": 22180,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 22180
+    "precioActual": 23289,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 23289,
+    "precioCalculado": 23289,
+    "precioPublicado": 23289
   },
   {
     "nombre": "AQUARELLA",
@@ -2703,11 +2858,13 @@
     "detalle": "AQUARELLA",
     "formato": "14 x 14",
     "unidad": "x 8000",
-    "porcentaje": 6,
-    "precioActual": 15860,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 15860
+    "porcentaje": 5,
+    "precioActual": 16653,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 16653,
+    "precioCalculado": 16653,
+    "precioPublicado": 16653
   },
   {
     "nombre": "CRYSTAL",
@@ -2716,11 +2873,13 @@
     "detalle": "CRYSTAL",
     "formato": "14 x 14",
     "unidad": "x 5000",
-    "porcentaje": 10,
-    "precioActual": 13280,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 13280
+    "porcentaje": 5,
+    "precioActual": 13944,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 13944,
+    "precioCalculado": 13944,
+    "precioPublicado": 13944
   },
   {
     "nombre": "BUFFET",
@@ -2730,10 +2889,12 @@
     "formato": "24 x 24",
     "unidad": "x 2000",
     "porcentaje": 5,
-    "precioActual": 16160,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 16160
+    "precioActual": 16968,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 16968,
+    "precioCalculado": 16968,
+    "precioPublicado": 16968
   },
   {
     "nombre": "CRYSTAL",
@@ -2742,11 +2903,13 @@
     "detalle": "CRYSTAL",
     "formato": "24 x 24",
     "unidad": "x 1300",
-    "porcentaje": 10,
-    "precioActual": 10980,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 10980
+    "porcentaje": 5,
+    "precioActual": 11529,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 11529,
+    "precioCalculado": 11529,
+    "precioPublicado": 11529
   },
   {
     "nombre": "BUFFET ENSOBRADAS",
@@ -2756,10 +2919,12 @@
     "formato": "24 x 24",
     "unidad": "40 paquetes x 50 unidades",
     "porcentaje": 5,
-    "precioActual": 18290,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 18290
+    "precioActual": 19204.5,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 19204.5,
+    "precioCalculado": 19204.5,
+    "precioPublicado": 19205
   },
   {
     "nombre": "BUFFET",
@@ -2769,10 +2934,12 @@
     "formato": "33 x 32",
     "unidad": "x 1000",
     "porcentaje": 5,
-    "precioActual": 15580,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 15580
+    "precioActual": 16359,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 16359,
+    "precioCalculado": 16359,
+    "precioPublicado": 16359
   },
   {
     "nombre": "AQUARELLA",
@@ -2781,11 +2948,13 @@
     "detalle": "AQUARELLA",
     "formato": "33 x 33",
     "unidad": "x 700",
-    "porcentaje": 6,
-    "precioActual": 10510,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 10510
+    "porcentaje": 5,
+    "precioActual": 11035.5,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 11035.5,
+    "precioCalculado": 11035.5,
+    "precioPublicado": 11036
   },
   {
     "nombre": "CRYSTAL",
@@ -2794,11 +2963,13 @@
     "detalle": "CRYSTAL",
     "formato": "33 x 33",
     "unidad": "x 500",
-    "porcentaje": 10,
-    "precioActual": 8010,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 8010
+    "porcentaje": 5,
+    "precioActual": 8410.5,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 8410.5,
+    "precioCalculado": 8410.5,
+    "precioPublicado": 8411
   },
   {
     "nombre": "BUFFET ENSOBRADAS",
@@ -2808,10 +2979,12 @@
     "formato": "33 x 33",
     "unidad": "24 paquetes x 40 unidades",
     "porcentaje": 5,
-    "precioActual": 19350,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 19350
+    "precioActual": 20317.5,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 20317.5,
+    "precioCalculado": 20317.5,
+    "precioPublicado": 20318
   },
   {
     "nombre": "BUFFET ENSOBRADAS",
@@ -2821,10 +2994,12 @@
     "formato": "33 x 33",
     "unidad": "12 paquetes x 80 unidades / 6 paquetes x 160 unidades",
     "porcentaje": 5,
-    "precioActual": 19350,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 19350
+    "precioActual": 20317.5,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 20317.5,
+    "precioCalculado": 20317.5,
+    "precioPublicado": 20318
   },
   {
     "nombre": "BUFFET ENSOBRADAS COLOR",
@@ -2834,10 +3009,12 @@
     "formato": "33 x 33",
     "unidad": "24 paquetes x 40 unidades",
     "porcentaje": 5,
-    "precioActual": 27280,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 27280
+    "precioActual": 28644,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 28644,
+    "precioCalculado": 28644,
+    "precioPublicado": 28644
   },
   {
     "nombre": "BUFFET ENSOBRADAS LUNARES / CUADRILLÉ",
@@ -2847,72 +3024,76 @@
     "formato": "33 x 33",
     "unidad": "24 paquetes x 40 unidades",
     "porcentaje": 5,
-    "precioActual": 23190,
-    "tipoAumento": "sin",
-    "valorAumento": 0,
-    "precioNuevo": 23190
+    "precioActual": 24349.5,
+    "tipoAumento": "porcentaje",
+    "valorAumento": 5,
+    "precioNuevo": 24349.5,
+    "precioCalculado": 24349.5,
+    "precioPublicado": 24350
   },
   {
     "nombre": "RECARGO IMPRESIÓN A 1 COLOR",
     "categoria": "Servilletas",
     "seccion": "impresion",
     "descripcion": "RECARGO IMPRESIÓN A 1 COLOR",
-    "precioActual": 1600,
+    "precioActual": 1700,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1600,
+    "precioNuevo": 1700,
     "formato": "",
     "unidad": "",
     "porcentaje": null,
-    "precioCalculado": 1600
+    "precioCalculado": 1700
   },
   {
     "nombre": "RECARGO IMPRESIÓN A 2 COLORES",
     "categoria": "Servilletas",
     "seccion": "impresion",
     "descripcion": "RECARGO IMPRESIÓN A 2 COLORES",
-    "precioActual": 1800,
+    "precioActual": 2000,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 1800,
+    "precioNuevo": 2000,
     "formato": "",
     "unidad": "",
     "porcentaje": null,
-    "precioCalculado": 1800
+    "precioCalculado": 2000
   },
   {
     "nombre": "ROLLOS SECAMANOS TISSUE DOBLE HOJA GRANDES 25 CM",
     "categoria": "Servilletas",
     "seccion": "secamanos",
     "descripcion": "ROLLOS SECAMANOS TISSUE DOBLE HOJA GRANDES 25 CM",
-    "precioActual": 15600,
+    "precioActual": 16500,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 15600,
+    "precioNuevo": 16500,
     "formato": "",
     "unidad": "",
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 16500
   },
   {
     "nombre": "ROLLOS SECAMANOS TISSUE DOBLE HOJA CHICOS 25 CM",
     "categoria": "Servilletas",
     "seccion": "secamanos",
     "descripcion": "ROLLOS SECAMANOS TISSUE DOBLE HOJA CHICOS 25 CM",
-    "precioActual": 8800,
+    "precioActual": 9000,
     "tipoAumento": "sin",
     "valorAumento": 0,
-    "precioNuevo": 8800,
+    "precioNuevo": 9000,
     "formato": "",
     "unidad": "",
-    "porcentaje": null
+    "porcentaje": null,
+    "precioCalculado": 9000
   },
   {
     "categoria": "Servilletas",
     "tipoRegistro": "configuracion",
-    "fechaPublicacion": "2026-06-11",
+    "fechaPublicacion": "2026-10-30",
     "fechasSecciones": {
       "impresion": ""
     },
-    "fechaPublicacionImpresion": "2026-09-21"
+    "fechaPublicacionImpresion": "2026-10-30"
   }
 ]

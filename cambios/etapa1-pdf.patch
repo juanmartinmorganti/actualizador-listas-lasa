@@ -1,0 +1,1250 @@
+diff --git a/server.js b/server.js
+--- a/server.js
++++ b/server.js
+@@ -1,7 +1,7 @@
+ const express = require("express");
+ const fs = require("fs");
+ const path = require("path");
+-const puppeteer = require("puppeteer");
++const { LIMITES, validarSolicitudPdf, crearDocumentoPdf, generarPdf, registrarPdf } = require("./pdf");
+ const { validarProducto } = require("./public/validation.js");
+ const { createAuth } = require("./auth.js");
+ const { loadAuthConfig } = require("./auth-config.js");
+@@ -14,6 +14,8 @@
+ const auth = createAuth(loadAuthConfig());
+ 
+ app.disable("x-powered-by");
++// Registrar antes del parser general: PDF tiene un límite propio de 1 KB.
++registrarPdf(app, { auth, dataDir: path.dirname(dataPath) });
+ app.use(express.json({ limit: "10mb" }));
+ app.use(express.static(path.join(__dirname, "public")));
+ auth.register(app);
+@@ -147,78 +149,6 @@
+   }
+ });
+ 
+-function validarSolicitudPdf(solicitud) {
+-  if (!solicitud || typeof solicitud.html !== "string" || !solicitud.html.trim()) {
+-    return "No se recibió contenido para generar el PDF.";
+-  }
+-  if (solicitud.tipo !== "catalogo" && solicitud.tipo !== "lista") {
+-    return "El tipo de documento no es válido.";
+-  }
+-  return null;
+-}
+-
+-function crearDocumentoPdf(html, tipo, origen) {
+-  const claseBody = tipo === "catalogo" ? "vista-catalogo" : "vista-lista";
+-  const contenido = tipo === "catalogo"
+-    ? `<div id="moduloCatalogo"><div id="catalogoContenido">${html}</div></div>`
+-    : `<div id="moduloResultadoFinal">${html}</div>`;
+-
+-  return `<!DOCTYPE html>
+-    <html lang="es">
+-      <head>
+-        <meta charset="UTF-8">
+-        <base href="${origen}/">
+-        <link rel="stylesheet" href="style.css">
+-      </head>
+-      <body class="${claseBody}"><main>${contenido}</main></body>
+-    </html>`;
+-}
+-
+-async function generarPdf(html, tipo, origen) {
+-  const browser = await puppeteer.launch({
+-    headless: true,
+-    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-crash-reporter"],
+-  });
+-
+-  try {
+-    const page = await browser.newPage();
+-    await page.setContent(crearDocumentoPdf(html, tipo, origen), {
+-      waitUntil: "networkidle0",
+-    });
+-    await page.emulateMediaType("print");
+-    return await page.pdf({
+-      format: "A4",
+-      printBackground: true,
+-      displayHeaderFooter: false,
+-      preferCSSPageSize: true,
+-      margin: { top: "12mm", right: "12mm", bottom: "12mm", left: "12mm" },
+-    });
+-  } finally {
+-    await browser.close();
+-  }
+-}
+-
+-app.post("/api/pdf", async (req, res) => {
+-  const errorValidacion = validarSolicitudPdf(req.body);
+-  if (errorValidacion) return res.status(400).json({ error: errorValidacion });
+-
+-  try {
+-    const origen = `${req.protocol}://${req.get("host")}`;
+-    const pdf = await generarPdf(req.body.html, req.body.tipo, origen);
+-    const fecha = /^\d{4}-\d{2}-\d{2}$/.test(req.body.fecha) ? req.body.fecha : "documento";
+-    const prefijo = req.body.tipo === "catalogo" ? "Listas-de-Precios-LASA" : "Lista-de-Precios-LASA";
+-    res.set({
+-      "Content-Type": "application/pdf",
+-      "Content-Disposition": `attachment; filename="${prefijo}-${fecha}.pdf"`,
+-      "Content-Length": pdf.length,
+-    });
+-    res.send(Buffer.from(pdf));
+-  } catch (error) {
+-    console.error("Error al generar PDF:", error);
+-    res.status(500).json({ error: "No se pudo generar el PDF." });
+-  }
+-});
+-
+ app.get("/admin", (req, res) => {
+   res.sendFile(path.join(__dirname, "public", "index.html"));
+ });
+diff --git a/public/script.js b/public/script.js
+--- a/public/script.js
++++ b/public/script.js
+@@ -1741,7 +1741,7 @@
+   volverALaPortada();
+ });
+ 
+-async function descargarPdfGenerado(html, tipo, boton) {
++async function descargarPdfGenerado(tipo, boton, categoria) {
+   const textoAnterior = boton.textContent;
+   boton.disabled = true;
+   boton.textContent = "Generando PDF...";
+@@ -1750,9 +1750,12 @@
+     const respuesta = await fetch("/api/pdf", {
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+-      body: JSON.stringify({ html, tipo, fecha: obtenerFechaHoyISO() }),
++      body: JSON.stringify({ tipo, ...(categoria ? { categoria } : {}), ...(esModoAdmin ? { fuente: "borrador" } : {}) }),
+     });
+-    if (!respuesta.ok) throw new Error(`Error HTTP ${respuesta.status}`);
++    if (!respuesta.ok) {
++      const resultado = await respuesta.json();
++      throw new Error(resultado.error || `Error HTTP ${respuesta.status}`);
++    }
+ 
+     const blob = await respuesta.blob();
+     const disposicion = respuesta.headers.get("Content-Disposition") || "";
+@@ -1765,7 +1768,7 @@
+     URL.revokeObjectURL(url);
+   } catch (error) {
+     console.error("Error al descargar PDF:", error);
+-    alert("No se pudo generar el PDF.");
++    alert(error.message || "No se pudo generar el PDF.");
+   } finally {
+     boton.disabled = false;
+     boton.textContent = textoAnterior;
+@@ -1779,7 +1782,7 @@
+     return;
+   }
+ 
+-  await descargarPdfGenerado(catalogoContenido.innerHTML, "catalogo", descargarCatalogoBtn);
++  await descargarPdfGenerado("catalogo", descargarCatalogoBtn);
+ });
+ 
+ fechaActualizacionAdmin.addEventListener("change", async () => {
+@@ -2229,7 +2232,7 @@
+     return;
+   }
+ 
+-  await descargarPdfGenerado(areaPDF.outerHTML, "lista", descargarPDFBtn);
++  await descargarPdfGenerado("lista", descargarPDFBtn, categoriaResultadoFinal);
+ });
+ 
+ const modoGuardado = localStorage.getItem("modoOscuroLASA");
+diff --git a/test/server.test.js b/test/server.test.js
+--- a/test/server.test.js
++++ b/test/server.test.js
+@@ -20,16 +20,3 @@
+   assert.match(validarProductos([{ nombre: "Producto" }]), /categoría/);
+   assert.match(validarProductos([null]), /categoría/);
+ });
+-
+-test("valida solicitudes de PDF", () => {
+-  assert.equal(validarSolicitudPdf({ html: "<article>Lista</article>", tipo: "catalogo" }), null);
+-  assert.match(validarSolicitudPdf({ html: "", tipo: "catalogo" }), /contenido/);
+-  assert.match(validarSolicitudPdf({ html: "<p>Lista</p>", tipo: "otro" }), /tipo/);
+-});
+-
+-test("el documento PDF reutiliza la hoja de estilos y activa el modo solicitado", () => {
+-  const documento = crearDocumentoPdf("<article>Catálogo</article>", "catalogo", "http://127.0.0.1:4000");
+-  assert.match(documento, /href="style\.css"/);
+-  assert.match(documento, /body class="vista-catalogo"/);
+-  assert.match(documento, /<article>Catálogo<\/article>/);
+-});
+diff --git a/pdf.js b/pdf.js
+new file mode 100644
+--- /dev/null
++++ b/pdf.js
+@@ -0,0 +1,113 @@
++const fs = require('node:fs');
++const path = require('node:path');
++const { fork } = require('node:child_process');
++const express = require('express');
++const { crearPlantilla } = require('./pdf-template');
++
++const LIMITES = Object.freeze({ cuerpo: '1kb', datos: 2 * 1024 * 1024, html: 2 * 1024 * 1024,
++  pdf: 20 * 1024 * 1024, registros: 5000, tiempo: 20000, concurrencia: 1, porMinuto: 20 });
++function fallo(status, message) { return Object.assign(new Error(message), { status }); }
++function validarSolicitudPdf(s) {
++  if (!s || typeof s !== 'object' || Array.isArray(s)) return 'Solicitud PDF inválida.';
++  if (Object.keys(s).some(k => !['tipo', 'categoria', 'fuente'].includes(k))) return 'La solicitud contiene campos no permitidos; no se acepta HTML.';
++  if (!['catalogo', 'lista'].includes(s.tipo)) return 'El tipo de documento no es válido.';
++  if (s.fuente !== undefined && !['publicadas', 'borrador'].includes(s.fuente)) return 'La fuente no es válida.';
++  if (s.tipo === 'lista' && (typeof s.categoria !== 'string' || s.categoria.length > 80 || !s.categoria.trim())) return 'La categoría no es válida.';
++  if (s.tipo === 'catalogo' && s.categoria !== undefined) return 'El catálogo no admite categoría.';
++  return null;
++}
++function leerDatosPdf(archivo) {
++  const fd = fs.openSync(archivo, 'r');
++  try {
++    if (!fs.fstatSync(fd).isFile()) throw fallo(503, 'Datos PDF no disponibles.');
++    const buffer = Buffer.alloc(LIMITES.datos + 1);
++    let total = 0, n;
++    while (total < buffer.length && (n = fs.readSync(fd, buffer, total, buffer.length - total, null)) > 0) total += n;
++    if (total > LIMITES.datos) throw fallo(413, 'Los datos superan el límite de PDF.');
++    const datos = JSON.parse(buffer.subarray(0, total).toString('utf8'));
++    if (!Array.isArray(datos) || datos.length > LIMITES.registros) throw fallo(413, 'Cantidad de registros PDF no válida.');
++    return datos;
++  } finally { fs.closeSync(fd); }
++}
++function crearDocumentoPdf(datos, solicitud, fecha) {
++  const plantilla = crearPlantilla(datos, fecha, solicitud.fuente === 'borrador');
++  const categorias = solicitud.tipo === 'catalogo' ? plantilla.categorias : [solicitud.categoria];
++  if (categorias.some(c => !plantilla.categorias.includes(c))) throw fallo(400, 'Categoría no válida.');
++  if (solicitud.fuente !== 'borrador' && categorias.some(c => !plantilla.estaCategoriaPublicada(c))) throw fallo(409, 'Faltan listas publicadas.');
++  const contenido = solicitud.tipo === 'catalogo'
++    ? `<div id="moduloCatalogo"><div id="catalogoContenido">${plantilla.catalogo()}</div></div>`
++    : `<div id="moduloResultadoFinal">${plantilla.lista(solicitud.categoria)}</div>`;
++  const css = fs.readFileSync(path.join(__dirname, 'public/style.css'), 'utf8');
++  const logo = fs.readFileSync(path.join(__dirname, 'public/assets/logo-lasa.png')).toString('base64');
++  // Sin base URL, estilos remotos ni rutas tomadas del Host o del cuerpo HTTP.
++  const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; script-src 'none'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'"><style>${css}</style></head><body class="vista-${solicitud.tipo}"><main>${contenido}</main></body></html>`
++    .replaceAll('src="/assets/logo-lasa.png"', `src="data:image/png;base64,${logo}"`);
++  if (Buffer.byteLength(html) > LIMITES.html) throw fallo(413, 'Documento PDF demasiado grande.');
++  return html;
++}
++function generarPdf(html, { signal, timeout = LIMITES.tiempo } = {}) {
++  return new Promise((resolve, reject) => {
++    const env = Object.fromEntries(['PATH', 'HOME', 'LANG', 'TMPDIR', 'XDG_CACHE_HOME', 'PUPPETEER_CACHE_DIR', 'PUPPETEER_EXECUTABLE_PATH'].filter(k => process.env[k]).map(k => [k, process.env[k]]));
++    const child = fork(path.join(__dirname, 'pdf-worker.js'), [], { detached: process.platform !== 'win32', env, stdio: ['ignore', 'ignore', 'ignore', 'ipc'] });
++    let settled = false;
++    const finish = (error, value) => {
++      if (settled) return;
++      settled = true; clearTimeout(timer); signal?.removeEventListener('abort', abort);
++      // El grupo incluye Chromium y sus descendientes: no dejar trabajo vivo al vencer el plazo.
++      try { if (process.platform !== 'win32') process.kill(-child.pid, 'SIGKILL'); else child.kill('SIGKILL'); } catch { /* Ya terminó. */ }
++      if (error) reject(error); else resolve(value);
++    };
++    const abort = () => finish(fallo(499, 'Descarga cancelada.'));
++    const timer = setTimeout(() => finish(fallo(504, 'Se agotó el tiempo de generación PDF.')), timeout);
++    child.on('error', () => finish(fallo(503, 'No se pudo iniciar el generador PDF.')));
++    child.on('exit', () => finish(fallo(503, 'El generador PDF terminó sin resultado.')));
++    child.on('message', message => {
++      if (message?.error) return finish(fallo(503, 'No se pudo generar el PDF con aislamiento seguro.'));
++      if (typeof message?.pdf !== 'string' || message.pdf.length > Math.ceil(LIMITES.pdf / 3) * 4) return finish(fallo(413, 'PDF demasiado grande o inválido.'));
++      const pdf = Buffer.from(message.pdf, 'base64');
++      if (pdf.length > LIMITES.pdf || !pdf.subarray(0, 5).equals(Buffer.from('%PDF-'))) return finish(fallo(503, 'Resultado PDF inválido.'));
++      finish(null, pdf);
++    });
++    signal?.addEventListener('abort', abort, { once: true });
++    if (signal?.aborted) return abort();
++    child.send({ html }, error => { if (error) finish(fallo(503, 'No se pudo enviar el documento PDF.')); });
++  });
++}
++function crearManejadorPdf({ dataDir, generar = generarPdf, ahora = () => new Date() }) {
++  let activos = 0, ventana = 0, cantidad = 0;
++  return async (req, res) => {
++    const error = validarSolicitudPdf(req.body);
++    if (error) return res.status(400).json({ error });
++    const now = ahora();
++    if (now.getTime() - ventana >= 60000) { ventana = now.getTime(); cantidad = 0; }
++    if (activos >= LIMITES.concurrencia || cantidad >= LIMITES.porMinuto) return res.set('Retry-After', '60').status(429).json({ error: 'Generador PDF ocupado. Intentá más tarde.' });
++    activos++; cantidad++;
++    const controller = new AbortController();
++    const cancel = () => { if (!res.writableEnded) controller.abort(); };
++    res.on('close', cancel);
++    try {
++      const archivo = path.join(dataDir, req.body.fuente === 'borrador' ? 'productos.json' : 'publicadas.json');
++      const datos = leerDatosPdf(archivo);
++      const fecha = now.toISOString().slice(0, 10);
++      const html = crearDocumentoPdf(datos, req.body, fecha);
++      const pdf = await generar(html, { signal: controller.signal });
++      if (res.destroyed) return;
++      const prefijo = req.body.tipo === 'catalogo' ? 'Listas-de-Precios-LASA' : 'Lista-de-Precios-LASA';
++      res.set({ 'Content-Type': 'application/pdf', 'Content-Disposition': `attachment; filename="${prefijo}-${fecha}.pdf"`, 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' }).send(pdf);
++    } catch (e) {
++      if (!res.destroyed) res.status(e.status || 503).json({ error: e.status ? e.message : 'No se pudo generar el PDF.' });
++    } finally { res.off('close', cancel); activos--; }
++  };
++}
++function registrarPdf(app, { auth, dataDir, generar }) {
++  app.post('/api/pdf', express.json({ limit: LIMITES.cuerpo, strict: true }), (req, res, next) => {
++    if (req.body?.fuente === 'borrador') return auth.requireAdmin(req, res, next);
++    next();
++  }, crearManejadorPdf({ dataDir, generar }));
++  app.use('/api/pdf', (error, req, res, next) => {
++    if (error.type === 'entity.too.large') return res.status(413).json({ error: 'Solicitud PDF demasiado grande.' });
++    if (error instanceof SyntaxError) return res.status(400).json({ error: 'JSON PDF inválido.' });
++    next(error);
++  });
++}
++module.exports = { registrarPdf, LIMITES, validarSolicitudPdf, leerDatosPdf, crearDocumentoPdf, generarPdf, crearManejadorPdf };
+diff --git a/pdf-worker.js b/pdf-worker.js
+new file mode 100644
+--- /dev/null
++++ b/pdf-worker.js
+@@ -0,0 +1,32 @@
++const puppeteer = require('puppeteer');
++const fs = require('node:fs');
++const path = require('node:path');
++const logo = 'data:image/png;base64,' + fs.readFileSync(path.join(__dirname, 'public/assets/logo-lasa.png')).toString('base64');
++const { LIMITES } = require('./pdf');
++async function renderizar(page, html) {
++  await page.setJavaScriptEnabled(false);
++  await page.setBypassServiceWorker(true);
++  await page.setRequestInterception(true);
++  page.on('request', request => { (request.url() === logo && request.resourceType() === 'image' ? request.continue() : request.abort('blockedbyclient')).catch(() => {}); });
++  await page.setOfflineMode(true);
++  page.setDefaultTimeout(10000);
++  page.setDefaultNavigationTimeout(10000);
++  await page.setContent(html, { waitUntil: 'load', timeout: 10000 });
++  await page.emulateMediaType('print');
++  return page.pdf({ format: 'A4', printBackground: true, displayHeaderFooter: false,
++    preferCSSPageSize: true, timeout: 10000, margin: { top: '12mm', right: '12mm', bottom: '12mm', left: '12mm' } });
++}
++if (require.main === module) process.once('message', async ({ html }) => {
++  let browser;
++  try {
++    if (typeof html !== 'string' || Buffer.byteLength(html) > LIMITES.html) throw new Error('Documento inválido');
++    browser = await puppeteer.launch({ headless: true, timeout: 8000,
++      args: ['--disable-crash-reporter', '--disable-background-networking', '--disable-component-update', '--no-first-run'] });
++    const pdf = await renderizar(await browser.newPage(), html);
++    if (pdf.length > LIMITES.pdf) throw new Error('PDF demasiado grande');
++    await browser.close(); browser = null;
++    process.send({ pdf: Buffer.from(pdf).toString('base64') });
++  } catch { process.send({ error: true }); }
++  finally { if (browser) await browser.close().catch(() => {}); }
++});
++module.exports = { renderizar };
+diff --git a/pdf-template.js b/pdf-template.js
+new file mode 100644
+--- /dev/null
++++ b/pdf-template.js
+@@ -0,0 +1,727 @@
++// Plantillas comerciales copiadas de public/script.js. La prueba de paridad detecta divergencias.
++// Ninguna plantilla ni dato HTML proviene de la solicitud HTTP.
++const PricingLASA = require("./public/pricing.js");
++function crearPlantilla(productos, fechaGeneracion, esBorrador = false) {
++const ordenCatalogo = [
++  "Bolsas Fast Food",
++  "Bolsas Blanca Extra",
++  "Bolsas Blanca II",
++  "Bolsas Kraft",
++  "Cartonería",
++  "Moldes",
++  "Papeles",
++  "Platos Dorados",
++  "Servilletas",
++];
++const configuracionCatalogo = {
++  incluirPortada: true,
++  incluirIndice: true,
++};
++
++function crearMarcaInstitucional(titulo, variante = "") {
++  const claseLogo = variante
++    ? `logo-lasa logo-lasa--${variante}`
++    : "logo-lasa";
++
++  return `
++    <img
++      class="${claseLogo}"
++      src="/assets/logo-lasa.png"
++      alt="Logo de Lorenzo Annecchini S.A."
++      width="64"
++      height="64"
++    />
++    <div class="marca-institucional__texto">
++      <p class="empresa">Lorenzo Annecchini S.A.</p>
++      <h1>${escaparHTML(titulo)}</h1>
++    </div>
++  `;
++}
++
++function obtenerPrecioPublicado(producto) {
++  return PricingLASA.obtenerPrecioPublicado(producto);
++}
++
++function formatearMoneda(valor) {
++  const numero = Number(valor);
++
++  if (!Number.isFinite(numero)) {
++    return "—";
++  }
++
++  return `$ ${numero.toLocaleString("es-AR", {
++    minimumFractionDigits: 2,
++    maximumFractionDigits: 2,
++  })}`;
++}
++
++function formatearPrecioFinal(valor, categoria) {
++  if (PricingLASA.obtenerTipoRedondeo(categoria) === PricingLASA.TIPOS_REDONDEO.SIN_REDONDEO) {
++    return formatearMoneda(valor);
++  }
++
++  const numero = Number(valor);
++  if (!Number.isFinite(numero)) return "—";
++  return `$ ${numero.toLocaleString("es-AR", { maximumFractionDigits: 0 })}`;
++}
++
++function formatearPrecioPublicado(producto) {
++  return formatearPrecioFinal(obtenerPrecioPublicado(producto), producto.categoria);
++}
++
++function formatearEntero(valor) {
++  if (valor === null || valor === undefined || valor === "") {
++    return "—";
++  }
++  const numero = Number(valor);
++
++  if (!Number.isFinite(numero)) {
++    return "—";
++  }
++
++  return numero.toLocaleString("es-AR", { maximumFractionDigits: 0 });
++}
++
++function esCategoriaFastFood(categoria) {
++  return categoria === "Bolsas Fast Food";
++}
++
++function esCategoriaBolsaAmericana(categoria) {
++  return (
++    categoria === "Bolsas Blanca Extra" ||
++    categoria === "Bolsas Blanca II" ||
++    categoria === "Bolsas Kraft"
++  );
++}
++
++function esCategoriaCartoneria(categoria) {
++  return categoria === "Cartonería";
++}
++
++function esCategoriaMoldes(categoria) {
++  return categoria === "Moldes";
++}
++
++function esCategoriaPapeles(categoria) {
++  return categoria === "Papeles";
++}
++
++function esCategoriaPlatosDorados(categoria) {
++  return categoria === "Platos Dorados";
++}
++
++function esCategoriaServilletas(categoria) {
++  return categoria === "Servilletas";
++}
++
++function tieneBloqueImpresion(categoria) {
++  return (
++    esCategoriaServilletas(categoria) ||
++    esCategoriaPapeles(categoria) ||
++    categoria === "Papel" ||
++    esCategoriaBolsaAmericana(categoria)
++  );
++}
++
++function esRegistroConfiguracion(registro) {
++  return registro.tipoRegistro === "configuracion";
++}
++
++function obtenerConfiguracionCategoria(categoria) {
++  return productos.find(
++    (registro) =>
++      registro.categoria === categoria && esRegistroConfiguracion(registro)
++  );
++}
++
++function obtenerFechaImpresion(categoria) {
++  if (!tieneBloqueImpresion(categoria)) return "";
++
++  const configuracion = obtenerConfiguracionCategoria(categoria);
++  return (
++    configuracion?.fechaPublicacionImpresion ||
++    configuracion?.fechasSecciones?.impresion ||
++    configuracion?.fechasSecciones?.["recargos-impresion"] ||
++    obtenerFechaActualizacion(categoria)
++  );
++}
++
++function obtenerProductosPublicados(categoria) {
++  const configuracion = obtenerConfiguracionCategoria(categoria);
++  return Array.isArray(configuracion?.productosPublicados)
++    ? configuracion.productosPublicados
++    : [];
++}
++
++function estaCategoriaPublicada(categoria) {
++  if (!obtenerFechaActualizacion(categoria)) return false;
++  if (esCategoriaFastFood(categoria)) {
++    return obtenerProductosPublicados(categoria).length > 0;
++  }
++  return true;
++}
++
++function obtenerProductosDeCategoria(categoria) {
++  return productos.filter(
++    (producto) =>
++      producto.categoria === categoria && !esRegistroConfiguracion(producto)
++  );
++}
++
++function crearTablaFinalCategoria(categoria, productosCategoria, mostrarCategoria = true) {
++  let contenido = `
++    <div class="bloque-categoria">
++      ${mostrarCategoria ? `<h3>${escaparHTML(categoria)}</h3>` : ""}
++      <table>
++        <thead>
++          <tr>
++            <th>Producto</th>
++            <th>Precio final</th>
++          </tr>
++        </thead>
++        <tbody>
++  `;
++
++  productosCategoria.forEach((producto) => {
++    contenido += `
++      <tr>
++        <td>${escaparHTML(producto.nombre)}</td>
++        <td class="precio-final">${formatearMoneda(obtenerPrecioPublicado(producto))}</td>
++      </tr>
++    `;
++  });
++
++  contenido += `
++        </tbody>
++      </table>
++    </div>
++  `;
++
++  return contenido;
++}
++
++function formatearPorcentajeManual(producto) {
++  const porcentaje = PricingLASA.obtenerPorcentajeManual(producto);
++  if (porcentaje === null) return "—";
++
++  return `${porcentaje.toLocaleString("es-AR", {
++    maximumFractionDigits: 2,
++  })}%`;
++}
++
++function escaparHTML(valor) {
++  return String(valor)
++    .replaceAll("&", "&amp;")
++    .replaceAll("<", "&lt;")
++    .replaceAll(">", "&gt;")
++    .replaceAll('"', "&quot;")
++    .replaceAll("'", "&#039;");
++}
++
++function crearTablaConfigurada(columnas, productosSeccion, categoria = "") {
++  const encabezados = columnas
++    .map(
++      (columna) => `
++        <th class="alinear-${columna.align}" style="width: ${columna.width}">
++          ${escaparHTML(columna.label).replaceAll("\n", "<br>")}
++        </th>
++      `
++    )
++    .join("");
++
++  const filas = productosSeccion
++    .map(
++      (producto) => `
++        <tr>
++          ${columnas
++            .map((columna) => {
++              const clase = columna.className ? ` ${columna.className}` : "";
++              return `
++                <td class="alinear-${columna.align}${clase}">
++                  ${escaparHTML(columna.value(producto))}
++                </td>
++              `;
++            })
++            .join("")}
++        </tr>
++      `
++    )
++    .join("");
++
++  return `
++    <div class="tabla-lista-contenedor">
++      <table class="tabla-lista-unificada">
++      <thead>
++        ${categoria ? `<tr class="encabezado-continuacion"><th colspan="${columnas.length}">${escaparHTML(obtenerTituloComercialCategoria(categoria))} · Lista de precios</th></tr>` : ""}
++        <tr>${encabezados}</tr>
++      </thead>
++        <tbody>${filas}</tbody>
++      </table>
++    </div>
++  `;
++}
++
++function crearSeccionRecargos(categoria, recargos) {
++  if (recargos.length === 0) {
++    return "";
++  }
++
++  const fechaImpresion = obtenerFechaImpresion(categoria);
++
++  const filas = recargos
++    .map(
++      (recargo) => `
++        <tr>
++          <td>${escaparHTML(recargo.descripcion)}</td>
++          <td class="alinear-right precio-final">${escaparHTML(formatearMoneda(recargo.precioUnaCara))}</td>
++          <td class="alinear-right precio-final">${escaparHTML(formatearMoneda(recargo.precioDosCaras))}</td>
++        </tr>
++      `
++    )
++    .join("");
++
++  return `
++    <section class="seccion-lista seccion-recargos">
++      ${fechaImpresion ? `<p class="fecha-seccion fecha-seccion--impresion">Última actualización impresión: ${formatearFechaArgentina(fechaImpresion)}</p>` : ""}
++      <h3>RECARGO POR IMPRESIÓN</h3>
++      <div class="tabla-lista-contenedor">
++        <table class="tabla-lista-unificada tabla-recargos">
++          <thead><tr><th>TIPO DE IMPRESIÓN</th><th>1 CARA</th><th>2 CARAS</th></tr></thead>
++          <tbody>${filas}</tbody>
++        </table>
++      </div>
++    </section>
++  `;
++}
++
++function crearListaConfigurada(categoria, productosCategoria, seccionesColapsables = false) {
++  const configuracion = configuracionListas[categoria];
++
++  if (!configuracion) {
++    return crearTablaFinalCategoria(categoria, productosCategoria, false);
++  }
++
++  const secciones = configuracion.sections || [
++    { title: "", matches: () => true },
++  ];
++
++  let contenido = secciones
++    .map((seccion) => {
++      const productosSeccion = productosCategoria.filter(seccion.matches);
++
++      if (productosSeccion.length === 0) {
++        return "";
++      }
++
++      const fechaImpresion = seccion.showImpressionDate
++        ? obtenerFechaImpresion(categoria)
++        : "";
++      const encabezadoSeccion = `
++        ${fechaImpresion ? `<p class="fecha-seccion fecha-seccion--impresion">Última actualización impresión: ${formatearFechaArgentina(fechaImpresion)}</p>` : ""}
++        ${seccion.title ? `<h3>${escaparHTML(seccion.title)}</h3>` : ""}
++        ${seccion.subtitle ? `<p class="subtitulo-seccion">${escaparHTML(seccion.subtitle)}</p>` : ""}
++        ${
++          seccion.showDate && obtenerConfiguracionCategoria(categoria)?.fechasSecciones?.[seccion.id]
++            ? `<p class="fecha-seccion">Actualizado: ${formatearFechaArgentina(obtenerConfiguracionCategoria(categoria).fechasSecciones[seccion.id])}</p>`
++            : ""
++        }
++      `;
++      const tablaSeccion = crearTablaConfigurada(
++        seccion.columns || configuracion.columns,
++        productosSeccion,
++        categoria
++      );
++
++      if (
++        seccionesColapsables &&
++        (
++          esCategoriaCartoneria(categoria) ||
++          esCategoriaPapeles(categoria) ||
++          esCategoriaServilletas(categoria)
++        )
++      ) {
++        return `
++          <details class="seccion-lista seccion-lista-admin" open>
++            <summary>${encabezadoSeccion}</summary>
++            ${tablaSeccion}
++          </details>
++        `;
++      }
++
++      return `
++        <section class="seccion-lista">
++          ${encabezadoSeccion}
++          ${tablaSeccion}
++        </section>
++      `;
++    })
++    .join("");
++
++  if (esCategoriaBolsaAmericana(categoria)) {
++    const recargos = obtenerConfiguracionCategoria(categoria)?.recargosImpresion || [];
++    contenido += crearSeccionRecargos(categoria, recargos);
++  }
++
++  let nota = "";
++
++  const notaComercial = configuracion.commercialNoteFromData
++    ? obtenerConfiguracionCategoria(categoria)?.notaComercial
++    : configuracion.commercialNote;
++
++  if (notaComercial) {
++    nota = `<p class="nota-lista nota-comercial">${escaparHTML(notaComercial)}</p>`;
++    if (configuracion.percentageNote) {
++      nota += `
++        <p class="nota-lista">
++          (*) Este porcentaje indica cuánto ha aumentado el precio respecto de la
++          versión anterior de esta lista.
++        </p>
++      `;
++    }
++  } else if (configuracion.percentageNote) {
++    nota = `
++      <p class="nota-lista">
++        (*) Este porcentaje indica cuánto ha aumentado el precio respecto de la
++        versión anterior de esta lista.
++      </p>
++    `;
++  }
++
++  const introduccion = configuracion.introText
++    ? `<p class="leyenda-lista">${escaparHTML(configuracion.introText)}</p>`
++    : "";
++  const clase = configuracion.className
++    ? `lista-comercial ${configuracion.className}`
++    : "lista-comercial";
++
++  return `<div class="${clase}">${introduccion}${contenido}${nota}</div>`;
++}
++
++function obtenerTituloComercialCategoria(categoria) {
++  if (categoria === "Bolsas Kraft") return "BOLSAS AMERICANAS · KRAFT II";
++  if (categoria === "Bolsas Blanca Extra") return "BOLSAS AMERICANAS · BLANCA EXTRA";
++  if (categoria === "Bolsas Blanca II") return "BOLSAS AMERICANAS · BLANCA II";
++  return categoria.toLocaleUpperCase("es");
++}
++
++function crearPortadaCatalogo(categoriasIncluidas) {
++  if (!configuracionCatalogo.incluirPortada) return "";
++
++  const indice = configuracionCatalogo.incluirIndice
++    ? `
++      <div class="indice-catalogo">
++        <h2>Categorías incluidas</h2>
++        <ol>${categoriasIncluidas.map((categoria) => `<li>${escaparHTML(categoria)}</li>`).join("")}</ol>
++      </div>
++    `
++    : "";
++
++  return `
++    <article class="catalogo-portada">
++      <div class="marca-institucional marca-institucional--catalogo">
++        ${crearMarcaInstitucional("Listas de Precios", "documento")}
++      </div>
++      <p class="catalogo-subtitulo">Catálogo completo</p>
++      <p class="catalogo-generado">Generado el ${formatearFechaArgentina(obtenerFechaHoyISO())}</p>
++      ${indice}
++    </article>
++  `;
++}
++
++function crearCategoriaCatalogo(categoria) {
++  const fecha = obtenerFechaActualizacion(categoria);
++  const productosCategoria = esCategoriaFastFood(categoria)
++    ? obtenerProductosPublicados(categoria)
++    : obtenerProductosDeCategoria(categoria);
++
++  return `
++    <article class="catalogo-categoria" data-categoria="${escaparHTML(categoria)}">
++      <div class="encabezado-documento">
++        <div class="marca-institucional marca-institucional--documento">
++          ${crearMarcaInstitucional("Lista de Precios", "documento")}
++        </div>
++        <div class="datos-documento">
++          <h2>${escaparHTML(obtenerTituloComercialCategoria(categoria))}</h2>
++          <p>Fecha de publicación: ${formatearFechaArgentina(fecha)}</p>
++        </div>
++      </div>
++      <div class="franja-institucional" aria-hidden="true"></div>
++      ${crearListaConfigurada(categoria, productosCategoria)}
++      <footer class="pie-documento">
++        <span>Lorenzo Annecchini S.A.</span>
++        <span class="numero-pagina-catalogo">Catálogo completo · Página</span>
++      </footer>
++    </article>
++  `;
++}
++
++const configuracionListas = {
++  "Bolsas Fast Food": {
++    className: "lista-comercial--fast-food",
++    introText: "PRECIOS EXPRESADOS POR UNIDAD",
++    commercialNote: "COMPRA DE 5000 UNIDADES: 7% DE DESCUENTO",
++    columns: [
++      {
++        label: "Artículo",
++        value: (producto) => producto.nombre,
++        align: "left",
++        width: "18%",
++      },
++      {
++        label: "Medida",
++        value: (producto) => producto.medida,
++        align: "center",
++        width: "32%",
++      },
++      {
++        label: "Unidades por caja",
++        value: (producto) => formatearEntero(producto.unidadesPorCaja),
++        align: "center",
++        width: "25%",
++      },
++      {
++        label: "Precio unitario",
++        value: (producto) => formatearMoneda(obtenerPrecioPublicado(producto)),
++        align: "right",
++        width: "25%",
++        className: "precio-final",
++      },
++    ],
++  },
++  "Bolsas Blanca Extra": {
++    className: "lista-comercial--blanca-extra",
++    columns: [
++      { label: "NÚMERO", value: (p) => p.codigo || p.nombre, align: "center", width: "13%" },
++      { label: "ANCHO\ncm", value: (p) => p.ancho, align: "center", width: "10%" },
++      { label: "LARGO\ncm", value: (p) => p.largo, align: "center", width: "10%" },
++      { label: "FUELLE\ncm", value: (p) => p.fuelle, align: "center", width: "10%" },
++      { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "20%" },
++      { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "26%", className: "precio-final" },
++      { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "11%" },
++    ],
++    percentageNote: true,
++  },
++  Moldes: {
++    className: "lista-comercial--moldes",
++    columns: [
++      {
++        label: "Descripción",
++        value: (producto) => producto.descripcion || producto.nombre,
++        align: "left",
++        width: "58%",
++      },
++      {
++        label: "Precio por millar",
++        value: formatearPrecioPublicado,
++        align: "right",
++        width: "27%",
++        className: "precio-final",
++      },
++      {
++        label: "% (*)",
++        value: formatearPorcentajeManual,
++        align: "center",
++        width: "15%",
++      },
++    ],
++    percentageNote: true,
++  },
++  Servilletas: {
++    columns: [
++      {
++        label: "Detalle",
++        value: (producto) => producto.nombre,
++        align: "left",
++        width: "58%",
++      },
++      {
++        label: "Precio",
++        value: (producto) => formatearMoneda(obtenerPrecioPublicado(producto)),
++        align: "right",
++        width: "27%",
++        className: "precio-final",
++      },
++      {
++        label: "Porcentaje",
++        value: formatearPorcentajeManual,
++        align: "center",
++        width: "15%",
++      },
++    ],
++    sections: [
++      {
++        title: "Servilletas",
++        matches: (producto) =>
++          !producto.nombre.toLocaleLowerCase("es").startsWith("impresión") &&
++          !producto.nombre.toLocaleLowerCase("es").includes("secamano"),
++      },
++      {
++        title: "Recargos de impresión",
++        matches: (producto) =>
++          producto.nombre.toLocaleLowerCase("es").startsWith("impresión"),
++      },
++      {
++        title: "Secamanos",
++        matches: (producto) =>
++          producto.nombre.toLocaleLowerCase("es").includes("secamano"),
++      },
++    ],
++    percentageNote: true,
++  },
++};
++
++configuracionListas["Bolsas Blanca II"] = {
++  ...configuracionListas["Bolsas Blanca Extra"],
++};
++configuracionListas["Bolsas Kraft"] = {
++  ...configuracionListas["Bolsas Blanca Extra"],
++};
++const columnasCartoneriaRectangular = [
++  { label: "NÚMERO", value: (p) => p.numero, align: "center", width: "11%" },
++  { label: "ANCHO\ncm", value: (p) => p.ancho, align: "center", width: "13%" },
++  { label: "LARGO\ncm", value: (p) => p.largo, align: "center", width: "13%" },
++  { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "28%", className: "precio-final" },
++  { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "22%" },
++  { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "13%" },
++];
++const columnasCartoneriaRedonda = [
++  { label: "NÚMERO", value: (p) => p.numero, align: "center", width: "14%" },
++  { label: "DIÁMETRO\ncm", value: (p) => p.diametro, align: "center", width: "18%" },
++  { label: "$ POR MILLAR\n1.000", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "28%", className: "precio-final" },
++  { label: "UNIDADES POR BULTO", value: (p) => formatearEntero(p.unidadesPorBulto), align: "center", width: "25%" },
++  { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "15%" },
++];
++configuracionListas.Cartonería = {
++  className: "lista-comercial--cartoneria",
++  percentageNote: true,
++  sections: [
++    { title: "BANDEJAS ECONÓMICAS", subtitle: "RECTANGULARES", id: "economicas-rectangulares", columns: columnasCartoneriaRectangular },
++    { title: "BANDEJAS ECONÓMICAS", subtitle: "REDONDAS", id: "economicas-redondas", columns: columnasCartoneriaRedonda },
++    { title: "BANDEJAS REFORZADAS", subtitle: "RECTANGULARES", id: "reforzadas-rectangulares", columns: columnasCartoneriaRectangular },
++    { title: "BANDEJAS REFORZADAS", subtitle: "REDONDAS", id: "reforzadas-redondas", columns: columnasCartoneriaRedonda },
++    { title: "BANDEJAS PESADAS", subtitle: "RECTANGULARES", id: "pesadas-rectangulares", columns: columnasCartoneriaRectangular },
++    { title: "BANDEJAS PESADAS", subtitle: "REDONDAS", id: "pesadas-redondas", columns: columnasCartoneriaRedonda },
++    {
++      title: "OTROS ARTÍCULOS DE CARTÓN",
++      subtitle: "",
++      id: "otros-carton",
++      columns: [
++        { label: "DESCRIPCIÓN", value: (p) => p.descripcion, align: "left", width: "60%" },
++        { label: "PRECIO", value: (p) => p.aCotizar ? "A cotizar" : formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "25%", className: "precio-final" },
++        { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "15%" },
++      ],
++    },
++  ].map((seccion) => ({
++    ...seccion,
++    matches: (producto) => producto.seccion === seccion.id,
++  })),
++};
++configuracionListas.Papeles = {
++  className: "lista-comercial--papeles",
++  sections: [
++    {
++      id: "papeles-principales",
++      title: "PAPELES",
++      columns: [
++        { label: "DESCRIPCIÓN", value: (p) => p.descripcion, align: "left", width: "42%" },
++        { label: "FORMATOS / MEDIDAS", value: (p) => p.formato || "—", align: "center", width: "36%" },
++        { label: "PRECIO", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "22%", className: "precio-final" },
++      ],
++    },
++    {
++      id: "recargos-impresion",
++      title: "RECARGOS POR IMPRESIÓN",
++      showImpressionDate: true,
++      columns: [
++        { label: "TIPO DE IMPRESIÓN", value: (p) => p.descripcion, align: "left", width: "65%" },
++        { label: "PRECIO", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "35%", className: "precio-final" },
++      ],
++    },
++    {
++      id: "productos-importados",
++      title: "PRODUCTOS IMPORTADOS",
++      showDate: true,
++      columns: [
++        { label: "DESCRIPCIÓN", value: (p) => p.descripcion, align: "left", width: "42%" },
++        { label: "FORMATO / DETALLE", value: (p) => p.formato || "—", align: "center", width: "36%" },
++        { label: "PRECIO", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "22%", className: "precio-final" },
++      ],
++    },
++  ].map((seccion) => ({
++    ...seccion,
++    matches: (producto) => producto.seccion === seccion.id,
++  })),
++};
++configuracionListas["Platos Dorados"] = {
++  className: "lista-comercial--platos-dorados",
++  introText: "CONFITERÍAS – TORTAS – PASTELERÍA",
++  commercialNoteFromData: true,
++  percentageNote: true,
++  columns: [
++    { label: "MEDIDA", value: (p) => p.medida, align: "center", width: "40%" },
++    { label: "PRECIO POR UNIDAD", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "40%", className: "precio-final" },
++    { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "20%" },
++  ],
++};
++configuracionListas.Servilletas = {
++  className: "lista-comercial--servilletas",
++  percentageNote: true,
++  sections: [
++    {
++      id: "productos",
++      title: "SERVILLETAS",
++      columns: [
++        { label: "DETALLE", value: (p) => p.detalle, align: "left", width: "27%" },
++        { label: "FORMATO", value: (p) => p.formato, align: "center", width: "15%" },
++        { label: "UNIDAD", value: (p) => p.unidad, align: "center", width: "27%" },
++        { label: "PRECIO POR UNIDAD", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "20%", className: "precio-final" },
++        { label: "% (*)", value: formatearPorcentajeManual, align: "center", width: "11%" },
++      ],
++    },
++    {
++      id: "impresion",
++      title: "IMPRESIÓN",
++      showImpressionDate: true,
++      columns: [
++        { label: "DESCRIPCIÓN", value: (p) => p.descripcion, align: "left", width: "65%" },
++        { label: "PRECIO", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "35%", className: "precio-final" },
++      ],
++    },
++    {
++      id: "secamanos",
++      title: "SECAMANOS",
++      columns: [
++        { label: "DESCRIPCIÓN", value: (p) => p.descripcion, align: "left", width: "65%" },
++        { label: "PRECIO", value: (p) => formatearMoneda(obtenerPrecioPublicado(p)), align: "right", width: "35%", className: "precio-final" },
++      ],
++    },
++  ].map((seccion) => ({
++    ...seccion,
++    matches: (producto) => producto.seccion === seccion.id,
++  })),
++};
++
++
++function obtenerFechaActualizacion(categoria) {
++  return obtenerConfiguracionCategoria(categoria)?.fechaPublicacion || "";
++}
++function obtenerFechaHoyISO() { return fechaGeneracion; }
++function formatearFechaArgentina(fecha) {
++  if (typeof fecha !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(fecha)) return "-";
++  return fecha.split("-").reverse().join("/");
++}
++function lista(categoria) {
++  const datos = esCategoriaFastFood(categoria) && !esBorrador ? obtenerProductosPublicados(categoria) : obtenerProductosDeCategoria(categoria);
++  const clase = esCategoriaFastFood(categoria) ? "lista-fast-food-activa" : esCategoriaBolsaAmericana(categoria) ? "lista-blanca-extra-activa" : "";
++  const titulo = esCategoriaBolsaAmericana(categoria) ? obtenerTituloComercialCategoria(categoria) : categoria;
++  const etiqueta = tieneBloqueImpresion(categoria) ? "Última actualización productos" : esCategoriaFastFood(categoria) ? "Fecha de publicación" : "Última actualización";
++  return `<section id="areaPDF" class="lista-consulta ${clase}">
++    <div class="encabezado-documento"><div class="marca-institucional marca-institucional--documento">${crearMarcaInstitucional("Lista de Precios", "documento")}</div>
++    <div class="datos-documento"><h2 id="tituloResultadoFinal">${escaparHTML(titulo)}</h2><p id="fechaActualizacionTexto">${etiqueta}: ${formatearFechaArgentina(obtenerFechaActualizacion(categoria))}</p></div></div>
++    <div class="franja-institucional" aria-hidden="true"></div><div id="resultadoFinalCategoria">${crearListaConfigurada(categoria, datos)}</div>
++    <footer class="pie-documento"><span>Lorenzo Annecchini S.A.</span><span class="numero-pagina">Lista de precios vigente</span></footer></section>`;
++}
++return { categorias: ordenCatalogo, estaCategoriaPublicada, lista, categoria: crearCategoriaCatalogo,
++  catalogo: () => crearPortadaCatalogo(ordenCatalogo) + ordenCatalogo.map(crearCategoriaCatalogo).join("") };
++}
++module.exports = { crearPlantilla };
+diff --git a/test/pdf.test.js b/test/pdf.test.js
+new file mode 100644
+--- /dev/null
++++ b/test/pdf.test.js
+@@ -0,0 +1,184 @@
++const test = require('node:test');
++const assert = require('node:assert/strict');
++const fs = require('node:fs');
++const os = require('node:os');
++const path = require('node:path');
++const vm = require('node:vm');
++const { once } = require('node:events');
++const express = require('express');
++const puppeteer = require('puppeteer');
++const { createAuth, hashPassword } = require('../auth');
++const { LIMITES, validarSolicitudPdf, crearDocumentoPdf, leerDatosPdf, registrarPdf, generarPdf } = require('../pdf');
++const { crearPlantilla } = require('../pdf-template');
++const { renderizar } = require('../pdf-worker');
++const publicados = [
++  { categoria: 'Moldes', nombre: 'Molde publicado', descripcion: 'Molde publicado', precioActual: 100.1 },
++  { categoria: 'Moldes', tipoRegistro: 'configuracion', fechaPublicacion: '2026-10-20' },
++];
++async function entorno(t, generar) {
++  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lasa-pdf-test-'));
++  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
++  fs.writeFileSync(path.join(dir, 'publicadas.json'), JSON.stringify(publicados));
++  fs.writeFileSync(path.join(dir, 'productos.json'), JSON.stringify(publicados.map(x => x.nombre ? { ...x, nombre: 'BORRADOR PRIVADO', descripcion: 'BORRADOR PRIVADO', precioActual: 999 } : x)));
++  const app = express();
++  const auth = createAuth({ username: 'prueba', passwordHash: hashPassword('clave-de-prueba'), secret: 's'.repeat(64) });
++  registrarPdf(app, { auth, dataDir: dir, generar });
++  app.use(express.json({ limit: '10mb' }));
++  auth.register(app);
++  const server = app.listen(0, '127.0.0.1');
++  await once(server, 'listening');
++  t.after(() => new Promise(resolve => { server.close(resolve); server.closeAllConnections(); }));
++  const base = `http://127.0.0.1:${server.address().port}`;
++  const post = (body, headers = {}) => fetch(`${base}/api/pdf`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...headers }, body: typeof body === 'string' ? body : JSON.stringify(body) });
++  return { dir, post, base };
++}
++
++test('PDF acepta solo parámetros declarativos; rechaza HTML, URLs, fechas y categorías inválidas', () => {
++  assert.equal(validarSolicitudPdf({ tipo: 'lista', categoria: 'Moldes' }), null);
++  assert.equal(validarSolicitudPdf({ tipo: 'catalogo' }), null);
++  for (const s of [null, [], {}, { tipo: 'otro' }, { tipo: 'lista' }, { tipo: 'catalogo', categoria: 'Moldes' }, { tipo: 'lista', categoria: 'x'.repeat(81) }, { tipo: 'catalogo', fuente: 'otro' }, ...['html', 'url', 'fecha', 'origen', '__proto__'].map(k => JSON.parse(`{"tipo":"catalogo","${k}":"ataque"}`))]) assert.ok(validarSolicitudPdf(s));
++});
++test('documento usa solo datos locales y conserva precios, fechas, estilos y logo', () => {
++  const original = JSON.stringify(publicados);
++  const html = crearDocumentoPdf(publicados, { tipo: 'lista', categoria: 'Moldes' }, '2026-10-29');
++  assert.match(html, /Molde publicado/); assert.match(html, /\$ 101/);
++  assert.match(html, /20\/10\/2026/); assert.match(html, /vista-lista/);
++  assert.match(html, /<style>/); assert.match(html, /data:image\/png;base64,/);
++  assert.doesNotMatch(html, /<base|<script|src="https?:|href="https?:/);
++  assert.equal(JSON.stringify(publicados), original);
++});
++test('escapa texto malicioso y no genera categorías desconocidas o sin publicar', () => {
++  const datos = structuredClone(publicados); datos[0].descripcion = '<script>ataque()</script><img src="http://127.0.0.1/">';
++  const html = crearDocumentoPdf(datos, { tipo: 'lista', categoria: 'Moldes' }, '2026-10-29');
++  assert.match(html, /&lt;script&gt;/); assert.doesNotMatch(html, /<script>/);
++  assert.throws(() => crearDocumentoPdf(datos, { tipo: 'lista', categoria: '../../etc/passwd' }, '2026-10-29'), e => e.status === 400);
++  assert.throws(() => crearDocumentoPdf([], { tipo: 'lista', categoria: 'Moldes' }, '2026-10-29'), e => e.status === 409);
++  assert.throws(() => crearDocumentoPdf(datos, { tipo: 'catalogo' }, '2026-10-29'), e => e.status === 409);
++});
++test('las plantillas de todas las categorías mantienen paridad con el cliente comercial', () => {
++  // Solo lectura de los datos copiados: no ejecutar precios ni escrituras operativas.
++  const categorias = ['Bolsas Fast Food', 'Bolsas Blanca Extra', 'Bolsas Blanca II', 'Bolsas Kraft', 'Cartonería', 'Moldes', 'Papeles', 'Platos Dorados', 'Servilletas'];
++  const datos = categorias.flatMap(categoria => {
++    const producto = { categoria, nombre: 'Producto de prueba', descripcion: 'Descripción de prueba', detalle: 'Detalle', precioActual: 100.1, porcentaje: 5, medida: '10 cm', codigo: '1', numero: '1', ancho: 10, largo: 20, fuelle: 5, diametro: 10, unidadesPorBulto: 100, unidadesPorCaja: 100, formato: 'A4', unidad: 'Bulto', seccion: categoria === 'Cartonería' ? 'economicas-rectangulares' : categoria === 'Papeles' ? 'papeles-principales' : 'productos' };
++    return [producto, { categoria, tipoRegistro: 'configuracion', fechaPublicacion: '2026-10-20', fechaPublicacionImpresion: '2026-10-19', productosPublicados: [{ ...producto }], recargosImpresion: [{ descripcion: 'Recargo de prueba', precioUnaCara: 10, precioDosCaras: 20 }], notaComercial: 'Nota de prueba' }];
++  });
++  const source = fs.readFileSync(path.join(__dirname, '../public/script.js'), 'utf8');
++  const context = vm.createContext({ document: { getElementById: () => ({}), querySelectorAll: () => [] }, window: { location: { pathname: '/', search: '' } }, URLSearchParams, PricingLASA: require('../public/pricing'), localStorage: { getItem: () => '' } });
++  vm.runInContext(source.slice(0, source.indexOf('gridAdmin.addEventListener')), context);
++  context.fixture = datos;
++  vm.runInContext('productos = fixture;', context);
++  const renderer = crearPlantilla(datos, '2026-10-29');
++  for (const categoria of renderer.categorias) {
++    context.categoriaPrueba = categoria;
++    assert.equal(renderer.categoria(categoria), vm.runInContext('crearCategoriaCatalogo(categoriaPrueba)', context), categoria);
++  }
++  assert.match(crearDocumentoPdf(datos, { tipo: 'catalogo' }, '2026-10-29'), /catalogo-portada/);
++});
++test('lectura acotada rechaza datos gigantes, inválidos y exceso de registros', t => {
++  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lasa-pdf-size-')); t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
++  const file = path.join(dir, 'test.json');
++  fs.writeFileSync(file, ' '.repeat(LIMITES.datos + 1)); assert.throws(() => leerDatosPdf(file), e => e.status === 413);
++  fs.writeFileSync(file, JSON.stringify(Array(LIMITES.registros + 1).fill({}))); assert.throws(() => leerDatosPdf(file), e => e.status === 413);
++  fs.writeFileSync(file, '{'); assert.throws(() => leerDatosPdf(file));
++  const datos = structuredClone(publicados); datos[0].descripcion = '&'.repeat(500000);
++  assert.throws(() => crearDocumentoPdf(datos, { tipo: 'lista', categoria: 'Moldes' }, '2026-10-29'), e => e.status === 413);
++});
++test('descarga pública sin sesión; ningún precio ni archivo se escribe', async t => {
++  let recibido;
++  const { post, dir } = await entorno(t, async html => { recibido = html; return Buffer.from('%PDF-1.4\nprueba'); });
++  const antes = ['productos.json', 'publicadas.json'].map(f => fs.readFileSync(path.join(dir, f)));
++  const r = await post({ tipo: 'lista', categoria: 'Moldes' });
++  assert.equal(r.status, 200); assert.match(r.headers.get('content-type'), /application\/pdf/);
++  assert.match(r.headers.get('content-disposition'), /attachment/); assert.equal(r.headers.get('cache-control'), 'no-store');
++  assert.match(await r.text(), /^%PDF-/); assert.match(recibido, /Molde publicado/); assert.doesNotMatch(recibido, /BORRADOR PRIVADO|\$ 999/);
++  ['productos.json', 'publicadas.json'].forEach((f, i) => assert.deepEqual(fs.readFileSync(path.join(dir, f)), antes[i]));
++});
++test('parser rechaza tamaño excesivo, JSON inválido, HTML y falta de publicación sin lanzar Chromium', async t => {
++  let llamadas = 0;
++  const { post } = await entorno(t, async () => { llamadas++; return Buffer.from('%PDF-'); });
++  assert.equal((await post({ tipo: 'catalogo', html: 'x'.repeat(2000) })).status, 413);
++  assert.equal((await post('{')).status, 400);
++  assert.equal((await post({ tipo: 'catalogo', html: '<script>ataque()</script>' })).status, 400);
++  assert.equal((await post({ tipo: 'lista', categoria: 'desconocida' })).status, 400);
++  assert.equal((await post({ tipo: 'catalogo' })).status, 409);
++  assert.equal(llamadas, 0);
++});
++test('el borrador PDF conserva la autenticación y control de origen existentes', async t => {
++  let recibido;
++  const { post, base } = await entorno(t, async html => { recibido = html; return Buffer.from('%PDF-1.4'); });
++  const body = { tipo: 'lista', categoria: 'Moldes', fuente: 'borrador' };
++  assert.equal((await post(body)).status, 401);
++  const login = await fetch(base + '/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: base }, body: JSON.stringify({ usuario: 'prueba', contrasena: 'clave-de-prueba' }) });
++  const Cookie = login.headers.get('set-cookie').split(';')[0];
++  assert.equal((await post(body, { Cookie, Origin: 'http://otro' })).status, 403);
++  assert.equal((await post(body, { Cookie, Origin: base })).status, 200);
++  assert.match(recibido, /BORRADOR PRIVADO/);
++});
++test('una sola generación simultánea, rechaza exceso y libera cupo tras fallo', async t => {
++  let inicio, terminar; const iniciado = new Promise(r => { inicio = r; });
++  const { post } = await entorno(t, () => { inicio(); return new Promise((resolve, reject) => { terminar = reject; }); });
++  const body = { tipo: 'lista', categoria: 'Moldes' };
++  const primera = post(body); await iniciado;
++  const ocupada = await post(body); assert.equal(ocupada.status, 429); assert.ok(ocupada.headers.get('retry-after'));
++  terminar(new Error('Fallo ficticio')); assert.equal((await primera).status, 503);
++  const segunda = post(body); await new Promise(r => setTimeout(r, 30)); terminar(new Error('Otro fallo')); assert.equal((await segunda).status, 503);
++});
++test('el límite de frecuencia público es global y acotado', async t => {
++  const { post } = await entorno(t, async () => Buffer.from('%PDF-1.4'));
++  const body = { tipo: 'lista', categoria: 'Moldes' };
++  for (let i = 0; i < LIMITES.porMinuto; i++) assert.equal((await post(body)).status, 200);
++  assert.equal((await post(body)).status, 429);
++});
++test('el cliente envía identificadores y nunca HTML ni fechas', () => {
++  const script = fs.readFileSync(path.join(__dirname, '../public/script.js'), 'utf8');
++  const context = vm.createContext({ esModoAdmin: false, obtenerFechaHoyISO: () => '2026-10-29', URL: { createObjectURL: () => 'blob:prueba', revokeObjectURL() {} }, document: { createElement: () => ({ click() {} }) }, alert() {}, console, fetch: async (url, options) => { context.solicitud = JSON.parse(options.body); return { ok: true, blob: async () => ({}), headers: { get: () => '' } }; } });
++  const start = script.indexOf('async function descargarPdfGenerado('), end = script.indexOf('\ndescargarCatalogoBtn.addEventListener', start);
++  vm.runInContext(script.slice(start, end), context);
++  return vm.runInContext('descargarPdfGenerado("lista", { textContent: "PDF" }, "Moldes")', context).then(() => assert.equal(JSON.stringify(context.solicitud), '{"tipo":"lista","categoria":"Moldes"}'));
++});
++test('plazo total mata el trabajador; cancelar también termina sin esperar a Chromium', async () => {
++  await assert.rejects(generarPdf('<p>Prueba</p>', { timeout: 1 }), e => e.status === 504);
++  const controller = new AbortController(); controller.abort();
++  await assert.rejects(generarPdf('<p>Prueba</p>', { signal: controller.signal }), e => e.status === 499);
++});
++test('Chromium real con sandbox: PDF, logo local, JS deshabilitado y recursos bloqueados', { timeout: 25000 }, async t => {
++  const app = express(); let visitas = 0; app.use((req, res) => { visitas++; res.send('recurso'); });
++  const server = app.listen(0, '127.0.0.1'); await once(server, 'listening');
++  t.after(() => new Promise(resolve => { server.close(resolve); server.closeAllConnections(); }));
++  const browser = await puppeteer.launch({ headless: true, timeout: 8000, args: ['--disable-crash-reporter', '--disable-background-networking'] });
++  t.after(() => browser.close());
++  assert.ok(!browser.process().spawnargs.includes('--no-sandbox'));
++  const page = await browser.newPage();
++  const host = `http://127.0.0.1:${server.address().port}`;
++  const html = crearDocumentoPdf(publicados, { tipo: 'lista', categoria: 'Moldes' }, '2026-10-29');
++  const pdf = await renderizar(page, html);
++  assert.equal(Buffer.from(pdf).subarray(0, 5).toString(), '%PDF-');
++  assert.equal(await page.$eval('img', img => img.naturalWidth > 0), true);
++  const atacante = await browser.newPage();
++  const intentos = []; atacante.on('request', r => intentos.push(r.url()));
++  await renderizar(atacante, `<script>document.body.dataset.inseguro='si';fetch('${host}/script')</script><img src="${host}/local"><img src="https://example.invalid/externo"><iframe src="file:///etc/passwd"></iframe><iframe src="http://169.254.169.254/"></iframe><style>@import url('${host}/css');</style>`);
++  assert.equal(await atacante.evaluate(() => document.body.dataset.inseguro), undefined);
++  assert.equal(atacante.isJavaScriptEnabled(), false); assert.equal(visitas, 0);
++  assert.ok(intentos.some(url => url.includes('/local')));
++});
++test('trabajador real produce PDF público con el mismo aislamiento y limpieza', { timeout: 25000 }, async () => {
++  const pdf = await generarPdf(crearDocumentoPdf(publicados, { tipo: 'lista', categoria: 'Moldes' }, '2026-10-29'));
++  assert.equal(pdf.subarray(0, 5).toString(), '%PDF-');
++});
++
++test('endpoint público real devuelve PDF sin sesión usando únicamente publicaciones', { timeout: 25000 }, async t => {
++  const { post, dir } = await entorno(t);
++  const antes = fs.readFileSync(path.join(dir, 'publicadas.json'));
++  const respuesta = await post({ tipo: 'lista', categoria: 'Moldes' });
++  assert.equal(respuesta.status, 200);
++  assert.match(respuesta.headers.get('content-type'), /application\/pdf/);
++  assert.equal(Buffer.from(await respuesta.arrayBuffer()).subarray(0, 5).toString(), '%PDF-');
++  assert.deepEqual(fs.readFileSync(path.join(dir, 'publicadas.json')), antes);
++});
++
++test('sin Chromium utilizable falla cerrado; no reintenta sin sandbox', { timeout: 15000 }, async () => {
++  const anterior = process.env.PUPPETEER_EXECUTABLE_PATH;
++  process.env.PUPPETEER_EXECUTABLE_PATH = '/ruta-inexistente-lasa/chrome';
++  try { await assert.rejects(generarPdf('<p>Prueba</p>'), e => e.status === 503); }
++  finally { if (anterior === undefined) delete process.env.PUPPETEER_EXECUTABLE_PATH; else process.env.PUPPETEER_EXECUTABLE_PATH = anterior; }
++});

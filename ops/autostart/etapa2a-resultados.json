@@ -1,0 +1,27 @@
+{
+  "old_pid": 13621,
+  "installed": true,
+  "old_stopped": true,
+  "rolled_back": false,
+  "tests": {
+    "initial_functional": true,
+    "restart_on_failure": true,
+    "after_recovery_functional": true,
+    "terminal_exit_same_pid": true
+  },
+  "first_systemd_pid": 21693,
+  "migration_seconds_signal_to_health": 1.553,
+  "final_pid": 22221,
+  "failure_recovery_seconds_signal_to_health": 6.113,
+  "systemd": {
+    "Restart": "on-failure",
+    "MainPID": "22221",
+    "NRestarts": "1",
+    "ControlGroup": "/system.slice/lasa.service",
+    "ActiveState": "active",
+    "SubState": "running",
+    "UnitFileState": "enabled"
+  },
+  "data_unchanged": true,
+  "success": true
+}

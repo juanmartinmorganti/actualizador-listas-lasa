@@ -1741,7 +1741,7 @@ volverCatalogoBtn.addEventListener("click", () => {
   volverALaPortada();
 });
 
-async function descargarPdfGenerado(html, tipo, boton) {
+async function descargarPdfGenerado(tipo, boton, categoria) {
   const textoAnterior = boton.textContent;
   boton.disabled = true;
   boton.textContent = "Generando PDF...";
@@ -1750,9 +1750,12 @@ async function descargarPdfGenerado(html, tipo, boton) {
     const respuesta = await fetch("/api/pdf", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ html, tipo, fecha: obtenerFechaHoyISO() }),
+      body: JSON.stringify({ tipo, ...(categoria ? { categoria } : {}), ...(esModoAdmin ? { fuente: "borrador" } : {}) }),
     });
-    if (!respuesta.ok) throw new Error(`Error HTTP ${respuesta.status}`);
+    if (!respuesta.ok) {
+      const resultado = await respuesta.json();
+      throw new Error(resultado.error || `Error HTTP ${respuesta.status}`);
+    }
 
     const blob = await respuesta.blob();
     const disposicion = respuesta.headers.get("Content-Disposition") || "";
@@ -1765,7 +1768,7 @@ async function descargarPdfGenerado(html, tipo, boton) {
     URL.revokeObjectURL(url);
   } catch (error) {
     console.error("Error al descargar PDF:", error);
-    alert("No se pudo generar el PDF.");
+    alert(error.message || "No se pudo generar el PDF.");
   } finally {
     boton.disabled = false;
     boton.textContent = textoAnterior;
@@ -1779,7 +1782,7 @@ descargarCatalogoBtn.addEventListener("click", async () => {
     return;
   }
 
-  await descargarPdfGenerado(catalogoContenido.innerHTML, "catalogo", descargarCatalogoBtn);
+  await descargarPdfGenerado("catalogo", descargarCatalogoBtn);
 });
 
 fechaActualizacionAdmin.addEventListener("change", async () => {
@@ -2229,7 +2232,7 @@ descargarPDFBtn.addEventListener("click", async () => {
     return;
   }
 
-  await descargarPdfGenerado(areaPDF.outerHTML, "lista", descargarPDFBtn);
+  await descargarPdfGenerado("lista", descargarPDFBtn, categoriaResultadoFinal);
 });
 
 const modoGuardado = localStorage.getItem("modoOscuroLASA");

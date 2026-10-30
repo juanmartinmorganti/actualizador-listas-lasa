@@ -1,0 +1,14 @@
+{
+  "registrationCalls": 1,
+  "manualStarts": 1,
+  "service": {
+    "MainPID": "22221",
+    "NRestarts": "1",
+    "ActiveState": "active",
+    "UnitFileState": "enabled"
+  },
+  "supervisorPid": 35474,
+  "dataUnchanged": true,
+  "functionalChecksPassed": true,
+  "realBootTested": false
+}

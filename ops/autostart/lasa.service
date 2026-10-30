@@ -1,0 +1,33 @@
+[Unit]
+Description=LASA - listas de precios
+After=local-fs.target network.target
+StartLimitIntervalSec=120
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=kirwan
+Group=kirwan
+WorkingDirectory=/home/kirwan/p/actualizador-listas-lasa
+Environment=HOME=/home/kirwan
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+Environment=PORT=4000
+Environment=LASA_HOST=0.0.0.0
+Environment=LASA_DATA_DIR=/home/kirwan/p/actualizador-listas-lasa/data
+Environment=LASA_AUTH_CONFIG=/home/kirwan/.config/lasa/actualizador-listas.json
+Environment=PUPPETEER_CACHE_DIR=/home/kirwan/.cache/puppeteer
+UnsetEnvironment=LASA_ADMIN_USER LASA_ADMIN_PASSWORD_HASH LASA_SESSION_SECRET
+ExecStartPre=/usr/bin/python3 /usr/local/libexec/lasa/lasa-check.py --preflight
+ExecStart=/usr/bin/node /home/kirwan/p/actualizador-listas-lasa/server.js
+Restart=on-failure
+RestartSec=5s
+TimeoutStartSec=30s
+TimeoutStopSec=30s
+KillMode=control-group
+UMask=0077
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=lasa
+
+[Install]
+WantedBy=multi-user.target
